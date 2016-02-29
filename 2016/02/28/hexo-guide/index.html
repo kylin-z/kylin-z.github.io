@@ -11,16 +11,31 @@
     <meta name="keywords" content="hexo,github,node," />
   
 
-  <meta name="description">
+  <meta name="description" content="#####1.安装git
+#####2.安装node
+#####3.安装hexo
+1npm install hexo-cli -g
+#####4.创建一个放置博客的文件夹如：H:\hexo\kylin,最好不要使用中文路径,进入文件夹H:\hexo\kylin,右键选择git bash(重要),执行以下命令,Hexo会自动在该文件夹下下载搭建网站所需的所有文件
+1npm install hexo-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo个人博客搭建记录">
 <meta property="og:url" content="http://yoursite.com/2016/02/28/hexo-guide/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description">
-<meta property="og:updated_time" content="2016-02-28T11:46:03.682Z">
+<meta property="og:description" content="#####1.安装git
+#####2.安装node
+#####3.安装hexo
+1npm install hexo-cli -g
+#####4.创建一个放置博客的文件夹如：H:\hexo\kylin,最好不要使用中文路径,进入文件夹H:\hexo\kylin,右键选择git bash(重要),执行以下命令,Hexo会自动在该文件夹下下载搭建网站所需的所有文件
+1npm install hexo-">
+<meta property="og:updated_time" content="2016-02-29T14:27:34.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo个人博客搭建记录">
-<meta name="twitter:description">
+<meta name="twitter:description" content="#####1.安装git
+#####2.安装node
+#####3.安装hexo
+1npm install hexo-cli -g
+#####4.创建一个放置博客的文件夹如：H:\hexo\kylin,最好不要使用中文路径,进入文件夹H:\hexo\kylin,右键选择git bash(重要),执行以下命令,Hexo会自动在该文件夹下下载搭建网站所需的所有文件
+1npm install hexo-">
   
   
 
@@ -121,7 +136,21 @@
 
   <div class="article-content">
     
-      
+      <p>#####1.安装git</p>
+<p>#####2.安装node</p>
+<p>#####3.安装hexo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>#####4.创建一个放置博客的文件夹如：<code>H:\hexo\kylin</code>,最好不要使用中文路径,进入文件夹<code>H:\hexo\kylin</code>,右键选择git bash(重要),执行以下命令,Hexo会自动在该文件夹下下载搭建网站所需的所有文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>######5.安装依赖包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure></p>
+<p>######6.在<code>H:\hexo\kylin</code>中执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure></p>
+<p><code>hexo clean</code>删除<code>g</code>生成的public文件夹</p>
+<p><code>hexo g</code>类似于fis的release 将博客的md文件生成html到相应的产出目录<code>public</code></p>
+<p><code>hexo s</code>启动本地服务器,打开<code>localhost:4000</code>即可看到已经生成的本地博客</p>
+<p><code>hexo d</code>推送到github<br>注意:若是使用过程中出现以下错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR Deployer not found : github</span><br></pre></td></tr></table></figure>
+<p>则运行以下命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure></p>
+
     
   </div>
 </article>
