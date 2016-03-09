@@ -1,11 +1,12 @@
 ---
-title: jsÔ­ÉúÊµÏÖcookieµÄ¶ÁĞ´ºÍÉ¾³ı
+title: jsåŸç”Ÿå®ç°cookieçš„è¯»å†™å’Œåˆ é™¤
 date: 2016-03-06 21:21:44
-tags: Ç°¶Ë js Ô­Éú cookie
+tags: [å‰ç«¯,js,åŸç”Ÿ,cookie]
+categories: å‰ç«¯
 ---
 
-Ö®Ç°×öÍü¼ÇÃÜÂë¹¦ÄÜÒ»Ö±ÓÃµÄjqueryµÄcookie²å¼ş£¬ÕâÒ»´Î³¢ÊÔÓÃjsÔ­ÉúÀ´Ğ´£¬·¢ÏÖÒ²²¢²»¸´ÔÓ¡£
-×î¼òµ¥µÄÊµÏÖ£º
+ä¹‹å‰åšå¿˜è®°å¯†ç åŠŸèƒ½ä¸€ç›´ç”¨çš„jqueryçš„cookieæ’ä»¶ï¼Œè¿™ä¸€æ¬¡å°è¯•ç”¨jsåŸç”Ÿæ¥å†™ï¼Œå‘ç°ä¹Ÿå¹¶ä¸å¤æ‚ã€‚
+æœ€ç®€å•çš„å®ç°ï¼š
 ```
 function getCookie(name)
         {
@@ -22,18 +23,18 @@ function getCookie(name)
             setCookie(name,"");
         }
 ```
-È»¶øÕâ¸öÊµÏÖ·½·¨²¢²»ÄÜÕæÕıÉ¾³ıcookie£¬Ö»ÊÇ½«ÆäÖÃ¿Õ
+ç„¶è€Œè¿™ä¸ªå®ç°æ–¹æ³•å¹¶ä¸èƒ½çœŸæ­£åˆ é™¤cookieï¼Œåªæ˜¯å°†å…¶ç½®ç©º
 
-ÏÂÃæÊÇw3c¹ÙÍøµÄ´úÂë:
+ä¸‹é¢æ˜¯w3cå®˜ç½‘çš„ä»£ç :
 ```
-        //ÉèÖÃcookie
+        //è®¾ç½®cookie
         function setCookie(cname, cvalue, exdays) {
             var d = new Date();
             d.setTime(d.getTime() + (exdays*24*60*60*1000));
             var expires = "expires="+d.toUTCString();
             document.cookie = cname + "=" + cvalue + "; " + expires;
         }
-        //»ñÈ¡cookie
+        //è·å–cookie
         function getCookie(cname) {
             var name = cname + "=";
             var ca = document.cookie.split(';');
@@ -44,10 +45,10 @@ function getCookie(name)
             }
             return "";
         }
-        //Çå³ıcookie
+        //æ¸…é™¤cookie
         function clearCookie(name) {
             setCookie(name, "", -1);
         }
         
 ```
-Î´Íê´ıĞø¡£¡£¡£
+æ²¡æœ‰åˆ é™¤å·²æœ‰cookieçš„ç›´æ¥æ–¹æ³•ï¼Œæ‰€ä»¥é€šè¿‡è®¾ç½®å¤±æ•ˆæ—¶é—´æ¥åšã€‚å°†å¤±æ•ˆæ—¶é—´è®¾ç½®ä¸ºè¿‡å»ï¼Œé‚£ä¹ˆå°±èƒ½ç¡®ä¿åˆ é™¤cookie
