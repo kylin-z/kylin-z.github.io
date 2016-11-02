@@ -21,4 +21,13 @@ rm -f 文件名
 将会强行删除文件，且无提示
  
 注意：
-使用rm -rf要格外注意，linux中没有回收站，慎重删除
+使用`rm -rf`要格外注意，linux中没有回收站，慎重删除
+
+#新建文件与文件夹
+```
+cd  /someDir   定位到目标目录
+mkdir test  新建一个叫test的文件夹
+```
+```
+touch  test/a.txt 在test文件夹下建一个名为a.txt的文件
+```
