@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Kylin">
 <meta property="og:description" content="今天遇到了一个奇怪的bug需要将图片裁剪至合适的大小，然后我这样一个方法12345var x = 65;if(width&amp;gt;height)    $(this).css(&amp;quot;height&amp;quot;,x);else    $(this).css(&amp;quot;width&amp;quot;,x);
 由于各种原因&amp;lt;img&amp;gt;元素是通过字符串在js里面拼接出来的,上面那个方法用在appen">
-<meta property="og:updated_time" content="2016-07-03T11:25:39.000Z">
+<meta property="og:updated_time" content="2016-11-26T08:46:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="img的onload与complete">
 <meta name="twitter:description" content="今天遇到了一个奇怪的bug需要将图片裁剪至合适的大小，然后我这样一个方法12345var x = 65;if(width&amp;gt;height)    $(this).css(&amp;quot;height&amp;quot;,x);else    $(this).css(&amp;quot;width&amp;quot;,x);
@@ -59,118 +59,97 @@
 <body>
 
 
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
-  
+  <!---->
 
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">盒子</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
-    </a>
-    <ul class="list-toolbox">
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            target="_self"
-            >
-            博客
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/category/"
-            target="_self"
-            >
-            分类
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            target="_self"
-            >
-            标签
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            target="_self"
-            >
-            友链
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            target="_self"
-            >
-            关于
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            target="_blank"
-            >
-            RSS
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            target="_self"
-            >
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-
-
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/ruolinxue">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
 </div>
 
-
-
+<!--这个是章节目录-->
+<!--
+-->
 
 <div class="content content-post CENTER">
-   <article id="post-img-load" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">img的onload与complete</h1>
+   <div class="container article-container">
+  <article id="post-img-load" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/03/09/img-load/">img的onload与complete</a></h1>
 
-    <div class="article-meta">
+      <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.03.09</span>
       </span>
 
-      
+        
         <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-      
+        
 
-      
+        
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/前端/">前端</a>
@@ -178,53 +157,42 @@
 
 
 
-      
+        
         <span>
           <i class="icon-comment"></i>
           <a href="ruolinxue.github.io/2016/03/09/img-load/#disqus_thread"></a>
         </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
       
-
-    </div>
-  </header>
-
-  <div class="article-content">
-    
       <p>今天遇到了一个奇怪的bug<br>需要将图片裁剪至合适的大小，然后我这样一个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var x = 65;</div><div class="line">if(width&gt;height)</div><div class="line">    $(this).css(&quot;height&quot;,x);</div><div class="line">else</div><div class="line">    $(this).css(&quot;width&quot;,x);</div></pre></td></tr></table></figure></p>
 <p>由于各种原因<code>&lt;img&gt;</code>元素是通过字符串在js里面拼接出来的,上面那个方法用在append到界面上之后<br>刚做完的时候貌似没有问题,但是多刷新几次之后,神奇的事情发生了,这个方法居然时灵时不灵！</p>
 <p>后来通过研究发现,这个方法应该在图片加载完之后调用。<br>下面是改良之后的方法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">(function ($) &#123;</div><div class="line">    function autoSize(obj, w, h, is_cut) &#123; //is=true 不移位</div><div class="line">        var oIMG = new Image();</div><div class="line">        oIMG.onload = function () &#123;</div><div class="line">            var oW = this.width;</div><div class="line">            var oH = this.height;</div><div class="line">            if (is_cut &amp;&amp; w == h) &#123;</div><div class="line">                if (oW &gt; oH) &#123;</div><div class="line">                    obj.style.height = w + &apos;px&apos;;</div><div class="line">                &#125;</div><div class="line">                else &#123;</div><div class="line">                    obj.style.width = w + &apos;px&apos;;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        oIMG.src = obj.src;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $.fn.autoSize = function (width, height, is_cut) &#123;</div><div class="line">        this.each(function (i) &#123;</div><div class="line">            $(this).load(function () &#123;</div><div class="line">                return autoSize(this, width, height, is_move, is_cut);</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">        return this;</div><div class="line">    &#125;;</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">$</span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">autoSize</span>(<span class="params">obj, w, h, is_cut</span>) </span>&#123; <span class="comment">//is=true 不移位</span></div><div class="line">        <span class="keyword">var</span> oIMG = <span class="keyword">new</span> Image();</div><div class="line">        oIMG.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oW = <span class="keyword">this</span>.width;</div><div class="line">            <span class="keyword">var</span> oH = <span class="keyword">this</span>.height;</div><div class="line">            <span class="keyword">if</span> (is_cut &amp;&amp; w == h) &#123;</div><div class="line">                <span class="keyword">if</span> (oW &gt; oH) &#123;</div><div class="line">                    obj.style.height = w + <span class="string">'px'</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> &#123;</div><div class="line">                    obj.style.width = w + <span class="string">'px'</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        oIMG.src = obj.src;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    $.fn.autoSize = <span class="function"><span class="keyword">function</span> (<span class="params">width, height, is_cut</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.each(<span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</div><div class="line">            $(<span class="keyword">this</span>).load(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> autoSize(<span class="keyword">this</span>, width, height, is_move, is_cut);</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;;</div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure>
 <p>定义了图片的onload事件,在图片加载完之后执行。</p>
 <p>这里需要注意一个细节<br>不要把<code>oIMG.src=obj.src;</code>这一句紧跟在<code>var oIMG = new Image();</code>之后。</p>
 <p>除了这个方法之外,还可以使用图片的complete 属性，如用以下方法获取图片的尺寸<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var imgLoad = function (url) &#123;</div><div class="line">    var img = new Image();</div><div class="line">    img.src = url;</div><div class="line">    if (img.complete) &#123;</div><div class="line">        callback(img.width, img.height);</div><div class="line">    &#125; else &#123;</div><div class="line">        img.onload = function () &#123;</div><div class="line">            callback(img.width, img.height);</div><div class="line">            img.onload = null;</div><div class="line">        &#125;;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
-    
-  </div>
-</article>
-
-</div>
-
-
-  <div class="text-center donation">
-    <div class="inner-donation">
-      <span class="btn-donation">支持一下</span>
-      <div class="donation-body">
-        <div class="tip text-center">扫一扫，支持forsigner</div>
-        <ul class="theme.donation.items.length">
-        
-          <li class="item">
-            <img src="/images/qr-wechat.png" alt="">
-          </li>
-        
-          <li class="item">
-            <img src="/images/qr-alipay.png" alt="">
-          </li>
-        
-        </ul>
-      </div>
+      
     </div>
-  </div>
-
+  </article>
+  
+  <div class="page-bar">
+    
+    <a href="/2016/03/11/oninput/" class="prev-btn"><i class="iconfont icon-prev"></i>ios输入法的keyup事件失效的解决方法</a>
+    
+    
+    <a href="/2016/03/06/js-cookie/" class="next-btn">js原生实现cookie的读写和删除<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
 
 
 
@@ -235,7 +203,7 @@
 
 
 
-  <div class="modal" id="modal">
+  <!--<div class="modal" id="modal">
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
@@ -248,17 +216,27 @@
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/archives/"
+              href="/"
               target="_self"
               >
-              博客
+              首页
             </a>
           </li>
         
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/category/"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
               target="_self"
               >
               分类
@@ -268,7 +246,7 @@
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/tag/"
+              href="/tags/"
               target="_self"
               >
               标签
@@ -288,20 +266,20 @@
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/about/"
-              target="_self"
+              href="/atom.xml"
+              target="_blank"
               >
-              关于
+              RSS
             </a>
           </li>
         
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/atom.xml"
-              target="_blank"
+              href="/album/"
+              target="_self"
               >
-              RSS
+              相册
             </a>
           </li>
         
@@ -320,11 +298,11 @@
     </div>
   </div>
 </div>
+-->
 
 
-
-  
-      <div class="fexo-comments comments-post">
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
     
   <section class="disqus-comments">
     <div id="disqus_thread">
@@ -333,7 +311,7 @@
   </section>
 
   <script>
-    var disqus_shortname = 'forsigner';
+    var disqus_shortname = 'kylinz';
     
     var disqus_url = 'http://yoursite.com/2016/03/09/img-load/';
     
@@ -346,7 +324,7 @@
     })();
   </script>
 
-  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
 
 
 
@@ -356,8 +334,8 @@
 
 
   </div>
-
-  
+-->
+  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

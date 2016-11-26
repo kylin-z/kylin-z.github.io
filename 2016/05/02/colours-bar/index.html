@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何用js画一条彩带 | Kylin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="前端,canvas," />
+  
+
+  <meta name="description" content="前言前阵子看到尤小右同学的主页上有这样一个彩带点这里
+观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ 原理点这里
+于是实现了一个简单版本Demo
+简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕
+原理主要分成以下几块
+如何生成彩虹色
+如何绘制连续的三角形
+
+如何生成彩虹色彩虹色Demo首先，如何生成一条灰带？
+正弦波能帮助我们连续地产生-1~1之间的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何用js画一条彩带">
+<meta property="og:url" content="http://yoursite.com/2016/05/02/colours-bar/index.html">
+<meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="前言前阵子看到尤小右同学的主页上有这样一个彩带点这里
+观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ 原理点这里
+于是实现了一个简单版本Demo
+简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕
+原理主要分成以下几块
+如何生成彩虹色
+如何绘制连续的三角形
+
+如何生成彩虹色彩虹色Demo首先，如何生成一条灰带？
+正弦波能帮助我们连续地产生-1~1之间的">
+<meta property="og:image" content="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501161024.png">
+<meta property="og:image" content="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501221455.png">
+<meta property="og:image" content="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501222256.png">
+<meta property="og:updated_time" content="2016-11-26T08:46:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何用js画一条彩带">
+<meta name="twitter:description" content="前言前阵子看到尤小右同学的主页上有这样一个彩带点这里
+观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ 原理点这里
+于是实现了一个简单版本Demo
+简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕
+原理主要分成以下几块
+如何生成彩虹色
+如何绘制连续的三角形
+
+如何生成彩虹色彩虹色Demo首先，如何生成一条灰带？
+正弦波能帮助我们连续地产生-1~1之间的">
+<meta name="twitter:image" content="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501161024.png">
+
+  
+
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  <!---->
+
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/ruolinxue">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
+</div>
+
+<!--这个是章节目录-->
+<!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主要分成以下几块"><span class="toc-text">主要分成以下几块</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何生成彩虹色"><span class="toc-text">如何生成彩虹色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何绘制连续的三角形"><span class="toc-text">如何绘制连续的三角形</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#完毕-～￣▽￣-～"><span class="toc-text">完毕(～￣▽￣)～</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-colours-bar" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/05/02/colours-bar/">如何用js画一条彩带</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.02</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="ruolinxue.github.io/2016/05/02/colours-bar/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前阵子看到尤小右同学的主页上有这样一个彩带<a href="http://evanyou.me/" target="_blank" rel="external">点这里</a></p>
+<p>观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ <a href="http://krazydad.com/tutorials/makecolors.php" target="_blank" rel="external">原理点这里</a></p>
+<p>于是实现了一个简单版本<a href="http://himmas.github.io/Himmas_demo/colours-bar/" target="_blank" rel="external">Demo</a></p>
+<p>简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h4 id="主要分成以下几块"><a href="#主要分成以下几块" class="headerlink" title="主要分成以下几块"></a>主要分成以下几块</h4><ul>
+<li>如何生成彩虹色</li>
+<li>如何绘制连续的三角形</li>
+</ul>
+<h1 id="如何生成彩虹色"><a href="#如何生成彩虹色" class="headerlink" title="如何生成彩虹色"></a>如何生成彩虹色</h1><p>彩虹色<a href="http://himmas.github.io/Himmas_demo/colours-bar/colour-bar.html" target="_blank" rel="external">Demo</a><br>首先，如何生成一条灰带？</p>
+<p>正弦波能帮助我们连续地产生-1~1之间的数,可以满足我们的需求</p>
+<p><img src="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501161024.png" alt=""><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> frequency = <span class="number">.3</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; ++i)</div><div class="line">&#123;</div><div class="line">   Document.write( <span class="built_in">Math</span>.sin(frequency * i)  );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>frequency约等于6.2时,正好一个周期(正弦波的周期为2PI 约等于6.2)</p>
+<table>
+<thead>
+<tr>
+<th>Degrees</th>
+<th>Radians</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>90</td>
+<td>π/2</td>
+</tr>
+<tr>
+<td>180</td>
+<td>π</td>
+</tr>
+<tr>
+<td>270</td>
+<td>3π/2</td>
+</tr>
+<tr>
+<td>360</td>
+<td>2π</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<p>由于正弦波的区间(-1,1),而灰带需要的数值区间在[0,255] 我们需要一些方法来将正弦波进行转换</p>
+<p>value = Math.sin(frequency<em>increment)</em>amplitude + center;</p>
+<p><code>center</code>是我们期望的中间值,<code>amplitude</code>是波峰与波谷的绝对值</p>
+<p>如<code>amplitude = 255/2</code> <code>center = 255/2</code> 则色彩区间为0-255<br><code>Math.sin(frequency*i)*128 + 127</code>也足够接近了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> amplitude = <span class="number">128</span>;</div><div class="line"><span class="keyword">var</span> center = <span class="number">127</span>;</div><div class="line"><span class="comment">//rgb分量相同时是灰色</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">64</span>; ++i)</div><div class="line">&#123;</div><div class="line">    v = <span class="built_in">Math</span>.sin(frequency*i) * amplitude + center;</div><div class="line"></div><div class="line">    <span class="comment">// Note that &amp;#9608; is a unicode character that makes a solid block</span></div><div class="line">    <span class="built_in">document</span>.write( <span class="string">'&lt;font v='</span>+v+<span class="string">' color="'</span> + RGB2Color(v,v,v) + <span class="string">'"&gt;&amp;#9608;&lt;/font&gt;'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>RGB2Color</code>是将rgb分量转换成16进制色值的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将rgb转换成16进制</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">RGB2Color</span>(<span class="params">r,g,b</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'#'</span> + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);</div><div class="line">&#125;</div><div class="line"><span class="comment">//将rgb分量装换成对应的两位十六进制形式 170=&gt;AA</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">byte2Hex</span>(<span class="params">n</span>)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> nybHexString = <span class="string">"0123456789ABCDEF"</span>;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(nybHexString.substr((n &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x0F</span>,<span class="number">1</span>)) + nybHexString.substr(n &amp; <span class="number">0x0F</span>,<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//4位二进制数对应一个十六进制数 170&gt;&gt;1 = 85 170&gt;&gt;3 = 21 m&gt;&gt;n = m/2^n 并取整</span></div><div class="line"><span class="comment">//n &amp; 0x0F = n%16</span></div></pre></td></tr></table></figure>
+<p>三条正弦或余弦波错位可得到一条彩带<br><img src="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501221455.png" alt=""></p>
+<p>以下是我的实现版本:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> j= <span class="number">1</span>/<span class="number">6</span>;</div><div class="line"><span class="keyword">while</span>(j&lt;=<span class="number">2</span>)&#123;</div><div class="line">   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">64</span>; ++i)</div><div class="line">   &#123;</div><div class="line">       red   = <span class="built_in">Math</span>.sin(frequency*i + <span class="number">0</span>) * amplitude + center;</div><div class="line">       green = <span class="built_in">Math</span>.sin(frequency*i +j) * amplitude + center;</div><div class="line">       blue  = <span class="built_in">Math</span>.sin(frequency*i +j*<span class="number">2</span>) * amplitude + center;</div><div class="line">    </div><div class="line">       <span class="built_in">document</span>.write( <span class="string">'&lt;font color="'</span> + RGB2Color(red,green,blue) + <span class="string">'"&gt;&amp;#9608;&lt;/font&gt;'</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="built_in">document</span>.write( <span class="string">'&lt;br/&gt;'</span>);</div><div class="line">   j+=<span class="number">1</span>/<span class="number">6</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不同的振幅和相位以及不同的错位间距可以产生不同的彩带,如<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">amplitude =<span class="number">55</span>;</div><div class="line">center = <span class="number">200</span>;</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501222256.png" alt=""></p>
+<h1 id="如何绘制连续的三角形"><a href="#如何绘制连续的三角形" class="headerlink" title="如何绘制连续的三角形"></a>如何绘制连续的三角形</h1><p><a href="http://himmas.github.io/Himmas_demo/colours-bar/canvas-triangle.html" target="_blank" rel="external">demo</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//画连续的三角形并填色</span></div><div class="line"><span class="keyword">var</span> c=<span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</div><div class="line"><span class="keyword">var</span> ctx=c.getContext(<span class="string">"2d"</span>);</div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">70</span>);</div><div class="line">ctx.lineTo(<span class="number">80</span>,<span class="number">120</span>);</div><div class="line">ctx.closePath();</div><div class="line">ctx.fillStyle = <span class="string">"#89FE8F"</span>;<span class="comment">//设置颜色</span></div><div class="line">ctx.fill();<span class="comment">//填色</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">80</span>,<span class="number">120</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">70</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">130</span>);</div><div class="line">ctx.closePath();</div><div class="line">ctx.fillStyle = <span class="string">"#AEF673"</span>;</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure></p>
+<h3 id="完毕-～￣▽￣-～"><a href="#完毕-～￣▽￣-～" class="headerlink" title="完毕(～￣▽￣)～"></a>完毕(～￣▽￣)～</h3>
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
+    
+    <a href="/2016/05/08/array-concat/" class="prev-btn"><i class="iconfont icon-prev"></i>数组合并并去重</a>
+    
+    
+    <a href="/2016/03/23/default-event/" class="next-btn">如何在内层div滚动到底部时禁止外部div滚动<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <!--<div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/"
+              target="_self"
+              >
+              首页
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/album/"
+              target="_self"
+              >
+              相册
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+-->
+
+
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://yoursite.com/2016/05/02/colours-bar/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
+  <!---->
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

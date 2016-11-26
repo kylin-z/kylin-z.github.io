@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="前端,事件,原生,浏览器默认事件,事件冒泡," />
+    <meta name="keywords" content="前端,原生,事件,浏览器默认事件,事件冒泡," />
   
 
   <meta name="description" content="做过微信端(特别是IOS)web开发的小伙伴一定遇到过这样一个问题:微信内嵌浏览器的顶部是可以下拉的(ios下底部还能上拉),会显示网页有XXXX提供，QQ浏览器X5内核提供技术支持平时看到这个可能觉得还好，但若是下面我们自己的网页中有一个需要滚动的div(overflow-y:scroll)时，这个就极其恶心了，拉倒底部时再往下拉，会导致微信浏览器顶部下拉(ios拉倒顶部时上拉则会导致整个页面上">
@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/03/23/default-event/index.html">
 <meta property="og:site_name" content="Kylin">
 <meta property="og:description" content="做过微信端(特别是IOS)web开发的小伙伴一定遇到过这样一个问题:微信内嵌浏览器的顶部是可以下拉的(ios下底部还能上拉),会显示网页有XXXX提供，QQ浏览器X5内核提供技术支持平时看到这个可能觉得还好，但若是下面我们自己的网页中有一个需要滚动的div(overflow-y:scroll)时，这个就极其恶心了，拉倒底部时再往下拉，会导致微信浏览器顶部下拉(ios拉倒顶部时上拉则会导致整个页面上">
-<meta property="og:updated_time" content="2016-07-03T11:25:39.000Z">
+<meta property="og:updated_time" content="2016-11-26T08:46:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在内层div滚动到底部时禁止外部div滚动">
 <meta name="twitter:description" content="做过微信端(特别是IOS)web开发的小伙伴一定遇到过这样一个问题:微信内嵌浏览器的顶部是可以下拉的(ios下底部还能上拉),会显示网页有XXXX提供，QQ浏览器X5内核提供技术支持平时看到这个可能觉得还好，但若是下面我们自己的网页中有一个需要滚动的div(overflow-y:scroll)时，这个就极其恶心了，拉倒底部时再往下拉，会导致微信浏览器顶部下拉(ios拉倒顶部时上拉则会导致整个页面上">
@@ -56,118 +56,97 @@
 <body>
 
 
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
-  
+  <!---->
 
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">盒子</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
-    </a>
-    <ul class="list-toolbox">
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            target="_self"
-            >
-            博客
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/category/"
-            target="_self"
-            >
-            分类
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            target="_self"
-            >
-            标签
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            target="_self"
-            >
-            友链
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            target="_self"
-            >
-            关于
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            target="_blank"
-            >
-            RSS
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            target="_self"
-            >
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-
-
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/ruolinxue">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
 </div>
 
-
-
+<!--这个是章节目录-->
+<!--
+-->
 
 <div class="content content-post CENTER">
-   <article id="post-default-event" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">如何在内层div滚动到底部时禁止外部div滚动</h1>
+   <div class="container article-container">
+  <article id="post-default-event" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/03/23/default-event/">如何在内层div滚动到底部时禁止外部div滚动</a></h1>
 
-    <div class="article-meta">
+      <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.03.23</span>
       </span>
 
-      
+        
         <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-      
+        
 
-      
+        
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/前端/">前端</a>
@@ -175,47 +154,35 @@
 
 
 
-      
+        
         <span>
           <i class="icon-comment"></i>
           <a href="ruolinxue.github.io/2016/03/23/default-event/#disqus_thread"></a>
         </span>
-      
-
-    </div>
-  </header>
-
-  <div class="article-content">
-    
-      <p>做过微信端(特别是IOS)web开发的小伙伴一定遇到过这样一个问题:<br>微信内嵌浏览器的顶部是可以下拉的(ios下底部还能上拉),会显示网页有XXXX提供，QQ浏览器X5内核提供技术支持<br>平时看到这个可能觉得还好，但若是下面我们自己的网页中有一个需要滚动的div(overflow-y:scroll)时，这个就极其恶心了，拉倒底部时再往下拉，会导致微信浏览器顶部下拉(ios拉倒顶部时上拉则会导致整个页面上拉，下方露出一大片黑色)<br>这是因为内部div滚动到头之后会带动webview滚动<br>我们可以通过禁止默认事件来解决，当滚动到底部时，判断touchmove是否是向下滚动，若是，则event.preventDefault()，反之亦然<br>具体代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">	&lt;div class=&quot;box&quot; id=&quot;box&quot;&gt;</div><div class="line">		&lt;div class=&quot;title&quot;&gt;选择项目&lt;/div&gt;</div><div class="line">		&lt;div class=&quot;button_group&quot; id=&quot;group&quot;&gt;</div><div class="line">			&lt;button&gt;1&lt;/button&gt;</div><div class="line">			&lt;button&gt;2&lt;/button&gt;</div><div class="line">			&lt;button&gt;3&lt;/button&gt;</div><div class="line">			&lt;button&gt;4&lt;/button&gt;</div><div class="line">			&lt;button&gt;5&lt;/button&gt;</div><div class="line">			&lt;button&gt;6&lt;/button&gt;</div><div class="line">			&lt;button&gt;7&lt;/button&gt;</div><div class="line">			&lt;button&gt;8&lt;/button&gt;</div><div class="line">			&lt;button&gt;9&lt;/button&gt;</div><div class="line">			&lt;button&gt;10&lt;/button&gt;</div><div class="line">			&lt;button&gt;11&lt;/button&gt;</div><div class="line">			&lt;button&gt;12&lt;/button&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">		var $box = document.getElementById(&quot;box&quot;);</div><div class="line">		var $group = document.getElementById(&quot;group&quot;);</div><div class="line">		var posY = 0;</div><div class="line">		var realHeight = $group.scrollHeight;</div><div class="line">		$box.ontouchmove = function(e)&#123;</div><div class="line">			e = e||window.event;</div><div class="line">			e.preventDefault();</div><div class="line">		&#125;</div><div class="line">		$group.addEventListener(&apos;touchstart&apos;,function(e)&#123;</div><div class="line">			posY = e.targetTouches[0].clientY;</div><div class="line">		&#125;) </div><div class="line">		$group.addEventListener(&apos;touchmove&apos;, function(e)&#123;</div><div class="line">			e = e||window.event;</div><div class="line">			var this_posY = e.targetTouches[0].clientY;</div><div class="line">			var sHeight = e.currentTarget.scrollTop;</div><div class="line">			var thisHeight = sHeight + 400;//400是div的高度</div><div class="line">			if(thisHeight&gt;=realHeight &amp;&amp; posY&gt;this_posY)&#123;</div><div class="line">				e.preventDefault();</div><div class="line">			&#125;else if(sHeight==0 &amp;&amp; posY&lt;this_posY)&#123;</div><div class="line">				e.preventDefault();</div><div class="line">			&#125;</div><div class="line">			posY = this_posY;</div><div class="line">			e.stopPropagation();</div><div class="line">		&#125;);</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
-
-    
-  </div>
-</article>
-
-</div>
-
-
-  <div class="text-center donation">
-    <div class="inner-donation">
-      <span class="btn-donation">支持一下</span>
-      <div class="donation-body">
-        <div class="tip text-center">扫一扫，支持forsigner</div>
-        <ul class="theme.donation.items.length">
         
-          <li class="item">
-            <img src="/images/qr-wechat.png" alt="">
-          </li>
-        
-          <li class="item">
-            <img src="/images/qr-alipay.png" alt="">
-          </li>
-        
-        </ul>
+
       </div>
-    </div>
-  </div>
+    </header>
 
+    <div class="article-content">
+      
+      <p>做过微信端(特别是IOS)web开发的小伙伴一定遇到过这样一个问题:<br>微信内嵌浏览器的顶部是可以下拉的(ios下底部还能上拉),会显示网页有XXXX提供，QQ浏览器X5内核提供技术支持<br>平时看到这个可能觉得还好，但若是下面我们自己的网页中有一个需要滚动的div(overflow-y:scroll)时，这个就极其恶心了，拉倒底部时再往下拉，会导致微信浏览器顶部下拉(ios拉倒顶部时上拉则会导致整个页面上拉，下方露出一大片黑色)<br>这是因为内部div滚动到头之后会带动webview滚动<br>我们可以通过禁止默认事件来解决，当滚动到底部时，判断touchmove是否是向下滚动，若是，则event.preventDefault()，反之亦然<br>具体代码如下<br><a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span> <span class="attr">id</span>=<span class="string">"box"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>选择项目<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"button_group"</span> <span class="attr">id</span>=<span class="string">"group"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>2<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>3<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>4<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>5<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>6<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>7<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>8<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>9<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>10<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>11<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span>&gt;</span>12<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">		<span class="keyword">var</span> $box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</div><div class="line">		<span class="keyword">var</span> $group = <span class="built_in">document</span>.getElementById(<span class="string">"group"</span>);</div><div class="line">		<span class="keyword">var</span> posY = <span class="number">0</span>;</div><div class="line">		<span class="keyword">var</span> realHeight = $group.scrollHeight;</div><div class="line">		$box.ontouchmove = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">			e = e||<span class="built_in">window</span>.event;</div><div class="line">			e.preventDefault();</div><div class="line">		&#125;</div><div class="line">		$group.addEventListener(<span class="string">'touchstart'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">			posY = e.targetTouches[<span class="number">0</span>].clientY;</div><div class="line">		&#125;) </div><div class="line">		$group.addEventListener(<span class="string">'touchmove'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">			e = e||<span class="built_in">window</span>.event;</div><div class="line">			<span class="keyword">var</span> this_posY = e.targetTouches[<span class="number">0</span>].clientY;</div><div class="line">			<span class="keyword">var</span> sHeight = e.currentTarget.scrollTop;</div><div class="line">			<span class="keyword">var</span> thisHeight = sHeight + <span class="number">400</span>;<span class="comment">//400是div的高度</span></div><div class="line">			<span class="keyword">if</span>(thisHeight&gt;=realHeight &amp;&amp; posY&gt;this_posY)&#123;</div><div class="line">				e.preventDefault();</div><div class="line">			&#125;<span class="keyword">else</span> <span class="keyword">if</span>(sHeight==<span class="number">0</span> &amp;&amp; posY&lt;this_posY)&#123;</div><div class="line">				e.preventDefault();</div><div class="line">			&#125;</div><div class="line">			posY = this_posY;</div><div class="line">			e.stopPropagation();</div><div class="line">		&#125;);</div><div class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
+    
+    <a href="/2016/05/02/colours-bar/" class="prev-btn"><i class="iconfont icon-prev"></i>如何用js画一条彩带</a>
+    
+    
+    <a href="/2016/03/11/oninput/" class="next-btn">ios输入法的keyup事件失效的解决方法<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
 
 
 
@@ -226,7 +193,7 @@
 
 
 
-  <div class="modal" id="modal">
+  <!--<div class="modal" id="modal">
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
@@ -239,17 +206,27 @@
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/archives/"
+              href="/"
               target="_self"
               >
-              博客
+              首页
             </a>
           </li>
         
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/category/"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
               target="_self"
               >
               分类
@@ -259,7 +236,7 @@
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/tag/"
+              href="/tags/"
               target="_self"
               >
               标签
@@ -279,20 +256,20 @@
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/about/"
-              target="_self"
+              href="/atom.xml"
+              target="_blank"
               >
-              关于
+              RSS
             </a>
           </li>
         
           <li class="item-toolbox">
             <a
               class="CIRCLE"
-              href="/atom.xml"
-              target="_blank"
+              href="/album/"
+              target="_self"
               >
-              RSS
+              相册
             </a>
           </li>
         
@@ -311,11 +288,11 @@
     </div>
   </div>
 </div>
+-->
 
 
-
-  
-      <div class="fexo-comments comments-post">
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
     
   <section class="disqus-comments">
     <div id="disqus_thread">
@@ -324,7 +301,7 @@
   </section>
 
   <script>
-    var disqus_shortname = 'forsigner';
+    var disqus_shortname = 'kylinz';
     
     var disqus_url = 'http://yoursite.com/2016/03/23/default-event/';
     
@@ -337,7 +314,7 @@
     })();
   </script>
 
-  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
 
 
 
@@ -347,8 +324,8 @@
 
 
   </div>
-
-  
+-->
+  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>canvas-flower | Kylin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="canvas," />
+  
+
+  <meta name="description" content="#canvas彩色小花Demo
+
+#实现原理
+我们的小花是由36片叶片围绕圆形构成
+###原理大致分为两部分
+
+如何生成花瓣
+如何绕圆心生成花瓣
+如何实现色环
+
+#如何生成花瓣
+这里主要使用的是canvas 的 arcTo()这个方法
+arcTo()方法用于画布上创建介于两个切线之间的弧
+如 Demo
+12345678var thisCanvas = document.getElementsByT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas-flower">
+<meta property="og:url" content="http://yoursite.com/2016/05/26/canvas-flower/index.html">
+<meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="#canvas彩色小花Demo
+
+#实现原理
+我们的小花是由36片叶片围绕圆形构成
+###原理大致分为两部分
+
+如何生成花瓣
+如何绕圆心生成花瓣
+如何实现色环
+
+#如何生成花瓣
+这里主要使用的是canvas 的 arcTo()这个方法
+arcTo()方法用于画布上创建介于两个切线之间的弧
+如 Demo
+12345678var thisCanvas = document.getElementsByT">
+<meta property="og:image" content="http://7xt8hz.com1.z0.glb.clouddn.com/canvas-flower3.png">
+<meta property="og:image" content="http://7xt8hz.com1.z0.glb.clouddn.com/arcTo.png">
+<meta property="og:image" content="http://7xt8hz.com1.z0.glb.clouddn.com/canvas-flower2.png">
+<meta property="og:updated_time" content="2016-11-26T09:10:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas-flower">
+<meta name="twitter:description" content="#canvas彩色小花Demo
+
+#实现原理
+我们的小花是由36片叶片围绕圆形构成
+###原理大致分为两部分
+
+如何生成花瓣
+如何绕圆心生成花瓣
+如何实现色环
+
+#如何生成花瓣
+这里主要使用的是canvas 的 arcTo()这个方法
+arcTo()方法用于画布上创建介于两个切线之间的弧
+如 Demo
+12345678var thisCanvas = document.getElementsByT">
+<meta name="twitter:image" content="http://7xt8hz.com1.z0.glb.clouddn.com/canvas-flower3.png">
+
+  
+
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  <!---->
+
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/ruolinxue">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
+</div>
+
+<!--这个是章节目录-->
+<!--
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-canvas-flower" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/05/26/canvas-flower/">canvas-flower</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.26</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="ruolinxue.github.io/2016/05/26/canvas-flower/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <p>#canvas彩色小花<br><a href="http://himmas.github.io/Himmas_demo/canvas/canvas-flower/" target="_blank" rel="external">Demo</a></p>
+<p><img src="http://7xt8hz.com1.z0.glb.clouddn.com/canvas-flower3.png" alt=""></p>
+<p>#实现原理</p>
+<p>我们的小花是由36片叶片围绕圆形构成</p>
+<p>###原理大致分为两部分</p>
+<ul>
+<li>如何生成花瓣</li>
+<li>如何绕圆心生成花瓣</li>
+<li>如何实现色环</li>
+</ul>
+<p>#如何生成花瓣</p>
+<p>这里主要使用的是<code>canvas</code> 的 <code>arcTo()</code>这个方法</p>
+<p><code>arcTo()</code>方法用于画布上创建介于两个切线之间的弧</p>
+<p>如 <a href="http://himmas.github.io/Himmas_demo/canvas/canvas-flower/arcTo.html" target="_blank" rel="external">Demo</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> thisCanvas = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'canvas'</span>)[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> x = thisCanvas.getContext(<span class="string">'2d'</span>);</div><div class="line">x.beginPath();</div><div class="line">x.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">x.arcTo(<span class="number">200</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>);</div><div class="line">x.strokeStyle = <span class="string">"rgba(0,0,0,0.5)"</span>;</div><div class="line">x.stroke();</div></pre></td></tr></table></figure>
+<p><img src="http://7xt8hz.com1.z0.glb.clouddn.com/arcTo.png" alt=""></p>
+<p>这里分别以A(100,100),C(200,100),B(200,200)为端点,100为半径(AD),D为圆形画与AC,BC相切的圆弧</p>
+<p>两条圆弧即可拼成一片花瓣</p>
+<p>#如何绕圆心生成花瓣</p>
+<p>如图</p>
+<p><img src="http://7xt8hz.com1.z0.glb.clouddn.com/canvas-flower2.png" alt=""></p>
+<p>我们需要绕圆心生成n个花瓣,每个花瓣的两端分别位于半径为r和半径为R的圆上。这里的变量为两点连线相对于水平线的夹角,即∠COB</p>
+<p>我这边需要36个花瓣，所以每个花瓣的角度增量为PI/18</p>
+<p>我们设定东方水平线上为第一片花瓣</p>
+<p>假设我们要花第i片花瓣(假设以图上的EC为端点),我们需要的数值有 点O,E,H,D,C的坐标，以及圆弧半径ED</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">E.x = r*<span class="built_in">Math</span>.cos(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i)</div><div class="line">E.y = r*<span class="built_in">Math</span>.sin(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i)</div><div class="line">C.x = R*<span class="built_in">Math</span>.cos(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i)</div><div class="line">C.y = R*<span class="built_in">Math</span>.sin(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i)</div></pre></td></tr></table></figure>
+<p>接下来要求点H,D的坐标<br>以点H为例子<br>假设将点H移到G这个位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xr = <span class="number">0.707</span>(R-r) <span class="comment">//OG的长度</span></div><div class="line">G.x = xr*<span class="built_in">Math</span>.cos(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i+<span class="built_in">Math</span>.PI/<span class="number">4</span>) <span class="comment">//45度+当前角度</span></div><div class="line">G.y = xr*<span class="built_in">Math</span>.sin(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i+<span class="built_in">Math</span>.PI/<span class="number">4</span>)</div><div class="line">H.x = G.x + (R-r)/<span class="number">2</span></div><div class="line">H.y = G.y + (R-r)/<span class="number">2</span></div></pre></td></tr></table></figure>
+<p>由此可推点D坐标</p>
+<p>以上就是我们所需的全部数据了,需要注意的是，当年计算所得是相对于圆心的坐标，还要装换成相对于canvas左上角的坐标</p>
+<p>最终代码如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">    x.beginPath();</div><div class="line">    <span class="keyword">var</span> pointr = &#123;</div><div class="line">        x:r*<span class="built_in">Math</span>.cos(baseIncrement*i)+centerPoint.x,</div><div class="line">        y:r*<span class="built_in">Math</span>.sin(baseIncrement*i)+centerPoint.y</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> pointR = &#123;</div><div class="line">        x:R*<span class="built_in">Math</span>.cos(baseIncrement*i)+centerPoint.x,</div><div class="line">        y:R*<span class="built_in">Math</span>.sin(baseIncrement*i)+centerPoint.y</div><div class="line">    &#125;</div><div class="line">    x.moveTo(pointr.x, pointr.y);</div><div class="line">    <span class="keyword">var</span> y1 = xr*<span class="built_in">Math</span>.sin(baseIncrement*i-<span class="built_in">Math</span>.PI/<span class="number">4</span>)+r*<span class="built_in">Math</span>.sin(baseIncrement*i)+centerPoint.y;</div><div class="line">    <span class="keyword">var</span> x1 = xr*<span class="built_in">Math</span>.cos(baseIncrement*i-<span class="built_in">Math</span>.PI/<span class="number">4</span>)+r*<span class="built_in">Math</span>.cos(baseIncrement*i)+centerPoint.x;</div><div class="line">    <span class="keyword">var</span> y2 =  xr*<span class="built_in">Math</span>.sin(baseIncrement*i+<span class="built_in">Math</span>.PI/<span class="number">4</span>)+r*<span class="built_in">Math</span>.sin(baseIncrement*i)+centerPoint.y;</div><div class="line">    <span class="keyword">var</span> x2 = xr*<span class="built_in">Math</span>.cos(baseIncrement*i+<span class="built_in">Math</span>.PI/<span class="number">4</span>)+r*<span class="built_in">Math</span>.cos(baseIncrement*i)+centerPoint.x;</div><div class="line">    x.arcTo(x1, y1, pointR.x, pointR.y, xr);</div><div class="line">    x.arcTo(x2, y2,pointr.x,pointr.y, xr);</div><div class="line">    x.closePath();</div><div class="line">    rr-=u/<span class="number">-36</span>;</div><div class="line">    <span class="keyword">var</span> red = <span class="built_in">Math</span>.cos(rr)*<span class="number">127</span>+<span class="number">128</span>;</div><div class="line">    <span class="keyword">var</span> green = <span class="built_in">Math</span>.cos(rr+u/<span class="number">3</span>)*<span class="number">127</span>+<span class="number">128</span>;</div><div class="line">    <span class="keyword">var</span> blue = <span class="built_in">Math</span>.cos(rr+u/<span class="number">3</span>*<span class="number">2</span>)*<span class="number">127</span>+<span class="number">128</span>;</div><div class="line">    x.fillStyle = <span class="string">"#dadada"</span><span class="comment">//色彩计算</span></div><div class="line">    x.fill();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再用一个循环来生成36个花瓣</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">36</span>;i++)&#123;</div><div class="line">    draw(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#如何实现色环</p>
+<p>色环的生成原理可以参考<a href="https://github.com/Himmas/Himmas_demo/tree/gh-pages/canvas/colours-bar" target="_blank" rel="external">这里</a></p>
+<p>#最后</p>
+<p>然后就能生成小花拉~</p>
+<p>这里还实现了一个滚动版本<a href="http://himmas.github.io/Himmas_demo/canvas/canvas-flower/index_test.html" target="_blank" rel="external">Demo</a><br>一个变异版本<a href="http://himmas.github.io/Himmas_demo/canvas/canvas-flower/index_y.html" target="_blank" rel="external">Demo</a><br>完毕(～￣▽￣)～</p>
+
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
+    
+    <a href="/2016/11/01/linux-node/" class="prev-btn"><i class="iconfont icon-prev"></i>使用mac在远程linux上安装node</a>
+    
+    
+    <a href="/2016/05/08/array-concat/" class="next-btn">数组合并并去重<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <!--<div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/"
+              target="_self"
+              >
+              首页
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/album/"
+              target="_self"
+              >
+              相册
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+-->
+
+
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://yoursite.com/2016/05/26/canvas-flower/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
+  <!---->
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
