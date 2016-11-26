@@ -29,6 +29,8 @@ Run 'do-release-upgrade' to upgrade to it.
 Welcome to aliyun Elastic Compute Service!
 ```
 
+<!--more-->
+
 ###下载node安装包
 
 ```bash

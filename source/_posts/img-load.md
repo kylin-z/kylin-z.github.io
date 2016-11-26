@@ -20,7 +20,9 @@ else
 后来通过研究发现,这个方法应该在图片加载完之后调用。
 下面是改良之后的方法:
 
-```
+<!--more-->
+
+``` js
 (function ($) {
     function autoSize(obj, w, h, is_cut) { //is=true 不移位
         var oIMG = new Image();

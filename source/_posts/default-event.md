@@ -10,7 +10,9 @@ categories: 前端
 这是因为内部div滚动到头之后会带动webview滚动
 我们可以通过禁止默认事件来解决，当滚动到底部时，判断touchmove是否是向下滚动，若是，则event.preventDefault()，反之亦然
 具体代码如下
-```
+<!--more-->
+
+``` html
 <body>
 	<div class="box" id="box">
 		<div class="title">选择项目</div>

@@ -32,6 +32,8 @@ mkdir test  新建一个叫test的文件夹
 touch  test/a.txt 在test文件夹下建一个名为a.txt的文件
 ```
 
+<!--more-->
+
 #查看文件
 ```
 ls -a 查看该目录下所有文件,包括隐藏文件

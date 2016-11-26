@@ -25,6 +25,8 @@ function getCookie(name)
 ```
 然而这个实现方法并不能真正删除cookie，只是将其置空
 
+<!--more-->
+
 下面是w3c官网的代码:
 ```
         //设置cookie

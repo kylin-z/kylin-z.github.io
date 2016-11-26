@@ -47,6 +47,8 @@ function uniteUnique() {
 ```
 arguments是一个隐藏参数，能够获取到所有传递进来的参数，是一个对象
 
+<!--more-->
+
 > 酷炫版本
 
 ```javascript
