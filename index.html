@@ -122,6 +122,129 @@
     
 
 <div class="container article-container">
+  <article id="post-snabbdom-note" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/12/21/snabbdom-note/">snabbdom源码阅读笔记</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.21</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="ruolinxue.github.io/index.html#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="vnode结构"><a href="#vnode结构" class="headerlink" title="vnode结构"></a>vnode结构</h2><blockquote>
+<p>vnode结构定义在vnode.js中</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">sel, data, children, text, elm</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> key = data === <span class="literal">undefined</span> ? <span class="literal">undefined</span> : data.key;</div><div class="line">  <span class="keyword">return</span> &#123;sel: sel, data: data, children: children,</div><div class="line">          text: text, elm: elm, key: key&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="vnode属性"><a href="#vnode属性" class="headerlink" title="vnode属性"></a>vnode属性</h3><ul>
+<li>sel: string | undefined</li>
+<li>data: (VNodeData | undefined) virtual dom包含的数据</li>
+<li>children: (Array<VNode | string> | undefined) virtual dom 的子节点 可以使vnode或者字符串</li>
+<li>elm: (Node | undefined) 对dom element的引用</li>
+<li>text: (string | undefined)元素的文本内容</li>
+<li>key: Key 用于提示 children patch 过程</li>
+</ul>
+<h2 id="h函数"><a href="#h函数" class="headerlink" title="h函数"></a>h函数</h2><blockquote>
+<p>h函数定义在h.js中</p>
+</blockquote>
+<ul>
+<li>对存在data和不存在data的情况进行了分开处理</li>
+<li>并将子元素中的 <code>primitive</code> 类型包装成vnode (<code>is.array</code> 与 <code>is.primitive</code> 定义在 <code>is.js</code> 。<code>primitive</code> 指 参数是否是<code>String</code>或<code>Number</code>类型)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">h</span>(<span class="params">sel, b, c</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> data = &#123;&#125;, children, text, i;</div><div class="line">  <span class="comment">// 若c存在（存在第三个参数）</span></div><div class="line">  <span class="keyword">if</span> (c !== <span class="literal">undefined</span>) &#123;</div><div class="line">    data = b;</div><div class="line">    <span class="comment">// 若c是数组</span></div><div class="line">    <span class="keyword">if</span> (is.array(c)) &#123; children = c; &#125;</div><div class="line">    <span class="comment">// c是String或者Number,则直接赋值</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (is.primitive(c)) &#123; text = c; &#125;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b !== <span class="literal">undefined</span>) &#123; <span class="comment">//若存在data</span></div><div class="line">    <span class="comment">//如果b是数组（b参数为子元素数组）</span></div><div class="line">    <span class="keyword">if</span> (is.array(b)) &#123; children = b; &#125;</div><div class="line">    <span class="comment">// 如果b是String或Number</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (is.primitive(b)) &#123; text = b; &#125;</div><div class="line">    <span class="comment">// b是data</span></div><div class="line">    <span class="keyword">else</span> &#123; data = b; &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 循环children数组</span></div><div class="line">  <span class="keyword">if</span> (is.array(children)) &#123;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; children.length; ++i) &#123;</div><div class="line">      <span class="comment">// 若当前子元素是字符串或数字，则将其包装成vnode</span></div><div class="line">      <span class="keyword">if</span> (is.primitive(children[i])) children[i] = VNode(<span class="literal">undefined</span>, <span class="literal">undefined</span>, <span class="literal">undefined</span>, children[i]);</div><div class="line">      <span class="comment">// VNode(sel,data,children,text,elm,key)</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// tagName若为svg，则特殊处理</span></div><div class="line">  <span class="keyword">if</span> (sel[<span class="number">0</span>] === <span class="string">'s'</span> &amp;&amp; sel[<span class="number">1</span>] === <span class="string">'v'</span> &amp;&amp; sel[<span class="number">2</span>] === <span class="string">'g'</span>) &#123;</div><div class="line">    addNS(data, children, sel);</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 返回VNode</span></div><div class="line">  <span class="keyword">return</span> VNode(sel, data, children, text, <span class="literal">undefined</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+      
+      <p class="article-more-link">
+        <a class="btn btn-primary more-btn" href="/2016/12/21/snabbdom-note/#more">阅读全文</a>
+      </p>
+      
+      
+    </div>
+  </article>
+  
+</div>
+
+
+<div class="br"></div>
+
+<div class="container article-container">
+  <article id="post-async" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/12/20/async/">关于js异步</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.20</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="ruolinxue.github.io/index.html#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h3 id="同步Ajax"><a href="#同步Ajax" class="headerlink" title="同步Ajax"></a>同步Ajax</h3><p class="tip">在任何情况下都不应该使用这种方式,因为它会锁定浏览器UI(按钮、菜单、滚动条等),并阻塞所有的用户交互。 </p>
+
+
+
+      
+    </div>
+  </article>
+  
+</div>
+
+
+<div class="br"></div>
+
+<div class="container article-container">
   <article id="post-linux-delete" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
       <h1 class="post-title"><a href="/2016/11/02/linux-delete/">常用操作命令</a></h1>
@@ -639,59 +762,39 @@
 </div>
 
 
-<div class="br"></div>
-
-<div class="container article-container">
-  <article id="post-js-cookie" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/03/06/js-cookie/">js原生实现cookie的读写和删除</a></h1>
-
-      <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.03.06</span>
-      </span>
-
-        
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-        
-
-        
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </span>
-
-
-
-        
-        <span>
-          <i class="icon-comment"></i>
-          <a href="ruolinxue.github.io/index.html#disqus_thread"></a>
-        </span>
-        
-
-      </div>
-    </header>
-
-    <div class="article-content">
-      
-      <p>之前做忘记密码功能一直用的jquery的cookie插件，这一次尝试用js原生来写，发现也并不复杂。<br>最简单的实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function getCookie(name)</div><div class="line">        &#123;</div><div class="line">            var arr,reg=new RegExp(&quot;(^| )&quot;+name+&quot;=([^;]*)(;|$)&quot;);</div><div class="line">            if(arr=document.cookie.match(reg))</div><div class="line">                return unescape(arr[2]);</div><div class="line">            else</div><div class="line">                return null;</div><div class="line">        &#125;</div><div class="line">        function setCookie(name,value)&#123;</div><div class="line">            document.cookie = name+&quot;=&quot;+value;</div><div class="line">        &#125;</div><div class="line">        function delCookie(name)&#123;</div><div class="line">            setCookie(name,&quot;&quot;);</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<p>然而这个实现方法并不能真正删除cookie，只是将其置空</p>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2016/03/06/js-cookie/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
+<div class="page-box">
+    <nav class="pagination">
   
-</div>
+  <!--上一页-->
+  
+  <!--第一页-->
 
+  
+
+  
+
+  <a class="page-number current" href="/">1</a>
+
+  
+
+  
+
+  
+  <a href="/page/2/" class="page-number">2</a>
+  
+  <!--尾页-->
+
+  
+  <a class="extend next" rel="next" href="/page/2/">
+    <i class="iconfont icon-next"></i>
+  </a>
+  
+
+</nav>
+
+
+
+</div>
 
 
 
