@@ -1,7 +1,7 @@
 ---
-title: snabbdom源码阅读笔记
+title: snabbdom源码阅读笔记（一）
 date: 2016-12-21 13:56:16
-tags: ['Virtual Dom','javascript','前端']
+tags: ['VirtualDom','javascript','前端']
 categories: [笔记]
 ---
 ## vnode结构
@@ -18,7 +18,7 @@ module.exports = function(sel, data, children, text, elm) {
 
 ### vnode属性
 
-- sel: string | undefined
+- sel: (string | undefined) css选择器 如 div#contianer.class1
 - data: (VNodeData | undefined) virtual dom包含的数据
 - children: (Array<VNode | string> | undefined) virtual dom 的子节点 可以使vnode或者字符串
 - elm: (Node | undefined) 对dom element的引用
@@ -71,14 +71,14 @@ module.exports = function h(sel, b, c) {
 
 <!--more-->
 
-# patch 方法 (即snabbdom.init()的返回方法)
+## patch 方法 (即snabbdom.init()的返回方法)
 
 > 此方法是snabbdom的核心,定义在snabbdom.js中
 
-### 逻辑梳理 
+### 逻辑梳理
 
 - 此方法接收两个参数 —— oldVnode, vnode
-  
+
 - patch 方法会对第一个参数oldVnode进行处理,若oldVnode 不是 virtual dom 而是原生dom ,则将其包装成 vdom
 
 - 若oldVnode 与 vnode 被判定为同一个vnode(根据key与sel属性判断,若这两者都分别相等,则为同一个),执行patchNode方法
@@ -90,11 +90,11 @@ function sameVnode(vnode1, vnode2) {
 }
 ```
 
-# patchNode 方法
+## patchNode 方法
 
 > 定义在snabbdom.js中
 
-### 逻辑梳理 
+### 逻辑梳理
 
 - 接受三个参数 —— oldVnode, vnode, insertedVnodeQueue
 
@@ -103,18 +103,18 @@ function sameVnode(vnode1, vnode2) {
 - 若oldVnode 与 vnode 被判定为同一个vnode
 
     1. 若Vnode 存在有text属性(根据h方法可知vnode的children与text只存在一种),讲dom元素的contentText置换为vnode.text
-    
+
     2. 若Vnode 不存在text属性
-    
+
         ①  oldVnode与 vnode都只存在children 且两者不相等,则update children
-        
+
         ②  vnode 有 children ,若oldVnode存在text 则 将dom元素的contentText置空,并addVnodes(children)
-        
+
         ③  oldVnode 有 children ,则将children remove
-        
+
         ④  oldVnode与 vnode都不存在children,oldVnode存在text, 则 将dom元素的contentText置空
-        
-        
+
+
 ```js
 function patchVnode(oldVnode, vnode, insertedVnodeQueue) {
     var i, hook;
@@ -173,4 +173,3 @@ function patchVnode(oldVnode, vnode, insertedVnodeQueue) {
   }
 
 ```
-       
