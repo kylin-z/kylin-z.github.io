@@ -7,12 +7,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>snabbdom源码阅读笔记 | Kylin</title>
+  <title>snabbdom源码阅读笔记（一） | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="前端,javascript,Virtual Dom," />
+    <meta name="keywords" content="前端,javascript,VirtualDom," />
   
 
   <meta name="description" content="vnode结构
@@ -20,16 +20,16 @@ vnode结构定义在vnode.js中
 
 12345module.exports = function(sel, data, children, text, elm) &amp;#123;  var key = data === undefined ? undefined : data.key;  return &amp;#123;sel: sel, data: data, children: c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="snabbdom源码阅读笔记">
+<meta property="og:title" content="snabbdom源码阅读笔记（一）">
 <meta property="og:url" content="http://yoursite.com/2016/12/21/snabbdom-note/index.html">
 <meta property="og:site_name" content="Kylin">
 <meta property="og:description" content="vnode结构
 vnode结构定义在vnode.js中
 
 12345module.exports = function(sel, data, children, text, elm) &amp;#123;  var key = data === undefined ? undefined : data.key;  return &amp;#123;sel: sel, data: data, children: c">
-<meta property="og:updated_time" content="2016-12-21T10:04:54.000Z">
+<meta property="og:updated_time" content="2016-12-27T06:47:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="snabbdom源码阅读笔记">
+<meta name="twitter:title" content="snabbdom源码阅读笔记（一）">
 <meta name="twitter:description" content="vnode结构
 vnode结构定义在vnode.js中
 
@@ -136,7 +136,7 @@ vnode结构定义在vnode.js中
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vnode结构"><span class="toc-text">vnode结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vnode属性"><span class="toc-text">vnode属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#h函数"><span class="toc-text">h函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#patch-方法-即snabbdom-init-的返回方法"><span class="toc-text">patch 方法 (即snabbdom.init()的返回方法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑梳理"><span class="toc-text">逻辑梳理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#patchNode-方法"><span class="toc-text">patchNode 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑梳理-1"><span class="toc-text">逻辑梳理</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vnode结构"><span class="toc-text">vnode结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vnode属性"><span class="toc-text">vnode属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#h函数"><span class="toc-text">h函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#patch-方法-即snabbdom-init-的返回方法"><span class="toc-text">patch 方法 (即snabbdom.init()的返回方法)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑梳理"><span class="toc-text">逻辑梳理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#patchNode-方法"><span class="toc-text">patchNode 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑梳理-1"><span class="toc-text">逻辑梳理</span></a></li></ol></li></ol>
   </div>
 
 -->
@@ -145,7 +145,7 @@ vnode结构定义在vnode.js中
    <div class="container article-container">
   <article id="post-snabbdom-note" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
-      <h1 class="post-title"><a href="/2016/12/21/snabbdom-note/">snabbdom源码阅读笔记</a></h1>
+      <h1 class="post-title"><a href="/2016/12/21/snabbdom-note/">snabbdom源码阅读笔记（一）</a></h1>
 
       <div class="article-meta">
       <span>
@@ -185,7 +185,7 @@ vnode结构定义在vnode.js中
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">sel, data, children, text, elm</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> key = data === <span class="literal">undefined</span> ? <span class="literal">undefined</span> : data.key;</div><div class="line">  <span class="keyword">return</span> &#123;sel: sel, data: data, children: children,</div><div class="line">          text: text, elm: elm, key: key&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="vnode属性"><a href="#vnode属性" class="headerlink" title="vnode属性"></a>vnode属性</h3><ul>
-<li>sel: string | undefined</li>
+<li>sel: (string | undefined) css选择器 如 div#contianer.class1</li>
 <li>data: (VNodeData | undefined) virtual dom包含的数据</li>
 <li>children: (Array<vnode |="" string=""> | undefined) virtual dom 的子节点 可以使vnode或者字符串</vnode></li>
 <li>elm: (Node | undefined) 对dom element的引用</li>
@@ -201,7 +201,7 @@ vnode结构定义在vnode.js中
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">h</span>(<span class="params">sel, b, c</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> data = &#123;&#125;, children, text, i;</div><div class="line">  <span class="comment">// 若c存在（存在第三个参数）</span></div><div class="line">  <span class="keyword">if</span> (c !== <span class="literal">undefined</span>) &#123;</div><div class="line">    data = b;</div><div class="line">    <span class="comment">// 若c是数组</span></div><div class="line">    <span class="keyword">if</span> (is.array(c)) &#123; children = c; &#125;</div><div class="line">    <span class="comment">// c是String或者Number,则直接赋值</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (is.primitive(c)) &#123; text = c; &#125;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b !== <span class="literal">undefined</span>) &#123; <span class="comment">//若存在data</span></div><div class="line">    <span class="comment">//如果b是数组（b参数为子元素数组）</span></div><div class="line">    <span class="keyword">if</span> (is.array(b)) &#123; children = b; &#125;</div><div class="line">    <span class="comment">// 如果b是String或Number</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (is.primitive(b)) &#123; text = b; &#125;</div><div class="line">    <span class="comment">// b是data</span></div><div class="line">    <span class="keyword">else</span> &#123; data = b; &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 循环children数组</span></div><div class="line">  <span class="keyword">if</span> (is.array(children)) &#123;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; children.length; ++i) &#123;</div><div class="line">      <span class="comment">// 若当前子元素是字符串或数字，则将其包装成vnode</span></div><div class="line">      <span class="keyword">if</span> (is.primitive(children[i])) children[i] = VNode(<span class="literal">undefined</span>, <span class="literal">undefined</span>, <span class="literal">undefined</span>, children[i]);</div><div class="line">      <span class="comment">// VNode(sel,data,children,text,elm,key)</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// tagName若为svg，则特殊处理</span></div><div class="line">  <span class="keyword">if</span> (sel[<span class="number">0</span>] === <span class="string">'s'</span> &amp;&amp; sel[<span class="number">1</span>] === <span class="string">'v'</span> &amp;&amp; sel[<span class="number">2</span>] === <span class="string">'g'</span>) &#123;</div><div class="line">    addNS(data, children, sel);</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 返回VNode</span></div><div class="line">  <span class="keyword">return</span> VNode(sel, data, children, text, <span class="literal">undefined</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<h1 id="patch-方法-即snabbdom-init-的返回方法"><a href="#patch-方法-即snabbdom-init-的返回方法" class="headerlink" title="patch 方法 (即snabbdom.init()的返回方法)"></a>patch 方法 (即snabbdom.init()的返回方法)</h1><blockquote>
+<h2 id="patch-方法-即snabbdom-init-的返回方法"><a href="#patch-方法-即snabbdom-init-的返回方法" class="headerlink" title="patch 方法 (即snabbdom.init()的返回方法)"></a>patch 方法 (即snabbdom.init()的返回方法)</h2><blockquote>
 <p>此方法是snabbdom的核心,定义在snabbdom.js中</p>
 </blockquote>
 <h3 id="逻辑梳理"><a href="#逻辑梳理" class="headerlink" title="逻辑梳理"></a>逻辑梳理</h3><ul>
@@ -213,7 +213,7 @@ vnode结构定义在vnode.js中
 </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sameVnode</span>(<span class="params">vnode1, vnode2</span>) </span>&#123;</div><div class="line">  <span class="comment">// key相同并且 sel想用判定为同一个Vnode</span></div><div class="line">  <span class="keyword">return</span> vnode1.key === vnode2.key &amp;&amp; vnode1.sel === vnode2.sel;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="patchNode-方法"><a href="#patchNode-方法" class="headerlink" title="patchNode 方法"></a>patchNode 方法</h1><blockquote>
+<h2 id="patchNode-方法"><a href="#patchNode-方法" class="headerlink" title="patchNode 方法"></a>patchNode 方法</h2><blockquote>
 <p>定义在snabbdom.js中</p>
 </blockquote>
 <h3 id="逻辑梳理-1"><a href="#逻辑梳理-1" class="headerlink" title="逻辑梳理"></a>逻辑梳理</h3><ul>
@@ -242,7 +242,7 @@ vnode结构定义在vnode.js中
   
   <div class="page-bar">
     
-    <a class="prev-btn"></a>
+    <a href="/2016/12/27/snabbdom-note2/" class="prev-btn"><i class="iconfont icon-prev"></i>snabbdom源码阅读笔记（二）</a>
     
     
     <a href="/2016/12/20/async/" class="next-btn">关于js异步<i class="iconfont icon-next"></i></a>

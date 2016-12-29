@@ -1,26 +1,111 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-categorieslinux玩耍笔记">
+  <html class="light page-post">
 
 
 <head>
   <meta charset="utf-8">
   
-  <title>Category: linux玩耍笔记 | Kylin</title>
+  <title>snabbdom源码阅读笔记（二） | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="kylin,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+    <meta name="keywords" content="前端,javascript,VirtualDom," />
   
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Kylin">
-<meta property="og:url" content="http://yoursite.com/categories/linux玩耍笔记/index.html">
+  <meta name="description" content="hook
+
+
+name
+调用时间
+参数
+
+
+
+
+pre
+patch 开始的时候
+无
+
+
+init
+vnode 被添加时
+vnode
+
+
+create
+a DOM element has been created based on a vnode    emptyVnode
+vnode
+
+
+insert
+an element has been inserted into the DOM
+vnode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="snabbdom源码阅读笔记（二）">
+<meta property="og:url" content="http://yoursite.com/2016/12/27/snabbdom-note2/index.html">
 <meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="hook
+
+
+name
+调用时间
+参数
+
+
+
+
+pre
+patch 开始的时候
+无
+
+
+init
+vnode 被添加时
+vnode
+
+
+create
+a DOM element has been created based on a vnode    emptyVnode
+vnode
+
+
+insert
+an element has been inserted into the DOM
+vnode">
+<meta property="og:updated_time" content="2016-12-29T02:31:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kylin">
+<meta name="twitter:title" content="snabbdom源码阅读笔记（二）">
+<meta name="twitter:description" content="hook
+
+
+name
+调用时间
+参数
+
+
+
+
+pre
+patch 开始的时候
+无
+
+
+init
+vnode 被添加时
+vnode
+
+
+create
+a DOM element has been created based on a vnode    emptyVnode
+vnode
+
+
+insert
+an element has been inserted into the DOM
+vnode">
 
   
 
@@ -54,66 +139,7 @@
 
   <!---->
 
-  <!--<div class="content content-categories">-->
-<!--<div class="page-header">
-
-  
-    <div class="breadcrumb">
-      <div class="location">分类</div>
-      <i class="icon-location"></i>
-    </div>
-  
-
-  
-
-
-  <div class="box-blog-info">
-    <a class="avatar" href="/">
-      <img src="/images/avatar.jpg" alt="" />
-    </a>
-    <div class="info">
-      <h3 class="name" style="font-family: calligraffittiregular">
-        kylin
-      </h3>
-      <div class="slogan">
-        醉里论道,醒时折花。
-      </div>
-    </div>
-  </div>
-
-</div>
--->
-<!--<section class="category-box">
-  <div class="category-title">分类</div>
-  <div class="category-list">
-    
-      <a class="category-item" href="#linux玩耍笔记">
-        <span class="category-name">linux玩耍笔记</span>
-        <span class="category-size">( 2 )</span>
-      </a>
-    
-      <a class="category-item" href="#前端">
-        <span class="category-name">前端</span>
-        <span class="category-size">( 7 )</span>
-      </a>
-    
-      <a class="category-item" href="#笔记">
-        <span class="category-name">笔记</span>
-        <span class="category-size">( 4 )</span>
-      </a>
-    
-  </div>
-</section>
--->
-<!--</div>-->
-
-<!--
-  <a id="backTop" class="back-top">
-    <i class="icon-angle-up"></i>
-  </a>
-
--->
-<div class="head-box">
+  <div class="head-box">
     <div class="head-inner">
         <div class="info-box">
             <a href="/" class="avatar">
@@ -177,60 +203,138 @@
         </div>
     </div>
 </div>
-<div class="container list-container">
-    <div class="article-list-box">
-        <div class="head">
-            <label class="head-label">分类</label>
-            <i class="iconfont icon-location article-item"></i>
-            
-            <span>当前分类共有2篇日志</span>
-            
-        </div>
-        <div class="article-box-body">
-            
-            <div class="collection-title item-title-0 ">
-                <h2>linux玩耍笔记</h2>
-            </div>
-            
-            
-            <article class="article-item article-type-normal">
-                <header class="post-header td02">
-                    <h1 class="post-title ml-100">
-                        <a href="/2016/11/02/linux-delete/index.html" class="post-title-link">
-                            <span>常用操作命令</span>
-                        </a>
-                    </h1>
-                    <div class="post-meta">
-                        <time class="post-time">2016-10-02</time>
-                    </div>
-                </header>
-            </article>
-            
-            
-            
-            <article class="article-item article-type-normal">
-                <header class="post-header td02">
-                    <h1 class="post-title ml-100">
-                        <a href="/2016/11/01/linux-node/index.html" class="post-title-link">
-                            <span>使用mac在远程linux上安装node</span>
-                        </a>
-                    </h1>
-                    <div class="post-meta">
-                        <time class="post-time">2016-10-01</time>
-                    </div>
-                </header>
-            </article>
-            
-            
-            
-        </div>
+
+<!--这个是章节目录-->
+<!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hook"><span class="toc-text">hook</span></a></li></ol>
+  </div>
+
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-snabbdom-note2" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/12/27/snabbdom-note2/">snabbdom源码阅读笔记（二）</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.27</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="ruolinxue.github.io/2016/12/27/snabbdom-note2/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h2><table>
+<thead>
+<tr>
+<th>name</th>
+<th>调用时间</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pre</td>
+<td>patch 开始的时候</td>
+<td>无</td>
+</tr>
+<tr>
+<td>init</td>
+<td>vnode 被添加时</td>
+<td>vnode</td>
+</tr>
+<tr>
+<td>create</td>
+<td>a DOM element has been created based on a vnode    emptyVnode</td>
+<td>vnode</td>
+</tr>
+<tr>
+<td>insert</td>
+<td>an element has been inserted into the DOM</td>
+<td>vnode</td>
+</tr>
+<tr>
+<td>prepatch</td>
+<td>patch 开始之前</td>
+<td>oldVnode, vnode</td>
+</tr>
+<tr>
+<td>update</td>
+<td>an element is being updated</td>
+<td>oldVnode, vnode</td>
+</tr>
+<tr>
+<td>postpatch</td>
+<td>an element has been patched</td>
+<td>oldVnode, vnode</td>
+</tr>
+<tr>
+<td>destroy</td>
+<td>an element is directly or indirectly being removed</td>
+<td>vnode</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>an element is directly being removed from the DOM</td>
+<td>vnode, removeCallback</td>
+</tr>
+<tr>
+<td>post</td>
+<td>patch结束之后</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+
+      
     </div>
+  </article>
+  
+  <div class="page-bar">
     
+    <a href="/2016/12/29/getterAndSetter/" class="prev-btn"><i class="iconfont icon-prev"></i>js对象属性的getter与setter</a>
+    
+    
+    <a href="/2016/12/21/snabbdom-note/" class="next-btn">snabbdom源码阅读笔记（一）<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
 </div>
 
 
 
-
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
 
 
 
@@ -333,6 +437,40 @@
 -->
 
 
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://yoursite.com/2016/12/27/snabbdom-note2/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
   <!---->
 
   <script type="text/javascript">
