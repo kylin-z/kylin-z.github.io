@@ -63,18 +63,15 @@ console.log(obj.foo); // "bar"
 
 ## 使用Object.create方法创建
 
-[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+> Object.create方法创建一个拥有指定原型和若干个指定属性的对象。[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+
+### 语法
 
 ```js
-//概述
-Object.create()
-//方法创建一个拥有指定原型和若干个指定属性的对象。
-
-//语法
 Object.create(proto, [ propertiesObject ])
 ```
 
-### Object.create方法参数
+### 参数
 
 - proto
   一个对象，作为新创建对象的原型。
@@ -106,14 +103,14 @@ console.log(obj)
 
 ```js
 var obj = Object.create(Object.prototype,{
-  bar: {
-    get: function(){
+  bar : {
+    get : function(){
       return 10;
     },
-    set: function (val) {
+    set : function (val) {
       console.log("Setting `obj.bar` to "+val);
     },
-		configurable:true
+		configurable : true
   }
 });
 console.log(obj.bar); //12
@@ -122,3 +119,88 @@ console.log(obj)
 ```
 
 ## 使用 Object.defineProperty 方法创建
+
+> Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个已经存在的属性， 并返回这个对象。 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+
+### 语法
+
+```js
+Object.defineProperty(obj, prop, descriptor)
+```
+
+### 参数
+
+- obj
+  需要定义属性的对象。
+- prop
+  需定义或修改的属性的名字。
+- descriptor
+  将被定义或修改的属性的描述符。
+
+### 返回值
+- 返回传入函数的对象，即第一个参数obj
+
+### 创建getter&setter
+
+```js
+var obj = { a : 1}//声明一个对象,包含一个 a 属性,值为1
+    Object.defineProperty(obj,"b",{
+        get: function () {
+            return this.a;
+        },
+        set : function (val) {
+            this.a = val;
+        },
+        configurable : true
+    });
+
+    console.log(obj.b);//1
+    obj.b = 2;
+    console.log(obj.b);//2
+```
+该方法与`Object.create`差别不大，前两种方法只能在声明定义时指定getter与setter，`Object.defineProperty`可以随时添加和修改
+
+## 使用 Object.defineProperties 方法创建
+
+> Object.defineProperties() 方法在一个对象上添加或修改一个或者多个自有属性，并返回该对象。 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties)
+
+### 语法
+```js
+Object.defineProperties(obj, props)
+```
+
+### 参数
+- obj
+  将要被添加属性或修改属性的对象
+- props
+  该对象的一个或多个键值对定义了将要为对象添加或修改的属性的具体配置
+
+### 返回值
+- 返回传入函数的对象，即第一个参数obj
+
+```js
+var obj = {a:1,b:2};
+    Object.defineProperties(obj,{
+        "A":{
+            get:function(){return this.a;},
+            set:function(val){this.a = val;}
+        },
+        "B":{
+            get:function(){return this.b;},
+            set:function(val){this.b = val}
+        }
+    });
+
+    console.log(obj.A);
+    console.log(obj.B);
+    obj.A = 3;
+    obj.B = "hello";
+    console.log(obj.A);
+    console.log(obj.B);
+```
+该方法是`Object.defineProperty`的批量版本
+
+## 使用 Object.prototype.__defineGetter__ 以及 Object.prototype.__defineSetter__ 方法
+
+<p class="tip">已废弃
+该特性已经从 Web 标准中删除，虽然一些浏览器目前仍然支持它，但也许会在未来的某个时间停止支持，请尽量不要使用该特性。</p>
