@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="javascript,前端,回调," />
+    <meta name="keywords" content="前端,javascript,回调," />
   
 
   <meta name="description" content="同步Ajax在任何情况下都不应该使用这种方式,因为它会锁定浏览器UI(按钮、菜单、滚动条等),并阻塞所有的用户交互。 
@@ -20,12 +20,12 @@
 error-first风格的超时报错处理12345678910111213function timeoutify(fn,delay)&amp;#123;  var intv = setTimeout( function()&amp;#123;    intv = null    fn(new">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于js异步">
-<meta property="og:url" content="http://yoursite.com/2017/01/04/async/index.html">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/01/04/async/index.html">
 <meta property="og:site_name" content="Kylin">
 <meta property="og:description" content="同步Ajax在任何情况下都不应该使用这种方式,因为它会锁定浏览器UI(按钮、菜单、滚动条等),并阻塞所有的用户交互。 
 
 error-first风格的超时报错处理12345678910111213function timeoutify(fn,delay)&amp;#123;  var intv = setTimeout( function()&amp;#123;    intv = null    fn(new">
-<meta property="og:updated_time" content="2017-01-04T06:55:42.000Z">
+<meta property="og:updated_time" content="2017-01-05T09:59:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于js异步">
 <meta name="twitter:description" content="同步Ajax在任何情况下都不应该使用这种方式,因为它会锁定浏览器UI(按钮、菜单、滚动条等),并阻塞所有的用户交互。 
@@ -133,7 +133,7 @@ error-first风格的超时报错处理12345678910111213function timeoutify(fn,de
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同步Ajax"><span class="toc-text">同步Ajax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#error-first风格的超时报错处理"><span class="toc-text">error-first风格的超时报错处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式-gist"><span class="toc-text">使用方式 gist</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#同步Ajax"><span class="toc-text">同步Ajax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#error-first风格的超时报错处理"><span class="toc-text">error-first风格的超时报错处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式-gist"><span class="toc-text">使用方式 gist</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-text">Promise</span></a></li></ol>
   </div>
 
 -->
@@ -183,13 +183,15 @@ error-first风格的超时报错处理12345678910111213function timeoutify(fn,de
 <h3 id="使用方式-gist"><a href="#使用方式-gist" class="headerlink" title="使用方式 gist"></a>使用方式 <a href="https://gist.githubusercontent.com/ruolinxue/0f2f4722bf997d269a37b5a2618be651/raw/35bb3528b3f0edb1f3884b68b57b9f06ff649184/timeoutify-example.js" target="_blank" rel="external">gist</a></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">err,data</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span>(err)</div><div class="line">    <span class="built_in">console</span>.log(err)</div><div class="line">  <span class="keyword">else</span></div><div class="line">    <span class="built_in">console</span>.log(data)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeoutify</span>(<span class="params">fn,delay</span>)</span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> intv = setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// ----A段代码----</span></div><div class="line">    intv = <span class="literal">null</span></div><div class="line">    fn(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Timeout"</span>))</div><div class="line">		<span class="comment">// ----A段代码----</span></div><div class="line">  &#125;,delay)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(intv)&#123;</div><div class="line">      clearTimeout(intv)</div><div class="line">      fn.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    fn(<span class="string">'no timeout'</span>)</div><div class="line">  &#125;,<span class="number">500</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">bar(timeoutify(foo,<span class="number">100</span>))</div><div class="line"><span class="comment">//Error: Timeout</span></div><div class="line"><span class="comment">//    at &lt;anonymous&gt;:1:1</span></div><div class="line"></div><div class="line">bar(timeoutify(foo,<span class="number">600</span>))</div><div class="line"><span class="comment">//no timeout</span></div></pre></td></tr></table></figure>
 <p class="tip">timeoutify方法返回一个function 若在delay时间前调用，则会清空计时器，若delay时间先到则会先运行A段代码，讲intv变量设为null并抛出错误</p>
 
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>((resolve,reject)=&gt;&#123;</div><div class="line">    setTimeout(resolve,ms,<span class="string">'done'</span>)<span class="comment">//IE9以下不支持传递额外参数</span></div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line">timeout(<span class="number">100</span>).then((value)=&gt;&#123;</div><div class="line">  <span class="built_in">console</span>.log(value)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
       
     </div>
   </article>
   
   <div class="page-bar">
     
-    <a class="prev-btn"></a>
+    <a href="/2017/01/11/word-break/" class="prev-btn"><i class="iconfont icon-prev"></i>英文单词换行连接符问题</a>
     
     
     <a href="/2016/12/29/getterAndSetter/" class="next-btn">js对象属性的getter与setter<i class="iconfont icon-next"></i></a>
@@ -318,7 +320,7 @@ error-first风格的超时报错处理12345678910111213function timeoutify(fn,de
   <script>
     var disqus_shortname = 'kylinz';
     
-    var disqus_url = 'http://yoursite.com/2017/01/04/async/';
+    var disqus_url = 'http://kylin.himmas.cc/2017/01/04/async/';
     
     (function(){
       var dsq = document.createElement('script');
