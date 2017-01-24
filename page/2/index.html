@@ -122,6 +122,100 @@
     
 
 <div class="container article-container">
+  <article id="post-colours-bar" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/05/02/colours-bar/">如何用js画一条彩带</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.02</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="ruolinxue.github.io/page/2/index.html#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前阵子看到尤小右同学的主页上有这样一个彩带<a href="http://evanyou.me/">点这里</a></p>
+<p>观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ <a href="http://krazydad.com/tutorials/makecolors.php">原理点这里</a></p>
+<p>于是实现了一个简单版本<a href="http://himmas.github.io/Himmas_demo/colours-bar/">Demo</a></p>
+<p>简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h4 id="主要分成以下几块"><a href="#主要分成以下几块" class="headerlink" title="主要分成以下几块"></a>主要分成以下几块</h4><ul>
+<li>如何生成彩虹色</li>
+<li>如何绘制连续的三角形</li>
+</ul>
+<h1 id="如何生成彩虹色"><a href="#如何生成彩虹色" class="headerlink" title="如何生成彩虹色"></a>如何生成彩虹色</h1><p>彩虹色<a href="http://himmas.github.io/Himmas_demo/colours-bar/colour-bar.html">Demo</a><br>首先，如何生成一条灰带？</p>
+<p>正弦波能帮助我们连续地产生-1~1之间的数,可以满足我们的需求</p>
+<p><img src="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501161024.png" alt=""><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> frequency = <span class="number">.3</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; ++i)</div><div class="line">&#123;</div><div class="line">   Document.write( <span class="built_in">Math</span>.sin(frequency * i)  );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>frequency约等于6.2时,正好一个周期(正弦波的周期为2PI 约等于6.2)</p>
+<table>
+<thead>
+<tr>
+<th>Degrees</th>
+<th>Radians</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>90</td>
+<td>π/2</td>
+</tr>
+<tr>
+<td>180</td>
+<td>π</td>
+</tr>
+<tr>
+<td>270</td>
+<td>3π/2</td>
+</tr>
+<tr>
+<td>360</td>
+<td>2π</td>
+</tr>
+</tbody>
+</table>
+      
+      <p class="article-more-link">
+        <a class="btn btn-primary more-btn" href="/2016/05/02/colours-bar/#more">阅读全文</a>
+      </p>
+      
+      
+    </div>
+  </article>
+  
+</div>
+
+
+<div class="br"></div>
+
+<div class="container article-container">
   <article id="post-default-event" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
       <h1 class="post-title"><a href="/2016/03/23/default-event/">如何在内层div滚动到底部时禁止外部div滚动</a></h1>

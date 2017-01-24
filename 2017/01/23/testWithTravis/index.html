@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>TravisCI自动化构建与Karma测试实践记录 | Kylin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="测试,karma,travisCI,自动化构建," />
+  
+
+  <meta name="description" content="Karma安装的依赖12$ npm install karma --save-dev$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+装完依赖后可以用以下命令运行测试
+12# Run Karma:$ ./node_modules/karma/bin/karma start
+若觉得./node_modu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TravisCI自动化构建与Karma测试实践记录">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/01/23/testWithTravis/index.html">
+<meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="Karma安装的依赖12$ npm install karma --save-dev$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+装完依赖后可以用以下命令运行测试
+12# Run Karma:$ ./node_modules/karma/bin/karma start
+若觉得./node_modu">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/karma9876.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/karma-debug.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/medoly-dir.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-login.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-add.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-on.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/github-token.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/github-new-token.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-setting.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/travis-karma-error.png">
+<meta property="og:updated_time" content="2017-01-24T02:40:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TravisCI自动化构建与Karma测试实践记录">
+<meta name="twitter:description" content="Karma安装的依赖12$ npm install karma --save-dev$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+装完依赖后可以用以下命令运行测试
+12# Run Karma:$ ./node_modules/karma/bin/karma start
+若觉得./node_modu">
+<meta name="twitter:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/karma9876.png">
+
+  
+
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  <!---->
+
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/ruolinxue">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
+</div>
+
+<!--这个是章节目录-->
+<!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Karma"><span class="toc-text">Karma</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装的依赖"><span class="toc-text">安装的依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化配置"><span class="toc-text">初始化配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建待测试文件"><span class="toc-text">新建待测试文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建测试用例"><span class="toc-text">新建测试用例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行测试"><span class="toc-text">运行测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TravisCI"><span class="toc-text">TravisCI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-text">需求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何配置"><span class="toc-text">如何配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启用需要构建的项目"><span class="toc-text">启用需要构建的项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#踩到的坑"><span class="toc-text">踩到的坑</span></a></li></ol>
+  </div>
+
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-testWithTravis" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/01/23/testWithTravis/">TravisCI自动化构建与Karma测试实践记录</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.01.23</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/自动化/">自动化</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="ruolinxue.github.io/2017/01/23/testWithTravis/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="Karma"><a href="#Karma" class="headerlink" title="Karma"></a>Karma</h2><h3 id="安装的依赖"><a href="#安装的依赖" class="headerlink" title="安装的依赖"></a>安装的依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install karma --save-dev</div><div class="line">$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev</div></pre></td></tr></table></figure>
+<p>装完依赖后可以用以下命令运行测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Run Karma:</div><div class="line">$ ./node_modules/karma/bin/karma start</div></pre></td></tr></table></figure>
+<p>若觉得<code>./node_modules/karma/bin/karma</code>的写法太长，则可以全局安装<code>karma-cli</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g karma-cli</div></pre></td></tr></table></figure>
+<h3 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h3><p>最简单的方法是使用命令<code>karma init</code>来创建配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ karma init</div><div class="line"></div><div class="line">Which testing framework <span class="keyword">do</span> you want to use ?</div><div class="line"></div><div class="line">Press tab to list possible options. Enter to move to the next question.</div><div class="line">&gt; jasmine</div><div class="line"></div><div class="line"></div><div class="line">Do you want to use Require.js ?</div><div class="line">This will add Require.js plugin.</div><div class="line">Press tab to list possible options. Enter to move to the next question.</div><div class="line">&gt; no</div><div class="line"></div><div class="line">Do you want to capture any browsers automatically ?</div><div class="line">Press tab to list possible options. Enter empty string to move to the next question.</div><div class="line">&gt; Chrome</div><div class="line">&gt;</div><div class="line"></div><div class="line">What is the location of your <span class="built_in">source</span> and <span class="built_in">test</span> files ?</div><div class="line">You can use glob patterns, eg. <span class="string">"js/*.js"</span> or <span class="string">"test/**/*Spec.js"</span>.</div><div class="line">Enter empty string to move to the next question.</div><div class="line">&gt;</div><div class="line"></div><div class="line">Should any of the files included by the previous patterns be excluded ?</div><div class="line">You can use glob patterns, eg. <span class="string">"**/*.swp"</span>.</div><div class="line">Enter empty string to move to the next question.</div><div class="line">&gt;</div><div class="line"></div><div class="line">Do you want Karma to watch all the files and run the tests on change ?</div><div class="line">Press tab to list possible options.</div><div class="line">&gt; yes</div><div class="line"></div><div class="line">Config file generated at <span class="string">"/Users/xx/Documents/Himmas/melody/karma.conf.js"</span>.</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>生成配置文件如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Karma configuration</span></div><div class="line"><span class="comment">// Generated on Mon Jan 23 2017 17:49:35 GMT+0800 (CST)</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</div><div class="line">  config.set(&#123;</div><div class="line"></div><div class="line">    <span class="comment">// base path that will be used to resolve all patterns (eg. files, exclude)</span></div><div class="line">    basePath: <span class="string">''</span>,</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// frameworks to use</span></div><div class="line">    <span class="comment">// available frameworks: https://npmjs.org/browse/keyword/karma-adapter</span></div><div class="line">    frameworks: [<span class="string">'jasmine'</span>],</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// list of files / patterns to load in the browser</span></div><div class="line">    files: [</div><div class="line">    ],</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// list of files to exclude</span></div><div class="line">    exclude: [</div><div class="line">    ],</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// preprocess matching files before serving them to the browser</span></div><div class="line">    <span class="comment">// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor</span></div><div class="line">    preprocessors: &#123;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// test results reporter to use</span></div><div class="line">    <span class="comment">// possible values: 'dots', 'progress'</span></div><div class="line">    <span class="comment">// available reporters: https://npmjs.org/browse/keyword/karma-reporter</span></div><div class="line">    reporters: [<span class="string">'progress'</span>],</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// web server port</span></div><div class="line">    port: <span class="number">9876</span>,</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// enable / disable colors in the output (reporters and logs)</span></div><div class="line">    colors: <span class="literal">true</span>,</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// level of logging</span></div><div class="line">    <span class="comment">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span></div><div class="line">    logLevel: config.LOG_INFO,</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// enable / disable watching file and executing tests whenever any file changes</span></div><div class="line">    autoWatch: <span class="literal">true</span>,</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// start these browsers</span></div><div class="line">    <span class="comment">// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher</span></div><div class="line">    browsers: [<span class="string">'Chrome'</span>],</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">// Continuous Integration mode</span></div><div class="line">    <span class="comment">// if true, Karma captures browsers, runs the tests and exits</span></div><div class="line">    singleRun: <span class="literal">false</span>,</div><div class="line"></div><div class="line">    <span class="comment">// Concurrency level</span></div><div class="line">    <span class="comment">// how many browser should be started simultaneous</span></div><div class="line">    concurrency: <span class="literal">Infinity</span></div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里修改几个地方</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Karma configuration</span></div><div class="line"><span class="comment">// Generated on Mon Jan 23 2017 10:53:08 GMT+0800 (CST)</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> configuration = &#123;</div><div class="line">        <span class="comment">// other things</span></div><div class="line">        <span class="comment">//根目录，files的路径从这里开始取</span></div><div class="line">        <span class="comment">// base path that will be used to resolve all patterns (eg. files, exclude)</span></div><div class="line">        basePath: <span class="string">'../../'</span>,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// frameworks to use</span></div><div class="line">        <span class="comment">// available frameworks: https://npmjs.org/browse/keyword/karma-adapter</span></div><div class="line">        frameworks: [<span class="string">'jasmine'</span>],</div><div class="line"></div><div class="line">        <span class="comment">// 源文件与测试用例</span></div><div class="line">        <span class="comment">// list of files / patterns to load in the browser</span></div><div class="line">        files: [</div><div class="line">            <span class="string">'src/modules/**/*.js'</span>,</div><div class="line">            <span class="string">'test/unit/specs/**/*.spec.js'</span></div><div class="line">        ],</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// list of files to exclude</span></div><div class="line">        exclude: [],</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// preprocess matching files before serving them to the browser</span></div><div class="line">        <span class="comment">// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor</span></div><div class="line"></div><div class="line">        <span class="comment">// es6代码做预处理</span></div><div class="line">        preprocessors: &#123;</div><div class="line">            <span class="string">'src/modules/**/*.js'</span>: [<span class="string">'babel'</span>, <span class="string">'coverage'</span>, <span class="string">'sourcemap'</span>],</div><div class="line">            <span class="string">'test/unit/specs/**/*.spec.js'</span>: [<span class="string">'babel'</span>, <span class="string">'coverage'</span>, <span class="string">'sourcemap'</span>]</div><div class="line">        &#125;,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// test results reporter to use</span></div><div class="line">        <span class="comment">// possible values: 'dots', 'progress'</span></div><div class="line">        <span class="comment">// available reporters: https://npmjs.org/browse/keyword/karma-reporter</span></div><div class="line">        reporters: [<span class="string">'progress'</span>, <span class="string">'kjhtml'</span>, <span class="string">'coverage'</span>], <span class="comment">//kjhtml 生成html测试报告</span></div><div class="line"></div><div class="line">        <span class="comment">// web server port</span></div><div class="line">        port: <span class="number">9876</span>,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// enable / disable colors in the output (reporters and logs)</span></div><div class="line">        colors: <span class="literal">true</span>,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// level of logging</span></div><div class="line">        <span class="comment">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span></div><div class="line">        logLevel: config.LOG_INFO,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// enable / disable watching file and executing tests whenever any file changes</span></div><div class="line">        autoWatch: <span class="literal">true</span>,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// start these browsers</span></div><div class="line">        <span class="comment">// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher</span></div><div class="line">        browsers: [<span class="string">'Chrome'</span>],</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// Continuous Integration mode</span></div><div class="line">        <span class="comment">// if true, Karma captures browsers, runs the tests and exits</span></div><div class="line">        singleRun: <span class="literal">false</span>,</div><div class="line"></div><div class="line">        <span class="comment">// Concurrency level</span></div><div class="line">        <span class="comment">// how many browser should be started simultaneous</span></div><div class="line">        concurrency: <span class="literal">Infinity</span>,</div><div class="line"></div><div class="line">        <span class="comment">// proxies 资源文件代理</span></div><div class="line">        proxies: &#123;</div><div class="line">            <span class="string">"/media/"</span>: <span class="string">"http://localhost:4002/media/"</span></div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        <span class="comment">// coverage output setting</span></div><div class="line">				<span class="comment">// 覆盖率报告配置</span></div><div class="line">        coverageReporter: &#123;</div><div class="line">            instrumenterOptions: &#123;</div><div class="line">                istanbul: &#123;</div><div class="line">                    noCompact: <span class="literal">true</span></div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            reporters: [&#123;</div><div class="line">                type: <span class="string">'html'</span>,</div><div class="line">                dir: <span class="string">'./test/unit/coverage/'</span> <span class="comment">//报告文件夹</span></div><div class="line">            &#125;, &#123;</div><div class="line">                type: <span class="string">'text-summary'</span></div><div class="line">            &#125;],</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    config.set(configuration)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="新建待测试文件"><a href="#新建待测试文件" class="headerlink" title="新建待测试文件"></a>新建待测试文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// src/modules/test.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> plus = <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> a + b</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="新建测试用例"><a href="#新建测试用例" class="headerlink" title="新建测试用例"></a>新建测试用例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// test/unit/specs/test.spec.js</span></div><div class="line"><span class="keyword">import</span> &#123; plus &#125; <span class="keyword">from</span> <span class="string">'/src/module/test'</span></div><div class="line"></div><div class="line">describe(<span class="string">"This is a plus test!"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    it(<span class="string">"is an addtion function"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">        expect(<span class="number">20</span>).toEqual(plus(<span class="number">15</span>,<span class="number">5</span>));</div><div class="line"></div><div class="line">    &#125;)</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> Suite表示一个测试集，以函数<code>describe(string, function)</code>封装，它包含2个参数：</p>
+<ul>
+<li><code>string</code>：测试组名称，</li>
+<li><code>function</code>：测试组函数。</li>
+<li>一个Suite(<code>describe</code>)包含多个Specs(<code>it</code>)，一个Specs(<code>it</code>)包含多个断言（<code>expect</code>）。</li>
+</ul>
+<p class="tip">这里使用的是单元测试框架<a href="https://jasmine.github.io/" target="_blank" rel="external">Jasmine</a>,你可以使用你喜欢的测试框架如<code>mocha</code>等，并在karma.config.js的<code>frameworks</code>选项中进行配置。</p>
+
+<h3 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ karma start test/unit/karma.conf.js</div></pre></td></tr></table></figure>
+<p>也可以将命令写在<code>package.json</code>文件中，然后运行命令<code>npm run test</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="comment">//...省略</span></div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"test"</span>: <span class="string">"karma start test/unit/karma.conf.js"</span></div><div class="line">  &#125;<span class="comment">//...省略</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">kylindeMacBook-Pro:melody kylin$ npm run <span class="built_in">test</span></div><div class="line"></div><div class="line">&gt; melody@1.0.0 <span class="built_in">test</span> /Users/kylin/Documents/Himmas/melody</div><div class="line">&gt; karma start <span class="built_in">test</span>/unit/karma.conf.js</div><div class="line"></div><div class="line">24 01 2017 09:17:16.001:WARN [karma]: No captured browser, open http://localhost:9876/</div><div class="line">24 01 2017 09:17:16.015:WARN [karma]: Port 9876 <span class="keyword">in</span> use</div><div class="line">24 01 2017 09:17:16.018:INFO [karma]: Karma v1.4.0 server started at http://0.0.0.0:9877/</div><div class="line">24 01 2017 09:17:16.020:INFO [launcher]: Launching browser Chrome with unlimited concurrency</div><div class="line">24 01 2017 09:17:16.059:INFO [launcher]: Starting browser Chrome</div><div class="line">24 01 2017 09:17:18.229:INFO [Chrome 51.0.2704 (Mac OS X 10.11.4)]: Connected on socket sPWeedIJ8vBO0P1RAAAA with id 84748433</div><div class="line">Chrome 51.0.2704 (Mac OS X 10.11.4): Executed 1 of 1 SUCCESS (0 secs / 0.006 secsChrome 51.0.2704 (Mac OS X 10.11.4): Executed 1 of 1 SUCCESS (0.285 secs / 0.006 secs)</div><div class="line"></div><div class="line">=============================== Coverage summary ===============================</div><div class="line">Statements   : 47.9% ( 57/119 )</div><div class="line">Branches     : 27.08% ( 13/48 )</div><div class="line">Functions    : 56% ( 14/25 )</div><div class="line">Lines        : 49.14% ( 57/116 )</div><div class="line">================================================================================</div></pre></td></tr></table></figure>
+<p>chrome51浏览器会自动打开,界面如下</p>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/karma9876.png" alt=""></p>
+<p>由于在配置文件中设置了html格式的测试报告，点击页面右上角debug可以看到</p>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/karma-debug.png" alt=""></p>
+<h2 id="TravisCI"><a href="#TravisCI" class="headerlink" title="TravisCI"></a>TravisCI</h2><p>有些项目(静态博客等)，我们希望每次push完，测试通过之后，能自动build并将生成的文件push到gh-pages分支中去。<code>Travis CI</code>就能很好地完成这个需求。</p>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI.png" alt=""></p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>以<a href="https://github.com/Himmas/melody" target="_blank" rel="external">medoly</a>这个项目为例，它的目录结构如下</p>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/medoly-dir.png" alt=""></p>
+<p>每次提交代码之后，我希望travis做两件事情</p>
+<ul>
+<li>运行测试</li>
+<li>若测试通过，将src目录push到gh-pages中去</li>
+</ul>
+<h2 id="如何配置"><a href="#如何配置" class="headerlink" title="如何配置"></a>如何配置</h2><h3 id="启用需要构建的项目"><a href="#启用需要构建的项目" class="headerlink" title="启用需要构建的项目"></a>启用需要构建的项目</h3><ul>
+<li>打开<a href="https://travis-ci.org/" target="_blank" rel="external">https://travis-ci.org/</a>，点击右上角的<code>Sign in with GitHub</code>，使用github账号登录。</li>
+</ul>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-login.png" alt=""></p>
+<ul>
+<li>你可能并不会有红框区域的内容，点击左上角绿框的<code>+</code>号</li>
+</ul>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-add.png" alt=""></p>
+<ul>
+<li>点击右上角的<code>Sync account</code>,讲github上的仓库同步过来，然后选择需要构建的仓库，讲前面的按钮选成开启状态</li>
+</ul>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-on.png" alt=""></p>
+<ul>
+<li>去github上生成一个token：<ul>
+<li>1.打开setting</li>
+<li>2.选择personal account token 选项卡</li>
+<li>3.点击右上角generate new token</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/github-token.png" alt=""></p>
+<ul>
+<li>输入密码之后到了一个权限勾选界面</li>
+</ul>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/github-new-token.png" alt=""></p>
+<ul>
+<li>点击生成，然后<code>将其复制下来</code>（刷新之后就不显示了）</li>
+<li>添加travisCI 对应项目的setting 中</li>
+</ul>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-setting.png" alt=""></p>
+<ul>
+<li>完成后在项目仓库中添加一个<code>.travis.yml</code>文件</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="attr">language:</span> node_js</div><div class="line"><span class="attr">node_js:</span> stable</div><div class="line"></div><div class="line"><span class="comment"># S: Build Lifecycle</span></div><div class="line"><span class="comment"># install:</span></div><div class="line"><span class="comment">#   - npm install</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#before_script:</span></div><div class="line"> <span class="comment"># - npm install -g gulp</span></div><div class="line"></div><div class="line"><span class="attr">before_install:</span></div><div class="line"><span class="bullet"> -</span> export CHROME_BIN=chromium-browser</div><div class="line"><span class="bullet"> -</span> export DISPLAY=:<span class="number">99.0</span></div><div class="line"><span class="bullet"> -</span> sh -e /etc/init.d/xvfb start</div><div class="line"></div><div class="line"><span class="comment"># script:</span></div><div class="line"><span class="comment">#   - hexo g</span></div><div class="line"></div><div class="line"><span class="comment"># 构建之后推送到gh-pages</span></div><div class="line"><span class="attr">after_script:</span></div><div class="line"><span class="bullet">  -</span> cd ./src</div><div class="line"><span class="bullet">  -</span> git init</div><div class="line"><span class="bullet">  -</span> git config user.name <span class="string">"kylin"</span></div><div class="line"><span class="bullet">  -</span> git config user.email <span class="string">"kailinzhou@yeah.net"</span></div><div class="line"><span class="bullet">  -</span> git add .</div><div class="line"><span class="bullet">  -</span> git commit -m <span class="string">"TravisCI"</span></div><div class="line"><span class="bullet">  -</span> git push --force --quiet <span class="string">"https://$&#123;GH_TOKEN&#125;@$&#123;GH_REF&#125;"</span> master:gh-pages</div><div class="line"><span class="comment"># E: Build LifeCycle</span></div><div class="line"></div><div class="line"><span class="comment"># 设置只有master的push才进行构建</span></div><div class="line"><span class="attr">branches:</span></div><div class="line"><span class="attr">  only:</span></div><div class="line"><span class="bullet">    -</span> master</div><div class="line"><span class="attr">env:</span></div><div class="line"><span class="attr"> global:</span></div><div class="line"><span class="attr">   - GH_REF:</span> github.com/Himmas/melody.git</div></pre></td></tr></table></figure>
+<blockquote>
+<p>具体配置可参考<a href="https://docs.travis-ci.com/user/getting-started" target="_blank" rel="external">官网</a></p>
+</blockquote>
+<h2 id="踩到的坑"><a href="#踩到的坑" class="headerlink" title="踩到的坑"></a>踩到的坑</h2><p class="tip">直接在travis中使用之前的karma配置会报一下的错误</p>
+
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/travis-karma-error.png" alt=""></p>
+<p>需要对travis环境进行特殊处理，最终配置文件如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Karma configuration</span></div><div class="line"><span class="comment">// Generated on Mon Jan 23 2017 10:53:08 GMT+0800 (CST)</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> configuration = &#123;</div><div class="line">        <span class="comment">// other things</span></div><div class="line">        <span class="comment">//根目录，files的路径从这里开始取</span></div><div class="line">        <span class="comment">// base path that will be used to resolve all patterns (eg. files, exclude)</span></div><div class="line">        basePath: <span class="string">'../../'</span>,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// frameworks to use</span></div><div class="line">        <span class="comment">// available frameworks: https://npmjs.org/browse/keyword/karma-adapter</span></div><div class="line">        frameworks: [<span class="string">'jasmine'</span>],</div><div class="line"></div><div class="line">        <span class="comment">// 源文件与测试用例</span></div><div class="line">        <span class="comment">// list of files / patterns to load in the browser</span></div><div class="line">        files: [</div><div class="line">            <span class="string">'src/modules/**/*.js'</span>,</div><div class="line">            <span class="string">'test/unit/specs/**/*.spec.js'</span></div><div class="line">        ],</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// list of files to exclude</span></div><div class="line">        exclude: [],</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// preprocess matching files before serving them to the browser</span></div><div class="line">        <span class="comment">// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor</span></div><div class="line"></div><div class="line">        <span class="comment">// es6代码做预处理</span></div><div class="line">        preprocessors: &#123;</div><div class="line">            <span class="string">'src/modules/**/*.js'</span>: [<span class="string">'babel'</span>, <span class="string">'coverage'</span>, <span class="string">'sourcemap'</span>],</div><div class="line">            <span class="string">'test/unit/specs/**/*.spec.js'</span>: [<span class="string">'babel'</span>, <span class="string">'coverage'</span>, <span class="string">'sourcemap'</span>]</div><div class="line">        &#125;,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// test results reporter to use</span></div><div class="line">        <span class="comment">// possible values: 'dots', 'progress'</span></div><div class="line">        <span class="comment">// available reporters: https://npmjs.org/browse/keyword/karma-reporter</span></div><div class="line">        reporters: [<span class="string">'progress'</span>, <span class="string">'kjhtml'</span>, <span class="string">'coverage'</span>],</div><div class="line"></div><div class="line">        <span class="comment">// web server port</span></div><div class="line">        port: <span class="number">9876</span>,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// enable / disable colors in the output (reporters and logs)</span></div><div class="line">        colors: <span class="literal">true</span>,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// level of logging</span></div><div class="line">        <span class="comment">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span></div><div class="line">        logLevel: config.LOG_INFO,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// enable / disable watching file and executing tests whenever any file changes</span></div><div class="line">        autoWatch: <span class="literal">true</span>,</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// start these browsers</span></div><div class="line">        <span class="comment">// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher</span></div><div class="line">        browsers: [<span class="string">'Chrome'</span>],</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// Continuous Integration mode</span></div><div class="line">        <span class="comment">// if true, Karma captures browsers, runs the tests and exits</span></div><div class="line">        singleRun: <span class="literal">false</span>,</div><div class="line"></div><div class="line">        <span class="comment">// Concurrency level</span></div><div class="line">        <span class="comment">// how many browser should be started simultaneous</span></div><div class="line">        concurrency: <span class="literal">Infinity</span>,</div><div class="line"></div><div class="line">        <span class="comment">// proxies 资源文件代理</span></div><div class="line">        proxies: &#123;</div><div class="line">            <span class="string">"/media/"</span>: <span class="string">"http://localhost:4002/media/"</span></div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        <span class="comment">// coverage output setting</span></div><div class="line">        coverageReporter: &#123;</div><div class="line">            instrumenterOptions: &#123;</div><div class="line">                istanbul: &#123;</div><div class="line">                    noCompact: <span class="literal">true</span></div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            reporters: [&#123;</div><div class="line">                type: <span class="string">'html'</span>,</div><div class="line">                dir: <span class="string">'./test/unit/coverage/'</span></div><div class="line">            &#125;, &#123;</div><div class="line">                type: <span class="string">'text-summary'</span></div><div class="line">            &#125;],</div><div class="line">        &#125;,</div><div class="line">        sourcemap: &#123;</div><div class="line">            transform: <span class="function"><span class="keyword">function</span>(<span class="params">mapData</span>) </span>&#123;</div><div class="line">                mapData.sourceRoot = <span class="string">'/'</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line"></div><div class="line">        customLaunchers: &#123;</div><div class="line">            Chrome_travis_ci: &#123;</div><div class="line">                base: <span class="string">'Chrome'</span>,</div><div class="line">                flags: [<span class="string">'--no-sandbox'</span>]</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (process.env.TRAVIS) &#123;</div><div class="line">        configuration.browsers = [<span class="string">'Chrome_travis_ci'</span>];</div><div class="line">        configuration.singleRun = <span class="literal">true</span>;</div><div class="line">        <span class="comment">// travis 环境下执行一次</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    config.set(configuration)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p class="tip">在travis环境中不要忘记将singleRun设为true，否则会一直监听文件变化，不能结束test</p>
+
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
+    
+    <a class="prev-btn"></a>
+    
+    
+    <a href="/2017/01/11/word-break/" class="next-btn">英文单词换行连接符问题<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <!--<div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/"
+              target="_self"
+              >
+              首页
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/album/"
+              target="_self"
+              >
+              相册
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+-->
+
+
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://kylin.himmas.cc/2017/01/23/testWithTravis/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
+  <!---->
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
