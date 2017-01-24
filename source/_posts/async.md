@@ -26,6 +26,7 @@ function timeoutify(fn,delay){
   }
 }
 ```
+<!-- more -->
 
 ### 使用方式 [gist](https://gist.githubusercontent.com/ruolinxue/0f2f4722bf997d269a37b5a2618be651/raw/35bb3528b3f0edb1f3884b68b57b9f06ff649184/timeoutify-example.js)
 
