@@ -15,25 +15,22 @@
     <meta name="keywords" content="前端,js,原生,codewar," />
   
 
-  <meta name="description" content="#数组合并并去重
-Demo
+  <meta name="description" content="数组合并并去重Demo
 Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.
-In other words, all values present from all arrays s">
+In other words, all values present from all arrays sho">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组合并并去重">
 <meta property="og:url" content="http://kylin.himmas.cc/2016/05/08/array-concat/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="#数组合并并去重
-Demo
+<meta property="og:description" content="数组合并并去重Demo
 Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.
-In other words, all values present from all arrays s">
-<meta property="og:updated_time" content="2016-11-26T08:45:59.000Z">
+In other words, all values present from all arrays sho">
+<meta property="og:updated_time" content="2017-02-17T07:25:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组合并并去重">
-<meta name="twitter:description" content="#数组合并并去重
-Demo
+<meta name="twitter:description" content="数组合并并去重Demo
 Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.
-In other words, all values present from all arrays s">
+In other words, all values present from all arrays sho">
 
   
 
@@ -134,6 +131,11 @@ In other words, all values present from all arrays s">
 
 <!--这个是章节目录-->
 <!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组合并并去重"><span class="toc-text">数组合并并去重</span></a></li></ol>
+  </div>
+
 -->
 
 <div class="content content-post CENTER">
@@ -175,8 +177,7 @@ In other words, all values present from all arrays s">
 
     <div class="article-content">
       
-      <p>#数组合并并去重</p>
-<p><a href="http://himmas.github.io/Himmas_demo/array-concat/" target="_blank" rel="external">Demo</a></p>
+      <h2 id="数组合并并去重"><a href="#数组合并并去重" class="headerlink" title="数组合并并去重"></a>数组合并并去重</h2><p><a href="http://himmas.github.io/Himmas_demo/array-concat/" target="_blank" rel="external">Demo</a></p>
 <p>Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.</p>
 <p>In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.</p>
 <p>The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.</p>
@@ -188,7 +189,7 @@ In other words, all values present from all arrays s">
 <blockquote>
 <p>普通版本</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//your code here</span></div><div class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> <span class="built_in">arguments</span>)&#123; </div><div class="line">      <span class="built_in">arguments</span>[i].forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">          <span class="keyword">if</span>(!obj[e])&#123;</div><div class="line">             res.push(e);</div><div class="line">             obj[e] = <span class="literal">true</span>;<span class="comment">//讲当前值作为键,值为true</span></div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//your code here</span></div><div class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> <span class="built_in">arguments</span>)&#123;</div><div class="line">      <span class="built_in">arguments</span>[i].forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">          <span class="keyword">if</span>(!obj[e])&#123;</div><div class="line">             res.push(e);</div><div class="line">             obj[e] = <span class="literal">true</span>;<span class="comment">//讲当前值作为键,值为true</span></div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>arguments是一个隐藏参数，能够获取到所有传递进来的参数，是一个对象</p>
 <a id="more"></a>
 <blockquote>

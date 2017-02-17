@@ -36,7 +36,7 @@
 1#coding=utf-8
 字符串123456789101112131415161718print r&apos;\\\t\\\ &apos;# r&apos;&apos;表示">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/python-encoding-error.png">
-<meta property="og:updated_time" content="2017-02-17T07:14:49.000Z">
+<meta property="og:updated_time" content="2017-02-17T07:21:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python学习笔记">
 <meta name="twitter:description" content="编码问题在编写Python时，当使用中文输出或注释时运行脚本，会提示错误信息：
@@ -150,7 +150,7 @@
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编码问题"><span class="toc-text">编码问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原因"><span class="toc-text">原因:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编码问题"><span class="toc-text">编码问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原因"><span class="toc-text">原因:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整型与浮点数"><span class="toc-text">整型与浮点数</span></a></li></ol>
   </div>
 
 -->
@@ -202,6 +202,11 @@
 <p>或者  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div></pre></td></tr></table></figure>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">r'\\\t\\\ '</span></div><div class="line"><span class="comment"># r''表示''内部字符默认不转义</span></div><div class="line"></div><div class="line"><span class="comment"># 如果字符串内部有很多换行，用\n写在一行里不好阅读，为了简化，Python允许在交互式命令行中用'''...'''</span></div><div class="line"><span class="comment"># 如 &gt;&gt;&gt; print '''line1</span></div><div class="line"><span class="comment"># ... line2</span></div><div class="line"><span class="comment"># ... line3'''</span></div><div class="line"><span class="comment"># 的格式表示多行内容,若写成程序则如下:</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">'''line1</span></div><div class="line">line2</div><div class="line">line3'''</div><div class="line"></div><div class="line"><span class="comment"># r''还能与'''...'''结合如下:</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">r'''\nline1</span></div><div class="line">line2</div><div class="line">line3'''</div></pre></td></tr></table></figure>
+<h2 id="整型与浮点数"><a href="#整型与浮点数" class="headerlink" title="整型与浮点数"></a>整型与浮点数</h2><p class="tip">在python中，两个整数的除法永远是精确的，因为整数除法只取结果的整数部分。</p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10</span> / <span class="number">3</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="comment"># js中10/3=3.3333333333333335</span></div></pre></td></tr></table></figure>
+<p>要做精确的除法，只需把其中一个整数换成浮点数做除法就可以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10.0</span> / <span class="number">3</span></div><div class="line"><span class="number">3.3333333333333335</span></div></pre></td></tr></table></figure>
 
       
     </div>

@@ -15,25 +15,34 @@
     <meta name="keywords" content="linux," />
   
 
-  <meta name="description" content="#删除1、删除文件夹以及文件夹中的所有文件命令：1rm -rf 目录名字
-其中：1234-r：向下递归删除-f：直接强行删除，且没有任何提示``` 2、删除文件命令
-rm -f 文件名123456将会强行删除文件，且无提示 注意：使用`rm -rf`要格外注意，linux中没有回收站，慎重删除#新建文件与文件夹
-cd  /someDir   定位到目标目录mkdir test  新建一个叫test">
+  <meta name="description" content="删除1、删除文件夹以及文件夹中的所有文件命令：1rm -rf 目录名字
+其中：12-r：向下递归删除-f：直接强行删除，且没有任何提示
+2、删除文件命令1rm -f 文件名
+将会强行删除文件，且无提示
+注意：使用rm -rf要格外注意，linux中没有回收站，慎重删除
+新建文件与文件夹12cd  /someDir   定位到目标目录mkdir test  新建一个叫test的文件夹
+1touch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用操作命令">
 <meta property="og:url" content="http://kylin.himmas.cc/2016/11/02/linux-delete/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="#删除1、删除文件夹以及文件夹中的所有文件命令：1rm -rf 目录名字
-其中：1234-r：向下递归删除-f：直接强行删除，且没有任何提示``` 2、删除文件命令
-rm -f 文件名123456将会强行删除文件，且无提示 注意：使用`rm -rf`要格外注意，linux中没有回收站，慎重删除#新建文件与文件夹
-cd  /someDir   定位到目标目录mkdir test  新建一个叫test">
-<meta property="og:updated_time" content="2016-11-26T08:47:08.000Z">
+<meta property="og:description" content="删除1、删除文件夹以及文件夹中的所有文件命令：1rm -rf 目录名字
+其中：12-r：向下递归删除-f：直接强行删除，且没有任何提示
+2、删除文件命令1rm -f 文件名
+将会强行删除文件，且无提示
+注意：使用rm -rf要格外注意，linux中没有回收站，慎重删除
+新建文件与文件夹12cd  /someDir   定位到目标目录mkdir test  新建一个叫test的文件夹
+1touch">
+<meta property="og:updated_time" content="2017-02-17T07:23:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用操作命令">
-<meta name="twitter:description" content="#删除1、删除文件夹以及文件夹中的所有文件命令：1rm -rf 目录名字
-其中：1234-r：向下递归删除-f：直接强行删除，且没有任何提示``` 2、删除文件命令
-rm -f 文件名123456将会强行删除文件，且无提示 注意：使用`rm -rf`要格外注意，linux中没有回收站，慎重删除#新建文件与文件夹
-cd  /someDir   定位到目标目录mkdir test  新建一个叫test">
+<meta name="twitter:description" content="删除1、删除文件夹以及文件夹中的所有文件命令：1rm -rf 目录名字
+其中：12-r：向下递归删除-f：直接强行删除，且没有任何提示
+2、删除文件命令1rm -f 文件名
+将会强行删除文件，且无提示
+注意：使用rm -rf要格外注意，linux中没有回收站，慎重删除
+新建文件与文件夹12cd  /someDir   定位到目标目录mkdir test  新建一个叫test的文件夹
+1touch">
 
   
 
@@ -134,6 +143,11 @@ cd  /someDir   定位到目标目录mkdir test  新建一个叫test">
 
 <!--这个是章节目录-->
 <!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建文件与文件夹"><span class="toc-text">新建文件与文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看文件"><span class="toc-text">查看文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打开文件"><span class="toc-text">打开文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移动文件"><span class="toc-text">移动文件</span></a></li></ol>
+  </div>
+
 -->
 
 <div class="content content-post CENTER">
@@ -175,16 +189,18 @@ cd  /someDir   定位到目标目录mkdir test  新建一个叫test">
 
     <div class="article-content">
       
-      <p>#删除<br>1、删除文件夹以及文件夹中的所有文件命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf 目录名字</div></pre></td></tr></table></figure></p>
-<p>其中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-r：向下递归删除</div><div class="line">-f：直接强行删除，且没有任何提示</div><div class="line">``` </div><div class="line">2、删除文件命令</div></pre></td></tr></table></figure></p>
-<p>rm -f 文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">将会强行删除文件，且无提示</div><div class="line"> </div><div class="line">注意：</div><div class="line">使用`rm -rf`要格外注意，linux中没有回收站，慎重删除</div><div class="line"></div><div class="line">#新建文件与文件夹</div></pre></td></tr></table></figure></p>
-<p>cd  /someDir   定位到目标目录<br>mkdir test  新建一个叫test的文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">touch  test/a.txt 在test文件夹下建一个名为a.txt的文件</div></pre></td></tr></table></figure></p>
+      <h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>1、删除文件夹以及文件夹中的所有文件命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf 目录名字</div></pre></td></tr></table></figure></p>
+<p>其中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-r：向下递归删除</div><div class="line">-f：直接强行删除，且没有任何提示</div></pre></td></tr></table></figure></p>
+<p>2、删除文件命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -f 文件名</div></pre></td></tr></table></figure></p>
+<p>将会强行删除文件，且无提示</p>
+<p>注意：<br>使用<code>rm -rf</code>要格外注意，linux中没有回收站，慎重删除</p>
+<h2 id="新建文件与文件夹"><a href="#新建文件与文件夹" class="headerlink" title="新建文件与文件夹"></a>新建文件与文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd  /someDir   定位到目标目录</div><div class="line">mkdir test  新建一个叫test的文件夹</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch  test/a.txt 在test文件夹下建一个名为a.txt的文件</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>#查看文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls -a 查看该目录下所有文件,包括隐藏文件</div><div class="line">ls 查看该目录下文件</div></pre></td></tr></table></figure></p>
-<p>#打开文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cat :由第一行开始显示文件内容；</div><div class="line">tac：从最后一行开始显示，可以看出tac与cat字母顺序相反；</div><div class="line">nl:显示的时候输出行号；</div><div class="line">more：一页一页的显示文件内容；</div><div class="line">less与more类似，但它可以向前翻页；</div><div class="line">head：只看前几行；</div><div class="line">tail：只看最后几行；</div><div class="line">od：以二进制的方式读取文件。</div><div class="line">vi和vim作为编辑器，也可以打开文件查看内容。</div></pre></td></tr></table></figure></p>
+<h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls -a 查看该目录下所有文件,包括隐藏文件</div><div class="line">ls 查看该目录下文件</div></pre></td></tr></table></figure>
+<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">cat :由第一行开始显示文件内容；</div><div class="line">tac：从最后一行开始显示，可以看出tac与cat字母顺序相反；</div><div class="line">nl:显示的时候输出行号；</div><div class="line">more：一页一页的显示文件内容；</div><div class="line">less与more类似，但它可以向前翻页；</div><div class="line">head：只看前几行；</div><div class="line">tail：只看最后几行；</div><div class="line">od：以二进制的方式读取文件。</div><div class="line">vi和vim作为编辑器，也可以打开文件查看内容。</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">:wq 保存并退出修改</div><div class="line">:wq! 保存并退出修改,无视文件的只读属性</div></pre></td></tr></table></figure>
-<p>#移动文件</p>
-<ul>
+<h2 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h2><ul>
 <li><p>命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mv [options] 源文件或目录 目标文件或目录,如:</div><div class="line">mv node-v6.2.0.tar.gz lib 讲node-v6.2.0.tar.gz移动到lib文件夹下</div></pre></td></tr></table></figure>
 </li>
