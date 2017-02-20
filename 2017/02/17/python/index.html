@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python学习笔记 | Kylin</title>
+  <title>python学习笔记（一） | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -24,7 +24,7 @@
 1#coding=utf-8
 字符串123456789101112131415161718print r&apos;\\\t\\\ &apos;# r&apos;&apos;表示">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python学习笔记">
+<meta property="og:title" content="python学习笔记（一）">
 <meta property="og:url" content="http://kylin.himmas.cc/2017/02/17/python/index.html">
 <meta property="og:site_name" content="Kylin">
 <meta property="og:description" content="编码问题在编写Python时，当使用中文输出或注释时运行脚本，会提示错误信息：
@@ -36,9 +36,9 @@
 1#coding=utf-8
 字符串123456789101112131415161718print r&apos;\\\t\\\ &apos;# r&apos;&apos;表示">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/python-encoding-error.png">
-<meta property="og:updated_time" content="2017-02-17T09:54:47.000Z">
+<meta property="og:updated_time" content="2017-02-20T02:06:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python学习笔记">
+<meta name="twitter:title" content="python学习笔记（一）">
 <meta name="twitter:description" content="编码问题在编写Python时，当使用中文输出或注释时运行脚本，会提示错误信息：
 
 
@@ -150,7 +150,7 @@
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编码问题"><span class="toc-text">编码问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原因"><span class="toc-text">原因:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整型与浮点数"><span class="toc-text">整型与浮点数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式化"><span class="toc-text">格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list"><span class="toc-text">list</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#len-获取list的长度-classmates-1-使用-1索引可以获取最后一个元素-classmates-2-2获取倒数第二个，依次类推"><span class="toc-text">len()获取list的长度,classmates[-1]使用-1索引可以获取最后一个元素,classmates[-2]-2获取倒数第二个，依次类推</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#append-追加元素到list末尾"><span class="toc-text">append()追加元素到list末尾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop-返回list末尾的元素，并将其从list中删除"><span class="toc-text">pop() 返回list末尾的元素，并将其从list中删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert-插入元素到指定位置"><span class="toc-text">insert()插入元素到指定位置</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#编码问题"><span class="toc-text">编码问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#原因"><span class="toc-text">原因:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#整型与浮点数"><span class="toc-text">整型与浮点数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式化"><span class="toc-text">格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list"><span class="toc-text">list</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#len-获取list的长度-classmates-1-使用-1索引可以获取最后一个元素-classmates-2-2获取倒数第二个，依次类推"><span class="toc-text">len()获取list的长度,classmates[-1]使用-1索引可以获取最后一个元素,classmates[-2]-2获取倒数第二个，依次类推</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#append-追加元素到list末尾"><span class="toc-text">append()追加元素到list末尾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pop-返回list末尾的元素，并将其从list中删除"><span class="toc-text">pop() 返回list末尾的元素，并将其从list中删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insert-插入元素到指定位置"><span class="toc-text">insert()插入元素到指定位置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple"><span class="toc-text">tuple</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义只有一个元素的tuple"><span class="toc-text">定义只有一个元素的tuple</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#‘可变的’tuple"><span class="toc-text">‘可变的’tuple</span></a></li></ol></li></ol>
   </div>
 
 -->
@@ -159,7 +159,7 @@
    <div class="container article-container">
   <article id="post-python" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
-      <h1 class="post-title"><a href="/2017/02/17/python/">python学习笔记</a></h1>
+      <h1 class="post-title"><a href="/2017/02/17/python/">python学习笔记（一）</a></h1>
 
       <div class="article-meta">
       <span>
@@ -224,6 +224,16 @@
 <h3 id="append-追加元素到list末尾"><a href="#append-追加元素到list末尾" class="headerlink" title="append()追加元素到list末尾"></a><code>append()</code>追加元素到list末尾</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.append(<span class="string">'Adam'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</div><div class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</div></pre></td></tr></table></figure>
 <h3 id="pop-返回list末尾的元素，并将其从list中删除"><a href="#pop-返回list末尾的元素，并将其从list中删除" class="headerlink" title="pop() 返回list末尾的元素，并将其从list中删除"></a><code>pop()</code> 返回list末尾的元素，并将其从list中删除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.pop()</div><div class="line"><span class="string">'Adam'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</div><div class="line">[<span class="string">'Michael'</span>, <span class="string">'Jack'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div><div class="line"></div><div class="line"><span class="comment"># pop(i) 取&amp;删除制定位置</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.pop(<span class="number">1</span>)</div><div class="line"><span class="string">'Jack'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</div><div class="line">[<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>]</div></pre></td></tr></table></figure>
 <h3 id="insert-插入元素到指定位置"><a href="#insert-插入元素到指定位置" class="headerlink" title="insert()插入元素到指定位置"></a><code>insert()</code>插入元素到指定位置</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates.insert(<span class="number">1</span>, <span class="string">'Jack'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates</div><div class="line">[<span class="string">'Michael'</span>, <span class="string">'Jack'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>, <span class="string">'Adam'</span>]</div></pre></td></tr></table></figure>
+<h2 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h2><p><code>tuple</code> 与 <code>list</code> 非常相似，但是tuple初始化后不可修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates = (<span class="string">'Michael'</span>, <span class="string">'Bob'</span>, <span class="string">'Tracy'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>classmates[<span class="number">0</span>] = <span class="number">1</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">TypeError: <span class="string">'tuple'</span> object does <span class="keyword">not</span> support item assignment</div><div class="line"><span class="comment"># 强行修改会报错</span></div></pre></td></tr></table></figure>
+<h3 id="定义只有一个元素的tuple"><a href="#定义只有一个元素的tuple" class="headerlink" title="定义只有一个元素的tuple"></a>定义只有一个元素的<code>tuple</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t</div><div class="line"><span class="number">1</span></div><div class="line"><span class="comment"># 这样定义定义的不是tuple，是1这个数</span></div></pre></td></tr></table></figure>
+<p class="tip">定义只有一个元素的<code>tuple</code>时，必须加一个<code>,</code></p>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>,)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t</div><div class="line">(<span class="number">1</span>,)</div></pre></td></tr></table></figure>
+<h3 id="‘可变的’tuple"><a href="#‘可变的’tuple" class="headerlink" title="‘可变的’tuple"></a>‘可变的’tuple</h3><p class="tip"><code>tuple</code>的“不变”是指tuple的每个元素，指向永远不变。</p>
+
+<p>如以下操作是可以的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="string">'a'</span>, <span class="string">'b'</span>, [<span class="string">'A'</span>, <span class="string">'B'</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t[<span class="number">2</span>][<span class="number">0</span>] = <span class="string">'X'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t[<span class="number">2</span>][<span class="number">1</span>] = <span class="string">'Y'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t</div><div class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>, [<span class="string">'X'</span>, <span class="string">'Y'</span>])</div></pre></td></tr></table></figure>
 
       
     </div>
