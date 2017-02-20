@@ -122,6 +122,87 @@
     
 
 <div class="container article-container">
+  <article id="post-canvas-flower" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2016/05/26/canvas-flower/">canvas-flower</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.05.26</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="canvas彩色小花"><a href="#canvas彩色小花" class="headerlink" title="canvas彩色小花"></a>canvas彩色小花</h2><p><a href="http://himmas.github.io/Himmas_demo/canvas/canvas-flower/" target="_blank" rel="external">Demo</a></p>
+<p><img src="http://7xt8hz.com1.z0.glb.clouddn.com/canvas-flower3.png" alt=""></p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>我们的小花是由36片叶片围绕圆形构成</p>
+<h3 id="原理大致分为三部分"><a href="#原理大致分为三部分" class="headerlink" title="原理大致分为三部分"></a>原理大致分为三部分</h3><ul>
+<li>如何生成花瓣</li>
+<li>如何绕圆心生成花瓣</li>
+<li>如何实现色环</li>
+</ul>
+<h2 id="如何生成花瓣"><a href="#如何生成花瓣" class="headerlink" title="如何生成花瓣"></a>如何生成花瓣</h2><p>这里主要使用的是<code>canvas</code> 的 <code>arcTo()</code>这个方法</p>
+<p><code>arcTo()</code>方法用于画布上创建介于两个切线之间的弧</p>
+<p>如 <a href="http://himmas.github.io/Himmas_demo/canvas/canvas-flower/arcTo.html" target="_blank" rel="external">Demo</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> thisCanvas = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'canvas'</span>)[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> x = thisCanvas.getContext(<span class="string">'2d'</span>);</div><div class="line">x.beginPath();</div><div class="line">x.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">x.arcTo(<span class="number">200</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>, <span class="number">100</span>);</div><div class="line">x.strokeStyle = <span class="string">"rgba(0,0,0,0.5)"</span>;</div><div class="line">x.stroke();</div></pre></td></tr></table></figure>
+<p><img src="http://7xt8hz.com1.z0.glb.clouddn.com/arcTo.png" alt=""></p>
+<p>这里分别以A(100,100),C(200,100),B(200,200)为端点,100为半径(AD),D为圆形画与AC,BC相切的圆弧</p>
+<p>两条圆弧即可拼成一片花瓣</p>
+<h2 id="如何绕圆心生成花瓣"><a href="#如何绕圆心生成花瓣" class="headerlink" title="如何绕圆心生成花瓣"></a>如何绕圆心生成花瓣</h2><p>如图</p>
+<p><img src="http://7xt8hz.com1.z0.glb.clouddn.com/canvas-flower2.png" alt=""></p>
+<p>我们需要绕圆心生成n个花瓣,每个花瓣的两端分别位于半径为r和半径为R的圆上。这里的变量为两点连线相对于水平线的夹角,即∠COB</p>
+<p>我这边需要36个花瓣，所以每个花瓣的角度增量为PI/18</p>
+<p>我们设定东方水平线上为第一片花瓣</p>
+<p>假设我们要花第i片花瓣(假设以图上的EC为端点),我们需要的数值有 点O,E,H,D,C的坐标，以及圆弧半径ED</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">E.x = r*<span class="built_in">Math</span>.cos(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i)</div><div class="line">E.y = r*<span class="built_in">Math</span>.sin(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i)</div><div class="line">C.x = R*<span class="built_in">Math</span>.cos(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i)</div><div class="line">C.y = R*<span class="built_in">Math</span>.sin(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i)</div></pre></td></tr></table></figure>
+<p>接下来要求点H,D的坐标<br>以点H为例子<br>假设将点H移到G这个位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xr = <span class="number">0.707</span>(R-r) <span class="comment">//OG的长度</span></div><div class="line">G.x = xr*<span class="built_in">Math</span>.cos(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i+<span class="built_in">Math</span>.PI/<span class="number">4</span>) <span class="comment">//45度+当前角度</span></div><div class="line">G.y = xr*<span class="built_in">Math</span>.sin(<span class="built_in">Math</span>.PI/<span class="number">18</span>*i+<span class="built_in">Math</span>.PI/<span class="number">4</span>)</div><div class="line">H.x = G.x + (R-r)/<span class="number">2</span></div><div class="line">H.y = G.y + (R-r)/<span class="number">2</span></div></pre></td></tr></table></figure>
+<p>由此可推点D坐标</p>
+<p>以上就是我们所需的全部数据了,需要注意的是，当年计算所得是相对于圆心的坐标，还要装换成相对于canvas左上角的坐标</p>
+<p>最终代码如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">    x.beginPath();</div><div class="line">    <span class="keyword">var</span> pointr = &#123;</div><div class="line">        x:r*<span class="built_in">Math</span>.cos(baseIncrement*i)+centerPoint.x,</div><div class="line">        y:r*<span class="built_in">Math</span>.sin(baseIncrement*i)+centerPoint.y</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> pointR = &#123;</div><div class="line">        x:R*<span class="built_in">Math</span>.cos(baseIncrement*i)+centerPoint.x,</div><div class="line">        y:R*<span class="built_in">Math</span>.sin(baseIncrement*i)+centerPoint.y</div><div class="line">    &#125;</div><div class="line">    x.moveTo(pointr.x, pointr.y);</div><div class="line">    <span class="keyword">var</span> y1 = xr*<span class="built_in">Math</span>.sin(baseIncrement*i-<span class="built_in">Math</span>.PI/<span class="number">4</span>)+r*<span class="built_in">Math</span>.sin(baseIncrement*i)+centerPoint.y;</div><div class="line">    <span class="keyword">var</span> x1 = xr*<span class="built_in">Math</span>.cos(baseIncrement*i-<span class="built_in">Math</span>.PI/<span class="number">4</span>)+r*<span class="built_in">Math</span>.cos(baseIncrement*i)+centerPoint.x;</div><div class="line">    <span class="keyword">var</span> y2 =  xr*<span class="built_in">Math</span>.sin(baseIncrement*i+<span class="built_in">Math</span>.PI/<span class="number">4</span>)+r*<span class="built_in">Math</span>.sin(baseIncrement*i)+centerPoint.y;</div><div class="line">    <span class="keyword">var</span> x2 = xr*<span class="built_in">Math</span>.cos(baseIncrement*i+<span class="built_in">Math</span>.PI/<span class="number">4</span>)+r*<span class="built_in">Math</span>.cos(baseIncrement*i)+centerPoint.x;</div><div class="line">    x.arcTo(x1, y1, pointR.x, pointR.y, xr);</div><div class="line">    x.arcTo(x2, y2,pointr.x,pointr.y, xr);</div><div class="line">    x.closePath();</div><div class="line">    rr-=u/<span class="number">-36</span>;</div><div class="line">    <span class="keyword">var</span> red = <span class="built_in">Math</span>.cos(rr)*<span class="number">127</span>+<span class="number">128</span>;</div><div class="line">    <span class="keyword">var</span> green = <span class="built_in">Math</span>.cos(rr+u/<span class="number">3</span>)*<span class="number">127</span>+<span class="number">128</span>;</div><div class="line">    <span class="keyword">var</span> blue = <span class="built_in">Math</span>.cos(rr+u/<span class="number">3</span>*<span class="number">2</span>)*<span class="number">127</span>+<span class="number">128</span>;</div><div class="line">    x.fillStyle = <span class="string">"#dadada"</span><span class="comment">//色彩计算</span></div><div class="line">    x.fill();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>再用一个循环来生成36个花瓣</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">36</span>;i++)&#123;</div><div class="line">    draw(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="如何实现色环"><a href="#如何实现色环" class="headerlink" title="如何实现色环"></a>如何实现色环</h2><p>色环的生成原理可以参考<a href="https://github.com/Himmas/Himmas_demo/tree/gh-pages/canvas/colours-bar" target="_blank" rel="external">这里</a></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>然后就能生成小花拉~</p>
+<p>这里还实现了一个滚动版本<a href="http://himmas.github.io/Himmas_demo/canvas/canvas-flower/index_test.html" target="_blank" rel="external">Demo</a><br>一个变异版本<a href="http://himmas.github.io/Himmas_demo/canvas/canvas-flower/index_y.html" target="_blank" rel="external">Demo</a><br>完毕(～￣▽￣)～</p>
+
+      
+    </div>
+  </article>
+  
+</div>
+
+
+<div class="br"></div>
+
+<div class="container article-container">
   <article id="post-array-concat" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
       <h1 class="post-title"><a href="/2016/05/08/array-concat/">数组合并并去重</a></h1>

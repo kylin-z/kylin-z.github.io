@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>python学习笔记（二） | Kylin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="python," />
+  
+
+  <meta name="description" content="range()函数range(n)函数可以生成一个0~n-1整数序列
+12&amp;gt;&amp;gt;&amp;gt; range(5)[0, 1, 2, 3, 4]
+类型转换string 转 int——int()1birth = int(raw_input(&apos;birth: &apos;))
+dictdict与js中的Object相似，不同的是不能像js一样用.运算符读取
+123&amp;gt;&amp;gt;&amp;gt; d = &amp;#123;&apos;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习笔记（二）">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/02/20/python2/index.html">
+<meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="range()函数range(n)函数可以生成一个0~n-1整数序列
+12&amp;gt;&amp;gt;&amp;gt; range(5)[0, 1, 2, 3, 4]
+类型转换string 转 int——int()1birth = int(raw_input(&apos;birth: &apos;))
+dictdict与js中的Object相似，不同的是不能像js一样用.运算符读取
+123&amp;gt;&amp;gt;&amp;gt; d = &amp;#123;&apos;">
+<meta property="og:updated_time" content="2017-02-20T08:29:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python学习笔记（二）">
+<meta name="twitter:description" content="range()函数range(n)函数可以生成一个0~n-1整数序列
+12&amp;gt;&amp;gt;&amp;gt; range(5)[0, 1, 2, 3, 4]
+类型转换string 转 int——int()1birth = int(raw_input(&apos;birth: &apos;))
+dictdict与js中的Object相似，不同的是不能像js一样用.运算符读取
+123&amp;gt;&amp;gt;&amp;gt; d = &amp;#123;&apos;">
+
+  
+
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  <!---->
+
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/kylin-z">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
+</div>
+
+<!--这个是章节目录-->
+<!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#range-函数"><span class="toc-text">range()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型转换"><span class="toc-text">类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#string-转-int——int"><span class="toc-text">string 转 int——int()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dict"><span class="toc-text">dict</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#判断key是否存在"><span class="toc-text">判断key是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除并返回指定元素"><span class="toc-text">删除并返回指定元素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set"><span class="toc-text">set</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#add-key-添加元素"><span class="toc-text">add(key)添加元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remove-key-删除元素"><span class="toc-text">remove(key)删除元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交集与并集"><span class="toc-text">交集与并集</span></a></li></ol></li></ol>
+  </div>
+
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-python2" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/02/20/python2/">python学习笔记（二）</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.02.20</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/python/">python</a> / <a class="article-category-link" href="/categories/python/笔记/">笔记</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/2017/02/20/python2/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="range-函数"><a href="#range-函数" class="headerlink" title="range()函数"></a>range()函数</h2><p><code>range(n)</code>函数可以生成一个0~n-1整数序列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>range(<span class="number">5</span>)</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div></pre></td></tr></table></figure>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><h3 id="string-转-int——int"><a href="#string-转-int——int" class="headerlink" title="string 转 int——int()"></a>string 转 int——<code>int()</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">birth = int(raw_input(<span class="string">'birth: '</span>))</div></pre></td></tr></table></figure>
+<h2 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h2><p><code>dict</code>与js中的<code>Object</code>相似，不同的是不能像js一样用<code>.</code>运算符读取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d = &#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Bob'</span>: <span class="number">75</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">'Michael'</span>]</div><div class="line"><span class="number">95</span></div></pre></td></tr></table></figure>
+<h3 id="判断key是否存在"><a href="#判断key是否存在" class="headerlink" title="判断key是否存在"></a>判断key是否存在</h3><ul>
+<li><p><code>in</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Thomas'</span> <span class="keyword">in</span> d</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><code>get()</code></p>
+</li>
+</ul>
+<p>第二个参数可以指定不存在时返回的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>)</div><div class="line"><span class="number">-1</span></div></pre></td></tr></table></figure>
+<h3 id="删除并返回指定元素"><a href="#删除并返回指定元素" class="headerlink" title="删除并返回指定元素"></a>删除并返回指定元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.pop(<span class="string">'Bob'</span>)</div><div class="line"><span class="number">75</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d</div><div class="line">&#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><blockquote>
+<p>set和dict类似，也是一组key的集合，但不存储value。由于key不能重复，所以，在set中，没有重复的key。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="add-key-添加元素"><a href="#add-key-添加元素" class="headerlink" title="add(key)添加元素"></a><code>add(key)</code>添加元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">4</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.add(<span class="number">4</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div></pre></td></tr></table></figure>
+<h3 id="remove-key-删除元素"><a href="#remove-key-删除元素" class="headerlink" title="remove(key)删除元素"></a><code>remove(key)</code>删除元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.remove(<span class="number">4</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div></pre></td></tr></table></figure>
+<h3 id="交集与并集"><a href="#交集与并集" class="headerlink" title="交集与并集"></a>交集与并集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = set([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s1 &amp; s2</div><div class="line">set([<span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s1 | s2</div><div class="line">set([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div></pre></td></tr></table></figure>
+
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
+    
+    <a class="prev-btn"></a>
+    
+    
+    <a href="/2017/02/17/python/" class="next-btn">python学习笔记（一）<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <!--<div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/"
+              target="_self"
+              >
+              首页
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/album/"
+              target="_self"
+              >
+              相册
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+-->
+
+
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://kylin.himmas.cc/2017/02/20/python2/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
+  <!---->
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
