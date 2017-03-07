@@ -171,22 +171,16 @@
 <h2 id="Scrapy命令使用时报错"><a href="#Scrapy命令使用时报错" class="headerlink" title="Scrapy命令使用时报错"></a>Scrapy命令使用时报错</h2><h3 id="error-1"><a href="#error-1" class="headerlink" title="error"></a>error</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ImportError: cannot import name xmlrpc_client</div></pre></td></tr></table></figure>
 <p class="tip">这应该是一个<code>mac</code>坑</p>
 
-<h3 id="网上的几个解决方式"><a href="#网上的几个解决方式" class="headerlink" title="网上的几个解决方式"></a>网上的几个解决方式</h3><ul>
-<li>重装<code>six</code></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /Library/Python/2.7/site-packages/six*</div></pre></td></tr></table></figure>
+<h3 id="方法一：重装six"><a href="#方法一：重装six" class="headerlink" title="方法一：重装six"></a>方法一：重装<code>six</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /Library/Python/2.7/site-packages/six*</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install six</div></pre></td></tr></table></figure>
 <p class="tip">在<code>EI Capitan</code>系统上，这个方法会失败，执行第二行时报错如下:</p>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Operation not permitted” error</div><div class="line"><span class="comment"># six1.4是预装的，无法删除</span></div></pre></td></tr></table></figure>
-<ul>
-<li><code>.bash_profile</code>中添加</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> PYTHONPATH=<span class="variable">$PYTHONPATH</span>:/Library/Python/2.7/site-packages</div></pre></td></tr></table></figure>
+<h3 id="方法二：-bash-profile中添加"><a href="#方法二：-bash-profile中添加" class="headerlink" title="方法二：.bash_profile中添加"></a>方法二：<code>.bash_profile</code>中添加</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> PYTHONPATH=<span class="variable">$PYTHONPATH</span>:/Library/Python/2.7/site-packages</div></pre></td></tr></table></figure>
 <p class="tip">亲测不好使</p>
 
-<h3 id="用virtualenv创建隔离的python环境-mac可以使用virtualenvwrapper"><a href="#用virtualenv创建隔离的python环境-mac可以使用virtualenvwrapper" class="headerlink" title="用virtualenv创建隔离的python环境(mac可以使用virtualenvwrapper)"></a>用virtualenv创建隔离的python环境(mac可以使用virtualenvwrapper)</h3><p>最后使用这个姿势解决了</p>
+<h3 id="方法三：用virtualenv创建隔离的python环境-mac可以使用virtualenvwrapper"><a href="#方法三：用virtualenv创建隔离的python环境-mac可以使用virtualenvwrapper" class="headerlink" title="方法三：用virtualenv创建隔离的python环境(mac可以使用virtualenvwrapper)"></a>方法三：用virtualenv创建隔离的python环境(mac可以使用virtualenvwrapper)</h3><p>最后使用这个姿势解决了</p>
 <ul>
 <li>使用方式</li>
 </ul>
