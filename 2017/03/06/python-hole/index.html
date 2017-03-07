@@ -25,7 +25,7 @@ error123DEPRECATION: Uninstalling a distutils installed project (six) has been d
 <meta property="og:description" content="Scrapy的依赖库Six与系统搞得依赖库Six发生了冲突这应该是一个mac坑
 
 error123DEPRECATION: Uninstalling a distutils installed project (six) has been deprecated and will be removed in a future version. This is due to the fact that">
-<meta property="og:updated_time" content="2017-03-07T06:43:26.000Z">
+<meta property="og:updated_time" content="2017-03-07T06:46:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python折腾过程中遇到的坑全纪录">
 <meta name="twitter:description" content="Scrapy的依赖库Six与系统搞得依赖库Six发生了冲突这应该是一个mac坑
@@ -191,6 +191,7 @@ error123DEPRECATION: Uninstalling a distutils installed project (six) has been d
 
 <h3 id="方法一：重装six"><a href="#方法一：重装six" class="headerlink" title="方法一：重装six"></a>方法一：重装<code>six</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /Library/Python/2.7/site-packages/six*</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install six</div></pre></td></tr></table></figure>
 <p class="tip">在<code>EI Capitan</code>系统上，这个方法会失败，执行第二行时报错如下:</p>
 
