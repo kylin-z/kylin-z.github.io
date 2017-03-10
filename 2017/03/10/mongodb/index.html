@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>mongodb | Kylin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="mongodb," />
+  
+
+  <meta name="description" content="在指定数据库下新建用户输入mongo命令12345root@iZm5e3ljqlvdsruj2dkr7pZ:~# mongoMongoDB shell version v3.4.2connecting to: mongodb://127.0.0.1:27017MongoDB server version: 3.4.2&amp;gt;
+现在admin数据库完成校验1234&amp;gt; use adminswit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/03/10/mongodb/index.html">
+<meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="在指定数据库下新建用户输入mongo命令12345root@iZm5e3ljqlvdsruj2dkr7pZ:~# mongoMongoDB shell version v3.4.2connecting to: mongodb://127.0.0.1:27017MongoDB server version: 3.4.2&amp;gt;
+现在admin数据库完成校验1234&amp;gt; use adminswit">
+<meta property="og:updated_time" content="2017-03-10T12:44:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb">
+<meta name="twitter:description" content="在指定数据库下新建用户输入mongo命令12345root@iZm5e3ljqlvdsruj2dkr7pZ:~# mongoMongoDB shell version v3.4.2connecting to: mongodb://127.0.0.1:27017MongoDB server version: 3.4.2&amp;gt;
+现在admin数据库完成校验1234&amp;gt; use adminswit">
+
+  
+
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  <!---->
+
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/kylin-z">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
+</div>
+
+<!--这个是章节目录-->
+<!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在指定数据库下新建用户"><span class="toc-text">在指定数据库下新建用户</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入mongo命令"><span class="toc-text">输入mongo命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#现在admin数据库完成校验"><span class="toc-text">现在admin数据库完成校验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换到想要新建用户的数据库"><span class="toc-text">切换到想要新建用户的数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用db-createUser-新建用户-参考文档"><span class="toc-text">使用db.createUser()新建用户,参考文档</span></a></li></ol></li></ol>
+  </div>
+
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-mongodb" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/03/10/mongodb/">mongodb</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.10</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/2017/03/10/mongodb/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="在指定数据库下新建用户"><a href="#在指定数据库下新建用户" class="headerlink" title="在指定数据库下新建用户"></a>在指定数据库下新建用户</h2><h3 id="输入mongo命令"><a href="#输入mongo命令" class="headerlink" title="输入mongo命令"></a>输入mongo命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@iZm5e3ljqlvdsruj2dkr7pZ:~<span class="comment"># mongo</span></div><div class="line">MongoDB shell version v3.4.2</div><div class="line">connecting to: mongodb://127.0.0.1:27017</div><div class="line">MongoDB server version: 3.4.2</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<h3 id="现在admin数据库完成校验"><a href="#现在admin数据库完成校验" class="headerlink" title="现在admin数据库完成校验"></a>现在admin数据库完成校验</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; use admin</div><div class="line">switched to db admin</div><div class="line">&gt; db.auth(<span class="string">'xx'</span>,<span class="string">'xxx'</span>)</div><div class="line">1</div></pre></td></tr></table></figure>
+<h3 id="切换到想要新建用户的数据库"><a href="#切换到想要新建用户的数据库" class="headerlink" title="切换到想要新建用户的数据库"></a>切换到想要新建用户的数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; use <span class="built_in">test</span></div><div class="line">switched to db <span class="built_in">test</span></div></pre></td></tr></table></figure>
+<h3 id="使用db-createUser-新建用户-参考文档"><a href="#使用db-createUser-新建用户-参考文档" class="headerlink" title="使用db.createUser()新建用户,参考文档"></a>使用<code>db.createUser()</code>新建用户,参考<a href="https://docs.mongodb.com/manual/reference/method/db.createUser/" target="_blank" rel="external">文档</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&gt; db.createUser(&#123;</div><div class="line">... ... user:<span class="string">"root"</span>,</div><div class="line">... ... <span class="built_in">pwd</span>:<span class="string">"root"</span>,</div><div class="line">... ... roles:[&#123;</div><div class="line">... ... role:<span class="string">'readWrite'</span>,db:<span class="string">'test'</span></div><div class="line">... ... &#125;]</div><div class="line">... ... &#125;)</div><div class="line">Successfully added user: &#123;</div><div class="line">	<span class="string">"user"</span> : <span class="string">"root"</span>,</div><div class="line">	<span class="string">"roles"</span> : [</div><div class="line">		&#123;</div><div class="line">			<span class="string">"role"</span> : <span class="string">"readWrite"</span>,</div><div class="line">			<span class="string">"db"</span> : <span class="string">"test"</span></div><div class="line">		&#125;</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
+    
+    <a class="prev-btn"></a>
+    
+    
+    <a href="/2017/03/09/cartesian/" class="next-btn">cartesian<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <!--<div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/"
+              target="_self"
+              >
+              首页
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/album/"
+              target="_self"
+              >
+              相册
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+-->
+
+
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://kylin.himmas.cc/2017/03/10/mongodb/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
+  <!---->
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
