@@ -4,7 +4,7 @@ date: 2016-11-01 15:46:04
 tags: [linux,node]
 categories: linux玩耍笔记
 ---
-###链接 ECS 实例
+## 链接 ECS 实例
 
 ``` bash
 $ ssh username@remotehost //如 ssh root@115.20.39.163
@@ -31,7 +31,7 @@ Welcome to aliyun Elastic Compute Service!
 
 <!--more-->
 
-###下载node安装包
+## 下载node安装包
 
 ```bash
 root@himmas:~# wget https://nodejs.org/dist/v6.2.0/node-v6.2.0.tar.gz
@@ -43,7 +43,7 @@ root@himmas:~# wget https://nodejs.org/dist/v6.2.0/node-v6.2.0.tar.gz
 scp /some/directory/node-v6.2.0.tar.gz root@115.20.39.163:/some/remote/directory
 ```
 
-###解压并安装
+## 解压并安装
 
 使用解压命令(需要定位到文件所在目录)
 
@@ -65,7 +65,7 @@ root@himmas:~/node-v6.2.0# make install
 
 ![](http://7xrqm7.com1.z0.glb.clouddn.com/linux-node.png)
 
-###测试
+## 测试
 
 输入`node -v`显示版本号则安装成功
 
@@ -73,8 +73,6 @@ root@himmas:~/node-v6.2.0# make install
 root@himmas:~/node-v6.2.0# node -v
 v6.2.0
 ```
-###小技巧
+## 小技巧
 
 在terminal中使用两次tab可补全命令
-
-

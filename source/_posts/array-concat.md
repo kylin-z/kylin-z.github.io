@@ -4,7 +4,7 @@ date: 2016-05-08 21:21:44
 tags: [前端,js,原生,codewar]
 categories: 前端
 ---
-#数组合并并去重
+## 数组合并并去重
 
 [Demo](http://himmas.github.io/Himmas_demo/array-concat/)
 
@@ -33,7 +33,7 @@ function uniteUnique() {
   //your code here
   var obj = {};
   var res = [];
-  for(var i in arguments){ 
+  for(var i in arguments){
       arguments[i].forEach(function(e){
           if(!obj[e]){
              res.push(e);
@@ -41,7 +41,7 @@ function uniteUnique() {
           }
       });
   }
-  
+
   return res;
 }
 ```
@@ -75,18 +75,18 @@ arr.filter(callback[, thisArg])
   返回true表示保留该元素（通过测试），false则不保留。
 - thisArg
   可选。执行 callback 时的用于 this 的值。
-  
-  
+
+
   filter 为数组中的每个元素调用一次 callback 函数，并利用所有使得 callback 返回 true 或 等价于 true 的值 的元素创建一个新数组。callback 只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用。那些没有通过 callback 测试的元素会被跳过，不会被包含在新数组中。
-  
+
   callback 被调用时传入三个参数：
-  
+
 - 元素的值
 - 元素的索引
 - 被遍历的数组
-  
+
   如果为 filter 提供一个 thisArg 参数，则它会被作为 callback 被调用时的 this 值。否则，callback 的 this 值在非严格模式下将是全局对象，严格模式下为 undefined。
- 
+
 ```javascript
  (arg, i) => args.indexOf(arg) == i//箭头函数
 ```

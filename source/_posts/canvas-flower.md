@@ -4,22 +4,22 @@ date: 2016-05-26 17:08:47
 tags: [canvas]
 categories: 前端
 ---
-#canvas彩色小花
+## canvas彩色小花
 [Demo](http://himmas.github.io/Himmas_demo/canvas/canvas-flower/)
 
 ![](http://7xt8hz.com1.z0.glb.clouddn.com/canvas-flower3.png)
 
-#实现原理
+## 实现原理
 
 我们的小花是由36片叶片围绕圆形构成
 
-###原理大致分为两部分
+### 原理大致分为三部分
 
 - 如何生成花瓣
 - 如何绕圆心生成花瓣
 - 如何实现色环
 
-#如何生成花瓣
+## 如何生成花瓣
 
 这里主要使用的是`canvas` 的 `arcTo()`这个方法
 
@@ -45,7 +45,7 @@ categories: 前端
 
 两条圆弧即可拼成一片花瓣
 
-#如何绕圆心生成花瓣
+## 如何绕圆心生成花瓣
 
 如图
 
@@ -119,11 +119,11 @@ H.y = G.y + (R-r)/2
     }
 ```
 
-#如何实现色环
+## 如何实现色环
 
 色环的生成原理可以参考[这里](https://github.com/Himmas/Himmas_demo/tree/gh-pages/canvas/colours-bar)
 
-#最后
+## 最后
 
 然后就能生成小花拉~
 

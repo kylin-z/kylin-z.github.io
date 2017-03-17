@@ -4,7 +4,7 @@ date: 2016-05-02 08:59:02
 tags: [前端,canvas]
 categories: 前端
 ---
-# 前言
+## 前言
 前阵子看到尤小右同学的主页上有这样一个彩带[点这里](http://evanyou.me/)
 
 观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ [原理点这里](http://krazydad.com/tutorials/makecolors.php)
@@ -12,12 +12,12 @@ categories: 前端
 于是实现了一个简单版本[Demo](http://himmas.github.io/Himmas_demo/colours-bar/)
 
 简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕
-# 原理
-#### 主要分成以下几块
+## 原理
+### 主要分成以下几块
 - 如何生成彩虹色
 - 如何绘制连续的三角形
 
-# 如何生成彩虹色
+## 如何生成彩虹色
 彩虹色[Demo](http://himmas.github.io/Himmas_demo/colours-bar/colour-bar.html)
 首先，如何生成一条灰带？
 
@@ -39,12 +39,12 @@ frequency约等于6.2时,正好一个周期(正弦波的周期为2PI 约等于6.
 | ------- |--------|
 | 0       |0       |
 | 90      | π/2    |
-| 180     | π      | 
+| 180     | π      |
 | 270     | 3π/2   |
 | 360     | 2π     |
 
 <!--more-->
-  
+
 由于正弦波的区间(-1,1),而灰带需要的数值区间在[0,255] 我们需要一些方法来将正弦波进行转换
 
 value = Math.sin(frequency*increment)*amplitude + center;
@@ -98,7 +98,7 @@ value = Math.sin(frequency*increment)*amplitude + center;
             red   = Math.sin(frequency*i + 0) * amplitude + center;
             green = Math.sin(frequency*i +j) * amplitude + center;
             blue  = Math.sin(frequency*i +j*2) * amplitude + center;
-    
+
             document.write( '<font color="' + RGB2Color(red,green,blue) + '">&#9608;</font>');
         }
         document.write( '<br/>');
@@ -113,7 +113,7 @@ center = 200;
 
 ![](http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501222256.png)
 
-# 如何绘制连续的三角形
+## 如何绘制连续的三角形
 [demo](http://himmas.github.io/Himmas_demo/colours-bar/canvas-triangle.html)
 ```javascript
     //画连续的三角形并填色
@@ -135,8 +135,4 @@ center = 200;
     ctx.fill();
 ```
 
-### 完毕(～￣▽￣)～
-
-
-
-
+## 完毕(～￣▽￣)～

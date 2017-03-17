@@ -359,7 +359,7 @@ chrome51浏览器会自动打开,界面如下
 
 ![](http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-add.png)
 
-- 点击右上角的`Sync account`,讲github上的仓库同步过来，然后选择需要构建的仓库，讲前面的按钮选成开启状态
+- 点击右上角的`Sync account`,讲github上的仓库同步过来，然后选择需要构建的仓库，将前面的按钮选成开启状态
 
 ![](http://7xrqm7.com1.z0.glb.clouddn.com/travisCI-on.png)
 
@@ -424,7 +424,7 @@ env:
 
 ## 踩到的坑
 
-<p class="tip">直接在travis中使用之前的karma配置会报一下的错误</p>
+<p class="tip">直接在travis中使用之前的karma配置会报以下的错误</p>
 
 ![](http://7xrqm7.com1.z0.glb.clouddn.com/travis-karma-error.png)
 
