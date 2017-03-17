@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>mongodb(mongoose)使用小结 | Kylin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="mongodb,笔记," />
+  
+
+  <meta name="description" content="文档结构1234567891011121314151617181920212223&amp;#123;	&quot;origin&quot;:&amp;#123;		&quot;home_name&quot;:&quot;伯乐在线&quot;,		&quot;home&quot;:&quot;http://web.jobbole.com/&quot;,		&quot;link&quot;:&quot;http://web.jobbole.com/90719/&quot;,		&quot;id&quot;:&quot;90719&quot;	&amp;#125;,	&quot;uid&quot;:8140,	&quot;titl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb(mongoose)使用小结">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/03/17/mongodb2/index.html">
+<meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="文档结构1234567891011121314151617181920212223&amp;#123;	&quot;origin&quot;:&amp;#123;		&quot;home_name&quot;:&quot;伯乐在线&quot;,		&quot;home&quot;:&quot;http://web.jobbole.com/&quot;,		&quot;link&quot;:&quot;http://web.jobbole.com/90719/&quot;,		&quot;id&quot;:&quot;90719&quot;	&amp;#125;,	&quot;uid&quot;:8140,	&quot;titl">
+<meta property="og:updated_time" content="2017-03-17T12:27:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb(mongoose)使用小结">
+<meta name="twitter:description" content="文档结构1234567891011121314151617181920212223&amp;#123;	&quot;origin&quot;:&amp;#123;		&quot;home_name&quot;:&quot;伯乐在线&quot;,		&quot;home&quot;:&quot;http://web.jobbole.com/&quot;,		&quot;link&quot;:&quot;http://web.jobbole.com/90719/&quot;,		&quot;id&quot;:&quot;90719&quot;	&amp;#125;,	&quot;uid&quot;:8140,	&quot;titl">
+
+  
+
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  <!---->
+
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/kylin-z">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
+</div>
+
+<!--这个是章节目录-->
+<!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文档结构"><span class="toc-text">文档结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根据某字段查询"><span class="toc-text">根据某字段查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#根据uid字段查询"><span class="toc-text">根据uid字段查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据orgin对象中的home字段查询，使用-操作符"><span class="toc-text">根据orgin对象中的home字段查询，使用.操作符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指定输出文档显示的字段"><span class="toc-text">指定输出文档显示的字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页"><span class="toc-text">分页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#当前第page页，每页limit条"><span class="toc-text">当前第page页，每页limit条</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aggregate聚合"><span class="toc-text">aggregate聚合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用aggregate实现上述功能"><span class="toc-text">用aggregate实现上述功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#疑问"><span class="toc-text">疑问</span></a></li></ol></li></ol>
+  </div>
+
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-mongodb2" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/03/17/mongodb2/">mongodb(mongoose)使用小结</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.17</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/2017/03/17/mongodb2/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="文档结构"><a href="#文档结构" class="headerlink" title="文档结构"></a>文档结构</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"origin"</span>:&#123;</div><div class="line">		<span class="string">"home_name"</span>:<span class="string">"伯乐在线"</span>,</div><div class="line">		<span class="string">"home"</span>:<span class="string">"http://web.jobbole.com/"</span>,</div><div class="line">		<span class="string">"link"</span>:<span class="string">"http://web.jobbole.com/90719/"</span>,</div><div class="line">		<span class="string">"id"</span>:<span class="string">"90719"</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"uid"</span>:<span class="number">8140</span>,</div><div class="line">	<span class="string">"title"</span>:<span class="string">"我理解中的“大前端”/“大无线”"</span>,</div><div class="line">	<span class="string">"article_info"</span>:&#123;</div><div class="line">		<span class="string">"content"</span>:<span class="string">'&lt;div class="entry"&gt;↵↵        ↵		&lt;div&gt;↵...'</span></div><div class="line">		<span class="string">"categorys"</span>:[<span class="string">"基础技术"</span>],</div><div class="line">		<span class="string">"copyright"</span>:&#123;</div><div class="line">			<span class="string">"link"</span>:<span class="string">"http://f2e.souche.com/blog/da-qian-duan-wo-de-li-jie/"</span>,</div><div class="line">			<span class="string">"name"</span>:<span class="string">"大搜车无线团队"</span></div><div class="line">		&#125;,</div><div class="line">		<span class="string">"tags"</span>:[<span class="string">"前端"</span>],</div><div class="line">		<span class="string">"post_date"</span>:<span class="number">1489161600</span>,</div><div class="line">		<span class="string">"is_filtered"</span>:<span class="literal">false</span>,</div><div class="line">		<span class="string">"is_unique"</span>:<span class="literal">false</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"insert_time"</span>:<span class="number">1489750591.488951</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="根据某字段查询"><a href="#根据某字段查询" class="headerlink" title="根据某字段查询"></a>根据某字段查询</h2><h3 id="根据uid字段查询"><a href="#根据uid字段查询" class="headerlink" title="根据uid字段查询"></a>根据uid字段查询</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;)</div></pre></td></tr></table></figure>
+<h3 id="根据orgin对象中的home字段查询，使用-操作符"><a href="#根据orgin对象中的home字段查询，使用-操作符" class="headerlink" title="根据orgin对象中的home字段查询，使用.操作符"></a>根据<code>orgin</code>对象中的<code>home</code>字段查询，使用<code>.</code>操作符</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'origin.home'</span>:<span class="string">'http://web.jobbole.com/'</span>&#125;)</div></pre></td></tr></table></figure>
+<h2 id="指定输出文档显示的字段"><a href="#指定输出文档显示的字段" class="headerlink" title="指定输出文档显示的字段"></a>指定输出文档显示的字段</h2><p class="tip">前端渲染列表时，查询如示例文档这样的带有大段html文本的数据会比较慢，这时可以将UI渲染用不到的字段过滤</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;,&#123;_id: <span class="number">0</span>, <span class="string">'article_info.content'</span>: <span class="number">0</span>&#125;)</div><div class="line"><span class="comment">// 不输出_id与article_info下的content字段 0表示删除 1表示保留</span></div></pre></td></tr></table></figure>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;,&#123;_id: <span class="number">0</span>, <span class="string">'article_info.content'</span>: <span class="number">0</span>&#125;).sort(<span class="string">'insert_time'</span>,<span class="number">-1</span>)</div><div class="line"><span class="comment">// sort(key,1) key 表示排序的字段 第二个参数 1表示升序 -1表示降序</span></div></pre></td></tr></table></figure>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><h3 id="当前第page页，每页limit条"><a href="#当前第page页，每页limit条" class="headerlink" title="当前第page页，每页limit条"></a>当前第page页，每页limit条</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;,&#123;_id: <span class="number">0</span>, <span class="string">'article_info.content'</span>: <span class="number">0</span>&#125;).sort(<span class="string">'insert_time'</span>,<span class="number">-1</span>).skip((page - <span class="number">1</span>) * <span class="number">10</span>).limit(limit)</div><div class="line"><span class="comment">// skip(offset)表示当前偏移量 ，limit(limit)返回limit条数据</span></div></pre></td></tr></table></figure>
+<h2 id="aggregate聚合"><a href="#aggregate聚合" class="headerlink" title="aggregate聚合"></a><code>aggregate</code>聚合</h2><p><a href="https://docs.mongodb.com/manual/reference/method/db.collection.aggregate/#db.collection.aggregate" target="_blank" rel="external">文档</a></p>
+<p class="tip">数据量较大是，使用<code>sort()</code>排序会报如下错误，此时可以使用<code>aggregate()</code>方法</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MongoError: Executor error during find command: OperationFailed: Sort operation used more than the maximum 33554432 bytes of RAM. Add an index, or specify a smaller limit.</div></pre></td></tr></table></figure>
+<blockquote>
+<p>原因是sort()是在内存中排序，最大允许占用32MB内存 (32MB in-memory sort limit)。</p>
+</blockquote>
+<h3 id="用aggregate实现上述功能"><a href="#用aggregate实现上述功能" class="headerlink" title="用aggregate实现上述功能"></a>用<code>aggregate</code>实现上述功能</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Article.aggregate([</div><div class="line">      &#123;$sort:&#123;<span class="string">'article_info.post_date'</span>: <span class="number">-1</span>&#125;&#125;,</div><div class="line">      &#123;$project: &#123; _id: <span class="number">0</span>, <span class="string">'article_info.content'</span>: <span class="number">0</span>&#125;&#125;,</div><div class="line">      &#123;$skip:(page - <span class="number">1</span>) * <span class="number">10</span>&#125;,</div><div class="line">      &#123;$limit:limit&#125;</div><div class="line">    ]).allowDiskUse(<span class="literal">true</span>)</div></pre></td></tr></table></figure>
+<p class="tip">不加allowDiskUse：true 可能会报如下error</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// MongoError: Sort exceeded memory limit of 104857600 bytes, but did not opt in to external sorting. Aborting operation. Pass allowDiskUse:true to opt in.</span></div></pre></td></tr></table></figure>
+<h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><ul>
+<li>据我观察 方法一似乎比方法二快那么一丢丢，不知道是不是错觉</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一</span></div><div class="line"><span class="keyword">var</span> articles = <span class="keyword">await</span> Article.aggregate([</div><div class="line">      &#123;$sort:&#123;<span class="string">'article_info.post_date'</span>: <span class="number">-1</span>&#125;&#125;,</div><div class="line">      &#123;$project: &#123; _id: <span class="number">0</span>, <span class="string">'article_info.content'</span>: <span class="number">0</span>&#125;&#125;</div><div class="line">    ]).allowDiskUse(<span class="literal">true</span>).skip((page - <span class="number">1</span>) * <span class="number">10</span>).limit(limit);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法二</span></div><div class="line"><span class="keyword">var</span> articles = <span class="keyword">await</span> Article.aggregate([</div><div class="line">	   &#123;$sort:&#123;<span class="string">'article_info.post_date'</span>: <span class="number">-1</span>&#125;&#125;,</div><div class="line">	   &#123;$project: &#123; _id: <span class="number">0</span>, <span class="string">'article_info.content'</span>: <span class="number">0</span>&#125;&#125;,</div><div class="line">	   &#123;$skip:(page - <span class="number">1</span>) * <span class="number">10</span>&#125;,</div><div class="line">	   &#123;$limit:limit&#125;</div><div class="line">	 ]).allowDiskUse(<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
+    
+    <a class="prev-btn"></a>
+    
+    
+    <a href="/2017/03/10/mongodb/" class="next-btn">使用mongo shell命令行工具在指定数据库下新建用户<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <!--<div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/"
+              target="_self"
+              >
+              首页
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/album/"
+              target="_self"
+              >
+              相册
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+-->
+
+
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://kylin.himmas.cc/2017/03/17/mongodb2/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
+  <!---->
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
