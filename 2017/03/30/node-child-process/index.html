@@ -15,22 +15,22 @@
     <meta name="keywords" content="node,调度," />
   
 
-  <meta name="description" content="获取命令行参数123node  test.js arg1 arg2 arg3# node test.js 24 52
+  <meta name="description" content="获取命令行参数12node  test.js arg1 arg2 arg3# node test.js 24 52
 process是一个全局对象，argv返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组
-12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,">
+12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,&apos;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node子进程与调度任务">
 <meta property="og:url" content="http://kylin.himmas.cc/2017/03/30/node-child-process/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="获取命令行参数123node  test.js arg1 arg2 arg3# node test.js 24 52
+<meta property="og:description" content="获取命令行参数12node  test.js arg1 arg2 arg3# node test.js 24 52
 process是一个全局对象，argv返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组
-12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,">
-<meta property="og:updated_time" content="2017-03-30T03:19:56.000Z">
+12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,&apos;">
+<meta property="og:updated_time" content="2017-03-30T03:21:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node子进程与调度任务">
-<meta name="twitter:description" content="获取命令行参数123node  test.js arg1 arg2 arg3# node test.js 24 52
+<meta name="twitter:description" content="获取命令行参数12node  test.js arg1 arg2 arg3# node test.js 24 52
 process是一个全局对象，argv返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组
-12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,">
+12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,&apos;">
 
   
 
@@ -177,7 +177,7 @@ process是一个全局对象，argv返回的是一组包含命令行参数的数
 
     <div class="article-content">
       
-      <h2 id="获取命令行参数"><a href="#获取命令行参数" class="headerlink" title="获取命令行参数"></a>获取命令行参数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">node  test.js arg1 arg2 arg3</div><div class="line"><span class="comment"># node test.js 24 52</span></div></pre></td></tr></table></figure>
+      <h2 id="获取命令行参数"><a href="#获取命令行参数" class="headerlink" title="获取命令行参数"></a>获取命令行参数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node  test.js arg1 arg2 arg3</div><div class="line"><span class="comment"># node test.js 24 52</span></div></pre></td></tr></table></figure>
 <p><code>process</code>是一个全局对象，<code>argv</code>返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(process.argv)</div><div class="line"><span class="comment">// ['/usr/local/bin/node','/Users/kylinzhou/Documents/Himmas/himmas_super_admin/spiders/test.js','24','52' ]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> params = process.argv.splice(<span class="number">2</span>);</div><div class="line"><span class="comment">// ['24','52']</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> arg1 = params[<span class="number">0</span>];</div><div class="line"><span class="keyword">const</span> arg2 = params[<span class="number">1</span>];</div></pre></td></tr></table></figure>
 
