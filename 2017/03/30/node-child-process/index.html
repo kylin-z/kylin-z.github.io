@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-home">
+  <html class="light page-post">
 
 
 <head>
   <meta charset="utf-8">
   
-  <title>Kylin</title>
+  <title>node子进程与调度任务 | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="kylin,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+    <meta name="keywords" content="node,调度," />
   
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Kylin">
-<meta property="og:url" content="http://kylin.himmas.cc/page/3/index.html">
+  <meta name="description" content="获取命令行参数123node  test.js arg1 arg2 arg3# node test.js 24 52
+process是一个全局对象，argv返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组
+12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node子进程与调度任务">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/03/30/node-child-process/index.html">
 <meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="获取命令行参数123node  test.js arg1 arg2 arg3# node test.js 24 52
+process是一个全局对象，argv返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组
+12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,">
+<meta property="og:updated_time" content="2017-03-30T03:19:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kylin">
+<meta name="twitter:title" content="node子进程与调度任务">
+<meta name="twitter:description" content="获取命令行参数123node  test.js arg1 arg2 arg3# node test.js 24 52
+process是一个全局对象，argv返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组
+12345678console.log(process.argv)// [&apos;/usr/local/bin/node&apos;,">
 
   
 
@@ -118,155 +128,81 @@
         </div>
     </div>
 </div>
-<div class="content content-post CENTER home-content-box">
+
+<!--这个是章节目录-->
+<!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取命令行参数"><span class="toc-text">获取命令行参数</span></a></li></ol>
+  </div>
+
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-node-child-process" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/03/30/node-child-process/">node子进程与调度任务</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.30</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/node/">node</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/2017/03/30/node-child-process/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="获取命令行参数"><a href="#获取命令行参数" class="headerlink" title="获取命令行参数"></a>获取命令行参数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">node  test.js arg1 arg2 arg3</div><div class="line"><span class="comment"># node test.js 24 52</span></div></pre></td></tr></table></figure>
+<p><code>process</code>是一个全局对象，<code>argv</code>返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(process.argv)</div><div class="line"><span class="comment">// ['/usr/local/bin/node','/Users/kylinzhou/Documents/Himmas/himmas_super_admin/spiders/test.js','24','52' ]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> params = process.argv.splice(<span class="number">2</span>);</div><div class="line"><span class="comment">// ['24','52']</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> arg1 = params[<span class="number">0</span>];</div><div class="line"><span class="keyword">const</span> arg2 = params[<span class="number">1</span>];</div></pre></td></tr></table></figure>
+
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
     
-
-<div class="container article-container">
-  <article id="post-img-load" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/03/09/img-load/">img的onload与complete</a></h1>
-
-      <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.03.09</span>
-      </span>
-
-        
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-        
-
-        
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </span>
-
-
-
-        
-        <span>
-          <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/page/3/index.html#disqus_thread"></a>
-        </span>
-        
-
-      </div>
-    </header>
-
-    <div class="article-content">
-      
-      <p>今天遇到了一个奇怪的bug<br>需要将图片裁剪至合适的大小，然后我这样一个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var x = 65;</div><div class="line">if(width&gt;height)</div><div class="line">    $(this).css(&quot;height&quot;,x);</div><div class="line">else</div><div class="line">    $(this).css(&quot;width&quot;,x);</div></pre></td></tr></table></figure></p>
-<p>由于各种原因<code>&lt;img&gt;</code>元素是通过字符串在js里面拼接出来的,上面那个方法用在append到界面上之后<br>刚做完的时候貌似没有问题,但是多刷新几次之后,神奇的事情发生了,这个方法居然时灵时不灵！</p>
-<p>后来通过研究发现,这个方法应该在图片加载完之后调用。<br>下面是改良之后的方法:</p>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2016/03/09/img-load/#more">阅读全文</a>
-      </p>
-      
-      
+    <a class="prev-btn"></a>
+    
+    
+    <a href="/2017/03/17/mongodb2/" class="next-btn">mongodb(mongoose)使用小结<i class="iconfont icon-next"></i></a>
+    
     </div>
-  </article>
   
+</div>
 </div>
 
 
-<div class="br"></div>
 
-<div class="container article-container">
-  <article id="post-js-cookie" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/03/06/js-cookie/">js原生实现cookie的读写和删除</a></h1>
-
-      <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.03.06</span>
-      </span>
-
-        
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-        
-
-        
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </span>
-
-
-
-        
-        <span>
-          <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/page/3/index.html#disqus_thread"></a>
-        </span>
-        
-
-      </div>
-    </header>
-
-    <div class="article-content">
-      
-      <p>之前做忘记密码功能一直用的jquery的cookie插件，这一次尝试用js原生来写，发现也并不复杂。<br>最简单的实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function getCookie(name)</div><div class="line">        &#123;</div><div class="line">            var arr,reg=new RegExp(&quot;(^| )&quot;+name+&quot;=([^;]*)(;|$)&quot;);</div><div class="line">            if(arr=document.cookie.match(reg))</div><div class="line">                return unescape(arr[2]);</div><div class="line">            else</div><div class="line">                return null;</div><div class="line">        &#125;</div><div class="line">        function setCookie(name,value)&#123;</div><div class="line">            document.cookie = name+&quot;=&quot;+value;</div><div class="line">        &#125;</div><div class="line">        function delCookie(name)&#123;</div><div class="line">            setCookie(name,&quot;&quot;);</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<p>然而这个实现方法并不能真正删除cookie，只是将其置空</p>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2016/03/06/js-cookie/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
-</div>
-
-
-<div class="page-box">
-    <nav class="pagination">
-  
-  <a class="extend prev" rel="prev" href="/page/2/">
-    <i class="iconfont icon-prev"></i>
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
   </a>
-  
-  <!--上一页-->
-  
-  <a href="/" class="page-number">1</a>
-  
-  <!--第一页-->
 
-  
-
-  
-  <a href="/page/2/" class="page-number">2</a>
-  
-
-  <a class="page-number current" href="/page/3/">3</a>
-
-  
-
-  
-
-  
-  <!--尾页-->
-
-  
-
-</nav>
-
-
-
-</div>
-
-
-
-</div>
 
 
 
@@ -368,6 +304,40 @@
 -->
 
 
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://kylin.himmas.cc/2017/03/30/node-child-process/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
   <!---->
 
   <script type="text/javascript">
