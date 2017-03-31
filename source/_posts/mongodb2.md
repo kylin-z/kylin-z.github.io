@@ -5,6 +5,7 @@ tags: [mongodb,笔记]
 categories: [mongodb]
 ---
 
+
 ## 文档结构
 
 ```javascript
@@ -55,6 +56,8 @@ Article.find({'origin.home':'http://web.jobbole.com/'})
 Article.find({'uid':2},{_id: 0, 'article_info.content': 0})
 // 不输出_id与article_info下的content字段 0表示删除 1表示保留
 ```
+
+<!-- more -->
 
 ## 排序
 
@@ -123,4 +126,17 @@ var articles = await Article.aggregate([
 	   {$limit:limit}
 	 ]).allowDiskUse(true);
 
+```
+
+
+## 导出到excel(csv)
+
+[参考官网](https://docs.mongodb.com/manual/reference/program/mongoexport/)
+[参考](http://www.jb51.net/article/52498.htm)
+
+```bash
+
+mongoexport -h [IP]:[port] -d [db] -c [collection] -u [user] -p [password] --type=csv -f [field1[,field2,field3,...]] > [filename.csv]
+
+mongoexport -h 115.29.29.113:27017 -d test -c test -u test -p test --type=csv -f "code","title","url","budget","date","organization" > filename.csv
 ```
