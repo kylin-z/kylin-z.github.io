@@ -7,105 +7,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>snabbdom源码阅读笔记（二） | Kylin</title>
+  <title>regExp对象踩坑记录 | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="javascript,前端,VirtualDom," />
+    <meta name="keywords" content="js,regExp," />
   
 
-  <meta name="description" content="hook
-
-
-name
-调用时间
-参数
-
-
-
-
-pre
-patch 开始的时候
-无
-
-
-init
-vnode 被添加时
-vnode
-
-
-create
-a DOM element has been created based on a vnode    emptyVnode
-vnode
-
-
-insert
-an element has been inserted into the DOM
-vnode">
+  <meta name="description" content="g 与 test()现象带g的正则对象多次调用test()结果不同
+12345var reg = new RegExp(&apos;51-(.*)&apos;,&apos;g&apos;)reg.test(&apos;51-in&apos;)// truereg.test(&apos;51-in&apos;)// false
+原因
+每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="snabbdom源码阅读笔记（二）">
-<meta property="og:url" content="http://kylin.himmas.cc/2016/12/27/snabbdom-note2/index.html">
+<meta property="og:title" content="regExp对象踩坑记录">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/04/25/regExp/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="hook
-
-
-name
-调用时间
-参数
-
-
-
-
-pre
-patch 开始的时候
-无
-
-
-init
-vnode 被添加时
-vnode
-
-
-create
-a DOM element has been created based on a vnode    emptyVnode
-vnode
-
-
-insert
-an element has been inserted into the DOM
-vnode">
-<meta property="og:updated_time" content="2016-12-29T02:31:31.000Z">
+<meta property="og:description" content="g 与 test()现象带g的正则对象多次调用test()结果不同
+12345var reg = new RegExp(&apos;51-(.*)&apos;,&apos;g&apos;)reg.test(&apos;51-in&apos;)// truereg.test(&apos;51-in&apos;)// false
+原因
+每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则">
+<meta property="og:updated_time" content="2017-04-25T07:36:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="snabbdom源码阅读笔记（二）">
-<meta name="twitter:description" content="hook
-
-
-name
-调用时间
-参数
-
-
-
-
-pre
-patch 开始的时候
-无
-
-
-init
-vnode 被添加时
-vnode
-
-
-create
-a DOM element has been created based on a vnode    emptyVnode
-vnode
-
-
-insert
-an element has been inserted into the DOM
-vnode">
+<meta name="twitter:title" content="regExp对象踩坑记录">
+<meta name="twitter:description" content="g 与 test()现象带g的正则对象多次调用test()结果不同
+12345var reg = new RegExp(&apos;51-(.*)&apos;,&apos;g&apos;)reg.test(&apos;51-in&apos;)// truereg.test(&apos;51-in&apos;)// false
+原因
+每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则">
 
   
 
@@ -208,21 +136,21 @@ vnode">
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hook"><span class="toc-text">hook</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#g-与-test"><span class="toc-text">g 与 test()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#现象"><span class="toc-text">现象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原因"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决姿势"><span class="toc-text">解决姿势</span></a></li></ol></li></ol>
   </div>
 
 -->
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-snabbdom-note2" class="article article-type-post" itemprop="blogPost">
+  <article id="post-regExp" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
-      <h1 class="post-title"><a href="/2016/12/27/snabbdom-note2/">snabbdom源码阅读笔记（二）</a></h1>
+      <h1 class="post-title"><a href="/2017/04/25/regExp/">regExp对象踩坑记录</a></h1>
 
       <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2016.12.27</span>
+        <span>2017.04.25</span>
       </span>
 
         
@@ -235,7 +163,7 @@ vnode">
         
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+    <a class="article-category-link" href="/categories/js/">js</a>
   </span>
 
 
@@ -243,7 +171,7 @@ vnode">
         
         <span>
           <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/2016/12/27/snabbdom-note2/#disqus_thread"></a>
+          <a href="kylin.himmas.cc/2017/04/25/regExp/#disqus_thread"></a>
         </span>
         
 
@@ -252,67 +180,22 @@ vnode">
 
     <div class="article-content">
       
-      <h2 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h2><table>
-<thead>
-<tr>
-<th>name</th>
-<th>调用时间</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pre</td>
-<td>patch 开始的时候</td>
-<td>无</td>
-</tr>
-<tr>
-<td>init</td>
-<td>vnode 被添加时</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>create</td>
-<td>a DOM element has been created based on a vnode    emptyVnode</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>insert</td>
-<td>an element has been inserted into the DOM</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>prepatch</td>
-<td>patch 开始之前</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>update</td>
-<td>an element is being updated</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>postpatch</td>
-<td>an element has been patched</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>destroy</td>
-<td>an element is directly or indirectly being removed</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>remove</td>
-<td>an element is directly being removed from the DOM</td>
-<td>vnode, removeCallback</td>
-</tr>
-<tr>
-<td>post</td>
-<td>patch结束之后</td>
-<td>无</td>
-</tr>
-</tbody>
-</table>
+      <h2 id="g-与-test"><a href="#g-与-test" class="headerlink" title="g 与 test()"></a><code>g</code> 与 <code>test()</code></h2><h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><p>带<code>g</code>的正则对象多次调用<code>test()</code>结果不同</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'51-(.*)'</span>,<span class="string">'g'</span>)</div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// true</span></div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><blockquote>
+<p>每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则表达式是否带有修饰符g。属性ignoreCase也是一个只读的布尔值，用以说明正则表达式是否带有修饰符i，属性multiline是一个只读布尔值，用以说明正则表达式是都带有修饰符m。最后一个属性lastIndex，它是一个可读/写的整数。如果匹配模式带有g修饰符，这个属性存储在整个字符串中下一次检索的开始位置，这个属性会被exec()和test()方法用到。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'51-(.*)'</span>,<span class="string">'g'</span>)</div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// true</span></div><div class="line">reg.lastIndex</div><div class="line"><span class="comment">// 5</span></div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// false</span></div><div class="line">reg.lastIndex</div><div class="line"><span class="comment">// 0</span></div></pre></td></tr></table></figure>
+<h3 id="解决姿势"><a href="#解决姿势" class="headerlink" title="解决姿势"></a>解决姿势</h3><blockquote>
+<p>与exec()和test()不同，String方法search()、replace()、match()并不会用到lastIndex属性。实际上，String方法只是简单地将lastIndex属性值重置为0。如果让一个带有修饰符g的正则表达式对多个字符串执行exec()或test()，要么在每个字符串中找出所有的匹配以便将lastIndex自动重置为0，要么显式将lastIndex手动设置为0（当最后一次检索失败时需要手动设置lastIndex）。如果忘了手动设置lastIndex的值，那么下一次对新字符串进行检索时，执行检索的起始位置可能就不是字符串的开始位置，而可能是任意位置。当然，如果RegExp不带修饰符g，则不必担心会发生这种情况。同样要记住，在ECMAScript5中，正则表达式直接量每次计算都会创建一个新的RegExp对象，每个新RegExp对象具有各自的lastIndex属性，这势必会大大减少“残留”lastIndex对程序造成的意外影响。</p>
+</blockquote>
+<p>根据以上说明，可是采用一下几种替换方式</p>
+<ul>
+<li><code>test()</code>方法不使用<code>g</code></li>
+<li>使用正则表达式直接量</li>
+<li>每次都重新<code>new RegExp</code></li>
+<li>手动重置<code>lastIndex</code></li>
+</ul>
 
       
     </div>
@@ -320,10 +203,10 @@ vnode">
   
   <div class="page-bar">
     
-    <a href="/2016/12/29/getterAndSetter/" class="prev-btn"><i class="iconfont icon-prev"></i>js对象属性的getter与setter</a>
+    <a class="prev-btn"></a>
     
     
-    <a href="/2016/12/21/snabbdom-note/" class="next-btn">snabbdom源码阅读笔记（一）<i class="iconfont icon-next"></i></a>
+    <a href="/2017/03/30/node-child-process/" class="next-btn">node子进程与调度任务<i class="iconfont icon-next"></i></a>
     
     </div>
   
@@ -449,7 +332,7 @@ vnode">
   <script>
     var disqus_shortname = 'kylinz';
     
-    var disqus_url = 'http://kylin.himmas.cc/2016/12/27/snabbdom-note2/';
+    var disqus_url = 'http://kylin.himmas.cc/2017/04/25/regExp/';
     
     (function(){
       var dsq = document.createElement('script');
