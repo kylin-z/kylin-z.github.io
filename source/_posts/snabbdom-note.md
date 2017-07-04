@@ -2,7 +2,7 @@
 title: snabbdom源码阅读笔记（一）
 date: 2016-12-21 13:56:16
 tags: ['VirtualDom','javascript','前端']
-categories: [笔记]
+categories: 笔记
 ---
 ## vnode结构
 

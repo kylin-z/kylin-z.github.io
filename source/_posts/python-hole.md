@@ -2,7 +2,7 @@
 title: python折腾过程中遇到的坑全纪录
 date: 2017-03-06 14:04:58
 tags: [python,坑,mac]
-categories: [python,笔记]
+categories: python
 ---
 ## Scrapy的依赖库Six与系统依赖库Six发生了冲突
 

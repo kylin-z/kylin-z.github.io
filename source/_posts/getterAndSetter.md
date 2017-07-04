@@ -2,7 +2,7 @@
 title: js对象属性的getter与setter
 date: 2016-12-29 10:55:24
 tags: ['javascript','前端']
-categories: [笔记]
+categories: 笔记
 ---
 
 ## 总述

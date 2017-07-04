@@ -2,7 +2,7 @@
 title: TravisCI自动化构建与Karma测试实践记录
 date: 2017-01-23 17:24:29
 tags: ['测试','karma','travisCI','自动化构建']
-categories: ['自动化']
+categories: 自动化
 ---
 ## Karma
 

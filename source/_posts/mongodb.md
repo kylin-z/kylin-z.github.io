@@ -2,7 +2,7 @@
 title: 使用mongo shell命令行工具在指定数据库下新建用户
 date: 2017-03-10 20:37:08
 tags: [mongodb]
-categories: [mongodb]
+categories: mongodb
 ---
 ## 在指定数据库下新建用户
 

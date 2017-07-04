@@ -2,7 +2,7 @@
 title: python学习笔记（一）
 date: 2017-02-17 13:38:17
 tags: [python]
-categories: [python,笔记]
+categories: python
 ---
 ## 编码问题
 

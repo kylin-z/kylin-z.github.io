@@ -2,7 +2,7 @@
 title: snabbdom源码阅读笔记（二）
 date: 2016-12-27 14:43:01
 tags: ['VirtualDom','javascript','前端']
-categories: [笔记]
+categories: 笔记
 ---
 ## hook
 

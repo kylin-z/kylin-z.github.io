@@ -1,7 +1,7 @@
 ---
 title: 计算笛卡尔积
 date: 2017-03-09 15:02:03
-tags: [笛卡尔积,js]
+tags: [笛卡尔积,javascript]
 categories: 笔记
 ---
  ## 计算笛卡尔积

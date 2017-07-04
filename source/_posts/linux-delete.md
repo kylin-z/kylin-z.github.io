@@ -141,6 +141,13 @@ kill -9 pid #-9强制杀死
 kill -9 30458
 ```
 
+## 从linux上下载文件
+
+```bash
+scp username@www.example:服务端路径 本地路径
+# sudo scp root@www.example.com:~/nohup.out /Users/
+```
+
 ## ssh 断开连接后保持进程继续运行配置方法
 
 ### nohup
@@ -159,3 +166,9 @@ nohup mongod --auth &
 
 - 在命令中也可以使用重定向将程序的输出改为自己想要的文件名，如 `nohup mongod --auth & >hello.log &`，则程序的输出就会写到 `hello.log` 文件中。
 - 若程序不会自动退出，那么此时需要使用 `kill` 命令来结束进程。比如，可以使用命令 `kill -TRM <PID>` 来操作，其中 PID 即为之前 `nohup` 输出的值，在此例中该值为 1231。
+
+### `exit`命令退出ssh
+
+![](http://7xrqm7.com1.z0.glb.clouddn.com/ssh-logout.png)
+
+<p class="tip">不使用`exit`采用强退可能会导致`nohup`命令失效</p>

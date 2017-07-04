@@ -2,7 +2,7 @@
 title: node子进程与调度任务
 date: 2017-03-30 11:12:57
 tags: [node,调度]
-categories: [node]
+categories: node
 ---
 ## 前言
 

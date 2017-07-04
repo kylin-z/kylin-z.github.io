@@ -1,7 +1,7 @@
 ---
 title: 数组合并并去重
 date: 2016-05-08 21:21:44
-tags: [前端,js,原生,codewar]
+tags: [前端,javascript,原生,codewar]
 categories: 前端
 ---
 ## 数组合并并去重

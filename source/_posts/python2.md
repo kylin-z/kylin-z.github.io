@@ -2,7 +2,7 @@
 title: python学习笔记（二）
 date: 2017-02-20 11:15:09
 tags: [python]
-categories: [python,笔记]
+categories: python
 ---
 
 ## range()函数

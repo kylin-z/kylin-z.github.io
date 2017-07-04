@@ -2,7 +2,7 @@
 title: mongodb(mongoose)使用小结
 date: 2017-03-17 19:40:54
 tags: [mongodb,笔记]
-categories: [mongodb]
+categories: mongodb
 ---
 
 

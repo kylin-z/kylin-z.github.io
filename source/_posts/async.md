@@ -2,7 +2,7 @@
 title: 关于js异步
 date: 2017-01-04 09:58:40
 tags: [javascript,前端,回调]
-categories: [笔记]
+categories: 笔记
 ---
 
 ## 同步Ajax

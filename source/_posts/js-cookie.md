@@ -1,7 +1,7 @@
 ---
 title: js原生实现cookie的读写和删除
 date: 2016-03-06 21:21:44
-tags: [前端,js,原生,cookie]
+tags: [前端,javascript,原生,cookie]
 categories: 前端
 ---
 
@@ -51,6 +51,6 @@ function getCookie(name)
         function clearCookie(name) {
             setCookie(name, "", -1);
         }
-        
+
 ```
 没有删除已有cookie的直接方法，所以通过设置失效时间来做。将失效时间设置为过去，那么就能确保删除cookie
