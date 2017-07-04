@@ -7,33 +7,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>RegExp对象踩坑记录 | Kylin</title>
+  <title>扩展运算符小贴士 | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="js,RegExp," />
+    <meta name="keywords" content="js,es6," />
   
 
-  <meta name="description" content="g 与 test()现象带g的正则对象多次调用test()结果不同
-12345var reg = new RegExp(&apos;51-(.*)&apos;,&apos;g&apos;)reg.test(&apos;51-in&apos;)// truereg.test(&apos;51-in&apos;)// false
-原因
-每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则">
+  <meta name="description" content="前沿es2015引入了扩展运算符(spread operator)...，可以用来进行一些数组和对象操作。
+案例codewar上的一道题，判断字符串/数字/数组是否对称
+题目
+Give you an it can be 3 types: string, number and number array, Check that they are symmetrical or not, return a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RegExp对象踩坑记录">
-<meta property="og:url" content="http://kylin.himmas.cc/2017/04/25/regExp/index.html">
+<meta property="og:title" content="扩展运算符小贴士">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/07/04/spread/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="g 与 test()现象带g的正则对象多次调用test()结果不同
-12345var reg = new RegExp(&apos;51-(.*)&apos;,&apos;g&apos;)reg.test(&apos;51-in&apos;)// truereg.test(&apos;51-in&apos;)// false
-原因
-每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则">
-<meta property="og:updated_time" content="2017-04-25T07:46:08.000Z">
+<meta property="og:description" content="前沿es2015引入了扩展运算符(spread operator)...，可以用来进行一些数组和对象操作。
+案例codewar上的一道题，判断字符串/数字/数组是否对称
+题目
+Give you an it can be 3 types: string, number and number array, Check that they are symmetrical or not, return a">
+<meta property="og:updated_time" content="2017-07-04T06:56:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RegExp对象踩坑记录">
-<meta name="twitter:description" content="g 与 test()现象带g的正则对象多次调用test()结果不同
-12345var reg = new RegExp(&apos;51-(.*)&apos;,&apos;g&apos;)reg.test(&apos;51-in&apos;)// truereg.test(&apos;51-in&apos;)// false
-原因
-每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则">
+<meta name="twitter:title" content="扩展运算符小贴士">
+<meta name="twitter:description" content="前沿es2015引入了扩展运算符(spread operator)...，可以用来进行一些数组和对象操作。
+案例codewar上的一道题，判断字符串/数字/数组是否对称
+题目
+Give you an it can be 3 types: string, number and number array, Check that they are symmetrical or not, return a">
 
   
 
@@ -136,21 +136,21 @@
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#g-与-test"><span class="toc-text">g 与 test()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#现象"><span class="toc-text">现象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原因"><span class="toc-text">原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决姿势"><span class="toc-text">解决姿势</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前沿"><span class="toc-text">前沿</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#案例"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目"><span class="toc-text">题目</span></a></li></ol></li></ol></li></ol>
   </div>
 
 -->
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-regExp" class="article article-type-post" itemprop="blogPost">
+  <article id="post-spread" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
-      <h1 class="post-title"><a href="/2017/04/25/regExp/">RegExp对象踩坑记录</a></h1>
+      <h1 class="post-title"><a href="/2017/07/04/spread/">扩展运算符小贴士</a></h1>
 
       <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2017.04.25</span>
+        <span>2017.07.04</span>
       </span>
 
         
@@ -171,7 +171,7 @@
         
         <span>
           <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/2017/04/25/regExp/#disqus_thread"></a>
+          <a href="kylin.himmas.cc/2017/07/04/spread/#disqus_thread"></a>
         </span>
         
 
@@ -180,22 +180,18 @@
 
     <div class="article-content">
       
-      <h2 id="g-与-test"><a href="#g-与-test" class="headerlink" title="g 与 test()"></a><code>g</code> 与 <code>test()</code></h2><h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><p>带<code>g</code>的正则对象多次调用<code>test()</code>结果不同</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'51-(.*)'</span>,<span class="string">'g'</span>)</div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// true</span></div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><blockquote>
-<p><em>每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则表达式是否带有修饰符g。属性ignoreCase也是一个只读的布尔值，用以说明正则表达式是否带有修饰符i，属性multiline是一个只读布尔值，用以说明正则表达式是都带有修饰符m。最后一个属性lastIndex，它是一个可读/写的整数。如果匹配模式带有g修饰符，这个属性存储在整个字符串中下一次检索的开始位置，这个属性会被exec()和test()方法用到。</em></p>
+      <h1 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h1><p>es2015引入了扩展运算符(spread operator)<code>...</code>，可以用来进行一些数组和对象操作。</p>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><p>codewar上的一道题，判断字符串/数字/数组是否对称</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><blockquote>
+<p>Give you an <figure class="highlight plain"><figcaption><span>it can be 3 types: string, number and number array, Check that they are symmetrical or not, return a boolean value.  </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'51-(.*)'</span>,<span class="string">'g'</span>)</div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// true</span></div><div class="line">reg.lastIndex</div><div class="line"><span class="comment">// 5</span></div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// false</span></div><div class="line">reg.lastIndex</div><div class="line"><span class="comment">// 0</span></div></pre></td></tr></table></figure>
-<h3 id="解决姿势"><a href="#解决姿势" class="headerlink" title="解决姿势"></a>解决姿势</h3><blockquote>
-<p><em>与exec()和test()不同，String方法search()、replace()、match()并不会用到lastIndex属性。实际上，String方法只是简单地将lastIndex属性值重置为0。如果让一个带有修饰符g的正则表达式对多个字符串执行exec()或test()，要么在每个字符串中找出所有的匹配以便将lastIndex自动重置为0，要么显式将lastIndex手动设置为0（当最后一次检索失败时需要手动设置lastIndex）。如果忘了手动设置lastIndex的值，那么下一次对新字符串进行检索时，执行检索的起始位置可能就不是字符串的开始位置，而可能是任意位置。当然，如果RegExp不带修饰符g，则不必担心会发生这种情况。同样要记住，在ECMAScript5中，正则表达式直接量每次计算都会创建一个新的RegExp对象，每个新RegExp对象具有各自的lastIndex属性，这势必会大大减少“残留”lastIndex对程序造成的意外影响。</em></p>
-</blockquote>
-<p>根据以上说明，可是采用一下几种替换方式</p>
-<ul>
-<li><code>test()</code>方法不使用<code>g</code></li>
-<li>使用正则表达式直接量</li>
-<li>每次都重新<code>new RegExp</code></li>
-<li>手动重置<code>lastIndex</code></li>
-</ul>
+<p>obj=””    return true   (Empty string should return true)<br>obj=”1”   return true   (one char should return true)<br>obj=”11”  return true<br>obj=”12”  return false<br>obj=”121” return true<br>obj=1     return true   (number<10 should="" return="" true)="" obj="-1" false="" (negative="" number="" false)="" true="" (empty="" array="" (an="" with="" one="" element="" (left="" element)="" (not="" verify="" them="" as="" a="" string)="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 分析</div><div class="line"></div><div class="line">考虑到[11,12,13,12,11]也被定义为对称，所以应该将字符串，数字等都转换为数组，而不是将数组转换为字符串。</div><div class="line">转换为数组后通过判断数组与数组的倒序数组是否相等来得出最终的结果(obj.join(&apos;&apos;)==obj.reverse().join(&apos;&apos;))</div><div class="line"></div><div class="line">### 解法</div></pre></td></tr></table></10></p>
+<p>function sc(o){<br>  o = Array.isArray(o)?o:String(o).split(‘’)<br>  return o.join(‘’) == o.reverse().join(‘’)<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">根据分析可以得出以上解法，但题目本身还存在代码字数上的限制(85个以内),以上解法显然长度超标。</div><div class="line"></div><div class="line">在数组、数组以及字符串转换阶段做文章，可以得到以下这个比较简短的方法。</div></pre></td></tr></table></figure></p>
+<p>sc=o=&gt;{<br>  s=[…(isNaN(o)?o:<code>${o}</code>)]<br>  return <code>${s}</code>==<code>${s.reverse()}</code><br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">让我们对他进行分析</div><div class="line"></div><div class="line">- 判断是否是数字，若是则加上引号转换为字符串</div><div class="line">- 使用扩展运算符转换为数组</div><div class="line">- 讲数组转为字符串判断是否与反序数组相等</div><div class="line"></div><div class="line">&lt;p class=&quot;tip&quot;&gt;`...`运算符可以将一个数组直接在另一个数组中展开&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>[…[1,2,3]]<br>//[1,2,3]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p class=&quot;tip&quot;&gt;`...`运算符讲类数组对象(带有属性length)转换为数组对象然后再另一个数组中展开&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>[…”123”]<br>//[1,2,3]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">综上所述只要将数字类型转换成字符串就可以将以上三种类型统一转换成数组。</div><div class="line"></div><div class="line"></div><div class="line">### 关于字符串与数字相互转换</div><div class="line"></div><div class="line">&lt;p class=&quot;tip&quot;&gt;数字转换成数组可以`n.toString()` 、`new String(n)`等方法，也可以使用es6的字符串模板或者更简单的n+&apos;&apos; 通过加一个字符串来进行转换，由于题目的字数限制，这里选择的后面两种比较简短的方式&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>123 + ‘’<br>//“123”<br><code>${123}</code><br>“123”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p class=&quot;tip&quot;&gt;字符串转换成数字除了可以使用常规的`parseInt(n)`、`Number()`等方法之外，还可以使用两个`~`操作符，值得一提的是，`~~`不仅可以将正常的数字字符串转换成number，还可以将假值转换为0&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>~~’1’<br>//1<br>~~undefined<br>//0<br>~~null<br>//0<br>~~’’<br>//0<br>~~false<br>//0<br>~~+0<br>//0<br>~~-0<br>//0<br>~~NaN<br>//0<br>```</p>
 
       
     </div>
@@ -203,10 +199,10 @@
   
   <div class="page-bar">
     
-    <a href="/2017/07/04/spread/" class="prev-btn"><i class="iconfont icon-prev"></i>扩展运算符小贴士</a>
+    <a class="prev-btn"></a>
     
     
-    <a href="/2017/03/30/node-child-process/" class="next-btn">node子进程与调度任务<i class="iconfont icon-next"></i></a>
+    <a href="/2017/04/25/regExp/" class="next-btn">RegExp对象踩坑记录<i class="iconfont icon-next"></i></a>
     
     </div>
   
@@ -332,7 +328,7 @@
   <script>
     var disqus_shortname = 'kylinz';
     
-    var disqus_url = 'http://kylin.himmas.cc/2017/04/25/regExp/';
+    var disqus_url = 'http://kylin.himmas.cc/2017/07/04/spread/';
     
     (function(){
       var dsq = document.createElement('script');

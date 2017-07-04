@@ -122,6 +122,66 @@
     
 
 <div class="container article-container">
+  <article id="post-spread" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/07/04/spread/">扩展运算符小贴士</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.07.04</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/js/">js</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/index.html#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h1 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h1><p>es2015引入了扩展运算符(spread operator)<code>...</code>，可以用来进行一些数组和对象操作。</p>
+<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><p>codewar上的一道题，判断字符串/数字/数组是否对称</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><blockquote>
+<p>Give you an <figure class="highlight plain"><figcaption><span>it can be 3 types: string, number and number array, Check that they are symmetrical or not, return a boolean value.  </span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>obj=””    return true   (Empty string should return true)<br>obj=”1”   return true   (one char should return true)<br>obj=”11”  return true<br>obj=”12”  return false<br>obj=”121” return true<br>obj=1     return true   (number<10 should="" return="" true)="" obj="-1" false="" (negative="" number="" false)="" true="" (empty="" array="" (an="" with="" one="" element="" (left="" element)="" (not="" verify="" them="" as="" a="" string)="" <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 分析</div><div class="line"></div><div class="line">考虑到[11,12,13,12,11]也被定义为对称，所以应该将字符串，数字等都转换为数组，而不是将数组转换为字符串。</div><div class="line">转换为数组后通过判断数组与数组的倒序数组是否相等来得出最终的结果(obj.join(&apos;&apos;)==obj.reverse().join(&apos;&apos;))</div><div class="line"></div><div class="line">### 解法</div></pre></td></tr></table></10></p>
+<p>function sc(o){<br>  o = Array.isArray(o)?o:String(o).split(‘’)<br>  return o.join(‘’) == o.reverse().join(‘’)<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">根据分析可以得出以上解法，但题目本身还存在代码字数上的限制(85个以内),以上解法显然长度超标。</div><div class="line"></div><div class="line">在数组、数组以及字符串转换阶段做文章，可以得到以下这个比较简短的方法。</div></pre></td></tr></table></figure></p>
+<p>sc=o=&gt;{<br>  s=[…(isNaN(o)?o:<code>${o}</code>)]<br>  return <code>${s}</code>==<code>${s.reverse()}</code><br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">让我们对他进行分析</div><div class="line"></div><div class="line">- 判断是否是数字，若是则加上引号转换为字符串</div><div class="line">- 使用扩展运算符转换为数组</div><div class="line">- 讲数组转为字符串判断是否与反序数组相等</div><div class="line"></div><div class="line">&lt;p class=&quot;tip&quot;&gt;`...`运算符可以将一个数组直接在另一个数组中展开&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>[…[1,2,3]]<br>//[1,2,3]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p class=&quot;tip&quot;&gt;`...`运算符讲类数组对象(带有属性length)转换为数组对象然后再另一个数组中展开&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>[…”123”]<br>//[1,2,3]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">综上所述只要将数字类型转换成字符串就可以将以上三种类型统一转换成数组。</div><div class="line"></div><div class="line"></div><div class="line">### 关于字符串与数字相互转换</div><div class="line"></div><div class="line">&lt;p class=&quot;tip&quot;&gt;数字转换成数组可以`n.toString()` 、`new String(n)`等方法，也可以使用es6的字符串模板或者更简单的n+&apos;&apos; 通过加一个字符串来进行转换，由于题目的字数限制，这里选择的后面两种比较简短的方式&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>123 + ‘’<br>//“123”<br><code>${123}</code><br>“123”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p class=&quot;tip&quot;&gt;字符串转换成数字除了可以使用常规的`parseInt(n)`、`Number()`等方法之外，还可以使用两个`~`操作符，值得一提的是，`~~`不仅可以将正常的数字字符串转换成number，还可以将假值转换为0&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>~~’1’<br>//1<br>~~undefined<br>//0<br>~~null<br>//0<br>~~’’<br>//0<br>~~false<br>//0<br>~~+0<br>//0<br>~~-0<br>//0<br>~~NaN<br>//0<br>```</p>
+
+      
+    </div>
+  </article>
+  
+</div>
+
+
+<div class="br"></div>
+
+<div class="container article-container">
   <article id="post-regExp" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
       <h1 class="post-title"><a href="/2017/04/25/regExp/">RegExp对象踩坑记录</a></h1>
@@ -663,55 +723,6 @@
         <a class="btn btn-primary more-btn" href="/2017/01/23/testWithTravis/#more">阅读全文</a>
       </p>
       
-      
-    </div>
-  </article>
-  
-</div>
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-  <article id="post-word-break" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/01/11/word-break/">英文单词换行连接符问题</a></h1>
-
-      <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.01.11</span>
-      </span>
-
-        
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-        
-
-        
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/笔记/">笔记</a> / <a class="article-category-link" href="/categories/笔记/css/">css</a>
-  </span>
-
-
-
-        
-        <span>
-          <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/index.html#disqus_thread"></a>
-        </span>
-        
-
-      </div>
-    </header>
-
-    <div class="article-content">
-      
-      <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">hyphens</span>: <span class="selector-tag">auto</span>;</div><div class="line"><span class="comment">/*加链接横*/</span></div><div class="line">  <span class="selector-tag">word-wrap</span>: <span class="selector-tag">break-word</span>;</div><div class="line">  <span class="selector-tag">overflow-wrap</span>: <span class="selector-tag">break-word</span>;</div></pre></td></tr></table></figure>
-
       
     </div>
   </article>

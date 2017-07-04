@@ -1,111 +1,26 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-post">
+  <html class="light page-archives201707">
 
 
 <head>
   <meta charset="utf-8">
   
-  <title>snabbdom源码阅读笔记（二） | Kylin</title>
+  <title>Archives: 2017/7 | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="javascript,前端,VirtualDom," />
+    <meta name="keywords" content="kylin,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
   
 
-  <meta name="description" content="hook
-
-
-name
-调用时间
-参数
-
-
-
-
-pre
-patch 开始的时候
-无
-
-
-init
-vnode 被添加时
-vnode
-
-
-create
-a DOM element has been created based on a vnode    emptyVnode
-vnode
-
-
-insert
-an element has been inserted into the DOM
-vnode">
-<meta property="og:type" content="article">
-<meta property="og:title" content="snabbdom源码阅读笔记（二）">
-<meta property="og:url" content="http://kylin.himmas.cc/2016/12/27/snabbdom-note2/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Kylin">
+<meta property="og:url" content="http://kylin.himmas.cc/archives/2017/07/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="hook
-
-
-name
-调用时间
-参数
-
-
-
-
-pre
-patch 开始的时候
-无
-
-
-init
-vnode 被添加时
-vnode
-
-
-create
-a DOM element has been created based on a vnode    emptyVnode
-vnode
-
-
-insert
-an element has been inserted into the DOM
-vnode">
-<meta property="og:updated_time" content="2016-12-29T02:31:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="snabbdom源码阅读笔记（二）">
-<meta name="twitter:description" content="hook
-
-
-name
-调用时间
-参数
-
-
-
-
-pre
-patch 开始的时候
-无
-
-
-init
-vnode 被添加时
-vnode
-
-
-create
-a DOM element has been created based on a vnode    emptyVnode
-vnode
-
-
-insert
-an element has been inserted into the DOM
-vnode">
+<meta name="twitter:title" content="Kylin">
 
   
 
@@ -139,7 +54,94 @@ vnode">
 
   <!---->
 
-  <div class="head-box">
+  <!--<div class="content content-archive">-->
+<!--<div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/kylin-z">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
+</div>-->
+
+<!--<div class="post-list-box archive-body">-->
+<!--<ul class="list-post">  <li class="item-year item item-title item-title-2">
+    <a href="/archives/2017" class="text-year">
+      2017
+      <i class="icon-ji"></i>
+      
+    </a>
+  </li>
+<li class="item-post item">
+  <span class="post-date">07-04</span>
+
+  <a class="post-title" href="/2017/07/04/spread/">扩展运算符小贴士</a>
+
+</li>
+</ul>-->
+<!--</div>-->
+
+
+<!--
+-->
+
+<div class="head-box">
     <div class="head-inner">
         <div class="info-box">
             <a href="/" class="avatar">
@@ -204,137 +206,66 @@ vnode">
     </div>
 </div>
 
-<!--这个是章节目录-->
-<!--
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hook"><span class="toc-text">hook</span></a></li></ol>
-  </div>
-
--->
-
-<div class="content content-post CENTER">
-   <div class="container article-container">
-  <article id="post-snabbdom-note2" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/12/27/snabbdom-note2/">snabbdom源码阅读笔记（二）</a></h1>
-
-      <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.12.27</span>
-      </span>
-
-        
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-        
-
-        
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </span>
-
-
-
-        
-        <span>
-          <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/2016/12/27/snabbdom-note2/#disqus_thread"></a>
-        </span>
-        
-
-      </div>
-    </header>
-
-    <div class="article-content">
-      
-      <h2 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h2><table>
-<thead>
-<tr>
-<th>name</th>
-<th>调用时间</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pre</td>
-<td>patch 开始的时候</td>
-<td>无</td>
-</tr>
-<tr>
-<td>init</td>
-<td>vnode 被添加时</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>create</td>
-<td>a DOM element has been created based on a vnode    emptyVnode</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>insert</td>
-<td>an element has been inserted into the DOM</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>prepatch</td>
-<td>patch 开始之前</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>update</td>
-<td>an element is being updated</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>postpatch</td>
-<td>an element has been patched</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>destroy</td>
-<td>an element is directly or indirectly being removed</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>remove</td>
-<td>an element is directly being removed from the DOM</td>
-<td>vnode, removeCallback</td>
-</tr>
-<tr>
-<td>post</td>
-<td>patch结束之后</td>
-<td>无</td>
-</tr>
-</tbody>
-</table>
-
-      
+<div class="container list-container">
+    <div class="article-list-box">
+        <div class="head">
+            <label class="head-label">归档</label>
+            <i class="iconfont icon-location article-item"></i>
+            <span>共24篇日志</span>
+        </div>
+        <div class="article-box-body">
+            
+            
+            
+                
+                <div class="collection-title item-title-0">
+                    <h2>2017</h2>
+                </div>
+                
+            
+            <article class="article-item article-type-normal">
+                <header class="post-header td02">
+                    <h1 class="post-title">
+                        <a href="/2017/07/04/spread/index.html" class="post-title-link">
+                            <span>扩展运算符小贴士</span>
+                        </a>
+                    </h1>
+                    <div class="post-meta">
+                        <time class="post-time">07-04</time>
+                    </div>
+                </header>
+            </article>
+            
+        </div>
     </div>
-  </article>
+    <nav class="pagination">
   
-  <div class="page-bar">
-    
-    <a href="/2016/12/29/getterAndSetter/" class="prev-btn"><i class="iconfont icon-prev"></i>js对象属性的getter与setter</a>
-    
-    
-    <a href="/2016/12/21/snabbdom-note/" class="next-btn">snabbdom源码阅读笔记（一）<i class="iconfont icon-next"></i></a>
-    
-    </div>
+  <!--上一页-->
   
-</div>
+  <!--第一页-->
+
+  
+
+  
+
+  <a class="page-number current" href="/archives/2017/07/">1</a>
+
+  
+
+  
+
+  
+  <!--尾页-->
+
+  
+
+</nav>
+
+
+
 </div>
 
 
-
-  <a id="backTop" class="back-top">
-    <i class="icon-angle-up"></i>
-  </a>
 
 
 
@@ -437,40 +368,6 @@ vnode">
 -->
 
 
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2016/12/27/snabbdom-note2/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
   <!---->
 
   <script type="text/javascript">
