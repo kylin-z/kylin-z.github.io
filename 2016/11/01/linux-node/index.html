@@ -30,7 +30,7 @@
 成功登录后会提示
 12345678Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-86-generic x86_">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/linux-node.png">
-<meta property="og:updated_time" content="2017-03-02T09:50:24.000Z">
+<meta property="og:updated_time" content="2017-10-31T09:42:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用mac在远程linux上安装node">
 <meta name="twitter:description" content="链接 ECS 实例1$ ssh username@remotehost //如 ssh root@115.20.39.163
@@ -196,7 +196,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scp /some/directory/node-v6.2.0.tar.gz root@115.20.39.163:/some/remote/directory</div></pre></td></tr></table></figure>
 <h2 id="解压并安装"><a href="#解压并安装" class="headerlink" title="解压并安装"></a>解压并安装</h2><p>使用解压命令(需要定位到文件所在目录)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">root@himmas:~<span class="comment"># tar zxvf node-v6.2.0.tar.gz</span></div></pre></td></tr></table></figure>
-<p>解压完成后进入源代码目录,打开.configure文件</p>
+<p>解压完成后进入源代码目录,调用文件configure，为下一步make install做准备</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@himmas:~<span class="comment"># ls</span></div><div class="line">node-v6.2.0 node-v6.2.0.tar.gz</div><div class="line">root@himmas:~<span class="comment"># cd node-v6.2.0/</span></div><div class="line">root@himmas:~/node-v6.2.0<span class="comment"># ./configure</span></div><div class="line">root@himmas:~/node-v6.2.0<span class="comment"># make install</span></div></pre></td></tr></table></figure>
 <p>等待安装完成</p>
 <p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/linux-node.png" alt=""></p>
