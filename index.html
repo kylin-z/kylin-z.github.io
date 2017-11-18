@@ -122,6 +122,96 @@
     
 
 <div class="container article-container">
+  <article id="post-machine-learning-1" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/11/18/machine-learning-1/">李宏毅machine learning学习笔记——导论</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.11.18</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/machine-learning学习笔记/">machine learning学习笔记</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/index.html#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学习machine learning相关的知识，李宏毅教授的机器学习课程是一套非常好的入门教材，这里使用的2017年的版本。<br><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html" target="_blank" rel="external">课程日历</a><br><a href="https://www.bilibili.com/video/av10590361/index_2.html?t=61#page=1" target="_blank" rel="external">B站视频</a></p>
+<h2 id="几个概念之间的关系"><a href="#几个概念之间的关系" class="headerlink" title="几个概念之间的关系"></a>几个概念之间的关系</h2><ul>
+<li>人工智能<br>人们想要达成的目标</li>
+<li>机器学习(machine learning)<br>达成人工智能的一种手段</li>
+<li>深度学习(deep learning)<br>机器学习其中的一个方法</li>
+</ul>
+<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5%E7%9A%84%E5%85%B3%E7%B3%BB.png" alt="几个概念之间的关系"></p>
+<h2 id="machine-learning"><a href="#machine-learning" class="headerlink" title="machine learning"></a>machine learning</h2><p>machine learning:让机器具有一个能力，这个能力可以根据提供的资料，寻找到一个人们需要的function</p>
+<h3 id="machine-learning的步骤"><a href="#machine-learning的步骤" class="headerlink" title="machine learning的步骤"></a>machine learning的步骤</h3><p>以supervise learning为例</p>
+<ol>
+<li>定义一个Model ——  define a set of function (f1、f2……)</li>
+<li>准备一些训练资料 Training Data (正确的输入和输出<code>label</code>的集合)，使机器具有衡量function好坏的能力 —— goodness of function</li>
+<li>准备一个有效率的演算法寻找Model中最优的funciton(f*) —— pick the best function</li>
+</ol>
+<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%AD%A5%E9%AA%A4.png" alt="机器学习的步骤"></p>
+<h3 id="learning-map"><a href="#learning-map" class="headerlink" title="learning map"></a>learning map</h3><p><img src="http://ozm59jgdk.bkt.clouddn.com/laerning%20map.png" alt="learning map"></p>
+<h3 id="几种问题-橙色"><a href="#几种问题-橙色" class="headerlink" title="几种问题(橙色)"></a>几种问题(橙色)</h3><ul>
+<li>Regression 数值问题 —— 期望的输出是一个数值(scalar)</li>
+<li>Classification 预测类别问题 —— 从两个或多个类别中找到输出<ul>
+<li>Binary Classification 二元(yes or no)</li>
+<li>Multi-class Classification 多元 </li>
+</ul>
+</li>
+<li>Structured Learning —— 期望的输出是具有结构的</li>
+</ul>
+<h3 id="几种Model-绿色"><a href="#几种Model-绿色" class="headerlink" title="几种Model(绿色)"></a>几种Model(绿色)</h3><ul>
+<li>Linear Model 线性模型</li>
+<li>Non-linear Model 非线性模型<ul>
+<li>Deep Learning 深度学习</li>
+</ul>
+</li>
+<li>SVM</li>
+<li>decision tree</li>
+<li>K-NN</li>
+</ul>
+<h2 id="几种情境"><a href="#几种情境" class="headerlink" title="几种情境"></a>几种情境</h2><ul>
+<li>Supervised Learning —— 有大量的Training Data</li>
+<li>Semi-supervised Learning —— 没有大量的具有output(label)的数据、但是有大量与问题有关但没有output(label)的数据</li>
+<li>transfer Learning —— 没有大量的具有output(label)的数据、但是有大量无关的数据</li>
+<li>Unsupervised Learning —— model完全不用到任何有label的数据的情境</li>
+<li>Reinforcement Learning —— 没有正确的答案，机器拥有的只有一个相对的分数，与人类的真实情境较为接近</li>
+</ul>
+
+      
+    </div>
+  </article>
+  
+</div>
+
+
+<div class="br"></div>
+
+<div class="container article-container">
   <article id="post-fixed" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
       <h1 class="post-title"><a href="/2017/08/02/fixed/">positon:fixed的怪异行为记录</a></h1>
@@ -650,66 +740,6 @@
       
       <p class="article-more-link">
         <a class="btn btn-primary more-btn" href="/2017/02/20/python2/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
-</div>
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-  <article id="post-python" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/02/17/python/">python学习笔记（一）</a></h1>
-
-      <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.02.17</span>
-      </span>
-
-        
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-        
-
-        
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </span>
-
-
-
-        
-        <span>
-          <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/index.html#disqus_thread"></a>
-        </span>
-        
-
-      </div>
-    </header>
-
-    <div class="article-content">
-      
-      <h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p class="tip">在编写Python时，当使用中文输出或注释时运行脚本，会提示错误信息：</p>
-
-<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/python-encoding-error.png" alt=""></p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因:"></a>原因:</h3><p>python的默认编码文件是用的ASCII码,而编辑器讲文件存成了UTF-8</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h3><p>在文件第一行添加以下代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div></pre></td></tr></table></figure></p>
-<p>或者  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div></pre></td></tr></table></figure>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">r'\\\t\\\ '</span></div><div class="line"><span class="comment"># r''表示''内部字符默认不转义</span></div><div class="line"></div><div class="line"><span class="comment"># 如果字符串内部有很多换行，用\n写在一行里不好阅读，为了简化，Python允许在交互式命令行中用'''...'''</span></div><div class="line"><span class="comment"># 如 &gt;&gt;&gt; print '''line1</span></div><div class="line"><span class="comment"># ... line2</span></div><div class="line"><span class="comment"># ... line3'''</span></div><div class="line"><span class="comment"># 的格式表示多行内容,若写成程序则如下:</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">'''line1</div><div class="line">line2</div><div class="line">line3'''</span></div><div class="line"></div><div class="line"><span class="comment"># r''还能与'''...'''结合如下:</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">r'''\nline1</div><div class="line">line2</div><div class="line">line3'''</span></div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2017/02/17/python/#more">阅读全文</a>
       </p>
       
       
