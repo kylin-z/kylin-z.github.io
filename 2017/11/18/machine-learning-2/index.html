@@ -54,7 +54,7 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 
 由于w、b可以为任何值。这里我们将各种数值带入到b、w中，就得到了一个Model(A se">
 <meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png">
-<meta property="og:updated_time" content="2017-11-18T13:32:10.000Z">
+<meta property="og:updated_time" content="2017-11-18T13:35:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="李宏毅machine learning学习笔记——Regression">
 <meta name="twitter:description" content="例子:预测宝可梦进化后的物力值(cp)输入
@@ -222,26 +222,26 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
     <div class="article-content">
       
       <h2 id="例子-预测宝可梦进化后的物力值-cp"><a href="#例子-预测宝可梦进化后的物力值-cp" class="headerlink" title="例子:预测宝可梦进化后的物力值(cp)"></a>例子:预测宝可梦进化后的物力值(cp)</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
-<li>用X来表示一只宝可梦</li>
-<li>用Xi来表示宝可梦进化前的种种特性<ul>
-<li>Xcp 现在的cp值</li>
-<li>Xs 物种</li>
-<li>Xhp hp值</li>
-<li>Xw 体重</li>
-<li>Xh 身高</li>
+<li>用<code>X</code>来表示一只宝可梦</li>
+<li>用<code>Xi</code>来表示宝可梦进化前的种种特性<ul>
+<li><code>Xcp</code> 现在的cp值</li>
+<li><code>Xs</code> 物种</li>
+<li><code>Xhp</code> hp值</li>
+<li><code>Xw</code> 体重</li>
+<li><code>Xh</code> 身高</li>
 </ul>
 </li>
 </ul>
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><ul>
-<li>这只宝可梦进化后的cp值：Y</li>
+<li>这只宝可梦进化后的cp值：<code>Y</code></li>
 </ul>
 <h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p class="tip">假设输入与输出间存在<code>Y = w·Xcp</code> 这样的关系(这里省略了X的其他属性)</p>
 
-<p>由于w、b可以为任何值。这里我们将各种数值带入到b、w中，就得到了一个Model(A set of function)</p>
+<p>由于<code>w</code>、<code>b</code>可以为任何值。这里我们将各种数值带入到<code>b</code>、<code>w</code>中，就得到了一个Model(A set of function)</p>
 <ul>
-<li>f1:Y = 10+9·Xcp</li>
-<li>f2:Y = 9.8+9.2·Xcp</li>
-<li>f3:Y = - 0.8-1.2·Xcp</li>
+<li><code>f1:Y = 10+9·Xcp</code></li>
+<li><code>f2:Y = 9.8+9.2·Xcp</code></li>
+<li><code>f3:Y = - 0.8-1.2·Xcp</code></li>
 <li>…</li>
 </ul>
 <p>最后得到一个Linear Model<br><img src="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png" alt=""></p>
