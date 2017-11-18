@@ -159,7 +159,31 @@
 
     <div class="article-content">
       
-      <h2 id="例子-预测宝可梦进化后的物力值-cp"><a href="#例子-预测宝可梦进化后的物力值-cp" class="headerlink" title="例子:预测宝可梦进化后的物力值(cp)"></a>例子:预测宝可梦进化后的物力值(cp)</h2>
+      <h2 id="例子-预测宝可梦进化后的物力值-cp"><a href="#例子-预测宝可梦进化后的物力值-cp" class="headerlink" title="例子:预测宝可梦进化后的物力值(cp)"></a>例子:预测宝可梦进化后的物力值(cp)</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
+<li>用X来表示一只宝可梦</li>
+<li>用Xi来表示宝可梦进化前的种种特性<ul>
+<li>Xcp 现在的cp值</li>
+<li>Xs 物种</li>
+<li>Xhp hp值</li>
+<li>Xw 体重</li>
+<li>Xh 身高</li>
+</ul>
+</li>
+</ul>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><ul>
+<li>这只宝可梦进化后的cp值：Y</li>
+</ul>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p class="tip">假设输入与输出间存在<code>Y = w·Xcp</code> 这样的关系(这里省略了X的其他属性)</p>
+
+<p>由于w、b可以为任何值。这里我们将各种数值带入到b、w中，就得到了一个Model(A set of function)</p>
+<ul>
+<li>f1:Y = 10+9·Xcp</li>
+<li>f2:Y = 9.8+9.2·Xcp</li>
+<li>f3:Y = - 0.8-1.2·Xcp</li>
+<li>…</li>
+</ul>
+<p>最后得到一个Linear Model<br><img src="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png" alt=""></p>
+
       
     </div>
   </article>
@@ -207,7 +231,7 @@
 
     <div class="article-content">
       
-      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学习machine learning相关的知识，李宏毅教授的机器学习课程是一套非常好的入门教材，这里使用的2017年的版本。<br><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html" target="_blank" rel="external">课程日历</a><br><a href="https://www.bilibili.com/video/av10590361/index_2.html?t=61#page=1" target="_blank" rel="external">B站视频</a></p>
+      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在学习machine learning相关的知识，李宏毅教授的机器学习课程是一套非常好的入门教材，这里使用的2017年的版本。<br><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">课程日历</a><br><a href="https://www.bilibili.com/video/av10590361/index_2.html?t=61#page=1">B站视频</a></p>
 <h2 id="几个概念之间的关系"><a href="#几个概念之间的关系" class="headerlink" title="几个概念之间的关系"></a>几个概念之间的关系</h2><ul>
 <li>人工智能<br>人们想要达成的目标</li>
 <li>机器学习(machine learning)<br>达成人工智能的一种手段</li>
@@ -220,37 +244,12 @@
 <ol>
 <li>定义一个Model ——  define a set of function (f1、f2……)</li>
 <li>准备一些训练资料 Training Data (正确的输入和输出<code>label</code>的集合)，使机器具有衡量function好坏的能力 —— goodness of function</li>
-<li>准备一个有效率的演算法寻找Model中最优的funciton(f*) —— pick the best function</li>
-</ol>
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%AD%A5%E9%AA%A4.png" alt="机器学习的步骤"></p>
-<h3 id="learning-map"><a href="#learning-map" class="headerlink" title="learning map"></a>learning map</h3><p><img src="http://ozm59jgdk.bkt.clouddn.com/laerning%20map.png" alt="learning map"></p>
-<h3 id="几种问题-橙色"><a href="#几种问题-橙色" class="headerlink" title="几种问题(橙色)"></a>几种问题(橙色)</h3><ul>
-<li>Regression 数值问题 —— 期望的输出是一个数值(scalar)</li>
-<li>Classification 预测类别问题 —— 从两个或多个类别中找到输出<ul>
-<li>Binary Classification 二元(yes or no)</li>
-<li>Multi-class Classification 多元 </li>
-</ul>
-</li>
-<li>Structured Learning —— 期望的输出是具有结构的</li>
-</ul>
-<h3 id="几种Model-绿色"><a href="#几种Model-绿色" class="headerlink" title="几种Model(绿色)"></a>几种Model(绿色)</h3><ul>
-<li>Linear Model 线性模型</li>
-<li>Non-linear Model 非线性模型<ul>
-<li>Deep Learning 深度学习</li>
-</ul>
-</li>
-<li>SVM</li>
-<li>decision tree</li>
-<li>K-NN</li>
-</ul>
-<h2 id="几种情境"><a href="#几种情境" class="headerlink" title="几种情境"></a>几种情境</h2><ul>
-<li>Supervised Learning —— 有大量的Training Data</li>
-<li>Semi-supervised Learning —— 没有大量的具有output(label)的数据、但是有大量与问题有关但没有output(label)的数据</li>
-<li>transfer Learning —— 没有大量的具有output(label)的数据、但是有大量无关的数据</li>
-<li>Unsupervised Learning —— model完全不用到任何有label的数据的情境</li>
-<li>Reinforcement Learning —— 没有正确的答案，机器拥有的只有一个相对的分数，与人类的真实情境较为接近</li>
-</ul>
-
+<li>准备一个有效率的演算法寻找Model中最优的funciton(f*) —— pick the best function
+      
+      <p class="article-more-link">
+        <a class="btn btn-primary more-btn" href="/2017/11/18/machine-learning-1/#more">阅读全文</a>
+      </p>
+      
       
     </div>
   </article>
