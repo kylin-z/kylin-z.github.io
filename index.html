@@ -122,6 +122,56 @@
     
 
 <div class="container article-container">
+  <article id="post-canvas-font-face" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/11/21/canvas-font-face/">如何在canvas中使用自定义字体图标</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.11.21</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/canvas/">canvas</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/index.html#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="以font-awesome这个图标库为例"><a href="#以font-awesome这个图标库为例" class="headerlink" title="以font-awesome这个图标库为例"></a>以<code>font-awesome</code>这个图标库为例</h3><p></p><p class="tip">字体图标的展示需要保证图标代码为unicode,需要在code前面加上<code>\u</code></p><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset="UTF-8"&gt;</div><div class="line">  &lt;meta name="viewport"</div><div class="line">        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"&gt;</div><div class="line">  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;</div><div class="line">  &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"&gt;</div><div class="line">  &lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;canvas id="canvas" width="800" height="400"&gt;&lt;/canvas&gt;</div><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line"></div><div class="line">  var canvas=document.getElementById("canvas");</div><div class="line">  var ctx=canvas.getContext("2d");</div><div class="line">  ctx.font='48px FontAwesome';</div><div class="line">  ctx.fillText('\uF064 \uF065 \uF0a5',20,75);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure><p></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/cohurap/embed?js,output" target="_blank" rel="external">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?4.1.1"></script></p>
+
+      
+    </div>
+  </article>
+  
+</div>
+
+
+<div class="br"></div>
+
+<div class="container article-container">
   <article id="post-machine-learning-2" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
       <h1 class="post-title"><a href="/2017/11/18/machine-learning-2/">李宏毅machine learning学习笔记——Regression</a></h1>
@@ -161,7 +211,7 @@
       
       <h2 id="例子-预测宝可梦进化后的物力值-cp"><a href="#例子-预测宝可梦进化后的物力值-cp" class="headerlink" title="例子:预测宝可梦进化后的物力值(cp)"></a>例子:预测宝可梦进化后的物力值(cp)</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
 <li>用<code>X</code>来表示一只宝可梦</li>
-<li>用<code>Xi</code>来表示宝可梦进化前的种种特性<ul>
+<li>用<code>Xi</code>来表示宝可梦进化前的种种特性(feature)<ul>
 <li><code>Xcp</code> 现在的cp值</li>
 <li><code>Xs</code> 物种</li>
 <li><code>Xhp</code> hp值</li>
@@ -183,6 +233,11 @@
 <li>…</li>
 </ul>
 <p>最后得到一个Linear Model<br><img src="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png" alt=""></p>
+<h3 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h3><p><code>Loss function</code>用来衡量<code>Model</code>中的<code>function</code>，它的<code>Input</code>是<code>Model</code>中的<code>fn</code>，它的<code>Output</code>可以是这个<code>fn</code>与正确的数值的差平方和。<br>由于<code>fn</code>是由<code>b</code>、<code>w</code>的数值决定的，由此可得<code>Loss function L(w,b)</code>如下图所示</p>
+<p><img src="http://ozm59jgdk.bkt.clouddn.com/Loss%20function.png" alt=""></p>
+<h3 id="找到最优f-——Gradient-Descent"><a href="#找到最优f-——Gradient-Descent" class="headerlink" title="找到最优f*——Gradient Descent"></a>找到最优<code>f*</code>——Gradient Descent</h3><p class="tip"><code>f*</code>是Model中的一个f，使Loss function能取到最小值</p>
+
+
 
       
     </div>
@@ -657,72 +712,6 @@
       <h2 id="计算笛卡尔积"><a href="#计算笛卡尔积" class="headerlink" title="计算笛卡尔积"></a>计算笛卡尔积</h2> <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">cartesianProductOf</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.reduce.call(<span class="built_in">arguments</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ret = [];</div><div class="line">    a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">      b.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">b</span>) </span>&#123;</div><div class="line">        ret.push(a.concat([b]));</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">  &#125;, [[]]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3> <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cartesianProductOf([<span class="string">'1'</span>,<span class="string">'3'</span>],[<span class="string">'a'</span>,<span class="string">'b'</span>])</div></pre></td></tr></table></figure>
 
-      
-    </div>
-  </article>
-  
-</div>
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-  <article id="post-python-hole" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/03/06/python-hole/">python折腾过程中遇到的坑全纪录</a></h1>
-
-      <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.03.06</span>
-      </span>
-
-        
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-        
-
-        
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </span>
-
-
-
-        
-        <span>
-          <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/index.html#disqus_thread"></a>
-        </span>
-        
-
-      </div>
-    </header>
-
-    <div class="article-content">
-      
-      <h2 id="Scrapy的依赖库Six与系统依赖库Six发生了冲突"><a href="#Scrapy的依赖库Six与系统依赖库Six发生了冲突" class="headerlink" title="Scrapy的依赖库Six与系统依赖库Six发生了冲突"></a>Scrapy的依赖库Six与系统依赖库Six发生了冲突</h2><p class="tip">这应该是一个<code>mac</code>坑</p>
-
-<h3 id="error"><a href="#error" class="headerlink" title="error"></a>error</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DEPRECATION: Uninstalling a distutils installed project (six) has been deprecated and will be removed <span class="keyword">in</span> a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.</div><div class="line">    Uninstalling six-1.4.1:</div><div class="line">		...</div></pre></td></tr></table></figure>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>参考<a href="http://stackoverflow.com/questions/31900008/oserror-errno-1-operation-not-permitted-when-installing-scrapy-in-osx-10-11">starkoverflow</a></p>
-<ul>
-<li>使用virtualenv创建一个隔离的python环境</li>
-<li>使用<code>--ignore-installed命令</code></li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install libName --upgrade --ignore-installed six</div></pre></td></tr></table></figure>
-<h2 id="Scrapy命令使用时报错"><a href="#Scrapy命令使用时报错" class="headerlink" title="Scrapy命令使用时报错"></a>Scrapy命令使用时报错</h2><h3 id="error-1"><a href="#error-1" class="headerlink" title="error"></a>error</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ImportError: cannot import name xmlrpc_client</div></pre></td></tr></table></figure>
-<p class="tip">这应该是一个<code>mac</code>坑</p>
-
-<h3 id="方法一：重装six"><a href="#方法一：重装six" class="headerlink" title="方法一：重装six"></a>方法一：重装<code>six</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /Library/Python/2.7/site-packages/six*</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2017/03/06/python-hole/#more">阅读全文</a>
-      </p>
-      
       
     </div>
   </article>

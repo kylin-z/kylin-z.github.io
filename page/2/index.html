@@ -122,6 +122,72 @@
     
 
 <div class="container article-container">
+  <article id="post-python-hole" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/03/06/python-hole/">python折腾过程中遇到的坑全纪录</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.06</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="Scrapy的依赖库Six与系统依赖库Six发生了冲突"><a href="#Scrapy的依赖库Six与系统依赖库Six发生了冲突" class="headerlink" title="Scrapy的依赖库Six与系统依赖库Six发生了冲突"></a>Scrapy的依赖库Six与系统依赖库Six发生了冲突</h2><p class="tip">这应该是一个<code>mac</code>坑</p>
+
+<h3 id="error"><a href="#error" class="headerlink" title="error"></a>error</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DEPRECATION: Uninstalling a distutils installed project (six) has been deprecated and will be removed <span class="keyword">in</span> a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.</div><div class="line">    Uninstalling six-1.4.1:</div><div class="line">		...</div></pre></td></tr></table></figure>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>参考<a href="http://stackoverflow.com/questions/31900008/oserror-errno-1-operation-not-permitted-when-installing-scrapy-in-osx-10-11">starkoverflow</a></p>
+<ul>
+<li>使用virtualenv创建一个隔离的python环境</li>
+<li>使用<code>--ignore-installed命令</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install libName --upgrade --ignore-installed six</div></pre></td></tr></table></figure>
+<h2 id="Scrapy命令使用时报错"><a href="#Scrapy命令使用时报错" class="headerlink" title="Scrapy命令使用时报错"></a>Scrapy命令使用时报错</h2><h3 id="error-1"><a href="#error-1" class="headerlink" title="error"></a>error</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ImportError: cannot import name xmlrpc_client</div></pre></td></tr></table></figure>
+<p class="tip">这应该是一个<code>mac</code>坑</p>
+
+<h3 id="方法一：重装six"><a href="#方法一：重装six" class="headerlink" title="方法一：重装six"></a>方法一：重装<code>six</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /Library/Python/2.7/site-packages/six*</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div></pre></td></tr></table></figure>
+      
+      <p class="article-more-link">
+        <a class="btn btn-primary more-btn" href="/2017/03/06/python-hole/#more">阅读全文</a>
+      </p>
+      
+      
+    </div>
+  </article>
+  
+</div>
+
+
+<div class="br"></div>
+
+<div class="container article-container">
   <article id="post-python2" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
       <h1 class="post-title"><a href="/2017/02/20/python2/">python学习笔记（二）</a></h1>
@@ -700,63 +766,6 @@
       
       <p class="article-more-link">
         <a class="btn btn-primary more-btn" href="/2016/11/02/linux-delete/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
-</div>
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-  <article id="post-linux-node" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/11/01/linux-node/">使用mac在远程linux上安装node</a></h1>
-
-      <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.11.01</span>
-      </span>
-
-        
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-        
-
-        
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/linux玩耍笔记/">linux玩耍笔记</a>
-  </span>
-
-
-
-        
-        <span>
-          <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
-        </span>
-        
-
-      </div>
-    </header>
-
-    <div class="article-content">
-      
-      <h2 id="链接-ECS-实例"><a href="#链接-ECS-实例" class="headerlink" title="链接 ECS 实例"></a>链接 ECS 实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh username@remotehost //如 ssh root@115.20.39.163</div></pre></td></tr></table></figure>
-<p>接下来会提示输入登录密码,在冒号之后输入然后回车</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">root@115.20.39.163<span class="string">'s password:</span></div></pre></td></tr></table></figure>
-<p>成功登录后会提示</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-86-generic x86_64)</div><div class="line"></div><div class="line"> * Documentation:  https://help.ubuntu.com/</div><div class="line">New release <span class="string">'16.04.1 LTS'</span> available.</div><div class="line">Run <span class="string">'do-release-upgrade'</span> to upgrade to it.</div><div class="line"></div><div class="line"></div><div class="line">Welcome to aliyun Elastic Compute Service!</div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2016/11/01/linux-node/#more">阅读全文</a>
       </p>
       
       

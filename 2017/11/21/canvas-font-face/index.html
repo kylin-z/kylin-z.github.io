@@ -7,75 +7,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>李宏毅machine learning学习笔记——Regression | Kylin</title>
+  <title>如何在canvas中使用自定义字体图标 | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="machine learning," />
+    <meta name="keywords" content="canvas,@font-face," />
   
 
-  <meta name="description" content="例子:预测宝可梦进化后的物力值(cp)输入
-用X来表示一只宝可梦
-用Xi来表示宝可梦进化前的种种特性(feature)
-Xcp 现在的cp值
-Xs 物种
-Xhp hp值
-Xw 体重
-Xh 身高
-
-
-
-输出
-这只宝可梦进化后的cp值：Y
-
-Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
-
-由于w、b可以为任何值。这里我们将各种数值带入到b、w中，就得到了一个M">
+  <meta name="description" content="案例以font-awesome这个图标库为例字体图标的展示需要保证图标代码为unicode,需要在code前面加上\u123456789101112131415161718192021&amp;lt;!doctype html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;  &amp;lt;meta name=&quot;viewpo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="李宏毅machine learning学习笔记——Regression">
-<meta property="og:url" content="http://kylin.himmas.cc/2017/11/18/machine-learning-2/index.html">
+<meta property="og:title" content="如何在canvas中使用自定义字体图标">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/11/21/canvas-font-face/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="例子:预测宝可梦进化后的物力值(cp)输入
-用X来表示一只宝可梦
-用Xi来表示宝可梦进化前的种种特性(feature)
-Xcp 现在的cp值
-Xs 物种
-Xhp hp值
-Xw 体重
-Xh 身高
-
-
-
-输出
-这只宝可梦进化后的cp值：Y
-
-Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
-
-由于w、b可以为任何值。这里我们将各种数值带入到b、w中，就得到了一个M">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/Loss%20function.png">
-<meta property="og:updated_time" content="2017-11-21T09:24:17.000Z">
+<meta property="og:description" content="案例以font-awesome这个图标库为例字体图标的展示需要保证图标代码为unicode,需要在code前面加上\u123456789101112131415161718192021&amp;lt;!doctype html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;  &amp;lt;meta name=&quot;viewpo">
+<meta property="og:updated_time" content="2017-11-21T09:48:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李宏毅machine learning学习笔记——Regression">
-<meta name="twitter:description" content="例子:预测宝可梦进化后的物力值(cp)输入
-用X来表示一只宝可梦
-用Xi来表示宝可梦进化前的种种特性(feature)
-Xcp 现在的cp值
-Xs 物种
-Xhp hp值
-Xw 体重
-Xh 身高
-
-
-
-输出
-这只宝可梦进化后的cp值：Y
-
-Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
-
-由于w、b可以为任何值。这里我们将各种数值带入到b、w中，就得到了一个M">
-<meta name="twitter:image" content="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png">
+<meta name="twitter:title" content="如何在canvas中使用自定义字体图标">
+<meta name="twitter:description" content="案例以font-awesome这个图标库为例字体图标的展示需要保证图标代码为unicode,需要在code前面加上\u123456789101112131415161718192021&amp;lt;!doctype html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;  &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;  &amp;lt;meta name=&quot;viewpo">
 
   
 
@@ -178,21 +127,21 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#例子-预测宝可梦进化后的物力值-cp"><span class="toc-text">例子:预测宝可梦进化后的物力值(cp)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入"><span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Loss-function"><span class="toc-text">Loss function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#找到最优f-——Gradient-Descent"><span class="toc-text">找到最优f*——Gradient Descent</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以font-awesome这个图标库为例"><span class="toc-text">以font-awesome这个图标库为例</span></a></li></ol></li></ol>
   </div>
 
 -->
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-machine-learning-2" class="article article-type-post" itemprop="blogPost">
+  <article id="post-canvas-font-face" class="article article-type-post" itemprop="blogPost">
     <header class="article-header">
-      <h1 class="post-title"><a href="/2017/11/18/machine-learning-2/">李宏毅machine learning学习笔记——Regression</a></h1>
+      <h1 class="post-title"><a href="/2017/11/21/canvas-font-face/">如何在canvas中使用自定义字体图标</a></h1>
 
       <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2017.11.18</span>
+        <span>2017.11.21</span>
       </span>
 
         
@@ -205,7 +154,7 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
         
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/machine-learning学习笔记/">machine learning学习笔记</a>
+    <a class="article-category-link" href="/categories/canvas/">canvas</a>
   </span>
 
 
@@ -213,7 +162,7 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
         
         <span>
           <i class="icon-comment"></i>
-          <a href="kylin.himmas.cc/2017/11/18/machine-learning-2/#disqus_thread"></a>
+          <a href="kylin.himmas.cc/2017/11/21/canvas-font-face/#disqus_thread"></a>
         </span>
         
 
@@ -222,35 +171,8 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 
     <div class="article-content">
       
-      <h2 id="例子-预测宝可梦进化后的物力值-cp"><a href="#例子-预测宝可梦进化后的物力值-cp" class="headerlink" title="例子:预测宝可梦进化后的物力值(cp)"></a>例子:预测宝可梦进化后的物力值(cp)</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
-<li>用<code>X</code>来表示一只宝可梦</li>
-<li>用<code>Xi</code>来表示宝可梦进化前的种种特性(feature)<ul>
-<li><code>Xcp</code> 现在的cp值</li>
-<li><code>Xs</code> 物种</li>
-<li><code>Xhp</code> hp值</li>
-<li><code>Xw</code> 体重</li>
-<li><code>Xh</code> 身高</li>
-</ul>
-</li>
-</ul>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><ul>
-<li>这只宝可梦进化后的cp值：<code>Y</code></li>
-</ul>
-<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p class="tip">假设输入与输出间存在<code>Y = w·Xcp</code> 这样的关系(这里省略了X的其他属性)</p>
-
-<p>由于<code>w</code>、<code>b</code>可以为任何值。这里我们将各种数值带入到<code>b</code>、<code>w</code>中，就得到了一个Model(A set of function)</p>
-<ul>
-<li><code>f1:Y = 10+9·Xcp</code></li>
-<li><code>f2:Y = 9.8+9.2·Xcp</code></li>
-<li><code>f3:Y = - 0.8-1.2·Xcp</code></li>
-<li>…</li>
-</ul>
-<p>最后得到一个Linear Model<br><img src="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png" alt=""></p>
-<h3 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h3><p><code>Loss function</code>用来衡量<code>Model</code>中的<code>function</code>，它的<code>Input</code>是<code>Model</code>中的<code>fn</code>，它的<code>Output</code>可以是这个<code>fn</code>与正确的数值的差平方和。<br>由于<code>fn</code>是由<code>b</code>、<code>w</code>的数值决定的，由此可得<code>Loss function L(w,b)</code>如下图所示</p>
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/Loss%20function.png" alt=""></p>
-<h3 id="找到最优f-——Gradient-Descent"><a href="#找到最优f-——Gradient-Descent" class="headerlink" title="找到最优f*——Gradient Descent"></a>找到最优<code>f*</code>——Gradient Descent</h3><p class="tip"><code>f*</code>是Model中的一个f，使Loss function能取到最小值</p>
-
-
+      <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="以font-awesome这个图标库为例"><a href="#以font-awesome这个图标库为例" class="headerlink" title="以font-awesome这个图标库为例"></a>以<code>font-awesome</code>这个图标库为例</h3><p></p><p class="tip">字体图标的展示需要保证图标代码为unicode,需要在code前面加上<code>\u</code></p><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!doctype html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset="UTF-8"&gt;</div><div class="line">  &lt;meta name="viewport"</div><div class="line">        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"&gt;</div><div class="line">  &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;</div><div class="line">  &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"&gt;</div><div class="line">  &lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;canvas id="canvas" width="800" height="400"&gt;&lt;/canvas&gt;</div><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line"></div><div class="line">  var canvas=document.getElementById("canvas");</div><div class="line">  var ctx=canvas.getContext("2d");</div><div class="line">  ctx.font='48px FontAwesome';</div><div class="line">  ctx.fillText('\uF064 \uF065 \uF0a5',20,75);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure><p></p>
+<p><a class="jsbin-embed" href="http://jsbin.com/cohurap/embed?js,output" target="_blank" rel="external">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?4.1.1"></script></p>
 
       
     </div>
@@ -258,10 +180,10 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
   
   <div class="page-bar">
     
-    <a href="/2017/11/21/canvas-font-face/" class="prev-btn"><i class="iconfont icon-prev"></i>如何在canvas中使用自定义字体图标</a>
+    <a class="prev-btn"></a>
     
     
-    <a href="/2017/11/18/machine-learning-1/" class="next-btn">李宏毅machine learning学习笔记——导论<i class="iconfont icon-next"></i></a>
+    <a href="/2017/11/18/machine-learning-2/" class="next-btn">李宏毅machine learning学习笔记——Regression<i class="iconfont icon-next"></i></a>
     
     </div>
   
@@ -387,7 +309,7 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
   <script>
     var disqus_shortname = 'kylinz';
     
-    var disqus_url = 'http://kylin.himmas.cc/2017/11/18/machine-learning-2/';
+    var disqus_url = 'http://kylin.himmas.cc/2017/11/21/canvas-font-face/';
     
     (function(){
       var dsq = document.createElement('script');
