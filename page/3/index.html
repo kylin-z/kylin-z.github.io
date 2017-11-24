@@ -365,13 +365,13 @@
       
       <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前阵子看到尤小右同学的主页上有这样一个彩带<a href="http://evanyou.me/">点这里</a></p>
 <p>观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ <a href="http://krazydad.com/tutorials/makecolors.php">原理点这里</a></p>
-<p>于是实现了一个简单版本<a href="http://himmas.github.io/Himmas_demo/colours-bar/">Demo</a></p>
+<p>于是实现了一个简单版本<a href="http://himmas.github.io/Himmas_demo/canvas/colours-bar/">Demo</a></p>
 <p>简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="主要分成以下几块"><a href="#主要分成以下几块" class="headerlink" title="主要分成以下几块"></a>主要分成以下几块</h3><ul>
 <li>如何生成彩虹色</li>
 <li>如何绘制连续的三角形</li>
 </ul>
-<h2 id="如何生成彩虹色"><a href="#如何生成彩虹色" class="headerlink" title="如何生成彩虹色"></a>如何生成彩虹色</h2><p>彩虹色<a href="http://himmas.github.io/Himmas_demo/colours-bar/colour-bar.html">Demo</a><br>首先，如何生成一条灰带？</p>
+<h2 id="如何生成彩虹色"><a href="#如何生成彩虹色" class="headerlink" title="如何生成彩虹色"></a>如何生成彩虹色</h2><p>彩虹色<a href="http://himmas.github.io/Himmas_demo/canvas/colours-bar/colour-bar.html">Demo</a><br>首先，如何生成一条灰带？</p>
 <p>正弦波能帮助我们连续地产生-1~1之间的数,可以满足我们的需求</p>
 <p><img src="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501161024.png" alt=""><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> frequency = <span class="number">.3</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; ++i)</div><div class="line">&#123;</div><div class="line">   Document.write( <span class="built_in">Math</span>.sin(frequency * i)  );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>frequency约等于6.2时,正好一个周期(正弦波的周期为2PI 约等于6.2)</p>
