@@ -51,7 +51,7 @@ scp /some/directory/node-v6.2.0.tar.gz root@115.20.39.163:/some/remote/directory
 root@himmas:~# tar zxvf node-v6.2.0.tar.gz
 ```
 
-解压完成后进入源代码目录,打开.configure文件
+解压完成后进入源代码目录,调用文件configure，为下一步make install做准备
 
 ```bash
 root@himmas:~# ls

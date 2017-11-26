@@ -9,7 +9,7 @@ categories: 前端
 
 观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ [原理点这里](http://krazydad.com/tutorials/makecolors.php)
 
-于是实现了一个简单版本[Demo](http://himmas.github.io/Himmas_demo/colours-bar/)
+于是实现了一个简单版本[Demo](http://himmas.github.io/Himmas_demo/canvas/colours-bar/)
 
 简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕
 ## 原理
@@ -18,7 +18,7 @@ categories: 前端
 - 如何绘制连续的三角形
 
 ## 如何生成彩虹色
-彩虹色[Demo](http://himmas.github.io/Himmas_demo/colours-bar/colour-bar.html)
+彩虹色[Demo](http://himmas.github.io/Himmas_demo/canvas/colours-bar/colour-bar.html)
 首先，如何生成一条灰带？
 
 正弦波能帮助我们连续地产生-1~1之间的数,可以满足我们的需求
@@ -114,7 +114,7 @@ center = 200;
 ![](http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501222256.png)
 
 ## 如何绘制连续的三角形
-[demo](http://himmas.github.io/Himmas_demo/colours-bar/canvas-triangle.html)
+[demo](http://himmas.github.io/Himmas_demo/canvas/colours-bar/canvas-triangle.html)
 ```javascript
     //画连续的三角形并填色
     var c=document.getElementById("myCanvas");
