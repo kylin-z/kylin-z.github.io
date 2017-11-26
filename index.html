@@ -169,9 +169,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/Regression.pdf" target="_blank" rel="external">链接</a></td>
-<td><a href="https://www.youtube.com/watch?v=fegAeph9UaA" target="_blank" rel="external">链接</a></td>
-<td><a href="https://www.bilibili.com/video/av10590361/?from=search&amp;seid=11735940949684226997#page=3" target="_blank" rel="external">链接</a></td>
+<td><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/Regression.pdf">链接</a></td>
+<td><a href="https://www.youtube.com/watch?v=fegAeph9UaA">链接</a></td>
+<td><a href="https://www.bilibili.com/video/av10590361/?from=search&amp;seid=11735940949684226997#page=3">链接</a></td>
 </tr>
 </tbody>
 </table>
@@ -199,37 +199,11 @@
 <li>…</li>
 </ul>
 <p>最后得到一个Linear Model<br><img src="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png" alt=""></p>
-<h3 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h3><p><code>Loss function</code>用来衡量<code>Model</code>中的<code>function</code>，它的<code>Input</code>是<code>Model</code>中的<code>fn</code>，它的<code>Output</code>可以是这个<code>fn</code>与正确的数值的差平方和。<br>由于<code>fn</code>是由<code>b</code>、<code>w</code>的数值决定的，由此可得<code>Loss function L(w,b)</code>如下图所示</p>
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/Loss%20function.png" alt=""></p>
-<h3 id="找到最优f-——Gradient-Descent-梯度下降法"><a href="#找到最优f-——Gradient-Descent-梯度下降法" class="headerlink" title="找到最优f*——Gradient Descent(梯度下降法)"></a>找到最优<code>f*</code>——Gradient Descent(梯度下降法)</h3><blockquote>
-<p><code>f*</code>是Model中的一个f，使Loss function能取到最小值</p>
-</blockquote>
-<p class="tip"> 假设只有一个参数w </p>
-
-<ol>
-<li>寻找一个w0的位置，计算L在w0的位置的微分dL/dw|w=w0。</li>
-<li>移动w的到w1的位置，w1 &lt;- w0 - η*dL/dw|w=w0 (η被称为learning rate——步长，是一个可设置的常量)如果当前位置的微分的绝对值很大，则说明距离目标点越远，反之则越近，等于0的时候不再移动。</li>
-<li>直到找到一个wt，使dL/dw|w=wt = 0<br><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95.png" alt=""></li>
-</ol>
-<p class="tip">如下图所示，梯度下降法并不能够保证一定能找到global minima或是local minima，找到的也可能是saddle point</p>
-
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%952.png" alt=""></p>
-<blockquote>
-<p>回到两个参数的情况，将所有的偏微分排成一个向量，这个向量就被称为梯度</p>
-</blockquote>
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6.png" alt=""></p>
-<h3 id="优化Model"><a href="#优化Model" class="headerlink" title="优化Model"></a>优化Model</h3><blockquote>
-<p>通过以上的方式我们找到一个函数f <code>y = 188.4+2.7*xcp</code>,如图所示,并不是所有的点都能拟合函数，讲参数带入Loss function得到error为35.0 依然比较大。这时我们需要想办法优化我们的model。我们用相同的方法分别尝试了1-5次方程。从下图中可以看出，在training data中的error越来越小，但是在testing data上，误差变化却并不与在training data上一致，甚至在5次方程中，误差达到了200+，这个现象被称为<code>overfitting</code></p>
-</blockquote>
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%8C%E6%AC%A1.png" alt="二次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%B8%89%E6%AC%A1.png" alt="三次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1.png" alt="四次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%94%E6%AC%A1.png" alt="五次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/overfitting.png" alt="overfitting"></p>
-<p class="tip">function 并不是越复杂越好。</p>
-
-
-<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><ul>
-<li>是否是现行模型取决于<code>w</code>和<code>b</code>，<code>y = b+w1*xcp + w2*xcp^2</code> 依然是一个linear model</li>
-<li>在<code>linear regression</code>的长竞争不用担心<code>wt</code>会出现在<code>saddle point</code>的位置</li>
-</ul>
-
+      
+      <p class="article-more-link">
+        <a class="btn btn-primary more-btn" href="/2017/11/26/machine-learning-2/#more">阅读全文</a>
+      </p>
+      
       
     </div>
   </article>
