@@ -38,7 +38,7 @@ machine learningmachine learning:">
 <meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5%E7%9A%84%E5%85%B3%E7%B3%BB.png">
 <meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%AD%A5%E9%AA%A4.png">
 <meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/laerning%20map.png">
-<meta property="og:updated_time" content="2017-11-18T13:20:06.000Z">
+<meta property="og:updated_time" content="2017-11-26T11:58:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="李宏毅machine learning学习笔记——导论">
 <meta name="twitter:description" content="前言最近在学习machine learning相关的知识，李宏毅教授的机器学习课程是一套非常好的入门教材，这里使用的2017年的版本。课程日历B站视频
@@ -152,7 +152,7 @@ machine learningmachine learning:">
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几个概念之间的关系"><span class="toc-text">几个概念之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#machine-learning"><span class="toc-text">machine learning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#machine-learning的步骤"><span class="toc-text">machine learning的步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#learning-map"><span class="toc-text">learning map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种问题-橙色"><span class="toc-text">几种问题(橙色)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种Model-绿色"><span class="toc-text">几种Model(绿色)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几种情境"><span class="toc-text">几种情境</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#几个概念之间的关系"><span class="toc-text">几个概念之间的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#machine-learning"><span class="toc-text">machine learning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#machine-learning的步骤"><span class="toc-text">machine learning的步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#learning-map"><span class="toc-text">learning map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种问题-橙色"><span class="toc-text">几种问题(橙色)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种Model-绿色"><span class="toc-text">几种Model(绿色)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几种情境"><span class="toc-text">几种情境</span></a></li></ol></li></ol>
   </div>
 
 -->
@@ -215,7 +215,7 @@ machine learningmachine learning:">
 <p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%AD%A5%E9%AA%A4.png" alt="机器学习的步骤"></p>
 <h3 id="learning-map"><a href="#learning-map" class="headerlink" title="learning map"></a>learning map</h3><p><img src="http://ozm59jgdk.bkt.clouddn.com/laerning%20map.png" alt="learning map"></p>
 <h3 id="几种问题-橙色"><a href="#几种问题-橙色" class="headerlink" title="几种问题(橙色)"></a>几种问题(橙色)</h3><ul>
-<li>Regression 数值问题 —— 期望的输出是一个数值(scalar)</li>
+<li>Regression 回归问题 —— 期望的输出是一个数值(scalar)</li>
 <li>Classification 预测类别问题 —— 从两个或多个类别中找到输出<ul>
 <li>Binary Classification 二元(yes or no)</li>
 <li>Multi-class Classification 多元 </li>
@@ -233,7 +233,7 @@ machine learningmachine learning:">
 <li>decision tree</li>
 <li>K-NN</li>
 </ul>
-<h2 id="几种情境"><a href="#几种情境" class="headerlink" title="几种情境"></a>几种情境</h2><ul>
+<h3 id="几种情境"><a href="#几种情境" class="headerlink" title="几种情境"></a>几种情境</h3><ul>
 <li>Supervised Learning —— 有大量的Training Data</li>
 <li>Semi-supervised Learning —— 没有大量的具有output(label)的数据、但是有大量与问题有关但没有output(label)的数据</li>
 <li>transfer Learning —— 没有大量的具有output(label)的数据、但是有大量无关的数据</li>
@@ -247,7 +247,7 @@ machine learningmachine learning:">
   
   <div class="page-bar">
     
-    <a href="/2017/11/18/machine-learning-2/" class="prev-btn"><i class="iconfont icon-prev"></i>李宏毅machine learning学习笔记——Regression</a>
+    <a href="/2017/11/21/canvas-font-face/" class="prev-btn"><i class="iconfont icon-prev"></i>如何在canvas中使用自定义字体图标</a>
     
     
     <a href="/2017/08/02/fixed/" class="next-btn">positon:fixed的怪异行为记录<i class="iconfont icon-next"></i></a>

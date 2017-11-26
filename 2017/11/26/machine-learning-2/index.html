@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>李宏毅machine learning学习笔记——Regression | Kylin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="machine learning," />
+  
+
+  <meta name="description" content="资料|–|–||pdf|video|B站|
+例子:预测宝可梦进化后的物力值(cp)输入
+用X来表示一只宝可梦
+用Xi来表示宝可梦进化前的种种特性(feature)
+Xcp 现在的cp值
+Xs 物种
+Xhp hp值
+Xw 体重
+Xh 身高
+
+
+
+输出
+这只宝可梦进化后的cp值：Y
+
+Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
+
+由于w、b可以为任何值。这里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="李宏毅machine learning学习笔记——Regression">
+<meta property="og:url" content="http://kylin.himmas.cc/2017/11/26/machine-learning-2/index.html">
+<meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="资料|–|–||pdf|video|B站|
+例子:预测宝可梦进化后的物力值(cp)输入
+用X来表示一只宝可梦
+用Xi来表示宝可梦进化前的种种特性(feature)
+Xcp 现在的cp值
+Xs 物种
+Xhp hp值
+Xw 体重
+Xh 身高
+
+
+
+输出
+这只宝可梦进化后的cp值：Y
+
+Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
+
+由于w、b可以为任何值。这里">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/Loss%20function.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%952.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%8C%E6%AC%A1.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E4%B8%89%E6%AC%A1.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%94%E6%AC%A1.png">
+<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/overfitting.png">
+<meta property="og:updated_time" content="2017-11-26T12:39:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="李宏毅machine learning学习笔记——Regression">
+<meta name="twitter:description" content="资料|–|–||pdf|video|B站|
+例子:预测宝可梦进化后的物力值(cp)输入
+用X来表示一只宝可梦
+用Xi来表示宝可梦进化前的种种特性(feature)
+Xcp 现在的cp值
+Xs 物种
+Xhp hp值
+Xw 体重
+Xh 身高
+
+
+
+输出
+这只宝可梦进化后的cp值：Y
+
+Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
+
+由于w、b可以为任何值。这里">
+<meta name="twitter:image" content="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png">
+
+  
+
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  <!---->
+
+  <div class="head-box">
+    <div class="head-inner">
+        <div class="info-box">
+            <a href="/" class="avatar">
+                <img src="/images/avatar.jpg" alt="" />
+            </a>
+            <div class="detail-info">
+                <h1 class="name">kylin</h1>
+                <div class="slogan">醉里论道,醒时折花。</div>
+                <hr>
+                <div class="link-box">
+                    
+                    
+                    <a class="link-item-box td02" href="https://github.com/kylin-z">
+                        <i class="iconfont icon-github"></i>
+                        <span>Github</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-weibo1"></i>
+                        <span>新浪微博</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    
+                    
+                    <a class="link-item-box td02" href="/">
+                        <i class="iconfont icon-facebook1"></i>
+                        <span>facebook</span>
+                    </a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div class="menu-box">
+            
+                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+            
+                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+            
+                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+            
+                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+            
+                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+            
+                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+            
+                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+            
+                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+            
+        </div>
+    </div>
+</div>
+
+<!--这个是章节目录-->
+<!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#资料"><span class="toc-text">资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子-预测宝可梦进化后的物力值-cp"><span class="toc-text">例子:预测宝可梦进化后的物力值(cp)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入"><span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Loss-function"><span class="toc-text">Loss function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#找到最优f-——Gradient-Descent-梯度下降法"><span class="toc-text">找到最优f*——Gradient Descent(梯度下降法)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化Model"><span class="toc-text">优化Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tips"><span class="toc-text">tips</span></a></li></ol>
+  </div>
+
+-->
+
+<div class="content content-post CENTER">
+   <div class="container article-container">
+  <article id="post-machine-learning-2" class="article article-type-post" itemprop="blogPost">
+    <header class="article-header">
+      <h1 class="post-title"><a href="/2017/11/26/machine-learning-2/">李宏毅machine learning学习笔记——Regression</a></h1>
+
+      <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.11.26</span>
+      </span>
+
+        
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+        
+
+        
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/machine-learning学习笔记/">machine learning学习笔记</a>
+  </span>
+
+
+
+        
+        <span>
+          <i class="icon-comment"></i>
+          <a href="kylin.himmas.cc/2017/11/26/machine-learning-2/#disqus_thread"></a>
+        </span>
+        
+
+      </div>
+    </header>
+
+    <div class="article-content">
+      
+      <h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p>|–|–|<br>|<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/Regression.pdf" target="_blank" rel="external">pdf</a>|<a href="https://www.youtube.com/watch?v=fegAeph9UaA" target="_blank" rel="external">video</a>|<a href="https://www.bilibili.com/video/av10590361/?from=search&amp;seid=11735940949684226997#page=3" target="_blank" rel="external">B站</a>|</p>
+<h2 id="例子-预测宝可梦进化后的物力值-cp"><a href="#例子-预测宝可梦进化后的物力值-cp" class="headerlink" title="例子:预测宝可梦进化后的物力值(cp)"></a>例子:预测宝可梦进化后的物力值(cp)</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
+<li>用<code>X</code>来表示一只宝可梦</li>
+<li>用<code>Xi</code>来表示宝可梦进化前的种种特性(feature)<ul>
+<li><code>Xcp</code> 现在的cp值</li>
+<li><code>Xs</code> 物种</li>
+<li><code>Xhp</code> hp值</li>
+<li><code>Xw</code> 体重</li>
+<li><code>Xh</code> 身高</li>
+</ul>
+</li>
+</ul>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><ul>
+<li>这只宝可梦进化后的cp值：<code>Y</code></li>
+</ul>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p class="tip">假设输入与输出间存在<code>Y = w·Xcp</code> 这样的关系(这里省略了X的其他属性)</p>
+
+<p>由于<code>w</code>、<code>b</code>可以为任何值。这里我们将各种数值带入到<code>b</code>、<code>w</code>中，就得到了一个Model(A set of function)</p>
+<ul>
+<li><code>f1:Y = 10+9·Xcp</code></li>
+<li><code>f2:Y = 9.8+9.2·Xcp</code></li>
+<li><code>f3:Y = - 0.8-1.2·Xcp</code></li>
+<li>…</li>
+</ul>
+<p>最后得到一个Linear Model<br><img src="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png" alt=""></p>
+<h3 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h3><p><code>Loss function</code>用来衡量<code>Model</code>中的<code>function</code>，它的<code>Input</code>是<code>Model</code>中的<code>fn</code>，它的<code>Output</code>可以是这个<code>fn</code>与正确的数值的差平方和。<br>由于<code>fn</code>是由<code>b</code>、<code>w</code>的数值决定的，由此可得<code>Loss function L(w,b)</code>如下图所示</p>
+<p><img src="http://ozm59jgdk.bkt.clouddn.com/Loss%20function.png" alt=""></p>
+<h3 id="找到最优f-——Gradient-Descent-梯度下降法"><a href="#找到最优f-——Gradient-Descent-梯度下降法" class="headerlink" title="找到最优f*——Gradient Descent(梯度下降法)"></a>找到最优<code>f*</code>——Gradient Descent(梯度下降法)</h3><blockquote>
+<p><code>f*</code>是Model中的一个f，使Loss function能取到最小值</p>
+</blockquote>
+<p class="tip"> 假设只有一个参数w </p>
+
+<ol>
+<li>寻找一个w0的位置，计算L在w0的位置的微分dL/dw|w=w0。</li>
+<li>移动w的到w1的位置，w1 &lt;- w0 - η*dL/dw|w=w0 (η被称为learning rate——步长，是一个可设置的常量)如果当前位置的微分的绝对值很大，则说明距离目标点越远，反之则越近，等于0的时候不再移动。</li>
+<li>直到找到一个wt，使dL/dw|w=wt = 0<br><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95.png" alt=""></li>
+</ol>
+<p class="tip">如下图所示，梯度下降法并不能够保证一定能找到global minima或是local minima，找到的也可能是saddle point</p>
+
+<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%952.png" alt=""></p>
+<blockquote>
+<p>回到两个参数的情况，将所有的偏微分排成一个向量，这个向量就被称为梯度<br><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6.png" alt=""></p>
+</blockquote>
+<h3 id="优化Model"><a href="#优化Model" class="headerlink" title="优化Model"></a>优化Model</h3><blockquote>
+<p>通过以上的方式我们找到一个函数f <code>y = 188.4+2.7*xcp</code>,如图所示,并不是所有的点都能拟合函数，讲参数带入Loss function得到error为35.0 依然比较大。这时我们需要想办法优化我们的model。我们用相同的方法分别尝试了1-5次方程。从下图中可以看出，在training data中的error越来越小，但是在testing data上，误差变化却并不与在training data上一致，甚至在5次方程中，误差达到了200+，这个现象被称为<code>overfitting</code><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%8C%E6%AC%A1.png" alt="二次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%B8%89%E6%AC%A1.png" alt="三次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1.png" alt="四次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%94%E6%AC%A1.png" alt="五次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/overfitting.png" alt="overfitting"></p>
+</blockquote>
+<p class="tip">function 并不是越复杂越好。</p>
+
+
+<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><ul>
+<li>是否是现行模型取决于<code>w</code>和<code>b</code>，<code>y = b+w1*xcp + w2*xcp^2</code> 依然是一个linear model</li>
+<li>在<code>linear regression</code>的长竞争不用担心<code>wt</code>会出现在<code>saddle point</code>的位置</li>
+</ul>
+
+      
+    </div>
+  </article>
+  
+  <div class="page-bar">
+    
+    <a class="prev-btn"></a>
+    
+    
+    <a href="/2017/11/21/canvas-font-face/" class="next-btn">如何在canvas中使用自定义字体图标<i class="iconfont icon-next"></i></a>
+    
+    </div>
+  
+</div>
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <!--<div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/"
+              target="_self"
+              >
+              首页
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              归档
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/album/"
+              target="_self"
+              >
+              相册
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+-->
+
+
+  <!---->
+    <!--  <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'kylinz';
+    
+    var disqus_url = 'http://kylin.himmas.cc/2017/11/26/machine-learning-2/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+-->
+  <!---->
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
