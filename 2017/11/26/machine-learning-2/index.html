@@ -15,21 +15,7 @@
     <meta name="keywords" content="machine learning," />
   
 
-  <meta name="description" content="资料
-
-
-
-
-
-
-
-
-pdf
-video
-B站
-
-
-
+  <meta name="description" content="资料|—|—|—|| pdf  |video|B站|
 例子:预测宝可梦进化后的物力值(cp)输入
 用X来表示一只宝可梦
 用Xi来表示宝可梦进化前的种种特性(feature)
@@ -51,21 +37,7 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 <meta property="og:title" content="李宏毅machine learning学习笔记——Regression">
 <meta property="og:url" content="http://kylin.himmas.cc/2017/11/26/machine-learning-2/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="资料
-
-
-
-
-
-
-
-
-pdf
-video
-B站
-
-
-
+<meta property="og:description" content="资料|—|—|—|| pdf  |video|B站|
 例子:预测宝可梦进化后的物力值(cp)输入
 用X来表示一只宝可梦
 用Xi来表示宝可梦进化前的种种特性(feature)
@@ -93,24 +65,10 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 <meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1.png">
 <meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%94%E6%AC%A1.png">
 <meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/overfitting.png">
-<meta property="og:updated_time" content="2017-11-26T12:41:58.000Z">
+<meta property="og:updated_time" content="2017-11-26T12:42:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="李宏毅machine learning学习笔记——Regression">
-<meta name="twitter:description" content="资料
-
-
-
-
-
-
-
-
-pdf
-video
-B站
-
-
-
+<meta name="twitter:description" content="资料|—|—|—|| pdf  |video|B站|
 例子:预测宝可梦进化后的物力值(cp)输入
 用X来表示一只宝可梦
 用Xi来表示宝可梦进化前的种种特性(feature)
@@ -275,21 +233,7 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 
     <div class="article-content">
       
-      <h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/Regression.pdf" target="_blank" rel="external">pdf</a></td>
-<td><a href="https://www.youtube.com/watch?v=fegAeph9UaA" target="_blank" rel="external">video</a></td>
-<td><a href="https://www.bilibili.com/video/av10590361/?from=search&amp;seid=11735940949684226997#page=3" target="_blank" rel="external">B站</a></td>
-</tr>
-</tbody>
-</table>
+      <h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p>|—|—|—|<br>| <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/Regression.pdf" target="_blank" rel="external">pdf</a>  |<a href="https://www.youtube.com/watch?v=fegAeph9UaA" target="_blank" rel="external">video</a>|<a href="https://www.bilibili.com/video/av10590361/?from=search&amp;seid=11735940949684226997#page=3" target="_blank" rel="external">B站</a>|</p>
 <h2 id="例子-预测宝可梦进化后的物力值-cp"><a href="#例子-预测宝可梦进化后的物力值-cp" class="headerlink" title="例子:预测宝可梦进化后的物力值(cp)"></a>例子:预测宝可梦进化后的物力值(cp)</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
 <li>用<code>X</code>来表示一只宝可梦</li>
 <li>用<code>Xi</code>来表示宝可梦进化前的种种特性(feature)<ul>
@@ -330,11 +274,13 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 
 <p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%952.png" alt=""></p>
 <blockquote>
-<p>回到两个参数的情况，将所有的偏微分排成一个向量，这个向量就被称为梯度<br><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6.png" alt=""></p>
+<p>回到两个参数的情况，将所有的偏微分排成一个向量，这个向量就被称为梯度</p>
 </blockquote>
+<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6.png" alt=""></p>
 <h3 id="优化Model"><a href="#优化Model" class="headerlink" title="优化Model"></a>优化Model</h3><blockquote>
-<p>通过以上的方式我们找到一个函数f <code>y = 188.4+2.7*xcp</code>,如图所示,并不是所有的点都能拟合函数，讲参数带入Loss function得到error为35.0 依然比较大。这时我们需要想办法优化我们的model。我们用相同的方法分别尝试了1-5次方程。从下图中可以看出，在training data中的error越来越小，但是在testing data上，误差变化却并不与在training data上一致，甚至在5次方程中，误差达到了200+，这个现象被称为<code>overfitting</code><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%8C%E6%AC%A1.png" alt="二次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%B8%89%E6%AC%A1.png" alt="三次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1.png" alt="四次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%94%E6%AC%A1.png" alt="五次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/overfitting.png" alt="overfitting"></p>
+<p>通过以上的方式我们找到一个函数f <code>y = 188.4+2.7*xcp</code>,如图所示,并不是所有的点都能拟合函数，讲参数带入Loss function得到error为35.0 依然比较大。这时我们需要想办法优化我们的model。我们用相同的方法分别尝试了1-5次方程。从下图中可以看出，在training data中的error越来越小，但是在testing data上，误差变化却并不与在training data上一致，甚至在5次方程中，误差达到了200+，这个现象被称为<code>overfitting</code></p>
 </blockquote>
+<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%8C%E6%AC%A1.png" alt="二次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%B8%89%E6%AC%A1.png" alt="三次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1.png" alt="四次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%94%E6%AC%A1.png" alt="五次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/overfitting.png" alt="overfitting"></p>
 <p class="tip">function 并不是越复杂越好。</p>
 
 
