@@ -146,24 +146,25 @@ child_process.exec(command[, options][, callback]) 衍生一个 shell 并在 she
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-node-child-process" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/03/30/node-child-process/">node子进程与调度任务</a></h1>
+    <article id="post-node-child-process" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/03/30/node-child-process/">node子进程与调度任务</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.03.30</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/node/">node</a>
@@ -171,19 +172,19 @@ child_process.exec(command[, options][, callback]) 衍生一个 shell 并在 she
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2017/03/30/node-child-process/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候我们会需要在服务端去执行一些命令或者脚本，这时候可以使用<code>node</code>的<code>child_process</code>模块来新建子进程。</p>
+        <div class="article-content">
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候我们会需要在服务端去执行一些命令或者脚本，这时候可以使用<code>node</code>的<code>child_process</code>模块来新建子进程。</p>
 <h2 id="新建子进程"><a href="#新建子进程" class="headerlink" title="新建子进程"></a>新建子进程</h2><p><code>child_process</code>存在几种创建子进程的方法。<a href="http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options" target="_blank" rel="external">参考</a></p>
 <ul>
 <li>创建异步进程<ul>
@@ -231,20 +232,52 @@ child_process.exec(command[, options][, callback]) 衍生一个 shell 并在 she
 <p><code>process</code>是一个全局对象，<code>argv</code>返回的是一组包含命令行参数的数组，splice(index)删除包括下标index在内的所有后续元素并返回删除元素组成的数组</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(process.argv)</div><div class="line"><span class="comment">// ['/usr/local/bin/node','/Users/kylinzhou/Documents/Himmas/himmas_super_admin/spiders/test.js','24','52' ]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> params = process.argv.splice(<span class="number">2</span>);</div><div class="line"><span class="comment">// ['24','52']</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> arg1 = params[<span class="number">0</span>];</div><div class="line"><span class="keyword">const</span> arg2 = params[<span class="number">1</span>];</div></pre></td></tr></table></figure>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2017/04/25/regExp/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>RegExp对象踩坑记录</a>
+        
+        
+        <a href="/2017/03/17/mongodb2/" class="next-btn">mongodb(mongoose)使用小结<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2017/04/25/regExp/" class="prev-btn"><i class="iconfont icon-prev"></i>RegExp对象踩坑记录</a>
-    
-    
-    <a href="/2017/03/17/mongodb2/" class="next-btn">mongodb(mongoose)使用小结<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -352,43 +385,6 @@ child_process.exec(command[, options][, callback]) 衍生一个 shell 并在 she
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2017/03/30/node-child-process/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

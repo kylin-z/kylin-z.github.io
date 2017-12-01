@@ -165,24 +165,25 @@
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-colours-bar" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/05/02/colours-bar/">如何用js画一条彩带</a></h1>
+    <article id="post-colours-bar" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/05/02/colours-bar/">如何用js画一条彩带</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.05.02</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/前端/">前端</a>
@@ -190,19 +191,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2016/05/02/colours-bar/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前阵子看到尤小右同学的主页上有这样一个彩带<a href="http://evanyou.me/" target="_blank" rel="external">点这里</a></p>
+        <div class="article-content">
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前阵子看到尤小右同学的主页上有这样一个彩带<a href="http://evanyou.me/" target="_blank" rel="external">点这里</a></p>
 <p>观察了小右的知乎回答之后,找到了实现原理(～￣▽￣)～ <a href="http://krazydad.com/tutorials/makecolors.php" target="_blank" rel="external">原理点这里</a></p>
 <p>于是实现了一个简单版本<a href="http://himmas.github.io/Himmas_demo/canvas/colours-bar/" target="_blank" rel="external">Demo</a></p>
 <p>简单版demo没有专门去计算三角形第三个点的坐标范围,有小小的瑕疵,常常不能横满整个屏幕</p>
@@ -259,20 +260,52 @@
 <p><img src="http://7xt8hz.com2.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160501222256.png" alt=""></p>
 <h2 id="如何绘制连续的三角形"><a href="#如何绘制连续的三角形" class="headerlink" title="如何绘制连续的三角形"></a>如何绘制连续的三角形</h2><p><a href="http://himmas.github.io/Himmas_demo/canvas/colours-bar/canvas-triangle.html" target="_blank" rel="external">demo</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//画连续的三角形并填色</span></div><div class="line"><span class="keyword">var</span> c=<span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</div><div class="line"><span class="keyword">var</span> ctx=c.getContext(<span class="string">"2d"</span>);</div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">70</span>);</div><div class="line">ctx.lineTo(<span class="number">80</span>,<span class="number">120</span>);</div><div class="line">ctx.closePath();</div><div class="line">ctx.fillStyle = <span class="string">"#89FE8F"</span>;<span class="comment">//设置颜色</span></div><div class="line">ctx.fill();<span class="comment">//填色</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">80</span>,<span class="number">120</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">70</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">130</span>);</div><div class="line">ctx.closePath();</div><div class="line">ctx.fillStyle = <span class="string">"#AEF673"</span>;</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure></p>
 <h2 id="完毕-～￣▽￣-～"><a href="#完毕-～￣▽￣-～" class="headerlink" title="完毕(～￣▽￣)～"></a>完毕(～￣▽￣)～</h2>
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2016/05/08/array-concat/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>数组合并并去重</a>
+        
+        
+        <a href="/2016/03/23/default-event/" class="next-btn">如何在内层div滚动到底部时禁止外部div滚动<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2016/05/08/array-concat/" class="prev-btn"><i class="iconfont icon-prev"></i>数组合并并去重</a>
-    
-    
-    <a href="/2016/03/23/default-event/" class="next-btn">如何在内层div滚动到底部时禁止外部div滚动<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -380,43 +413,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2016/05/02/colours-bar/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

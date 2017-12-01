@@ -134,24 +134,25 @@
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-canvas-font-face" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/11/21/canvas-font-face/">如何在canvas中使用自定义字体图标</a></h1>
+    <article id="post-canvas-font-face" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/11/21/canvas-font-face/">如何在canvas中使用自定义字体图标</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.11.21</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/canvas/">canvas</a>
@@ -159,35 +160,67 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2017/11/21/canvas-font-face/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="以font-awesome这个图标库为例"><a href="#以font-awesome这个图标库为例" class="headerlink" title="以font-awesome这个图标库为例"></a>以<code>font-awesome</code>这个图标库为例</h3><p></p><p class="tip">字体图标的展示需要保证图标代码为unicode,需要在code前面加上<code>\u</code></p><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span></span></div><div class="line">        <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"800"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-hand-pointer-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"点我画图标"</span> <span class="attr">id</span>=<span class="string">"button"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> canvas=<span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line">    <span class="keyword">var</span> ctx=canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">    ctx.font=<span class="string">'48px FontAwesome'</span>;</div><div class="line">    ctx.fillText(<span class="string">'\uF064 \uF065 \uF0a5'</span>,<span class="number">20</span>,<span class="number">75</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>).onclick = draw</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure><p></p>
+        <div class="article-content">
+            
+            <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="以font-awesome这个图标库为例"><a href="#以font-awesome这个图标库为例" class="headerlink" title="以font-awesome这个图标库为例"></a>以<code>font-awesome</code>这个图标库为例</h3><p></p><p class="tip">字体图标的展示需要保证图标代码为unicode,需要在code前面加上<code>\u</code></p><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span></span></div><div class="line">        <span class="attr">content</span>=<span class="string">"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"800"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-hand-pointer-o"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"点我画图标"</span> <span class="attr">id</span>=<span class="string">"button"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> canvas=<span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line">    <span class="keyword">var</span> ctx=canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">    ctx.font=<span class="string">'48px FontAwesome'</span>;</div><div class="line">    ctx.fillText(<span class="string">'\uF064 \uF065 \uF0a5'</span>,<span class="number">20</span>,<span class="number">75</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>).onclick = draw</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure><p></p>
 <p><a class="jsbin-embed" href="http://jsbin.com/cohurap/embed?html,js,output" target="_blank" rel="external">JS Bin on jsbin.com</a><script src="http://static.jsbin.com/js/embed.min.js?4.1.1"></script></p>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2017/11/26/machine-learning-2/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>李宏毅machine learning学习笔记——Regression</a>
+        
+        
+        <a href="/2017/11/18/machine-learning-1/" class="next-btn">李宏毅machine learning学习笔记——导论<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2017/11/26/machine-learning-2/" class="prev-btn"><i class="iconfont icon-prev"></i>李宏毅machine learning学习笔记——Regression</a>
-    
-    
-    <a href="/2017/11/18/machine-learning-1/" class="next-btn">李宏毅machine learning学习笔记——导论<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -295,43 +328,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2017/11/21/canvas-font-face/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

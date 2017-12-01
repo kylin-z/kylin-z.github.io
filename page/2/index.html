@@ -122,24 +122,25 @@
     
 
 <div class="container article-container">
-  <article id="post-python-hole" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/03/06/python-hole/">python折腾过程中遇到的坑全纪录</a></h1>
+    <article id="post-python-hole" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/03/06/python-hole/">python折腾过程中遇到的坑全纪录</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.03.06</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/python/">python</a>
@@ -147,19 +148,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="Scrapy的依赖库Six与系统依赖库Six发生了冲突"><a href="#Scrapy的依赖库Six与系统依赖库Six发生了冲突" class="headerlink" title="Scrapy的依赖库Six与系统依赖库Six发生了冲突"></a>Scrapy的依赖库Six与系统依赖库Six发生了冲突</h2><p class="tip">这应该是一个<code>mac</code>坑</p>
+        <div class="article-content">
+            
+            <h2 id="Scrapy的依赖库Six与系统依赖库Six发生了冲突"><a href="#Scrapy的依赖库Six与系统依赖库Six发生了冲突" class="headerlink" title="Scrapy的依赖库Six与系统依赖库Six发生了冲突"></a>Scrapy的依赖库Six与系统依赖库Six发生了冲突</h2><p class="tip">这应该是一个<code>mac</code>坑</p>
 
 <h3 id="error"><a href="#error" class="headerlink" title="error"></a>error</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DEPRECATION: Uninstalling a distutils installed project (six) has been deprecated and will be removed <span class="keyword">in</span> a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.</div><div class="line">    Uninstalling six-1.4.1:</div><div class="line">		...</div></pre></td></tr></table></figure>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>参考<a href="http://stackoverflow.com/questions/31900008/oserror-errno-1-operation-not-permitted-when-installing-scrapy-in-osx-10-11">starkoverflow</a></p>
@@ -173,39 +174,70 @@
 
 <h3 id="方法一：重装six"><a href="#方法一：重装six" class="headerlink" title="方法一：重装six"></a>方法一：重装<code>six</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /Library/Python/2.7/site-packages/six*</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm -rf /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2017/03/06/python-hole/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/03/06/python-hole/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-python2" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/02/20/python2/">python学习笔记（二）</a></h1>
+    <article id="post-python2" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/02/20/python2/">python学习笔记（二）</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.02.20</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/python/">python</a>
@@ -213,19 +245,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="range-函数"><a href="#range-函数" class="headerlink" title="range()函数"></a>range()函数</h2><p><code>range(n)</code>函数可以生成一个0~n-1整数序列</p>
+        <div class="article-content">
+            
+            <h2 id="range-函数"><a href="#range-函数" class="headerlink" title="range()函数"></a>range()函数</h2><p><code>range(n)</code>函数可以生成一个0~n-1整数序列</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>range(<span class="number">5</span>)</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div></pre></td></tr></table></figure>
 <h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><h3 id="string-转-int——int"><a href="#string-转-int——int" class="headerlink" title="string 转 int——int()"></a>string 转 int——<code>int()</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">birth = int(raw_input(<span class="string">'birth: '</span>))</div></pre></td></tr></table></figure>
 <h2 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h2><p><code>dict</code>与js中的<code>Object</code>相似，不同的是不能像js一样用<code>.</code>运算符读取</p>
@@ -240,39 +272,70 @@
 <p>第二个参数可以指定不存在时返回的值</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.get(<span class="string">'Thomas'</span>, <span class="number">-1</span>)</div><div class="line"><span class="number">-1</span></div></pre></td></tr></table></figure>
 <h3 id="删除并返回指定元素"><a href="#删除并返回指定元素" class="headerlink" title="删除并返回指定元素"></a>删除并返回指定元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d.pop(<span class="string">'Bob'</span>)</div><div class="line"><span class="number">75</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d</div><div class="line">&#123;<span class="string">'Michael'</span>: <span class="number">95</span>, <span class="string">'Tracy'</span>: <span class="number">85</span>&#125;</div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2017/02/20/python2/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/02/20/python2/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-python" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/02/17/python/">python学习笔记（一）</a></h1>
+    <article id="post-python" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/02/17/python/">python学习笔记（一）</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.02.17</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/python/">python</a>
@@ -280,19 +343,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p class="tip">在编写Python时，当使用中文输出或注释时运行脚本，会提示错误信息：</p>
+        <div class="article-content">
+            
+            <h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p class="tip">在编写Python时，当使用中文输出或注释时运行脚本，会提示错误信息：</p>
 
 <p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/python-encoding-error.png" alt=""></p>
 <h3 id="原因"><a href="#原因" class="headerlink" title="原因:"></a>原因:</h3><p>python的默认编码文件是用的ASCII码,而编辑器讲文件存成了UTF-8</p>
@@ -300,39 +363,70 @@
 <p>或者  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div></pre></td></tr></table></figure>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> <span class="string">r'\\\t\\\ '</span></div><div class="line"><span class="comment"># r''表示''内部字符默认不转义</span></div><div class="line"></div><div class="line"><span class="comment"># 如果字符串内部有很多换行，用\n写在一行里不好阅读，为了简化，Python允许在交互式命令行中用'''...'''</span></div><div class="line"><span class="comment"># 如 &gt;&gt;&gt; print '''line1</span></div><div class="line"><span class="comment"># ... line2</span></div><div class="line"><span class="comment"># ... line3'''</span></div><div class="line"><span class="comment"># 的格式表示多行内容,若写成程序则如下:</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">'''line1</div><div class="line">line2</div><div class="line">line3'''</span></div><div class="line"></div><div class="line"><span class="comment"># r''还能与'''...'''结合如下:</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> <span class="string">r'''\nline1</div><div class="line">line2</div><div class="line">line3'''</span></div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2017/02/17/python/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/02/17/python/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-testWithTravis" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/01/23/testWithTravis/">TravisCI自动化构建与Karma测试实践记录</a></h1>
+    <article id="post-testWithTravis" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/01/23/testWithTravis/">TravisCI自动化构建与Karma测试实践记录</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.01.23</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/自动化/">自动化</a>
@@ -340,58 +434,89 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="Karma"><a href="#Karma" class="headerlink" title="Karma"></a>Karma</h2><h3 id="安装的依赖"><a href="#安装的依赖" class="headerlink" title="安装的依赖"></a>安装的依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install karma --save-dev</div><div class="line">$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev</div></pre></td></tr></table></figure>
+        <div class="article-content">
+            
+            <h2 id="Karma"><a href="#Karma" class="headerlink" title="Karma"></a>Karma</h2><h3 id="安装的依赖"><a href="#安装的依赖" class="headerlink" title="安装的依赖"></a>安装的依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install karma --save-dev</div><div class="line">$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev</div></pre></td></tr></table></figure>
 <p>装完依赖后可以用以下命令运行测试</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Run Karma:</div><div class="line">$ ./node_modules/karma/bin/karma start</div></pre></td></tr></table></figure>
 <p>若觉得<code>./node_modules/karma/bin/karma</code>的写法太长，则可以全局安装<code>karma-cli</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g karma-cli</div></pre></td></tr></table></figure>
 <h3 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h3><p>最简单的方法是使用命令<code>karma init</code>来创建配置文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ karma init</div><div class="line"></div><div class="line">Which testing framework <span class="keyword">do</span> you want to use ?</div><div class="line"></div><div class="line">Press tab to list possible options. Enter to move to the next question.</div><div class="line">&gt; jasmine</div><div class="line"></div><div class="line"></div><div class="line">Do you want to use Require.js ?</div><div class="line">This will add Require.js plugin.</div><div class="line">Press tab to list possible options. Enter to move to the next question.</div><div class="line">&gt; no</div><div class="line"></div><div class="line">Do you want to capture any browsers automatically ?</div><div class="line">Press tab to list possible options. Enter empty string to move to the next question.</div><div class="line">&gt; Chrome</div><div class="line">&gt;</div><div class="line"></div><div class="line">What is the location of your <span class="built_in">source</span> and <span class="built_in">test</span> files ?</div><div class="line">You can use glob patterns, eg. <span class="string">"js/*.js"</span> or <span class="string">"test/**/*Spec.js"</span>.</div><div class="line">Enter empty string to move to the next question.</div><div class="line">&gt;</div><div class="line"></div><div class="line">Should any of the files included by the previous patterns be excluded ?</div><div class="line">You can use glob patterns, eg. <span class="string">"**/*.swp"</span>.</div><div class="line">Enter empty string to move to the next question.</div><div class="line">&gt;</div><div class="line"></div><div class="line">Do you want Karma to watch all the files and run the tests on change ?</div><div class="line">Press tab to list possible options.</div><div class="line">&gt; yes</div><div class="line"></div><div class="line">Config file generated at <span class="string">"/Users/xx/Documents/Himmas/melody/karma.conf.js"</span>.</div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2017/01/23/testWithTravis/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/01/23/testWithTravis/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-word-break" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/01/11/word-break/">英文单词换行连接符问题</a></h1>
+    <article id="post-word-break" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/01/11/word-break/">英文单词换行连接符问题</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.01.11</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/css/">css</a>
@@ -399,48 +524,79 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.xx</span>&#123;</div><div class="line">	<span class="attribute">hyphens</span>: auto;</div><div class="line">	<span class="comment">/*加链接横*/</span></div><div class="line">	<span class="attribute">word-wrap</span>: break-word;</div><div class="line">	<span class="attribute">overflow-wrap</span>: break-word;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <div class="article-content">
+            
+            <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.xx</span>&#123;</div><div class="line">	<span class="attribute">hyphens</span>: auto;</div><div class="line">	<span class="comment">/*加链接横*/</span></div><div class="line">	<span class="attribute">word-wrap</span>: break-word;</div><div class="line">	<span class="attribute">overflow-wrap</span>: break-word;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-      
-    </div>
-  </article>
-  
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-async" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/01/04/async/">关于js异步</a></h1>
+    <article id="post-async" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/01/04/async/">关于js异步</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.01.04</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -448,54 +604,85 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="同步Ajax"><a href="#同步Ajax" class="headerlink" title="同步Ajax"></a>同步Ajax</h2><p class="tip">在任何情况下都不应该使用这种方式,因为它会锁定浏览器UI(按钮、菜单、滚动条等),并阻塞所有的用户交互。 </p>
+        <div class="article-content">
+            
+            <h2 id="同步Ajax"><a href="#同步Ajax" class="headerlink" title="同步Ajax"></a>同步Ajax</h2><p class="tip">在任何情况下都不应该使用这种方式,因为它会锁定浏览器UI(按钮、菜单、滚动条等),并阻塞所有的用户交互。 </p>
 
 <h2 id="error-first风格的超时报错处理"><a href="#error-first风格的超时报错处理" class="headerlink" title="error-first风格的超时报错处理"></a>error-first风格的超时报错处理</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeoutify</span>(<span class="params">fn,delay</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> intv = setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    intv = <span class="literal">null</span></div><div class="line">    fn(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Timeout"</span>))</div><div class="line">  &#125;,delay)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(intv)&#123;</div><div class="line">      clearTimeout(intv)</div><div class="line">      fn.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2017/01/04/async/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/01/04/async/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-getterAndSetter" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/12/29/getterAndSetter/">js对象属性的getter与setter</a></h1>
+    <article id="post-getterAndSetter" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/12/29/getterAndSetter/">js对象属性的getter与setter</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.12.29</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -503,58 +690,89 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h2><p>我们知道对象是由名字、值和一组特性（attribute）构成的。在ECMAScript5.1中，属性值可以用一个或两个方法替代，这两个方法就是<code>getter</code>和<code>setter</code>。由<code>getter</code>和<code>setter</code>定义的属性称作“存取器属性”（accessor property），它不同于“数据属性”（data property），数据属性只有一个简单的值。</p>
+        <div class="article-content">
+            
+            <h2 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h2><p>我们知道对象是由名字、值和一组特性（attribute）构成的。在ECMAScript5.1中，属性值可以用一个或两个方法替代，这两个方法就是<code>getter</code>和<code>setter</code>。由<code>getter</code>和<code>setter</code>定义的属性称作“存取器属性”（accessor property），它不同于“数据属性”（data property），数据属性只有一个简单的值。</p>
 <ul>
 <li>当程序查询存取器属性的值时，调用<code>getter</code>方法(无参)</li>
 <li>当程序设置一个存取器属性的值时，调用<code>setter</code>方法，赋值表达式右侧的值作为参数传入<code>setter</code></li>
 </ul>
 <p>存取器属性不具有可写性。如果属性同时拥有<code>getter</code>与<code>setter</code>，那么它是一个读/写属性。如果只有<code>getter</code>（或者<code>setter</code>），那么他就是一个只读（写）属性。读取只写属性总是返回    <code>undefined</code></p>
 <h2 id="定义setter和getter的几种方式"><a href="#定义setter和getter的几种方式" class="headerlink" title="定义setter和getter的几种方式"></a>定义setter和getter的几种方式</h2><h2 id="在新对象初始化时定义（ES5-1）"><a href="#在新对象初始化时定义（ES5-1）" class="headerlink" title="在新对象初始化时定义（ES5.1）"></a>在新对象初始化时定义（ES5.1）</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  value:<span class="number">1</span>,</div><div class="line">  get access_prop()&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.value</div><div class="line">  &#125;,</div><div class="line">  set access_prop(value)&#123;</div><div class="line">     <span class="keyword">this</span>.value = value</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj.access_prop)<span class="comment">//1</span></div><div class="line">obj.access_prop = <span class="number">2</span></div><div class="line"><span class="built_in">console</span>.log(obj.access_prop,obj.value)<span class="comment">//2 2</span></div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2016/12/29/getterAndSetter/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2016/12/29/getterAndSetter/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-snabbdom-note2" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/12/27/snabbdom-note2/">snabbdom源码阅读笔记（二）</a></h1>
+    <article id="post-snabbdom-note2" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/12/27/snabbdom-note2/">snabbdom源码阅读笔记（二）</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.12.27</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -562,19 +780,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h2><table>
+        <div class="article-content">
+            
+            <h2 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h2><table>
 <thead>
 <tr>
 <th>name</th>
@@ -636,34 +854,65 @@
 </tbody>
 </table>
 
-      
-    </div>
-  </article>
-  
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-snabbdom-note" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/12/21/snabbdom-note/">snabbdom源码阅读笔记（一）</a></h1>
+    <article id="post-snabbdom-note" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/12/21/snabbdom-note/">snabbdom源码阅读笔记（一）</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.12.21</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -671,19 +920,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="vnode结构"><a href="#vnode结构" class="headerlink" title="vnode结构"></a>vnode结构</h2><blockquote>
+        <div class="article-content">
+            
+            <h2 id="vnode结构"><a href="#vnode结构" class="headerlink" title="vnode结构"></a>vnode结构</h2><blockquote>
 <p>vnode结构定义在vnode.js中</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">sel, data, children, text, elm</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> key = data === <span class="literal">undefined</span> ? <span class="literal">undefined</span> : data.key;</div><div class="line">  <span class="keyword">return</span> &#123;sel: sel, data: data, children: children,</div><div class="line">          text: text, elm: elm, key: key&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
@@ -703,39 +952,70 @@
 <li>并将子元素中的 <code>primitive</code> 类型包装成vnode (<code>is.array</code> 与 <code>is.primitive</code> 定义在 <code>is.js</code> 。<code>primitive</code> 指 参数是否是<code>String</code>或<code>Number</code>类型)</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> <span class="title">h</span>(<span class="params">sel, b, c</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> data = &#123;&#125;, children, text, i;</div><div class="line">  <span class="comment">// 若c存在（存在第三个参数）</span></div><div class="line">  <span class="keyword">if</span> (c !== <span class="literal">undefined</span>) &#123;</div><div class="line">    data = b;</div><div class="line">    <span class="comment">// 若c是数组</span></div><div class="line">    <span class="keyword">if</span> (is.array(c)) &#123; children = c; &#125;</div><div class="line">    <span class="comment">// c是String或者Number,则直接赋值</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (is.primitive(c)) &#123; text = c; &#125;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (b !== <span class="literal">undefined</span>) &#123; <span class="comment">//若存在data</span></div><div class="line">    <span class="comment">//如果b是数组（b参数为子元素数组）</span></div><div class="line">    <span class="keyword">if</span> (is.array(b)) &#123; children = b; &#125;</div><div class="line">    <span class="comment">// 如果b是String或Number</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (is.primitive(b)) &#123; text = b; &#125;</div><div class="line">    <span class="comment">// b是data</span></div><div class="line">    <span class="keyword">else</span> &#123; data = b; &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 循环children数组</span></div><div class="line">  <span class="keyword">if</span> (is.array(children)) &#123;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; children.length; ++i) &#123;</div><div class="line">      <span class="comment">// 若当前子元素是字符串或数字，则将其包装成vnode</span></div><div class="line">      <span class="keyword">if</span> (is.primitive(children[i])) children[i] = VNode(<span class="literal">undefined</span>, <span class="literal">undefined</span>, <span class="literal">undefined</span>, children[i]);</div><div class="line">      <span class="comment">// VNode(sel,data,children,text,elm,key)</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// tagName若为svg，则特殊处理</span></div><div class="line">  <span class="keyword">if</span> (sel[<span class="number">0</span>] === <span class="string">'s'</span> &amp;&amp; sel[<span class="number">1</span>] === <span class="string">'v'</span> &amp;&amp; sel[<span class="number">2</span>] === <span class="string">'g'</span>) &#123;</div><div class="line">    addNS(data, children, sel);</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 返回VNode</span></div><div class="line">  <span class="keyword">return</span> VNode(sel, data, children, text, <span class="literal">undefined</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2016/12/21/snabbdom-note/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2016/12/21/snabbdom-note/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="br"></div>
 
 <div class="container article-container">
-  <article id="post-linux-delete" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/11/02/linux-delete/">常用操作命令</a></h1>
+    <article id="post-linux-delete" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/11/02/linux-delete/">常用操作命令</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.11.02</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/linux玩耍笔记/">linux玩耍笔记</a>
@@ -743,19 +1023,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/page/2/index.html#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><h3 id="删除文件夹以及文件夹中的所有文件命令："><a href="#删除文件夹以及文件夹中的所有文件命令：" class="headerlink" title="删除文件夹以及文件夹中的所有文件命令："></a>删除文件夹以及文件夹中的所有文件命令：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf 目录名字</div></pre></td></tr></table></figure>
+        <div class="article-content">
+            
+            <h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><h3 id="删除文件夹以及文件夹中的所有文件命令："><a href="#删除文件夹以及文件夹中的所有文件命令：" class="headerlink" title="删除文件夹以及文件夹中的所有文件命令："></a>删除文件夹以及文件夹中的所有文件命令：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -rf 目录名字</div></pre></td></tr></table></figure>
 <p>其中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-r：向下递归删除</div><div class="line">-f：直接强行删除，且没有任何提示</div></pre></td></tr></table></figure></p>
 <h3 id="删除文件命令"><a href="#删除文件命令" class="headerlink" title="删除文件命令"></a>删除文件命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm -f 文件名</div></pre></td></tr></table></figure>
 <p>将会强行删除文件，且无提示</p>
@@ -763,16 +1043,46 @@
 
 <h2 id="新建文件与文件夹"><a href="#新建文件与文件夹" class="headerlink" title="新建文件与文件夹"></a>新建文件与文件夹</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd  /someDir   定位到目标目录</div><div class="line">mkdir test  新建一个叫test的文件夹</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch  test/a.txt 在test文件夹下建一个名为a.txt的文件</div></pre></td></tr></table></figure>
-      
-      <p class="article-more-link">
-        <a class="btn btn-primary more-btn" href="/2016/11/02/linux-delete/#more">阅读全文</a>
-      </p>
-      
-      
-    </div>
-  </article>
-  
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2016/11/02/linux-delete/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 
 
 <div class="page-box">
@@ -917,9 +1227,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

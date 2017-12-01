@@ -148,24 +148,25 @@
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-linux-node" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/11/01/linux-node/">使用mac在远程linux上安装node</a></h1>
+    <article id="post-linux-node" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/11/01/linux-node/">使用mac在远程linux上安装node</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.11.01</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/linux玩耍笔记/">linux玩耍笔记</a>
@@ -173,19 +174,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2016/11/01/linux-node/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="链接-ECS-实例"><a href="#链接-ECS-实例" class="headerlink" title="链接 ECS 实例"></a>链接 ECS 实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh username@remotehost //如 ssh root@115.20.39.163</div></pre></td></tr></table></figure>
+        <div class="article-content">
+            
+            <h2 id="链接-ECS-实例"><a href="#链接-ECS-实例" class="headerlink" title="链接 ECS 实例"></a>链接 ECS 实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh username@remotehost //如 ssh root@115.20.39.163</div></pre></td></tr></table></figure>
 <p>接下来会提示输入登录密码,在冒号之后输入然后回车</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">root@115.20.39.163<span class="string">'s password:</span></div></pre></td></tr></table></figure>
 <p>成功登录后会提示</p>
@@ -204,20 +205,52 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@himmas:~/node-v6.2.0<span class="comment"># node -v</span></div><div class="line">v6.2.0</div></pre></td></tr></table></figure>
 <h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><p>在terminal中使用两次tab可补全命令</p>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2016/11/02/linux-delete/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>常用操作命令</a>
+        
+        
+        <a href="/2016/05/26/canvas-flower/" class="next-btn">canvas-flower<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2016/11/02/linux-delete/" class="prev-btn"><i class="iconfont icon-prev"></i>常用操作命令</a>
-    
-    
-    <a href="/2016/05/26/canvas-flower/" class="next-btn">canvas-flower<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -325,43 +358,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2016/11/01/linux-node/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

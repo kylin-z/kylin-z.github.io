@@ -142,24 +142,25 @@
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-getterAndSetter" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/12/29/getterAndSetter/">js对象属性的getter与setter</a></h1>
+    <article id="post-getterAndSetter" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/12/29/getterAndSetter/">js对象属性的getter与setter</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.12.29</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -167,19 +168,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2016/12/29/getterAndSetter/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h2><p>我们知道对象是由名字、值和一组特性（attribute）构成的。在ECMAScript5.1中，属性值可以用一个或两个方法替代，这两个方法就是<code>getter</code>和<code>setter</code>。由<code>getter</code>和<code>setter</code>定义的属性称作“存取器属性”（accessor property），它不同于“数据属性”（data property），数据属性只有一个简单的值。</p>
+        <div class="article-content">
+            
+            <h2 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h2><p>我们知道对象是由名字、值和一组特性（attribute）构成的。在ECMAScript5.1中，属性值可以用一个或两个方法替代，这两个方法就是<code>getter</code>和<code>setter</code>。由<code>getter</code>和<code>setter</code>定义的属性称作“存取器属性”（accessor property），它不同于“数据属性”（data property），数据属性只有一个简单的值。</p>
 <ul>
 <li>当程序查询存取器属性的值时，调用<code>getter</code>方法(无参)</li>
 <li>当程序设置一个存取器属性的值时，调用<code>setter</code>方法，赋值表达式右侧的值作为参数传入<code>setter</code></li>
@@ -243,20 +244,52 @@
 <p>该方法是<code>Object.defineProperty</code>的批量版本</p>
 <h2 id="使用-Object-prototype-defineGetter-以及-Object-prototype-defineSetter-方法"><a href="#使用-Object-prototype-defineGetter-以及-Object-prototype-defineSetter-方法" class="headerlink" title="使用 Object.prototype.defineGetter 以及 Object.prototype.defineSetter 方法"></a>使用 Object.prototype.<strong>defineGetter</strong> 以及 Object.prototype.<strong>defineSetter</strong> 方法</h2><p class="tip">已废弃<br>该特性已经从 Web 标准中删除，虽然一些浏览器目前仍然支持它，但也许会在未来的某个时间停止支持，请尽量不要使用该特性。</p>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2017/01/04/async/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>关于js异步</a>
+        
+        
+        <a href="/2016/12/27/snabbdom-note2/" class="next-btn">snabbdom源码阅读笔记（二）<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2017/01/04/async/" class="prev-btn"><i class="iconfont icon-prev"></i>关于js异步</a>
-    
-    
-    <a href="/2016/12/27/snabbdom-note2/" class="next-btn">snabbdom源码阅读笔记（二）<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -364,43 +397,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2016/12/29/getterAndSetter/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

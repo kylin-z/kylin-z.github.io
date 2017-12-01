@@ -134,24 +134,25 @@
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-oninput" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/03/11/oninput/">ios输入法的keyup事件失效的解决方法</a></h1>
+    <article id="post-oninput" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/03/11/oninput/">ios输入法的keyup事件失效的解决方法</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.03.11</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/前端/">前端</a>
@@ -159,35 +160,67 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2016/03/11/oninput/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <p>如下图所示,若果直接点击红框部分输入文字的话将不触发keyup事件，这时可以改用原生的oninput事件,chrome等浏览器可以这样处理<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160310225153.png" alt="Alt text"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var this_obj = document.getelementbyid(x);</div><div class="line">obj.oninput = function()&#123;</div><div class="line">    //事件内容</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <div class="article-content">
+            
+            <p>如下图所示,若果直接点击红框部分输入文字的话将不触发keyup事件，这时可以改用原生的oninput事件,chrome等浏览器可以这样处理<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/QQ%E5%9B%BE%E7%89%8720160310225153.png" alt="Alt text"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var this_obj = document.getelementbyid(x);</div><div class="line">obj.oninput = function()&#123;</div><div class="line">    //事件内容</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>如下图所示,若果直接点击红框部分输入文字的话将不触发keyup事件，这时可以改用原生的oninput事件,chrome等浏览器可以这样处理</p>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2016/03/23/default-event/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>如何在内层div滚动到底部时禁止外部div滚动</a>
+        
+        
+        <a href="/2016/03/09/img-load/" class="next-btn">img的onload与complete<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2016/03/23/default-event/" class="prev-btn"><i class="iconfont icon-prev"></i>如何在内层div滚动到底部时禁止外部div滚动</a>
-    
-    
-    <a href="/2016/03/09/img-load/" class="next-btn">img的onload与complete<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -295,43 +328,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2016/03/11/oninput/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

@@ -140,24 +140,25 @@
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-spread" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/07/04/spread/">扩展运算符小贴士</a></h1>
+    <article id="post-spread" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/07/04/spread/">扩展运算符小贴士</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.07.04</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/javascript/">javascript</a>
@@ -165,19 +166,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2017/07/04/spread/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h2><p>es2015引入了扩展运算符(spread operator)<a href="http://es6.ruanyifeng.com/#docs/array" target="_blank" rel="external"><code>...</code></a>，可以用来进行一些数组和对象操作。</p>
+        <div class="article-content">
+            
+            <h2 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h2><p>es2015引入了扩展运算符(spread operator)<a href="http://es6.ruanyifeng.com/#docs/array" target="_blank" rel="external"><code>...</code></a>，可以用来进行一些数组和对象操作。</p>
 <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>下面是codewar上的一道题，判断字符串/数字/数组是否对称</p>
 <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Give you an obj, it can be 3 types: string, number and number array, Check that they are symmetrical or not, <span class="built_in">return</span> a boolean value.  </div><div class="line"></div><div class="line">obj=<span class="string">""</span>    <span class="built_in">return</span> <span class="literal">true</span>   (Empty string should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=<span class="string">"1"</span>   <span class="built_in">return</span> <span class="literal">true</span>   (one char should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=<span class="string">"11"</span>  <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=<span class="string">"12"</span>  <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=<span class="string">"121"</span> <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=1     <span class="built_in">return</span> <span class="literal">true</span>   (number&lt;10  should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=-1    <span class="built_in">return</span> <span class="literal">false</span>  (negative number should <span class="built_in">return</span> <span class="literal">false</span>)</div><div class="line">obj=10    <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=11    <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=12    <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=121   <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=[]    <span class="built_in">return</span> <span class="literal">true</span>  (Empty array should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=[1]   <span class="built_in">return</span> <span class="literal">true</span>  (an array with one element should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=[1,2,3,4,5]      <span class="built_in">return</span> <span class="literal">false</span>  </div><div class="line">obj=[1,2,3,2,1]      <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=[11,12,13,12,11] <span class="built_in">return</span> <span class="literal">true</span>   (left element = right element)</div><div class="line">obj=[11,12,21,11]    <span class="built_in">return</span> <span class="literal">false</span>  (not verify them as a string)</div></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -207,20 +208,52 @@
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">~~<span class="string">'1'</span></div><div class="line"><span class="comment">//1</span></div><div class="line">~~<span class="literal">undefined</span></div><div class="line"><span class="comment">//0</span></div><div class="line">~~<span class="literal">null</span></div><div class="line"><span class="comment">//0</span></div><div class="line">~~<span class="string">''</span></div><div class="line"><span class="comment">//0</span></div><div class="line">~~<span class="literal">false</span></div><div class="line"><span class="comment">//0</span></div><div class="line">~~+<span class="number">0</span></div><div class="line"><span class="comment">//0</span></div><div class="line">~~<span class="number">-0</span></div><div class="line"><span class="comment">//0</span></div><div class="line">~~<span class="literal">NaN</span></div><div class="line"><span class="comment">//0</span></div></pre></td></tr></table></figure>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2017/08/02/fixed/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>positon:fixed的怪异行为记录</a>
+        
+        
+        <a href="/2017/04/25/regExp/" class="next-btn">RegExp对象踩坑记录<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2017/08/02/fixed/" class="prev-btn"><i class="iconfont icon-prev"></i>positon:fixed的怪异行为记录</a>
-    
-    
-    <a href="/2017/04/25/regExp/" class="next-btn">RegExp对象踩坑记录<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -328,43 +361,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2017/07/04/spread/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

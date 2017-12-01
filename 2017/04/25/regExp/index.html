@@ -143,24 +143,25 @@
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-regExp" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/04/25/regExp/">RegExp对象踩坑记录</a></h1>
+    <article id="post-regExp" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/04/25/regExp/">RegExp对象踩坑记录</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.04.25</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/javascript/">javascript</a>
@@ -168,19 +169,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2017/04/25/regExp/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="g-与-test"><a href="#g-与-test" class="headerlink" title="g 与 test()"></a><code>g</code> 与 <code>test()</code></h2><h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><p>带<code>g</code>的正则对象多次调用<code>test()</code>结果不同</p>
+        <div class="article-content">
+            
+            <h2 id="g-与-test"><a href="#g-与-test" class="headerlink" title="g 与 test()"></a><code>g</code> 与 <code>test()</code></h2><h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h3><p>带<code>g</code>的正则对象多次调用<code>test()</code>结果不同</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'51-(.*)'</span>,<span class="string">'g'</span>)</div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// true</span></div><div class="line">reg.test(<span class="string">'51-in'</span>)</div><div class="line"><span class="comment">// false</span></div></pre></td></tr></table></figure>
 <h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><blockquote>
 <p><em>每个RegExp对象都包含5个属性。属性source是一个只读的字符串，包含正则表达式的文本。属性global是一个只读的布尔值，用以说明这个正则表达式是否带有修饰符g。属性ignoreCase也是一个只读的布尔值，用以说明正则表达式是否带有修饰符i，属性multiline是一个只读布尔值，用以说明正则表达式是都带有修饰符m。最后一个属性lastIndex，它是一个可读/写的整数。如果匹配模式带有g修饰符，这个属性存储在整个字符串中下一次检索的开始位置，这个属性会被exec()和test()方法用到。</em></p>
@@ -197,20 +198,52 @@
 <li>手动重置<code>lastIndex</code></li>
 </ul>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2017/07/04/spread/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>扩展运算符小贴士</a>
+        
+        
+        <a href="/2017/03/30/node-child-process/" class="next-btn">node子进程与调度任务<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2017/07/04/spread/" class="prev-btn"><i class="iconfont icon-prev"></i>扩展运算符小贴士</a>
-    
-    
-    <a href="/2017/03/30/node-child-process/" class="next-btn">node子进程与调度任务<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -318,43 +351,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2017/04/25/regExp/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

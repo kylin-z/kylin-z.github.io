@@ -134,24 +134,25 @@
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-mongodb2" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2017/03/17/mongodb2/">mongodb(mongoose)使用小结</a></h1>
+    <article id="post-mongodb2" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/03/17/mongodb2/">mongodb(mongoose)使用小结</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2017.03.17</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
@@ -159,19 +160,19 @@
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2017/03/17/mongodb2/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="文档结构"><a href="#文档结构" class="headerlink" title="文档结构"></a>文档结构</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"origin"</span>:&#123;</div><div class="line">		<span class="string">"home_name"</span>:<span class="string">"伯乐在线"</span>,</div><div class="line">		<span class="string">"home"</span>:<span class="string">"http://web.jobbole.com/"</span>,</div><div class="line">		<span class="string">"link"</span>:<span class="string">"http://web.jobbole.com/90719/"</span>,</div><div class="line">		<span class="string">"id"</span>:<span class="string">"90719"</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"uid"</span>:<span class="number">8140</span>,</div><div class="line">	<span class="string">"title"</span>:<span class="string">"我理解中的“大前端”/“大无线”"</span>,</div><div class="line">	<span class="string">"article_info"</span>:&#123;</div><div class="line">		<span class="string">"content"</span>:<span class="string">'&lt;div class="entry"&gt;↵↵        ↵		&lt;div&gt;↵...'</span></div><div class="line">		<span class="string">"categorys"</span>:[<span class="string">"基础技术"</span>],</div><div class="line">		<span class="string">"copyright"</span>:&#123;</div><div class="line">			<span class="string">"link"</span>:<span class="string">"http://f2e.souche.com/blog/da-qian-duan-wo-de-li-jie/"</span>,</div><div class="line">			<span class="string">"name"</span>:<span class="string">"大搜车无线团队"</span></div><div class="line">		&#125;,</div><div class="line">		<span class="string">"tags"</span>:[<span class="string">"前端"</span>],</div><div class="line">		<span class="string">"post_date"</span>:<span class="number">1489161600</span>,</div><div class="line">		<span class="string">"is_filtered"</span>:<span class="literal">false</span>,</div><div class="line">		<span class="string">"is_unique"</span>:<span class="literal">false</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"insert_time"</span>:<span class="number">1489750591.488951</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <div class="article-content">
+            
+            <h2 id="文档结构"><a href="#文档结构" class="headerlink" title="文档结构"></a>文档结构</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"origin"</span>:&#123;</div><div class="line">		<span class="string">"home_name"</span>:<span class="string">"伯乐在线"</span>,</div><div class="line">		<span class="string">"home"</span>:<span class="string">"http://web.jobbole.com/"</span>,</div><div class="line">		<span class="string">"link"</span>:<span class="string">"http://web.jobbole.com/90719/"</span>,</div><div class="line">		<span class="string">"id"</span>:<span class="string">"90719"</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"uid"</span>:<span class="number">8140</span>,</div><div class="line">	<span class="string">"title"</span>:<span class="string">"我理解中的“大前端”/“大无线”"</span>,</div><div class="line">	<span class="string">"article_info"</span>:&#123;</div><div class="line">		<span class="string">"content"</span>:<span class="string">'&lt;div class="entry"&gt;↵↵        ↵		&lt;div&gt;↵...'</span></div><div class="line">		<span class="string">"categorys"</span>:[<span class="string">"基础技术"</span>],</div><div class="line">		<span class="string">"copyright"</span>:&#123;</div><div class="line">			<span class="string">"link"</span>:<span class="string">"http://f2e.souche.com/blog/da-qian-duan-wo-de-li-jie/"</span>,</div><div class="line">			<span class="string">"name"</span>:<span class="string">"大搜车无线团队"</span></div><div class="line">		&#125;,</div><div class="line">		<span class="string">"tags"</span>:[<span class="string">"前端"</span>],</div><div class="line">		<span class="string">"post_date"</span>:<span class="number">1489161600</span>,</div><div class="line">		<span class="string">"is_filtered"</span>:<span class="literal">false</span>,</div><div class="line">		<span class="string">"is_unique"</span>:<span class="literal">false</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"insert_time"</span>:<span class="number">1489750591.488951</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="根据某字段查询"><a href="#根据某字段查询" class="headerlink" title="根据某字段查询"></a>根据某字段查询</h2><h3 id="根据uid字段查询"><a href="#根据uid字段查询" class="headerlink" title="根据uid字段查询"></a>根据<code>uid</code>字段查询</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;)</div></pre></td></tr></table></figure>
 <h3 id="根据orgin对象中的home字段查询，使用-操作符"><a href="#根据orgin对象中的home字段查询，使用-操作符" class="headerlink" title="根据orgin对象中的home字段查询，使用.操作符"></a>根据<code>orgin</code>对象中的<code>home</code>字段查询，使用<code>.</code>操作符</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'origin.home'</span>:<span class="string">'http://web.jobbole.com/'</span>&#125;)</div></pre></td></tr></table></figure>
 <h2 id="指定输出文档显示的字段"><a href="#指定输出文档显示的字段" class="headerlink" title="指定输出文档显示的字段"></a>指定输出文档显示的字段</h2><p class="tip">前端渲染列表时，查询如示例文档这样的带有大段html文本的数据会比较慢，这时可以将UI渲染用不到的字段过滤</p>
@@ -199,20 +200,52 @@
 <h2 id="导出到excel-csv"><a href="#导出到excel-csv" class="headerlink" title="导出到excel(csv)"></a>导出到excel(csv)</h2><p><a href="https://docs.mongodb.com/manual/reference/program/mongoexport/" target="_blank" rel="external">参考官网</a><br><a href="http://www.jb51.net/article/52498.htm" target="_blank" rel="external">参考</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">mongoexport -h [IP]:[port] <span class="_">-d</span> [db] -c [collection] -u [user] -p [password] --type=csv <span class="_">-f</span> [field1[,field2,field3,...]] &gt; [filename.csv]</div><div class="line"></div><div class="line">mongoexport -h 115.29.29.113:27017 <span class="_">-d</span> <span class="built_in">test</span> -c <span class="built_in">test</span> -u <span class="built_in">test</span> -p <span class="built_in">test</span> --type=csv <span class="_">-f</span> <span class="string">"code"</span>,<span class="string">"title"</span>,<span class="string">"url"</span>,<span class="string">"budget"</span>,<span class="string">"date"</span>,<span class="string">"organization"</span> &gt; filename.csv</div></pre></td></tr></table></figure>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2017/03/30/node-child-process/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>node子进程与调度任务</a>
+        
+        
+        <a href="/2017/03/10/mongodb/" class="next-btn">使用mongo shell命令行工具在指定数据库下新建用户<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2017/03/30/node-child-process/" class="prev-btn"><i class="iconfont icon-prev"></i>node子进程与调度任务</a>
-    
-    
-    <a href="/2017/03/10/mongodb/" class="next-btn">使用mongo shell命令行工具在指定数据库下新建用户<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -320,43 +353,6 @@
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2017/03/17/mongodb2/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {

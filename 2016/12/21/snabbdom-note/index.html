@@ -143,24 +143,25 @@ vnode结构定义在vnode.js中
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-  <article id="post-snabbdom-note" class="article article-type-post" itemprop="blogPost">
-    <header class="article-header">
-      <h1 class="post-title"><a href="/2016/12/21/snabbdom-note/">snabbdom源码阅读笔记（一）</a></h1>
+    <article id="post-snabbdom-note" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2016/12/21/snabbdom-note/">snabbdom源码阅读笔记（一）</a></h1>
 
-      <div class="article-meta">
+            <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
         <span>2016.12.21</span>
       </span>
 
-        
-        <span class="article-author">
+                
+                <span class="article-author">
           <i class="icon-user"></i>
           <span>Kylin</span>
         </span>
-        
+                
 
-        
+                
   <span class="article-category">
     <i class="icon-list"></i>
     <a class="article-category-link" href="/categories/笔记/">笔记</a>
@@ -168,19 +169,19 @@ vnode结构定义在vnode.js中
 
 
 
-        
-        <span>
+                
+                <span>
           <i class="icon-comment"></i>
           <a href="kylin.himmas.cc/2016/12/21/snabbdom-note/#disqus_thread"></a>
         </span>
-        
+                
 
-      </div>
-    </header>
+            </div>
+        </header>
 
-    <div class="article-content">
-      
-      <h2 id="vnode结构"><a href="#vnode结构" class="headerlink" title="vnode结构"></a>vnode结构</h2><blockquote>
+        <div class="article-content">
+            
+            <h2 id="vnode结构"><a href="#vnode结构" class="headerlink" title="vnode结构"></a>vnode结构</h2><blockquote>
 <p>vnode结构定义在vnode.js中</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">sel, data, children, text, elm</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> key = data === <span class="literal">undefined</span> ? <span class="literal">undefined</span> : data.key;</div><div class="line">  <span class="keyword">return</span> &#123;sel: sel, data: data, children: children,</div><div class="line">          text: text, elm: elm, key: key&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
@@ -236,20 +237,52 @@ vnode结构定义在vnode.js中
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">patchVnode</span>(<span class="params">oldVnode, vnode, insertedVnodeQueue</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> i, hook;</div><div class="line">    <span class="comment">// &amp;&amp;前面的运算通过后才会运行&amp;&amp;后面的 称为短路</span></div><div class="line">    <span class="keyword">if</span> (isDef(i = vnode.data) &amp;&amp; isDef(hook = i.hook) &amp;&amp; isDef(i = hook.prepatch)) &#123;</div><div class="line">      i(oldVnode, vnode);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> elm = vnode.elm = oldVnode.elm, oldCh = oldVnode.children, ch = vnode.children;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (oldVnode === vnode) <span class="keyword">return</span>;</div><div class="line">    <span class="comment">// 完全相等 return</span></div><div class="line">    <span class="keyword">if</span> (!sameVnode(oldVnode, vnode)) &#123;</div><div class="line">      <span class="comment">// 若不是同一个Vnode</span></div><div class="line"></div><div class="line">      <span class="comment">// 获取父级dom</span></div><div class="line">      <span class="keyword">var</span> parentElm = api.parentNode(oldVnode.elm);</div><div class="line"></div><div class="line">      <span class="comment">// 根据vnode 和 insertedVnodeQueue 建原生dom</span></div><div class="line">      elm = createElm(vnode, insertedVnodeQueue);</div><div class="line"></div><div class="line">      api.insertBefore(parentElm, elm, oldVnode.elm);</div><div class="line">      removeVnodes(parentElm, [oldVnode], <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 若是同一vnode</span></div><div class="line">    <span class="keyword">if</span> (isDef(vnode.data)) &#123;</div><div class="line">      <span class="comment">// 新node存在data属性</span></div><div class="line">      <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; cbs.update.length; ++i) cbs.update[i](oldVnode, vnode); <span class="comment">//分别更新class style props event</span></div><div class="line">      i = vnode.data.hook;</div><div class="line">      <span class="keyword">if</span> (isDef(i) &amp;&amp; isDef(i = i.update)) i(oldVnode, vnode);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 若新node没有text</span></div><div class="line">    <span class="keyword">if</span> (isUndef(vnode.text)) &#123;</div><div class="line">      <span class="comment">// 旧node与新node都存在children元素 且两者不相等</span></div><div class="line">      <span class="keyword">if</span> (isDef(oldCh) &amp;&amp; isDef(ch)) &#123;</div><div class="line">        <span class="keyword">if</span> (oldCh !== ch) updateChildren(elm, oldCh, ch, insertedVnodeQueue);<span class="comment">//更新children</span></div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isDef(ch)) &#123;</div><div class="line">        <span class="comment">// 存在ch，不存在oldch</span></div><div class="line">        <span class="keyword">if</span> (isDef(oldVnode.text)) api.setTextContent(elm, <span class="string">''</span>);</div><div class="line">        <span class="comment">// 旧元素的text设置为空，并添加Vnode</span></div><div class="line">        addVnodes(elm, <span class="literal">null</span>, ch, <span class="number">0</span>, ch.length - <span class="number">1</span>, insertedVnodeQueue);</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isDef(oldCh)) &#123;</div><div class="line">        <span class="comment">// 不存在ch，存在oldch</span></div><div class="line">        <span class="comment">// 将node的children移除</span></div><div class="line">        removeVnodes(elm, oldCh, <span class="number">0</span>, oldCh.length - <span class="number">1</span>);</div><div class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isDef(oldVnode.text)) &#123;</div><div class="line">        <span class="comment">// 若旧node存在text 则移除</span></div><div class="line">        api.setTextContent(elm, <span class="string">''</span>);</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (oldVnode.text !== vnode.text) &#123;</div><div class="line">      api.setTextContent(elm, vnode.text);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (isDef(hook) &amp;&amp; isDef(i = hook.postpatch)) &#123;</div><div class="line">      i(oldVnode, vnode);</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 
-      
+            
+        </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a href="/2016/12/27/snabbdom-note2/" class="prev-btn"><i
+                    class="iconfont icon-prev"></i>snabbdom源码阅读笔记（二）</a>
+        
+        
+        <a href="/2016/11/02/linux-delete/" class="next-btn">常用操作命令<i
+                    class="iconfont icon-next"></i></a>
+        
     </div>
-  </article>
-  
-  <div class="page-bar">
     
-    <a href="/2016/12/27/snabbdom-note2/" class="prev-btn"><i class="iconfont icon-prev"></i>snabbdom源码阅读笔记（二）</a>
-    
-    
-    <a href="/2016/11/02/linux-delete/" class="next-btn">常用操作命令<i class="iconfont icon-next"></i></a>
-    
-    </div>
-  
 </div>
+
+<!--评论区-->
+
+<div class="container article-container">
+    
+        
+<div id="disqus_thread"></div>
+<script>
+
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    theme.duoshuo_shortname
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://kylinz-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+    
 </div>
 
 
@@ -357,43 +390,6 @@ vnode结构定义在vnode.js中
   </div>
 </div>
 -->
-
-
-  <!---->
-    <!--  <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
-
-  <script>
-    var disqus_shortname = 'kylinz';
-    
-    var disqus_url = 'http://kylin.himmas.cc/2016/12/21/snabbdom-note/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-  </script>
-
-  <script id="dsq-count-scr" src="//kylinz.disqus.com/count.js" async></script>
-
-
-
-    
-
-
-
-
-  </div>
--->
-  <!---->
 
   <script type="text/javascript">
   function loadScript(url, callback) {
