@@ -6,13 +6,25 @@
 
 <head>
   <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=0" />
+  <!--页面窗口自动调整到设备宽度，并禁止用户及缩放页面-->
+  <meta name="format-detection" content="telephone=no" />
+  <!--忽略将页面中的数字识别为电话号码-->
+  <meta name="format-detection" content="email=no" />
+  <!--忽略Android平台中对邮箱地址的识别-->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <!--ios-->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <!--安卓 去状态栏-->
+
   
   <title>数组合并并去重 | Kylin</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="前端,javascript,原生,codewar," />
+    <meta name="keywords" content="javascript,前端,原生,codewar," />
   
 
   <meta name="description" content="数组合并并去重Demo
@@ -109,25 +121,122 @@ In other words, all values present from all arrays sho">
         </div>
         <div class="menu-box">
             
-                <a class="menu-item td02" href="/" ><i class="iconfont icon-home"></i></a>
+                <a class="menu-item td02" href="/"
+                        >
+                    <i class="iconfont icon-home"></i></a>
             
-                <a class="menu-item td02" href="/archives/" ><i class="iconfont icon-filing"></i></a>
+                <a class="menu-item td02" href="/archives/"
+                        >
+                    <i class="iconfont icon-filing"></i></a>
             
-                <a class="menu-item td02" href="/categories/" ><i class="iconfont icon-sort"></i></a>
+                <a class="menu-item td02" href="/categories/"
+                        >
+                    <i class="iconfont icon-sort"></i></a>
             
-                <a class="menu-item td02" href="/tags/" ><i class="iconfont icon-tag"></i></a>
+                <a class="menu-item td02" href="/tags/"
+                        >
+                    <i class="iconfont icon-tag"></i></a>
             
-                <a class="menu-item td02" href="/link/" ><i class="iconfont icon-link"></i></a>
+                <a class="menu-item td02" href="/link/"
+                        >
+                    <i class="iconfont icon-link"></i></a>
             
-                <a class="menu-item td02" href="/atom.xml" ><i class="iconfont icon-rss"></i></a>
+                <a class="menu-item td02" href="/atom.xml"
+                        
+                            target="_blank"
+                        >
+                    <i class="iconfont icon-rss"></i></a>
             
-                <a class="menu-item td02" href="/album/" ><i class="iconfont icon-image"></i></a>
+                <a class="menu-item td02" href="/album/"
+                        >
+                    <i class="iconfont icon-image"></i></a>
             
-                <a class="menu-item td02" href="/search/" ><i class="iconfont icon-search"></i></a>
+                <a class="menu-item td02" href="/search/"
+                        >
+                    <i class="iconfont icon-search"></i></a>
             
         </div>
     </div>
 </div>
+<div class="m-head-box" id="m-head-box">
+    <i class="iconfont icon-m-menu menu-icon" id="m-menu-btn"></i>
+    <h1 class="name">kylin</h1>
+</div>
+<div id="m-menu-box">
+    
+    <a class="menu-item" href="/"
+            >
+        <i class="iconfont icon-home"></i>
+        <span>首页</span>
+    </a>
+    
+    <a class="menu-item" href="/archives/"
+            >
+        <i class="iconfont icon-filing"></i>
+        <span>归档</span>
+    </a>
+    
+    <a class="menu-item" href="/categories/"
+            >
+        <i class="iconfont icon-sort"></i>
+        <span>分类</span>
+    </a>
+    
+    <a class="menu-item" href="/tags/"
+            >
+        <i class="iconfont icon-tag"></i>
+        <span>标签</span>
+    </a>
+    
+    <a class="menu-item" href="/link/"
+            >
+        <i class="iconfont icon-link"></i>
+        <span>友链</span>
+    </a>
+    
+    <a class="menu-item" href="/atom.xml"
+            
+       target="_blank"
+            >
+        <i class="iconfont icon-rss"></i>
+        <span>RSS</span>
+    </a>
+    
+    <a class="menu-item" href="/album/"
+            >
+        <i class="iconfont icon-image"></i>
+        <span>相册</span>
+    </a>
+    
+    <a class="menu-item" href="/search/"
+            >
+        <i class="iconfont icon-search"></i>
+        <span>搜索</span>
+    </a>
+    
+</div>
+<script>
+    var isMenuOpen = false
+    var $menuBtn = document.getElementById("m-menu-btn")
+    var $menuBox = document.getElementById("m-menu-box")
+    var $headBox = document.getElementById("m-head-box")
+    $menuBtn.onclick = function (e) {
+        isMenuOpen = !isMenuOpen
+        $menuBox.style.left = isMenuOpen?'0':'-80%'
+        $headBox.style.background = isMenuOpen?'rgba(20,20,20,0.9)':'#666'
+        e.stopPropagation()
+    }
+    document.body.onclick = function (e) {
+        $menuBox.style.left = '-80%'
+        $headBox.style.background = '#666'
+        isMenuOpen = false
+        e.stopPropagation()
+    }
+    $menuBox.onclick = function (e) {
+        e.stopPropagation()
+    }
+</script>
+
 
 <!--这个是章节目录-->
 <!--
@@ -223,12 +332,15 @@ In other words, all values present from all arrays sho">
     
     <div class="page-bar">
         
-        <a href="/2016/05/26/canvas-flower/" class="prev-btn"><i
-                    class="iconfont icon-prev"></i>canvas-flower</a>
+        <a href="/2016/05/26/canvas-flower/" class="prev-btn">
+            <i class="iconfont icon-prev"></i>
+            <span class="title">canvas-flower</span>
+        </a>
         
         
-        <a href="/2016/05/02/colours-bar/" class="next-btn">如何用js画一条彩带<i
-                    class="iconfont icon-next"></i></a>
+        <a href="/2016/05/02/colours-bar/" class="next-btn">
+            <span class="title">如何用js画一条彩带</span>
+            <i class="iconfont icon-next"></i></a>
         
     </div>
     
