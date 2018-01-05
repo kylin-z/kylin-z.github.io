@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target-general.png">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target.png">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/android-keystore.png">
-<meta property="og:updated_time" content="2018-01-05T06:41:43.000Z">
+<meta property="og:updated_time" content="2018-01-05T06:49:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native踩坑记录">
 <meta name="twitter:description" content="打包命令说明使用 react-native bundle --help 来查看打包的具体参数
@@ -345,7 +345,7 @@
 <p>一旦你在Play Store发布了你的应用，如果想修改签名，就必须用一个不同的包名来重新发布你的应用（这样也会丢失所有的下载数和评分）。所以请务必备份好你的密钥库和密码。</p>
 <p>提示：如果你不想以明文方式保存密码，同时你使用的是macOS系统，那么你也可以把密码保存到钥匙串（Keychain）中。这样一来你就可以省略掉上面配置中的后两行（即MYAPP_RELEASE_STORE_PASSWORD和MYAPP_RELEASE_KEY_PASSWORD）。</p>
 <p>添加签名到项目的gradle配置文件<br>编辑你项目目录下的android/app/build.gradle，添加如下的签名配置：</p>
-<p>…<br>android {<br>    …<br>    defaultConfig { … }<br>    signingConfigs {<br>        release {<br>            storeFile file(MYAPP_RELEASE_STORE_FILE)<br>            storePassword MYAPP_RELEASE_STORE_PASSWORD<br>            keyAlias MYAPP_RELEASE_KEY_ALIAS<br>            keyPassword MYAPP_RELEASE_KEY_PASSWORD<br>        }<br>    }<br>    buildTypes {<br>        release {<br>            …<br>            signingConfig signingConfigs.release<br>        }<br>    }<br>}<br>…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123; ... &#125;</div><div class="line">    signingConfigs &#123;</div><div class="line">        release &#123;</div><div class="line">            storeFile file(MYAPP_RELEASE_STORE_FILE)</div><div class="line">            storePassword MYAPP_RELEASE_STORE_PASSWORD</div><div class="line">            keyAlias MYAPP_RELEASE_KEY_ALIAS</div><div class="line">            keyPassword MYAPP_RELEASE_KEY_PASSWORD</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            ...</div><div class="line">            signingConfig signingConfigs.release</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div></pre></td></tr></table></figure>
 <h3 id="4-生成发行APK包"><a href="#4-生成发行APK包" class="headerlink" title="4.生成发行APK包"></a>4.生成发行APK包</h3><p>只需在终端中运行以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> android &amp;&amp; ./gradlew assembleRelease</div></pre></td></tr></table></figure>
 <blockquote>
