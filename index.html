@@ -266,40 +266,11 @@
             <h2 id="打包命令说明"><a href="#打包命令说明" class="headerlink" title="打包命令说明"></a>打包命令说明</h2><p>使用 <code>react-native bundle --help</code> 来查看打包的具体参数</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">react-native bundle [options]</div><div class="line">  builds the javascript bundle <span class="keyword">for</span> offline use</div><div class="line"></div><div class="line">  Options:</div><div class="line"></div><div class="line">    -h, --help                   output usage information</div><div class="line">    --entry-file &lt;path&gt;          Path to the root JS file, either absolute or relative to JS root</div><div class="line">    --platform [string]          Either <span class="string">"ios"</span> or <span class="string">"android"</span></div><div class="line">    --transformer [string]       Specify a custom transformer to be used</div><div class="line">    --dev [boolean]              If <span class="literal">false</span>, warnings are disabled and the bundle is minified</div><div class="line">    --prepack                    When passed, the output bundle will use the Prepack format.</div><div class="line">    --bridge-config [string]     File name of a a JSON <span class="built_in">export</span> of __fbBatchedBridgeConfig. Used by Prepack. Ex. ./bridgeconfig.json</div><div class="line">    --bundle-output &lt;string&gt;     File name <span class="built_in">where</span> to store the resulting bundle, ex. /tmp/groups.bundle</div><div class="line">    --bundle-encoding [string]   Encoding the bundle should be written <span class="keyword">in</span> (https://nodejs.org/api/buffer.html<span class="comment">#buffer_buffer).</span></div><div class="line">    --sourcemap-output [string]  File name <span class="built_in">where</span> to store the sourcemap file <span class="keyword">for</span> resulting bundle, ex. /tmp/groups.map</div><div class="line">    --assets-dest [string]       Directory name <span class="built_in">where</span> to store assets referenced <span class="keyword">in</span> the bundle</div><div class="line">    --verbose                    Enables logging</div><div class="line">    --reset-cache                Removes cached files</div><div class="line">    --config [string]            Path to the CLI configuration file</div></pre></td></tr></table></figure>
 <p>中文版:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">react-native bundle [参数]</div><div class="line">  构建 js 离线包 </div><div class="line"></div><div class="line">  Options:</div><div class="line"></div><div class="line">    -h, --help                   输出如何使用的信息</div><div class="line">    --entry-file &lt;path&gt;          RN入口文件的路径, 绝对路径或相对路径</div><div class="line">    --platform [string]          ios 或 andorid</div><div class="line">    --transformer [string]       Specify a custom transformer to be used</div><div class="line">    --dev [boolean]              如果为<span class="literal">false</span>, 警告会不显示并且打出的包的大小会变小</div><div class="line">    --prepack                    当通过时, 打包输出将使用Prepack格式化</div><div class="line">    --bridge-config [string]     使用Prepack的一个json格式的文件__fbBatchedBridgeConfig 例如: ./bridgeconfig.json</div><div class="line">    --bundle-output &lt;string&gt;     打包后的文件输出目录, 例: /tmp/groups.bundle</div><div class="line">    --bundle-encoding [string]   打离线包的格式 可参考链接https://nodejs.org/api/buffer.html<span class="comment">#buffer_buffer.</span></div><div class="line">    --sourcemap-output [string]  生成Source Map，但0.14之后不再自动生成<span class="built_in">source</span> map，需要手动指定这个参数。例: /tmp/groups.map</div><div class="line">    --assets-dest [string]       打包时图片资源的存储路径</div><div class="line">    --verbose                    显示打包过程</div><div class="line">    --reset-cache                移除缓存文件</div><div class="line">    --config [string]            命令行的配置文件路径</div></pre></td></tr></table></figure></p>
-<h2 id="ios-打包流程"><a href="#ios-打包流程" class="headerlink" title="ios 打包流程"></a>ios 打包流程</h2><h3 id="1-执行打包命令"><a href="#1-执行打包命令" class="headerlink" title="1.执行打包命令"></a>1.执行打包命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev <span class="literal">false</span></div></pre></td></tr></table></figure>
-<p>在<code>ios</code>文件夹中可以找到如下打包产物<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/ios-bundle.png" alt=""></p>
-<h3 id="2-设置jsbundle"><a href="#2-设置jsbundle" class="headerlink" title="2.设置jsbundle"></a>2.设置<code>jsbundle</code></h3><ul>
-<li><p>用<code>xcode</code>打开<code>ios</code>文件夹<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-ios-project.png" alt=""></p>
-</li>
-<li><p>选中与项目同名的文件夹<code>open</code>,右键选择<code>Add Files to &quot;open&quot;</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/add-file-ios-project.png" alt=""></p>
-</li>
-<li><p>选择打包产物所在文件夹,将文件导入到项目中<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/add-file-ios-project-2.png" alt=""></p>
-</li>
-</ul>
-<p class="tip">assets 目录导入工程中时，要选择 Create folder references。</p>
-
-<ul>
-<li>修改<code>AppDelegate.m</code>文件证的代码</li>
-</ul>
-<p>改写<code>jsCodeLocation</code>的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NSURL *jsCodeLocation;</div><div class="line"></div><div class="line">// jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@&quot;index.ios&quot; fallbackResource:nil];</div><div class="line">jsCodeLocation = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@&quot;index.ios.jsbundle&quot; ofType:nil]];</div><div class="line">RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation</div><div class="line">                                                      moduleName:@&quot;RNBundleDemo&quot;</div><div class="line">                                               initialProperties:nil</div><div class="line">                                                   launchOptions:launchOptions];</div></pre></td></tr></table></figure>
-<h3 id="3-修改打包类型"><a href="#3-修改打包类型" class="headerlink" title="3.修改打包类型"></a>3.修改打包类型</h3><ul>
-<li><p>点击如图菜单项<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-edit-schema.png" alt=""></p>
-</li>
-<li><p>将<code>Build Configuration</code>选项修改为<code>release</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-run-release.png" alt=""></p>
-</li>
-</ul>
-<h3 id="4-target-设置"><a href="#4-target-设置" class="headerlink" title="4.target 设置"></a>4.<code>target</code> 设置</h3><ul>
-<li>设置左侧四个<code>target</code>的<code>General</code>标签下的部分选项如下图所示<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target-general.png" alt=""></li>
-</ul>
-<h3 id="5-安装到iphone"><a href="#5-安装到iphone" class="headerlink" title="5.安装到iphone"></a>5.安装到<code>iphone</code></h3><ul>
-<li>将<code>iphone</code>与<code>mac</code>用usb线连接</li>
-<li>将<code>target</code>设置为目标<code>iphone</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target.png" alt=""></li>
-<li>点击run按钮(左侧小三角形),安装到手机。</li>
-</ul>
-<p class="tip">打开过程中若提示是不受信任的开发者，则点开设置-&gt;通用-&gt;描述文件与设备管理,选择对应开发者,点击信任。</p>
-
-
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2018/01/05/react-native/#more">阅读全文</a>
+            </p>
+            
             
         </div>
     </article>
