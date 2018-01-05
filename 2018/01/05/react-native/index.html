@@ -19,129 +19,34 @@
   <!--安卓 去状态栏-->
 
   
-  <title>李宏毅machine learning学习笔记——Regression | Kylin</title>
+  <title>react-native踩坑记录 | Kylin</title>
 
   
-    <meta name="keywords" content="machine learning," />
+    <meta name="keywords" content="react-native," />
   
 
-  <meta name="description" content="资料
-
-
-pdf
-video
-B站
-
-
-
-
-链接
-链接
-链接
-
-
-
-例子:预测宝可梦进化后的武力值(cp)输入
-用X来表示一只宝可梦
-用Xi来表示宝可梦进化前的种种特性(feature)
-Xcp 现在的cp值
-Xs 物种
-Xhp hp值
-Xw 体重
-Xh 身高
-
-
-
-输出
-这只宝可梦进化后的cp值：Y
-
-Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
-
-由于">
+  <meta name="description" content="打包命令说明使用 react-native bundle --help 来查看打包的具体参数
+12345678910111213141516171819react-native bundle [options]  builds the javascript bundle for offline use  Options:    -h, --help                   output">
 <meta property="og:type" content="article">
-<meta property="og:title" content="李宏毅machine learning学习笔记——Regression">
-<meta property="og:url" content="http://kylin.himmas.cc/2017/11/26/machine-learning-2/index.html">
+<meta property="og:title" content="react-native踩坑记录">
+<meta property="og:url" content="http://kylin.himmas.cc/2018/01/05/react-native/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="资料
-
-
-pdf
-video
-B站
-
-
-
-
-链接
-链接
-链接
-
-
-
-例子:预测宝可梦进化后的武力值(cp)输入
-用X来表示一只宝可梦
-用Xi来表示宝可梦进化前的种种特性(feature)
-Xcp 现在的cp值
-Xs 物种
-Xhp hp值
-Xw 体重
-Xh 身高
-
-
-
-输出
-这只宝可梦进化后的cp值：Y
-
-Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
-
-由于">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/Loss%20function.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%952.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%8C%E6%AC%A1.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E4%B8%89%E6%AC%A1.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%94%E6%AC%A1.png">
-<meta property="og:image" content="http://ozm59jgdk.bkt.clouddn.com/overfitting.png">
-<meta property="og:updated_time" content="2017-12-01T14:14:19.000Z">
+<meta property="og:description" content="打包命令说明使用 react-native bundle --help 来查看打包的具体参数
+12345678910111213141516171819react-native bundle [options]  builds the javascript bundle for offline use  Options:    -h, --help                   output">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/ios-bundle.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-ios-project.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/add-file-ios-project.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/add-file-ios-project-2.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-edit-schema.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-run-release.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target-general.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target.png">
+<meta property="og:updated_time" content="2018-01-05T06:27:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李宏毅machine learning学习笔记——Regression">
-<meta name="twitter:description" content="资料
-
-
-pdf
-video
-B站
-
-
-
-
-链接
-链接
-链接
-
-
-
-例子:预测宝可梦进化后的武力值(cp)输入
-用X来表示一只宝可梦
-用Xi来表示宝可梦进化前的种种特性(feature)
-Xcp 现在的cp值
-Xs 物种
-Xhp hp值
-Xw 体重
-Xh 身高
-
-
-
-输出
-这只宝可梦进化后的cp值：Y
-
-Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X的其他属性)
-
-由于">
-<meta name="twitter:image" content="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png">
+<meta name="twitter:title" content="react-native踩坑记录">
+<meta name="twitter:description" content="打包命令说明使用 react-native bundle --help 来查看打包的具体参数
+12345678910111213141516171819react-native bundle [options]  builds the javascript bundle for offline use  Options:    -h, --help                   output">
+<meta name="twitter:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/ios-bundle.png">
 
   
 
@@ -342,22 +247,22 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#资料"><span class="toc-text">资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#例子-预测宝可梦进化后的武力值-cp"><span class="toc-text">例子:预测宝可梦进化后的武力值(cp)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入"><span class="toc-text">输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输出"><span class="toc-text">输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Loss-function"><span class="toc-text">Loss function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#找到最优f-——Gradient-Descent-梯度下降法"><span class="toc-text">找到最优f*——Gradient Descent(梯度下降法)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化Model"><span class="toc-text">优化Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tips"><span class="toc-text">tips</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#打包命令说明"><span class="toc-text">打包命令说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ios-打包流程"><span class="toc-text">ios 打包流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-执行打包命令"><span class="toc-text">1.执行打包命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设置jsbundle"><span class="toc-text">2.设置jsbundle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-修改打包类型"><span class="toc-text">3.修改打包类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-target-设置"><span class="toc-text">4.target 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-安装到iphone"><span class="toc-text">5.安装到iphone</span></a></li></ol></li></ol>
   </div>
 
 -->
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-    <article id="post-machine-learning-2" class="article article-type-post"
+    <article id="post-react-native" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
-            <h1 class="post-title"><a href="/2017/11/26/machine-learning-2/">李宏毅machine learning学习笔记——Regression</a></h1>
+            <h1 class="post-title"><a href="/2018/01/05/react-native/">react-native踩坑记录</a></h1>
 
             <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2017.11.26</span>
+        <span>2018.01.05</span>
       </span>
 
                 
@@ -370,7 +275,7 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
                 
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/machine-learning学习笔记/">machine learning学习笔记</a>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
   </span>
 
 
@@ -382,77 +287,42 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 
         <div class="article-content">
             
-            <h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><table>
-<thead>
-<tr>
-<th>pdf</th>
-<th>video</th>
-<th>B站</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/Regression.pdf" target="_blank" rel="external">链接</a></td>
-<td><a href="https://www.youtube.com/watch?v=fegAeph9UaA" target="_blank" rel="external">链接</a></td>
-<td><a href="https://www.bilibili.com/video/av10590361/?from=search&amp;seid=11735940949684226997#page=3" target="_blank" rel="external">链接</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="例子-预测宝可梦进化后的武力值-cp"><a href="#例子-预测宝可梦进化后的武力值-cp" class="headerlink" title="例子:预测宝可梦进化后的武力值(cp)"></a>例子:预测宝可梦进化后的武力值(cp)</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ul>
-<li>用<code>X</code>来表示一只宝可梦</li>
-<li>用<code>Xi</code>来表示宝可梦进化前的种种特性(feature)<ul>
-<li><code>Xcp</code> 现在的cp值</li>
-<li><code>Xs</code> 物种</li>
-<li><code>Xhp</code> hp值</li>
-<li><code>Xw</code> 体重</li>
-<li><code>Xh</code> 身高</li>
-</ul>
+            <h2 id="打包命令说明"><a href="#打包命令说明" class="headerlink" title="打包命令说明"></a>打包命令说明</h2><p>使用 <code>react-native bundle --help</code> 来查看打包的具体参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">react-native bundle [options]</div><div class="line">  builds the javascript bundle <span class="keyword">for</span> offline use</div><div class="line"></div><div class="line">  Options:</div><div class="line"></div><div class="line">    -h, --help                   output usage information</div><div class="line">    --entry-file &lt;path&gt;          Path to the root JS file, either absolute or relative to JS root</div><div class="line">    --platform [string]          Either <span class="string">"ios"</span> or <span class="string">"android"</span></div><div class="line">    --transformer [string]       Specify a custom transformer to be used</div><div class="line">    --dev [boolean]              If <span class="literal">false</span>, warnings are disabled and the bundle is minified</div><div class="line">    --prepack                    When passed, the output bundle will use the Prepack format.</div><div class="line">    --bridge-config [string]     File name of a a JSON <span class="built_in">export</span> of __fbBatchedBridgeConfig. Used by Prepack. Ex. ./bridgeconfig.json</div><div class="line">    --bundle-output &lt;string&gt;     File name <span class="built_in">where</span> to store the resulting bundle, ex. /tmp/groups.bundle</div><div class="line">    --bundle-encoding [string]   Encoding the bundle should be written <span class="keyword">in</span> (https://nodejs.org/api/buffer.html<span class="comment">#buffer_buffer).</span></div><div class="line">    --sourcemap-output [string]  File name <span class="built_in">where</span> to store the sourcemap file <span class="keyword">for</span> resulting bundle, ex. /tmp/groups.map</div><div class="line">    --assets-dest [string]       Directory name <span class="built_in">where</span> to store assets referenced <span class="keyword">in</span> the bundle</div><div class="line">    --verbose                    Enables logging</div><div class="line">    --reset-cache                Removes cached files</div><div class="line">    --config [string]            Path to the CLI configuration file</div></pre></td></tr></table></figure>
+<p>中文版:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">react-native bundle [参数]</div><div class="line">  构建 js 离线包 </div><div class="line"></div><div class="line">  Options:</div><div class="line"></div><div class="line">    -h, --help                   输出如何使用的信息</div><div class="line">    --entry-file &lt;path&gt;          RN入口文件的路径, 绝对路径或相对路径</div><div class="line">    --platform [string]          ios 或 andorid</div><div class="line">    --transformer [string]       Specify a custom transformer to be used</div><div class="line">    --dev [boolean]              如果为<span class="literal">false</span>, 警告会不显示并且打出的包的大小会变小</div><div class="line">    --prepack                    当通过时, 打包输出将使用Prepack格式化</div><div class="line">    --bridge-config [string]     使用Prepack的一个json格式的文件__fbBatchedBridgeConfig 例如: ./bridgeconfig.json</div><div class="line">    --bundle-output &lt;string&gt;     打包后的文件输出目录, 例: /tmp/groups.bundle</div><div class="line">    --bundle-encoding [string]   打离线包的格式 可参考链接https://nodejs.org/api/buffer.html<span class="comment">#buffer_buffer.</span></div><div class="line">    --sourcemap-output [string]  生成Source Map，但0.14之后不再自动生成<span class="built_in">source</span> map，需要手动指定这个参数。例: /tmp/groups.map</div><div class="line">    --assets-dest [string]       打包时图片资源的存储路径</div><div class="line">    --verbose                    显示打包过程</div><div class="line">    --reset-cache                移除缓存文件</div><div class="line">    --config [string]            命令行的配置文件路径</div></pre></td></tr></table></figure></p>
+<h2 id="ios-打包流程"><a href="#ios-打包流程" class="headerlink" title="ios 打包流程"></a>ios 打包流程</h2><h3 id="1-执行打包命令"><a href="#1-执行打包命令" class="headerlink" title="1.执行打包命令"></a>1.执行打包命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev <span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>在<code>ios</code>文件夹中可以找到如下打包产物<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/ios-bundle.png" alt=""></p>
+<h3 id="2-设置jsbundle"><a href="#2-设置jsbundle" class="headerlink" title="2.设置jsbundle"></a>2.设置<code>jsbundle</code></h3><ul>
+<li><p>用<code>xcode</code>打开<code>ios</code>文件夹<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-ios-project.png" alt=""></p>
+</li>
+<li><p>选中与项目同名的文件夹<code>open</code>,右键选择<code>Add Files to &quot;open&quot;</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/add-file-ios-project.png" alt=""></p>
+</li>
+<li><p>选择打包产物所在文件夹,将文件导入到项目中<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/add-file-ios-project-2.png" alt=""></p>
 </li>
 </ul>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><ul>
-<li>这只宝可梦进化后的cp值：<code>Y</code></li>
-</ul>
-<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p class="tip">假设输入与输出间存在<code>Y = w·Xcp</code> 这样的关系(这里省略了X的其他属性)</p>
+<p class="tip">assets 目录导入工程中时，要选择 Create folder references。</p>
 
-<p>由于<code>w</code>、<code>b</code>可以为任何值。这里我们将各种数值带入到<code>b</code>、<code>w</code>中，就得到了一个Model(A set of function)</p>
 <ul>
-<li><code>f1:Y = 10+9·Xcp</code></li>
-<li><code>f2:Y = 9.8+9.2·Xcp</code></li>
-<li><code>f3:Y = - 0.8-1.2·Xcp</code></li>
-<li>…</li>
+<li>修改<code>AppDelegate.m</code>文件证的代码</li>
 </ul>
-<p>最后得到一个Linear Model<br><img src="http://ozm59jgdk.bkt.clouddn.com/Regression-linear%20mode.png" alt=""></p>
-<a id="more"></a>
-<h3 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h3><p><code>Loss function</code>用来衡量<code>Model</code>中的<code>function</code>，它的<code>Input</code>是<code>Model</code>中的<code>fn</code>，它的<code>Output</code>可以是这个<code>fn</code>与正确的数值的差平方和。<br>由于<code>fn</code>是由<code>b</code>、<code>w</code>的数值决定的，由此可得<code>Loss function L(w,b)</code>如下图所示</p>
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/Loss%20function.png" alt=""></p>
-<h3 id="找到最优f-——Gradient-Descent-梯度下降法"><a href="#找到最优f-——Gradient-Descent-梯度下降法" class="headerlink" title="找到最优f*——Gradient Descent(梯度下降法)"></a>找到最优<code>f*</code>——Gradient Descent(梯度下降法)</h3><blockquote>
-<p><code>f*</code>是Model中的一个f，使Loss function能取到最小值</p>
-</blockquote>
-<p class="tip"> 假设只有一个参数w </p>
-
-<ol>
-<li>寻找一个w0的位置，计算L在w0的位置的微分dL/dw|w=w0。</li>
-<li>移动w的到w1的位置，w1 &lt;- w0 - η*dL/dw|w=w0 (η被称为learning rate——步长，是一个可设置的常量)如果当前位置的微分的绝对值很大，则说明距离目标点越远，反之则越近，等于0的时候不再移动。</li>
-<li>直到找到一个wt，使dL/dw|w=wt = 0<br><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95.png" alt=""></li>
-</ol>
-<p class="tip">如下图所示，梯度下降法并不能够保证一定能找到global minima或是local minima，找到的也可能是saddle point</p>
-
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%952.png" alt=""></p>
-<blockquote>
-<p>回到两个参数的情况，将所有的偏微分排成一个向量，这个向量就被称为梯度</p>
-</blockquote>
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E6%A2%AF%E5%BA%A6.png" alt=""></p>
-<h3 id="优化Model"><a href="#优化Model" class="headerlink" title="优化Model"></a>优化Model</h3><blockquote>
-<p>通过以上的方式我们找到一个函数f <code>y = 188.4+2.7*xcp</code>,如图所示,并不是所有的点都能拟合函数，讲参数带入Loss function得到error为35.0 依然比较大。这时我们需要想办法优化我们的model。我们用相同的方法分别尝试了1-5次方程。从下图中可以看出，在training data中的error越来越小，但是在testing data上，误差变化却并不与在training data上一致，甚至在5次方程中，误差达到了200+，这个现象被称为<code>overfitting</code></p>
-</blockquote>
-<p><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%8C%E6%AC%A1.png" alt="二次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%B8%89%E6%AC%A1.png" alt="三次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E5%9B%9B%E6%AC%A1.png" alt="四次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/%E4%BA%94%E6%AC%A1.png" alt="五次"><br><img src="http://ozm59jgdk.bkt.clouddn.com/overfitting.png" alt="overfitting"></p>
-<p class="tip">function 并不是越复杂越好。</p>
-
-
-<h2 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h2><ul>
-<li>是否是现行模型取决于<code>w</code>和<code>b</code>，<code>y = b+w1*xcp + w2*xcp^2</code> 依然是一个linear model</li>
-<li>在<code>linear regression</code>的场景中不用担心<code>wt</code>会出现在<code>saddle point</code>的位置</li>
+<p>改写<code>jsCodeLocation</code>的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NSURL *jsCodeLocation;</div><div class="line"></div><div class="line">// jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@&quot;index.ios&quot; fallbackResource:nil];</div><div class="line">jsCodeLocation = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@&quot;index.ios.jsbundle&quot; ofType:nil]];</div><div class="line">RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation</div><div class="line">                                                      moduleName:@&quot;RNBundleDemo&quot;</div><div class="line">                                               initialProperties:nil</div><div class="line">                                                   launchOptions:launchOptions];</div></pre></td></tr></table></figure>
+<h3 id="3-修改打包类型"><a href="#3-修改打包类型" class="headerlink" title="3.修改打包类型"></a>3.修改打包类型</h3><ul>
+<li><p>点击如图菜单项<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-edit-schema.png" alt=""></p>
+</li>
+<li><p>将<code>Build Configuration</code>选项修改为<code>release</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-run-release.png" alt=""></p>
+</li>
 </ul>
+<h3 id="4-target-设置"><a href="#4-target-设置" class="headerlink" title="4.target 设置"></a>4.<code>target</code> 设置</h3><ul>
+<li>设置左侧四个<code>target</code>的<code>General</code>标签下的部分选项如下图所示<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target-general.png" alt=""></li>
+</ul>
+<h3 id="5-安装到iphone"><a href="#5-安装到iphone" class="headerlink" title="5.安装到iphone"></a>5.安装到<code>iphone</code></h3><ul>
+<li>将<code>iphone</code>与<code>mac</code>用usb线连接</li>
+<li>将<code>target</code>设置为目标<code>iphone</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target.png" alt=""></li>
+<li>点击run按钮(左侧小三角形),安装到手机。</li>
+</ul>
+<p class="tip">打开过程中若提示是不受信任的开发者，则点开设置-&gt;通用-&gt;描述文件与设备管理,选择对应开发者,点击信任。</p>
+
 
             
         </div>
@@ -460,14 +330,11 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
     
     <div class="page-bar">
         
-        <a href="/2017/12/14/js-note/" class="prev-btn">
-            <i class="iconfont icon-prev"></i>
+        <a class="prev-btn"></a>
+        
+        
+        <a href="/2017/12/14/js-note/" class="next-btn">
             <span class="title">js笔记</span>
-        </a>
-        
-        
-        <a href="/2017/11/21/canvas-font-face/" class="next-btn">
-            <span class="title">如何在canvas中使用自定义字体图标</span>
             <i class="iconfont icon-next"></i></a>
         
     </div>
@@ -479,7 +346,7 @@ Model假设输入与输出间存在Y = w·Xcp 这样的关系(这里省略了X�
 <div class="container article-container">
     
         <!--&lt;!&ndash;高速版&ndash;&gt;-->
-<div id="SOHUCS" sid="2017/11/26/machine-learning-2/"></div>
+<div id="SOHUCS" sid="2018/01/05/react-native/"></div>
 <script type="text/javascript">
     (function () {
         var appid = 'cytljyUmF';

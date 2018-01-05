@@ -230,6 +230,139 @@
     
 
 <div class="container article-container">
+    <article id="post-react-native" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2018/01/05/react-native/">react-native踩坑记录</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.01.05</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="打包命令说明"><a href="#打包命令说明" class="headerlink" title="打包命令说明"></a>打包命令说明</h2><p>使用 <code>react-native bundle --help</code> 来查看打包的具体参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">react-native bundle [options]</div><div class="line">  builds the javascript bundle <span class="keyword">for</span> offline use</div><div class="line"></div><div class="line">  Options:</div><div class="line"></div><div class="line">    -h, --help                   output usage information</div><div class="line">    --entry-file &lt;path&gt;          Path to the root JS file, either absolute or relative to JS root</div><div class="line">    --platform [string]          Either <span class="string">"ios"</span> or <span class="string">"android"</span></div><div class="line">    --transformer [string]       Specify a custom transformer to be used</div><div class="line">    --dev [boolean]              If <span class="literal">false</span>, warnings are disabled and the bundle is minified</div><div class="line">    --prepack                    When passed, the output bundle will use the Prepack format.</div><div class="line">    --bridge-config [string]     File name of a a JSON <span class="built_in">export</span> of __fbBatchedBridgeConfig. Used by Prepack. Ex. ./bridgeconfig.json</div><div class="line">    --bundle-output &lt;string&gt;     File name <span class="built_in">where</span> to store the resulting bundle, ex. /tmp/groups.bundle</div><div class="line">    --bundle-encoding [string]   Encoding the bundle should be written <span class="keyword">in</span> (https://nodejs.org/api/buffer.html<span class="comment">#buffer_buffer).</span></div><div class="line">    --sourcemap-output [string]  File name <span class="built_in">where</span> to store the sourcemap file <span class="keyword">for</span> resulting bundle, ex. /tmp/groups.map</div><div class="line">    --assets-dest [string]       Directory name <span class="built_in">where</span> to store assets referenced <span class="keyword">in</span> the bundle</div><div class="line">    --verbose                    Enables logging</div><div class="line">    --reset-cache                Removes cached files</div><div class="line">    --config [string]            Path to the CLI configuration file</div></pre></td></tr></table></figure>
+<p>中文版:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">react-native bundle [参数]</div><div class="line">  构建 js 离线包 </div><div class="line"></div><div class="line">  Options:</div><div class="line"></div><div class="line">    -h, --help                   输出如何使用的信息</div><div class="line">    --entry-file &lt;path&gt;          RN入口文件的路径, 绝对路径或相对路径</div><div class="line">    --platform [string]          ios 或 andorid</div><div class="line">    --transformer [string]       Specify a custom transformer to be used</div><div class="line">    --dev [boolean]              如果为<span class="literal">false</span>, 警告会不显示并且打出的包的大小会变小</div><div class="line">    --prepack                    当通过时, 打包输出将使用Prepack格式化</div><div class="line">    --bridge-config [string]     使用Prepack的一个json格式的文件__fbBatchedBridgeConfig 例如: ./bridgeconfig.json</div><div class="line">    --bundle-output &lt;string&gt;     打包后的文件输出目录, 例: /tmp/groups.bundle</div><div class="line">    --bundle-encoding [string]   打离线包的格式 可参考链接https://nodejs.org/api/buffer.html<span class="comment">#buffer_buffer.</span></div><div class="line">    --sourcemap-output [string]  生成Source Map，但0.14之后不再自动生成<span class="built_in">source</span> map，需要手动指定这个参数。例: /tmp/groups.map</div><div class="line">    --assets-dest [string]       打包时图片资源的存储路径</div><div class="line">    --verbose                    显示打包过程</div><div class="line">    --reset-cache                移除缓存文件</div><div class="line">    --config [string]            命令行的配置文件路径</div></pre></td></tr></table></figure></p>
+<h2 id="ios-打包流程"><a href="#ios-打包流程" class="headerlink" title="ios 打包流程"></a>ios 打包流程</h2><h3 id="1-执行打包命令"><a href="#1-执行打包命令" class="headerlink" title="1.执行打包命令"></a>1.执行打包命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev <span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>在<code>ios</code>文件夹中可以找到如下打包产物<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/ios-bundle.png" alt=""></p>
+<h3 id="2-设置jsbundle"><a href="#2-设置jsbundle" class="headerlink" title="2.设置jsbundle"></a>2.设置<code>jsbundle</code></h3><ul>
+<li><p>用<code>xcode</code>打开<code>ios</code>文件夹<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-ios-project.png" alt=""></p>
+</li>
+<li><p>选中与项目同名的文件夹<code>open</code>,右键选择<code>Add Files to &quot;open&quot;</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/add-file-ios-project.png" alt=""></p>
+</li>
+<li><p>选择打包产物所在文件夹,将文件导入到项目中<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/add-file-ios-project-2.png" alt=""></p>
+</li>
+</ul>
+<p class="tip">assets 目录导入工程中时，要选择 Create folder references。</p>
+
+<ul>
+<li>修改<code>AppDelegate.m</code>文件证的代码</li>
+</ul>
+<p>改写<code>jsCodeLocation</code>的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NSURL *jsCodeLocation;</div><div class="line"></div><div class="line">// jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@&quot;index.ios&quot; fallbackResource:nil];</div><div class="line">jsCodeLocation = [NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@&quot;index.ios.jsbundle&quot; ofType:nil]];</div><div class="line">RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation</div><div class="line">                                                      moduleName:@&quot;RNBundleDemo&quot;</div><div class="line">                                               initialProperties:nil</div><div class="line">                                                   launchOptions:launchOptions];</div></pre></td></tr></table></figure>
+<h3 id="3-修改打包类型"><a href="#3-修改打包类型" class="headerlink" title="3.修改打包类型"></a>3.修改打包类型</h3><ul>
+<li><p>点击如图菜单项<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-edit-schema.png" alt=""></p>
+</li>
+<li><p>将<code>Build Configuration</code>选项修改为<code>release</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-run-release.png" alt=""></p>
+</li>
+</ul>
+<h3 id="4-target-设置"><a href="#4-target-设置" class="headerlink" title="4.target 设置"></a>4.<code>target</code> 设置</h3><ul>
+<li>设置左侧四个<code>target</code>的<code>General</code>标签下的部分选项如下图所示<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target-general.png" alt=""></li>
+</ul>
+<h3 id="5-安装到iphone"><a href="#5-安装到iphone" class="headerlink" title="5.安装到iphone"></a>5.安装到<code>iphone</code></h3><ul>
+<li>将<code>iphone</code>与<code>mac</code>用usb线连接</li>
+<li>将<code>target</code>设置为目标<code>iphone</code><br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target.png" alt=""></li>
+<li>点击run按钮(左侧小三角形),安装到手机。</li>
+</ul>
+<p class="tip">打开过程中若提示是不受信任的开发者，则点开设置-&gt;通用-&gt;描述文件与设备管理,选择对应开发者,点击信任。</p>
+
+
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
+    <article id="post-js-note" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/12/14/js-note/">js笔记</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.12.14</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="函数声明和函数表达式"><a href="#函数声明和函数表达式" class="headerlink" title="函数声明和函数表达式"></a>函数声明和函数表达式</h2><p>函数表达式的name不能在函数外部被使用<br>iife是一个函数表达式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;&#125;)</div><div class="line">foo()</div><div class="line"><span class="comment">//会报错</span></div></pre></td></tr></table></figure></p>
+<p><a href="https://www.zhihu.com/question/60063924" target="_blank" rel="external"></a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/30/2326372.html" target="_blank" rel="external"></a></p>
+<h2 id="变量对象-VO"><a href="#变量对象-VO" class="headerlink" title="变量对象(VO)"></a>变量对象(VO)</h2><p>一旦进入执行上下文（在执行代码之前），VO就会被一些属性填充（在此前已经描述过了）：</p>
+<p>函数的形参（当进入函数执行上下文时）<br>—— 变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined<br>函数声明（FunctionDeclaration, FD） —— 变量对象的一个属性，其属性名和值都是函数对象创建出来的；如果变量对象已经包含了相同名字的属性，则替换它的值<br>变量声明（var，VariableDeclaration） —— 变量对象的一个属性，其属性名即为变量名，其值为undefined;如果变量名和已经声明的函数名或者函数的参数名相同，则不会影响已经存在的属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> c = <span class="number">10</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">  <span class="keyword">var</span> e = <span class="function"><span class="keyword">function</span> <span class="title">_e</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">  (<span class="function"><span class="keyword">function</span> <span class="title">x</span>(<span class="params"></span>) </span>&#123;&#125;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">test(<span class="number">10</span>); <span class="comment">// call</span></div><div class="line"><span class="comment">// 当以10为参数进入“test”函数上下文的时候，对应的AO(VO)如下所示：</span></div><div class="line"><span class="comment">//函数上下文中 VO === AO</span></div><div class="line"></div><div class="line">AO(test) = &#123;</div><div class="line">  a: <span class="number">10</span>,</div><div class="line">  b: <span class="literal">undefined</span>,</div><div class="line">  c: <span class="literal">undefined</span>,</div><div class="line">  d: </div><div class="line">  e: <span class="literal">undefined</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">alert(x); <span class="comment">// function</span></div><div class="line"> </div><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line">alert(x); <span class="comment">// 10</span></div><div class="line"> </div><div class="line">x = <span class="number">20</span>;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">x</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"> </div><div class="line">alert(x); <span class="comment">// 20</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">10</span></div><div class="line">b = <span class="number">20</span></div><div class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.a</div><div class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.b</div></pre></td></tr></table></figure>
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-machine-learning-2" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -729,108 +862,6 @@
                 <a class="btn btn-primary more-btn" href="/2017/03/17/mongodb2/#more">阅读全文</a>
             </p>
             
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-mongodb" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2017/03/10/mongodb/">使用mongo shell命令行工具在指定数据库下新建用户</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.03.10</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="在指定数据库下新建用户"><a href="#在指定数据库下新建用户" class="headerlink" title="在指定数据库下新建用户"></a>在指定数据库下新建用户</h2><h3 id="输入mongo命令"><a href="#输入mongo命令" class="headerlink" title="输入mongo命令"></a>输入mongo命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">root@iZm5e3ljqlvdsruj2dkr7pZ:~<span class="comment"># mongo</span></div><div class="line">MongoDB shell version v3.4.2</div><div class="line">connecting to: mongodb://127.0.0.1:27017</div><div class="line">MongoDB server version: 3.4.2</div><div class="line">&gt;</div></pre></td></tr></table></figure>
-<h3 id="先在admin数据库完成校验"><a href="#先在admin数据库完成校验" class="headerlink" title="先在admin数据库完成校验"></a>先在admin数据库完成校验</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; use admin</div><div class="line">switched to db admin</div><div class="line">&gt; db.auth(<span class="string">'xx'</span>,<span class="string">'xxx'</span>)</div><div class="line">1</div></pre></td></tr></table></figure>
-<h3 id="切换到想要新建用户的数据库"><a href="#切换到想要新建用户的数据库" class="headerlink" title="切换到想要新建用户的数据库"></a>切换到想要新建用户的数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; use <span class="built_in">test</span></div><div class="line">switched to db <span class="built_in">test</span></div></pre></td></tr></table></figure>
-<h3 id="使用db-createUser-新建用户-参考文档"><a href="#使用db-createUser-新建用户-参考文档" class="headerlink" title="使用db.createUser()新建用户,参考文档"></a>使用<code>db.createUser()</code>新建用户,参考<a href="https://docs.mongodb.com/manual/reference/method/db.createUser/" target="_blank" rel="external">文档</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&gt; db.createUser(&#123;</div><div class="line">... ... user:<span class="string">"root"</span>,</div><div class="line">... ... <span class="built_in">pwd</span>:<span class="string">"root"</span>,</div><div class="line">... ... roles:[&#123;</div><div class="line">... ... role:<span class="string">'readWrite'</span>,db:<span class="string">'test'</span></div><div class="line">... ... &#125;]</div><div class="line">... ... &#125;)</div><div class="line">Successfully added user: &#123;</div><div class="line">	<span class="string">"user"</span> : <span class="string">"root"</span>,</div><div class="line">	<span class="string">"roles"</span> : [</div><div class="line">		&#123;</div><div class="line">			<span class="string">"role"</span> : <span class="string">"readWrite"</span>,</div><div class="line">			<span class="string">"db"</span> : <span class="string">"test"</span></div><div class="line">		&#125;</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-cartesian" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2017/03/09/cartesian/">计算笛卡尔积</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.03.09</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="计算笛卡尔积"><a href="#计算笛卡尔积" class="headerlink" title="计算笛卡尔积"></a>计算笛卡尔积</h2> <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">cartesianProductOf</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.reduce.call(<span class="built_in">arguments</span>, <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> ret = [];</div><div class="line">    a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">      b.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">b</span>) </span>&#123;</div><div class="line">        ret.push(a.concat([b]));</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">  &#125;, [[]]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3> <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cartesianProductOf([<span class="string">'1'</span>,<span class="string">'3'</span>],[<span class="string">'a'</span>,<span class="string">'b'</span>])</div></pre></td></tr></table></figure>
-
             
         </div>
     </article>
