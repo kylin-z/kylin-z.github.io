@@ -19,31 +19,34 @@
   <!--安卓 去状态栏-->
 
   
-  <title>js笔记 | Kylin</title>
+  <title>js随笔 | Kylin</title>
 
   
-    <meta name="keywords" content="kylin,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+    <meta name="keywords" content="js," />
   
 
   <meta name="description" content="函数声明和函数表达式函数表达式的name不能在函数外部被使用iife是一个函数表达式123(function foo()&amp;#123;&amp;#125;)foo()//会报错
+参考参考
+变量对象(VO)旦进入执行上下文（在执行代码之前），VO就会被一些属性填充：
 
-变量对象(VO)一旦进入执行上下文（在执行代码之前），VO就会被一些属性填充（在此前已经描述过了）：
-函数的形参（当进入函数执行上下文时）—— 变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值">
+函数的形参（当进入函数执行上下文时）变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js笔记">
+<meta property="og:title" content="js随笔">
 <meta property="og:url" content="http://kylin.himmas.cc/2017/12/14/js-note/index.html">
 <meta property="og:site_name" content="Kylin">
 <meta property="og:description" content="函数声明和函数表达式函数表达式的name不能在函数外部被使用iife是一个函数表达式123(function foo()&amp;#123;&amp;#125;)foo()//会报错
+参考参考
+变量对象(VO)旦进入执行上下文（在执行代码之前），VO就会被一些属性填充：
 
-变量对象(VO)一旦进入执行上下文（在执行代码之前），VO就会被一些属性填充（在此前已经描述过了）：
-函数的形参（当进入函数执行上下文时）—— 变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值">
-<meta property="og:updated_time" content="2017-12-14T07:53:39.000Z">
+函数的形参（当进入函数执行上下文时）变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined">
+<meta property="og:updated_time" content="2018-01-05T06:46:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js笔记">
+<meta name="twitter:title" content="js随笔">
 <meta name="twitter:description" content="函数声明和函数表达式函数表达式的name不能在函数外部被使用iife是一个函数表达式123(function foo()&amp;#123;&amp;#125;)foo()//会报错
+参考参考
+变量对象(VO)旦进入执行上下文（在执行代码之前），VO就会被一些属性填充：
 
-变量对象(VO)一旦进入执行上下文（在执行代码之前），VO就会被一些属性填充（在此前已经描述过了）：
-函数的形参（当进入函数执行上下文时）—— 变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值">
+函数的形参（当进入函数执行上下文时）变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined">
 
   
 
@@ -254,7 +257,7 @@
     <article id="post-js-note" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
-            <h1 class="post-title"><a href="/2017/12/14/js-note/">js笔记</a></h1>
+            <h1 class="post-title"><a href="/2017/12/14/js-note/">js随笔</a></h1>
 
             <div class="article-meta">
       <span>
@@ -270,6 +273,11 @@
                 
 
                 
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/笔记/">笔记</a>
+  </span>
+
 
 
                 
@@ -280,9 +288,14 @@
         <div class="article-content">
             
             <h2 id="函数声明和函数表达式"><a href="#函数声明和函数表达式" class="headerlink" title="函数声明和函数表达式"></a>函数声明和函数表达式</h2><p>函数表达式的name不能在函数外部被使用<br>iife是一个函数表达式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;&#125;)</div><div class="line">foo()</div><div class="line"><span class="comment">//会报错</span></div></pre></td></tr></table></figure></p>
-<p><a href="https://www.zhihu.com/question/60063924" target="_blank" rel="external"></a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/30/2326372.html" target="_blank" rel="external"></a></p>
-<h2 id="变量对象-VO"><a href="#变量对象-VO" class="headerlink" title="变量对象(VO)"></a>变量对象(VO)</h2><p>一旦进入执行上下文（在执行代码之前），VO就会被一些属性填充（在此前已经描述过了）：</p>
-<p>函数的形参（当进入函数执行上下文时）<br>—— 变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined<br>函数声明（FunctionDeclaration, FD） —— 变量对象的一个属性，其属性名和值都是函数对象创建出来的；如果变量对象已经包含了相同名字的属性，则替换它的值<br>变量声明（var，VariableDeclaration） —— 变量对象的一个属性，其属性名即为变量名，其值为undefined;如果变量名和已经声明的函数名或者函数的参数名相同，则不会影响已经存在的属性。</p>
+<p><a href="https://www.zhihu.com/question/60063924" target="_blank" rel="external">参考</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/30/2326372.html" target="_blank" rel="external">参考</a></p>
+<h2 id="变量对象-VO"><a href="#变量对象-VO" class="headerlink" title="变量对象(VO)"></a>变量对象(VO)</h2><p>旦进入执行上下文（在执行代码之前），VO就会被一些属性填充：</p>
+<ul>
+<li>函数的形参（当进入函数执行上下文时）<br>变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined</li>
+<li>函数声明（FunctionDeclaration, FD） —— 变量对象的一个属性，其属性名和值都是函数对象创建出来的；如果变量对象已经包含了相同名字的属性，则替换它的值</li>
+<li>变量声明（var，VariableDeclaration） —— 变量对象的一个属性，其属性名即为变量名，其值为undefined;如果变量名和已经声明的函数名或者函数的参数名相同，则不会影响已经存在的属性。</li>
+</ul>
+<a id="more"></a>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> c = <span class="number">10</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">d</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">  <span class="keyword">var</span> e = <span class="function"><span class="keyword">function</span> <span class="title">_e</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">  (<span class="function"><span class="keyword">function</span> <span class="title">x</span>(<span class="params"></span>) </span>&#123;&#125;);</div><div class="line">&#125;</div><div class="line"> </div><div class="line">test(<span class="number">10</span>); <span class="comment">// call</span></div><div class="line"><span class="comment">// 当以10为参数进入“test”函数上下文的时候，对应的AO(VO)如下所示：</span></div><div class="line"><span class="comment">//函数上下文中 VO === AO</span></div><div class="line"></div><div class="line">AO(test) = &#123;</div><div class="line">  a: <span class="number">10</span>,</div><div class="line">  b: <span class="literal">undefined</span>,</div><div class="line">  c: <span class="literal">undefined</span>,</div><div class="line">  d: </div><div class="line">  e: <span class="literal">undefined</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">alert(x); <span class="comment">// function</span></div><div class="line"> </div><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line">alert(x); <span class="comment">// 10</span></div><div class="line"> </div><div class="line">x = <span class="number">20</span>;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">x</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"> </div><div class="line">alert(x); <span class="comment">// 20</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">10</span></div><div class="line">b = <span class="number">20</span></div><div class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.a</div><div class="line"><span class="keyword">delete</span> <span class="built_in">window</span>.b</div></pre></td></tr></table></figure>

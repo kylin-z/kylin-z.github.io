@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target-general.png">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target.png">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/android-keystore.png">
-<meta property="og:updated_time" content="2018-01-05T06:39:59.000Z">
+<meta property="og:updated_time" content="2018-01-05T06:41:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native踩坑记录">
 <meta name="twitter:description" content="打包命令说明使用 react-native bundle --help 来查看打包的具体参数
@@ -248,7 +248,7 @@
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#打包命令说明"><span class="toc-text">打包命令说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ios-打包流程"><span class="toc-text">ios 打包流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-执行打包命令"><span class="toc-text">1.执行打包命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设置jsbundle"><span class="toc-text">2.设置jsbundle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-修改打包类型"><span class="toc-text">3.修改打包类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-target-设置"><span class="toc-text">4.target 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-安装到iphone"><span class="toc-text">5.安装到iphone</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android-打包流程"><span class="toc-text">android 打包流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-执行打包命令-1"><span class="toc-text">1.执行打包命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-生成签名文件"><span class="toc-text">2.生成签名文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置gradle变量"><span class="toc-text">3.设置gradle变量</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#打包命令说明"><span class="toc-text">打包命令说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ios-打包流程"><span class="toc-text">ios 打包流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-执行打包命令"><span class="toc-text">1.执行打包命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-设置jsbundle"><span class="toc-text">2.设置jsbundle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-修改打包类型"><span class="toc-text">3.修改打包类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-target-设置"><span class="toc-text">4.target 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-安装到iphone"><span class="toc-text">5.安装到iphone</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android-打包流程"><span class="toc-text">android 打包流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-执行打包命令-1"><span class="toc-text">1.执行打包命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-生成签名文件"><span class="toc-text">2.生成签名文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置gradle变量"><span class="toc-text">3.设置gradle变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-生成发行APK包"><span class="toc-text">4.生成发行APK包</span></a></li></ol></li></ol>
   </div>
 
 -->
@@ -346,6 +346,12 @@
 <p>提示：如果你不想以明文方式保存密码，同时你使用的是macOS系统，那么你也可以把密码保存到钥匙串（Keychain）中。这样一来你就可以省略掉上面配置中的后两行（即MYAPP_RELEASE_STORE_PASSWORD和MYAPP_RELEASE_KEY_PASSWORD）。</p>
 <p>添加签名到项目的gradle配置文件<br>编辑你项目目录下的android/app/build.gradle，添加如下的签名配置：</p>
 <p>…<br>android {<br>    …<br>    defaultConfig { … }<br>    signingConfigs {<br>        release {<br>            storeFile file(MYAPP_RELEASE_STORE_FILE)<br>            storePassword MYAPP_RELEASE_STORE_PASSWORD<br>            keyAlias MYAPP_RELEASE_KEY_ALIAS<br>            keyPassword MYAPP_RELEASE_KEY_PASSWORD<br>        }<br>    }<br>    buildTypes {<br>        release {<br>            …<br>            signingConfig signingConfigs.release<br>        }<br>    }<br>}<br>…</p>
+<h3 id="4-生成发行APK包"><a href="#4-生成发行APK包" class="headerlink" title="4.生成发行APK包"></a>4.生成发行APK包</h3><p>只需在终端中运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> android &amp;&amp; ./gradlew assembleRelease</div></pre></td></tr></table></figure>
+<blockquote>
+<p>cd android表示进入android目录（如果你已经在android目录中了那就不用输入了）。./gradlew assembleRelease在macOS、Linux或是windows的PowerShell环境中表示执行当前目录下的名为gradlew的脚本文件，且其运行参数为assembleRelease，注意这个./不可省略；而在windows的传统CMD命令行下则需要去掉./。<br>Gradle的assembleRelease参数会把所有用到的JavaScript代码都打包到一起，然后内置到APK包中。如果你想调整下这个行为（比如js代码以及静态资源打包的默认文件名或是目录结构等），可以看看android/app/build.gradle文件，然后琢磨下应该怎么修改以满足你的需求。</p>
+</blockquote>
+<p>生成的APK文件位于android/app/build/outputs/apk/app-release.apk，它已经可以用来发布了。</p>
 
             
         </div>
@@ -357,7 +363,7 @@
         
         
         <a href="/2017/12/14/js-note/" class="next-btn">
-            <span class="title">js笔记</span>
+            <span class="title">js随笔</span>
             <i class="iconfont icon-next"></i></a>
         
     </div>
