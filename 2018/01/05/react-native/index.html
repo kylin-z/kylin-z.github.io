@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target-general.png">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/xcode-target.png">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/android-keystore.png">
-<meta property="og:updated_time" content="2018-01-05T06:50:13.000Z">
+<meta property="og:updated_time" content="2018-01-05T06:51:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native踩坑记录">
 <meta name="twitter:description" content="打包命令说明使用 react-native bundle --help 来查看打包的具体参数
@@ -339,7 +339,7 @@
 <p class="tip">注意：请记得妥善地保管好你的密钥库文件，不要上传到版本库或者其它的地方。</p>
 
 <h3 id="3-设置gradle变量"><a href="#3-设置gradle变量" class="headerlink" title="3.设置gradle变量"></a>3.设置gradle变量</h3><p>把<code>my-release-key.keystore</code>文件放到你工程中的android/app文件夹下。<br>编辑<code>~/.gradle/gradle.properties</code>（没有这个文件你就创建一个），添加如下的代码（注意把其中的<em>**</em>替换为相应密码）<br>注意：~表示用户目录，比如windows上可能是C:\Users\用户名，而mac上可能是/Users/用户名。</p>
-<p>MYAPP_RELEASE_STORE_FILE=my-release-key.keystore<br>MYAPP_RELEASE_KEY_ALIAS=my-key-alias<br>MYAPP_RELEASE_STORE_PASSWORD=<strong>*</strong><br>MYAPP_RELEASE_KEY_PASSWORD=<strong>*</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MYAPP_RELEASE_STORE_FILE=my-release-key.keystore</div><div class="line">MYAPP_RELEASE_KEY_ALIAS=my-key-alias</div><div class="line">MYAPP_RELEASE_STORE_PASSWORD=*****</div><div class="line">MYAPP_RELEASE_KEY_PASSWORD=*****</div></pre></td></tr></table></figure>
 <p>上面的这些会作为全局的gradle变量，我们在后面的步骤中可以用来给应用签名。</p>
 <p>关于密钥库的注意事项:</p>
 <p>一旦你在Play Store发布了你的应用，如果想修改签名，就必须用一个不同的包名来重新发布你的应用（这样也会丢失所有的下载数和评分）。所以请务必备份好你的密钥库和密码。</p>
