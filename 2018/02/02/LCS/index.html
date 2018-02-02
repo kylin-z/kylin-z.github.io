@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-archives201612">
+  <html class="light page-post">
 
 
 <head>
@@ -19,18 +19,29 @@
   <!--安卓 去状态栏-->
 
   
-  <title>Archives: 2016/12 | Kylin</title>
+  <title>最长公共子序列(LCS) | Kylin</title>
 
   
-    <meta name="keywords" content="kylin,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+    <meta name="keywords" content="算法," />
   
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Kylin">
-<meta property="og:url" content="http://kylin.himmas.cc/archives/2016/12/index.html">
+  <meta name="description" content="基本概念
+（Longest Common Subsequence LCS）是从给定的两个序列X和Y中取出尽可能多的一部分字符，按照它们在原序列排列的先后次序排列得到。LCS问题的算法用途广泛，如在软件不同版本的管理中，用LCS算法找到新旧版本的异同处;在软件测试中，用LCS算法对录制和回放的序列进行比较，在基因工程领域，用LCS算法检查患者DNA连与键康DNA链的异同;在防抄袭系统中，用LCS算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最长公共子序列(LCS)">
+<meta property="og:url" content="http://kylin.himmas.cc/2018/02/02/LCS/index.html">
 <meta property="og:site_name" content="Kylin">
+<meta property="og:description" content="基本概念
+（Longest Common Subsequence LCS）是从给定的两个序列X和Y中取出尽可能多的一部分字符，按照它们在原序列排列的先后次序排列得到。LCS问题的算法用途广泛，如在软件不同版本的管理中，用LCS算法找到新旧版本的异同处;在软件测试中，用LCS算法对录制和回放的序列进行比较，在基因工程领域，用LCS算法检查患者DNA连与键康DNA链的异同;在防抄袭系统中，用LCS算法">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-example.jpeg">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-formula.jpeg">
+<meta property="og:updated_time" content="2018-02-02T09:49:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kylin">
+<meta name="twitter:title" content="最长公共子序列(LCS)">
+<meta name="twitter:description" content="基本概念
+（Longest Common Subsequence LCS）是从给定的两个序列X和Y中取出尽可能多的一部分字符，按照它们在原序列排列的先后次序排列得到。LCS问题的算法用途广泛，如在软件不同版本的管理中，用LCS算法找到新旧版本的异同处;在软件测试中，用LCS算法对录制和回放的序列进行比较，在基因工程领域，用LCS算法检查患者DNA连与键康DNA链的异同;在防抄袭系统中，用LCS算法">
+<meta name="twitter:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS.png">
 
   
 
@@ -64,8 +75,7 @@
 
   <!---->
 
-  <!--<div class="content content-archive">-->
-<!--<div class="head-box">
+  <div class="head-box">
     <div class="head-inner">
         <div class="info-box">
             <a href="/" class="avatar">
@@ -226,292 +236,145 @@
         e.stopPropagation()
     }
 </script>
--->
-
-<!--<div class="post-list-box archive-body">-->
-<!--<ul class="list-post">  <li class="item-year item item-title item-title-1">
-    <a href="/archives/2016" class="text-year">
-      2016
-      <i class="icon-hou"></i>
-      
-    </a>
-  </li>
-<li class="item-post item">
-  <span class="post-date">12-29</span>
-
-  <a class="post-title" href="/2016/12/29/getterAndSetter/">js对象属性的getter与setter</a>
-
-</li>
-<li class="item-post item">
-  <span class="post-date">12-27</span>
-
-  <a class="post-title" href="/2016/12/27/snabbdom-note2/">snabbdom源码阅读笔记（二）</a>
-
-</li>
-<li class="item-post item">
-  <span class="post-date">12-21</span>
-
-  <a class="post-title" href="/2016/12/21/snabbdom-note/">snabbdom源码阅读笔记（一）</a>
-
-</li>
-</ul>-->
-<!--</div>-->
 
 
+<!--这个是章节目录-->
 <!--
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-text">基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#子序列-subsequence"><span class="toc-text">子序列(subsequence)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公共子序列-common-subsequence"><span class="toc-text">公共子序列(common subsequence)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最长公共子序列"><span class="toc-text">最长公共子序列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子串"><span class="toc-text">子串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过程"><span class="toc-text">过程</span></a></li></ol>
+  </div>
+
 -->
 
-<div class="head-box">
-    <div class="head-inner">
-        <div class="info-box">
-            <a href="/" class="avatar">
-                <img src="/images/avatar.jpg" alt="" />
-            </a>
-            <div class="detail-info">
-                <h1 class="name">kylin</h1>
-                <div class="slogan">醉里论道,醒时折花。</div>
-                <hr>
-                <div class="link-box">
-                    
-                    
-                    <a class="link-item-box td02" href="https://github.com/kylin-z">
-                        <i class="iconfont icon-github"></i>
-                        <span>Github</span>
-                    </a>
-                    
-                    
-                    
-                    <a class="link-item-box td02" href="/">
-                        <i class="iconfont icon-weibo1"></i>
-                        <span>新浪微博</span>
-                    </a>
-                    
-                    
-                    
-                    <a class="link-item-box td02" href="/">
-                        <i class="iconfont icon-twitter"></i>
-                        <span>Twitter</span>
-                    </a>
-                    
-                    
-                    
-                    <a class="link-item-box td02" href="/">
-                        <i class="iconfont icon-facebook1"></i>
-                        <span>facebook</span>
-                    </a>
-                    
-                    
-                </div>
+<div class="content content-post CENTER">
+   <div class="container article-container">
+    <article id="post-LCS" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2018/02/02/LCS/">最长公共子序列(LCS)</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.02.02</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </span>
+
+
+
+                
+
             </div>
-        </div>
-        <div class="menu-box">
+        </header>
+
+        <div class="article-content">
             
-                <a class="menu-item td02" href="/"
-                        >
-                    <i class="iconfont icon-home"></i></a>
-            
-                <a class="menu-item td02" href="/archives/"
-                        >
-                    <i class="iconfont icon-filing"></i></a>
-            
-                <a class="menu-item td02" href="/categories/"
-                        >
-                    <i class="iconfont icon-sort"></i></a>
-            
-                <a class="menu-item td02" href="/tags/"
-                        >
-                    <i class="iconfont icon-tag"></i></a>
-            
-                <a class="menu-item td02" href="/link/"
-                        >
-                    <i class="iconfont icon-link"></i></a>
-            
-                <a class="menu-item td02" href="/atom.xml"
-                        
-                            target="_blank"
-                        >
-                    <i class="iconfont icon-rss"></i></a>
-            
-                <a class="menu-item td02" href="/album/"
-                        >
-                    <i class="iconfont icon-image"></i></a>
-            
-                <a class="menu-item td02" href="/search/"
-                        >
-                    <i class="iconfont icon-search"></i></a>
+            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><blockquote>
+<p>（Longest Common Subsequence LCS）是从给定的两个序列X和Y中取出尽可能多的一部分字符，按照它们在原序列排列的先后次序排列得到。LCS问题的算法用途广泛，如在软件不同版本的管理中，用LCS算法找到新旧版本的异同处;在软件测试中，用LCS算法对录制和回放的序列进行比较，在基因工程领域，用LCS算法检查患者DNA连与键康DNA链的异同;在防抄袭系统中，用LCS算法检查论文的抄袭率。LCS算法也可以用于程序代码相似度度量，人体运行的序列检索，视频段匹配等方面，所以对LCS算法进行研究具有很高的应用价值。</p>
+</blockquote>
+<h3 id="子序列-subsequence"><a href="#子序列-subsequence" class="headerlink" title="子序列(subsequence)"></a>子序列(subsequence)</h3><p>一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列<a,b,c,b,d,a,b>的子序列有：<a,b>、<b,c,a>、<a,b,c,d,a>等。</a,b,c,d,a></b,c,a></a,b></a,b,c,b,d,a,b></p>
+<h3 id="公共子序列-common-subsequence"><a href="#公共子序列-common-subsequence" class="headerlink" title="公共子序列(common subsequence)"></a>公共子序列(common subsequence)</h3><p>给定序列X和Y，序列Z是X的子序列，也是Y的子序列，则Z是X和Y的公共子序列。例如X=[A,B,C,B,D,A,B]，Y=[B,D,C,A,B,A[，那么序列Z=[B,C,A]为X和Y的公共子序列，其长度为3。但Z不是X和Y的最长公共子序列，而序列[B,C,B,A]和[B,D,A,B]也均为X和Y的最长公共子序列，长度为4，而X和Y不存在长度大于等于5的公共子序列。对于序列[A,B,C]和序列[E,F,G]的公共子序列只有空序列[]。</p>
+<h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><p>给定序列X和Y，从它们的所有公共子序列中选出长度最长的那一个或几个。</p>
+<h3 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h3><p>将一个序列从最前或最后或同时删掉零个或几个字符构成的新系列。区别与子序列，子序列是可以从中间抠掉字符的。cnblogs这个字符串中子序列有多少个呢？很显然有27个，比如其中的cb,cgs等等都是其子序列</p>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS.png" alt=""></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>求解LCS问题，不能使用暴力搜索方法。一个长度为n的序列拥有 2的n次方个子序列，它的时间复杂度是指数阶，太恐怖了。我们先对LCS问题进行特征分析。</p>
+<p>结合下图，设A=“a0，a1，…，am”，B=“b0，b1，…，bn”，且Z=“z0，z1，…，zk”为它们的最长公共子序列。不难证明有以下性质：</p>
+<ul>
+<li>如果am=bn，则zk=am=bn，且“z0，z1，…，z(k-1)”是“a0，a1，…，a(m-1)”和“b0，b1，…，b(n-1)”的一个最长公共子序列；</li>
+<li>如果am!=bn，则若zk!=am，蕴涵“z0，z1，…，zk”是“a0，a1，…，a(m-1)”和“b0，b1，…，bn”的一个最长公共子序列；</li>
+<li>如果am!=bn，则若zk!=bn，蕴涵“z0，z1，…，zk”是“a0，a1，…，am”和“b0，b1，…，b(n-1)”的一个最长公共子序列。</li>
+</ul>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-example.jpeg" alt=""></p>
+<p>由以上特征可得到递归公式如下:</p>
+<p class="tip">c[i,j]表示长度为i的S1和长度为j的S2的LCS的长度</p>
+
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-formula.jpeg" alt=""></p>
+<a id="more"></a>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>我们先不贴代码，将计算LCS长度的过程一步步分解开来。</p>
+<p>…</p>
+
             
         </div>
+    </article>
+    
+    <div class="page-bar">
+        
+        <a class="prev-btn"></a>
+        
+        
+        <a href="/2018/01/05/react-native/" class="next-btn">
+            <span class="title">react-native踩坑记录</span>
+            <i class="iconfont icon-next"></i></a>
+        
     </div>
-</div>
-<div class="m-head-box" id="m-head-box">
-    <i class="iconfont icon-m-menu menu-icon" id="m-menu-btn"></i>
-    <h1 class="name">kylin</h1>
-</div>
-<div id="m-menu-box">
-    
-    <a class="menu-item" href="/"
-            >
-        <i class="iconfont icon-home"></i>
-        <span>首页</span>
-    </a>
-    
-    <a class="menu-item" href="/archives/"
-            >
-        <i class="iconfont icon-filing"></i>
-        <span>归档</span>
-    </a>
-    
-    <a class="menu-item" href="/categories/"
-            >
-        <i class="iconfont icon-sort"></i>
-        <span>分类</span>
-    </a>
-    
-    <a class="menu-item" href="/tags/"
-            >
-        <i class="iconfont icon-tag"></i>
-        <span>标签</span>
-    </a>
-    
-    <a class="menu-item" href="/link/"
-            >
-        <i class="iconfont icon-link"></i>
-        <span>友链</span>
-    </a>
-    
-    <a class="menu-item" href="/atom.xml"
-            
-       target="_blank"
-            >
-        <i class="iconfont icon-rss"></i>
-        <span>RSS</span>
-    </a>
-    
-    <a class="menu-item" href="/album/"
-            >
-        <i class="iconfont icon-image"></i>
-        <span>相册</span>
-    </a>
-    
-    <a class="menu-item" href="/search/"
-            >
-        <i class="iconfont icon-search"></i>
-        <span>搜索</span>
-    </a>
     
 </div>
 
-<script>
-    var isMenuOpen = false
-    var $menuBtn = document.getElementById("m-menu-btn")
-    var $menuBox = document.getElementById("m-menu-box")
-    var $headBox = document.getElementById("m-head-box")
-    $menuBtn.onclick = function (e) {
-        isMenuOpen = !isMenuOpen
-        $menuBox.style.left = isMenuOpen?'0':'-80%'
-        $headBox.style.background = isMenuOpen?'rgba(20,20,20,0.9)':'#666'
-        e.stopPropagation()
-    }
-    document.body.onclick = function (e) {
-        $menuBox.style.left = '-80%'
-        $headBox.style.background = '#666'
-        isMenuOpen = false
-        e.stopPropagation()
-    }
-    $menuBox.onclick = function (e) {
-        e.stopPropagation()
-    }
-</script>
+<!--评论区-->
 
+<div class="container article-container">
+    
+        <!--&lt;!&ndash;高速版&ndash;&gt;-->
+<div id="SOHUCS" sid="2018/02/02/LCS/"></div>
+<script type="text/javascript">
+    (function () {
+        var appid = 'cytljyUmF';
+        var conf = '27e7b3f7d4845feb22fc16d7fe1ff759';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+        } else {
+            var loadJs = function (d, a) {
+                var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+                var b = document.createElement("script");
+                b.setAttribute("type", "text/javascript");
+                b.setAttribute("charset", "UTF-8");
+                b.setAttribute("src", d);
+                if (typeof a === "function") {
+                    if (window.attachEvent) {
+                        b.onreadystatechange = function () {
+                            var e = b.readyState;
+                            if (e === "loaded" || e === "complete") {
+                                b.onreadystatechange = null;
+                                a()
+                            }
+                        }
+                    } else {
+                        b.onload = a
+                    }
+                }
+                c.appendChild(b)
+            };
+            loadJs("http://changyan.sohu.com/upload/changyan.js", function () {
+                window.changyan.api.config({appid: appid, conf: conf})
+            });
+        }
+    })(); </script>
 
-<div class="container list-container">
-    <div class="article-list-box">
-        <div class="head">
-            <label class="head-label">归档</label>
-            <i class="iconfont icon-location article-item"></i>
-            <span>共31篇日志</span>
-        </div>
-        <div class="article-box-body">
-            
-            
-            
-                
-                <div class="collection-title item-title-0">
-                    <h2>2016</h2>
-                </div>
-                
-            
-            <article class="article-item article-type-normal">
-                <header class="post-header td02">
-                    <h1 class="post-title">
-                        <a href="/2016/12/29/getterAndSetter/index.html" class="post-title-link">
-                            <span>js对象属性的getter与setter</span>
-                        </a>
-                    </h1>
-                    <div class="post-meta">
-                        <time class="post-time">12-29</time>
-                    </div>
-                </header>
-            </article>
-            
-            
-            <article class="article-item article-type-normal">
-                <header class="post-header td02">
-                    <h1 class="post-title">
-                        <a href="/2016/12/27/snabbdom-note2/index.html" class="post-title-link">
-                            <span>snabbdom源码阅读笔记（二）</span>
-                        </a>
-                    </h1>
-                    <div class="post-meta">
-                        <time class="post-time">12-27</time>
-                    </div>
-                </header>
-            </article>
-            
-            
-            <article class="article-item article-type-normal">
-                <header class="post-header td02">
-                    <h1 class="post-title">
-                        <a href="/2016/12/21/snabbdom-note/index.html" class="post-title-link">
-                            <span>snabbdom源码阅读笔记（一）</span>
-                        </a>
-                    </h1>
-                    <div class="post-meta">
-                        <time class="post-time">12-21</time>
-                    </div>
-                </header>
-            </article>
-            
-        </div>
-    </div>
-    <nav class="pagination">
-  
-  <!--上一页-->
-  
-  <!--第一页-->
-
-  
-
-  
-
-  <a class="page-number current" href="/archives/2016/12/">1</a>
-
-  
-
-  
-
-  
-  <!--尾页-->
-
-  
-
-</nav>
-
+    
+</div>
 
 
 </div>
 
 
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
 
 
 

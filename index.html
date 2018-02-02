@@ -230,6 +230,78 @@
     
 
 <div class="container article-container">
+    <article id="post-LCS" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2018/02/02/LCS/">最长公共子序列(LCS)</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.02.02</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><blockquote>
+<p>（Longest Common Subsequence LCS）是从给定的两个序列X和Y中取出尽可能多的一部分字符，按照它们在原序列排列的先后次序排列得到。LCS问题的算法用途广泛，如在软件不同版本的管理中，用LCS算法找到新旧版本的异同处;在软件测试中，用LCS算法对录制和回放的序列进行比较，在基因工程领域，用LCS算法检查患者DNA连与键康DNA链的异同;在防抄袭系统中，用LCS算法检查论文的抄袭率。LCS算法也可以用于程序代码相似度度量，人体运行的序列检索，视频段匹配等方面，所以对LCS算法进行研究具有很高的应用价值。</p>
+</blockquote>
+<h3 id="子序列-subsequence"><a href="#子序列-subsequence" class="headerlink" title="子序列(subsequence)"></a>子序列(subsequence)</h3><p>一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列<A,B,C,B,D,A,B>的子序列有：<A,B>、<B,C,A>、<A,B,C,D,A>等。</p>
+<h3 id="公共子序列-common-subsequence"><a href="#公共子序列-common-subsequence" class="headerlink" title="公共子序列(common subsequence)"></a>公共子序列(common subsequence)</h3><p>给定序列X和Y，序列Z是X的子序列，也是Y的子序列，则Z是X和Y的公共子序列。例如X=[A,B,C,B,D,A,B]，Y=[B,D,C,A,B,A[，那么序列Z=[B,C,A]为X和Y的公共子序列，其长度为3。但Z不是X和Y的最长公共子序列，而序列[B,C,B,A]和[B,D,A,B]也均为X和Y的最长公共子序列，长度为4，而X和Y不存在长度大于等于5的公共子序列。对于序列[A,B,C]和序列[E,F,G]的公共子序列只有空序列[]。</p>
+<h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><p>给定序列X和Y，从它们的所有公共子序列中选出长度最长的那一个或几个。</p>
+<h3 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h3><p>将一个序列从最前或最后或同时删掉零个或几个字符构成的新系列。区别与子序列，子序列是可以从中间抠掉字符的。cnblogs这个字符串中子序列有多少个呢？很显然有27个，比如其中的cb,cgs等等都是其子序列</p>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS.png" alt=""></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>求解LCS问题，不能使用暴力搜索方法。一个长度为n的序列拥有 2的n次方个子序列，它的时间复杂度是指数阶，太恐怖了。我们先对LCS问题进行特征分析。</p>
+<p>结合下图，设A=“a0，a1，…，am”，B=“b0，b1，…，bn”，且Z=“z0，z1，…，zk”为它们的最长公共子序列。不难证明有以下性质：</p>
+<ul>
+<li>如果am=bn，则zk=am=bn，且“z0，z1，…，z(k-1)”是“a0，a1，…，a(m-1)”和“b0，b1，…，b(n-1)”的一个最长公共子序列；</li>
+<li>如果am!=bn，则若zk!=am，蕴涵“z0，z1，…，zk”是“a0，a1，…，a(m-1)”和“b0，b1，…，bn”的一个最长公共子序列；</li>
+<li>如果am!=bn，则若zk!=bn，蕴涵“z0，z1，…，zk”是“a0，a1，…，am”和“b0，b1，…，b(n-1)”的一个最长公共子序列。</li>
+</ul>
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-example.jpeg" alt=""></p>
+<p>由以上特征可得到递归公式如下:</p>
+<p class="tip">c[i,j]表示长度为i的S1和长度为j的S2的LCS的长度</p>
+
+<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-formula.jpeg" alt=""></p>
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2018/02/02/LCS/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-react-native" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -797,64 +869,6 @@
 
 
 
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-mongodb2" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2017/03/17/mongodb2/">mongodb(mongoose)使用小结</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.03.17</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="文档结构"><a href="#文档结构" class="headerlink" title="文档结构"></a>文档结构</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"origin"</span>:&#123;</div><div class="line">		<span class="string">"home_name"</span>:<span class="string">"伯乐在线"</span>,</div><div class="line">		<span class="string">"home"</span>:<span class="string">"http://web.jobbole.com/"</span>,</div><div class="line">		<span class="string">"link"</span>:<span class="string">"http://web.jobbole.com/90719/"</span>,</div><div class="line">		<span class="string">"id"</span>:<span class="string">"90719"</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"uid"</span>:<span class="number">8140</span>,</div><div class="line">	<span class="string">"title"</span>:<span class="string">"我理解中的“大前端”/“大无线”"</span>,</div><div class="line">	<span class="string">"article_info"</span>:&#123;</div><div class="line">		<span class="string">"content"</span>:<span class="string">'&lt;div class="entry"&gt;↵↵        ↵		&lt;div&gt;↵...'</span></div><div class="line">		<span class="string">"categorys"</span>:[<span class="string">"基础技术"</span>],</div><div class="line">		<span class="string">"copyright"</span>:&#123;</div><div class="line">			<span class="string">"link"</span>:<span class="string">"http://f2e.souche.com/blog/da-qian-duan-wo-de-li-jie/"</span>,</div><div class="line">			<span class="string">"name"</span>:<span class="string">"大搜车无线团队"</span></div><div class="line">		&#125;,</div><div class="line">		<span class="string">"tags"</span>:[<span class="string">"前端"</span>],</div><div class="line">		<span class="string">"post_date"</span>:<span class="number">1489161600</span>,</div><div class="line">		<span class="string">"is_filtered"</span>:<span class="literal">false</span>,</div><div class="line">		<span class="string">"is_unique"</span>:<span class="literal">false</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"insert_time"</span>:<span class="number">1489750591.488951</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="根据某字段查询"><a href="#根据某字段查询" class="headerlink" title="根据某字段查询"></a>根据某字段查询</h2><h3 id="根据uid字段查询"><a href="#根据uid字段查询" class="headerlink" title="根据uid字段查询"></a>根据<code>uid</code>字段查询</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;)</div></pre></td></tr></table></figure>
-<h3 id="根据orgin对象中的home字段查询，使用-操作符"><a href="#根据orgin对象中的home字段查询，使用-操作符" class="headerlink" title="根据orgin对象中的home字段查询，使用.操作符"></a>根据<code>orgin</code>对象中的<code>home</code>字段查询，使用<code>.</code>操作符</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'origin.home'</span>:<span class="string">'http://web.jobbole.com/'</span>&#125;)</div></pre></td></tr></table></figure>
-<h2 id="指定输出文档显示的字段"><a href="#指定输出文档显示的字段" class="headerlink" title="指定输出文档显示的字段"></a>指定输出文档显示的字段</h2><p class="tip">前端渲染列表时，查询如示例文档这样的带有大段html文本的数据会比较慢，这时可以将UI渲染用不到的字段过滤</p>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;,&#123;_id: <span class="number">0</span>, <span class="string">'article_info.content'</span>: <span class="number">0</span>&#125;)</div><div class="line"><span class="comment">// 不输出_id与article_info下的content字段 0表示删除 1表示保留</span></div></pre></td></tr></table></figure>
-            
-            <p class="article-more-link">
-                <a class="btn btn-primary more-btn" href="/2017/03/17/mongodb2/#more">阅读全文</a>
-            </p>
-            
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
 <div class="page-box">
     <nav class="pagination">
   
@@ -873,9 +887,11 @@
   
 
   
+  <span class="space">…</span>
+  
 
   
-  <a href="/page/3/" class="page-number">3</a>
+  <a href="/page/4/" class="page-number">4</a>
   
   <!--尾页-->
 

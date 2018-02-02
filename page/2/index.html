@@ -230,6 +230,64 @@
     
 
 <div class="container article-container">
+    <article id="post-mongodb2" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/03/17/mongodb2/">mongodb(mongoose)使用小结</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.17</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="文档结构"><a href="#文档结构" class="headerlink" title="文档结构"></a>文档结构</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="string">"origin"</span>:&#123;</div><div class="line">		<span class="string">"home_name"</span>:<span class="string">"伯乐在线"</span>,</div><div class="line">		<span class="string">"home"</span>:<span class="string">"http://web.jobbole.com/"</span>,</div><div class="line">		<span class="string">"link"</span>:<span class="string">"http://web.jobbole.com/90719/"</span>,</div><div class="line">		<span class="string">"id"</span>:<span class="string">"90719"</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"uid"</span>:<span class="number">8140</span>,</div><div class="line">	<span class="string">"title"</span>:<span class="string">"我理解中的“大前端”/“大无线”"</span>,</div><div class="line">	<span class="string">"article_info"</span>:&#123;</div><div class="line">		<span class="string">"content"</span>:<span class="string">'&lt;div class="entry"&gt;↵↵        ↵		&lt;div&gt;↵...'</span></div><div class="line">		<span class="string">"categorys"</span>:[<span class="string">"基础技术"</span>],</div><div class="line">		<span class="string">"copyright"</span>:&#123;</div><div class="line">			<span class="string">"link"</span>:<span class="string">"http://f2e.souche.com/blog/da-qian-duan-wo-de-li-jie/"</span>,</div><div class="line">			<span class="string">"name"</span>:<span class="string">"大搜车无线团队"</span></div><div class="line">		&#125;,</div><div class="line">		<span class="string">"tags"</span>:[<span class="string">"前端"</span>],</div><div class="line">		<span class="string">"post_date"</span>:<span class="number">1489161600</span>,</div><div class="line">		<span class="string">"is_filtered"</span>:<span class="literal">false</span>,</div><div class="line">		<span class="string">"is_unique"</span>:<span class="literal">false</span></div><div class="line">	&#125;,</div><div class="line">	<span class="string">"insert_time"</span>:<span class="number">1489750591.488951</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="根据某字段查询"><a href="#根据某字段查询" class="headerlink" title="根据某字段查询"></a>根据某字段查询</h2><h3 id="根据uid字段查询"><a href="#根据uid字段查询" class="headerlink" title="根据uid字段查询"></a>根据<code>uid</code>字段查询</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;)</div></pre></td></tr></table></figure>
+<h3 id="根据orgin对象中的home字段查询，使用-操作符"><a href="#根据orgin对象中的home字段查询，使用-操作符" class="headerlink" title="根据orgin对象中的home字段查询，使用.操作符"></a>根据<code>orgin</code>对象中的<code>home</code>字段查询，使用<code>.</code>操作符</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'origin.home'</span>:<span class="string">'http://web.jobbole.com/'</span>&#125;)</div></pre></td></tr></table></figure>
+<h2 id="指定输出文档显示的字段"><a href="#指定输出文档显示的字段" class="headerlink" title="指定输出文档显示的字段"></a>指定输出文档显示的字段</h2><p class="tip">前端渲染列表时，查询如示例文档这样的带有大段html文本的数据会比较慢，这时可以将UI渲染用不到的字段过滤</p>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Article.find(&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;,&#123;_id: <span class="number">0</span>, <span class="string">'article_info.content'</span>: <span class="number">0</span>&#125;)</div><div class="line"><span class="comment">// 不输出_id与article_info下的content字段 0表示删除 1表示保留</span></div></pre></td></tr></table></figure>
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/03/17/mongodb2/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-mongodb" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -744,115 +802,6 @@
 
 
 
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-snabbdom-note2" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2016/12/27/snabbdom-note2/">snabbdom源码阅读笔记（二）</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.12.27</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="hook"><a href="#hook" class="headerlink" title="hook"></a>hook</h2><table>
-<thead>
-<tr>
-<th>name</th>
-<th>调用时间</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pre</td>
-<td>patch 开始的时候</td>
-<td>无</td>
-</tr>
-<tr>
-<td>init</td>
-<td>vnode 被添加时</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>create</td>
-<td>a DOM element has been created based on a vnode    emptyVnode</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>insert</td>
-<td>an element has been inserted into the DOM</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>prepatch</td>
-<td>patch 开始之前</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>update</td>
-<td>an element is being updated</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>postpatch</td>
-<td>an element has been patched</td>
-<td>oldVnode, vnode</td>
-</tr>
-<tr>
-<td>destroy</td>
-<td>an element is directly or indirectly being removed</td>
-<td>vnode</td>
-</tr>
-<tr>
-<td>remove</td>
-<td>an element is directly being removed from the DOM</td>
-<td>vnode, removeCallback</td>
-</tr>
-<tr>
-<td>post</td>
-<td>patch结束之后</td>
-<td>无</td>
-</tr>
-</tbody>
-</table>
-
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
 <div class="page-box">
     <nav class="pagination">
   
@@ -873,11 +822,13 @@
   <a class="page-number current" href="/page/2/">2</a>
 
   
-
-  
-
-  
   <a href="/page/3/" class="page-number">3</a>
+  
+
+  
+
+  
+  <a href="/page/4/" class="page-number">4</a>
   
   <!--尾页-->
 
