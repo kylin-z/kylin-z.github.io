@@ -37,11 +37,11 @@
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-example.jpeg">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-formula.jpeg">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-init.jpg">
-<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step1.jpg">
-<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step2.jpg">
-<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step3.jpg">
-<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step4.jpg">
-<meta property="og:updated_time" content="2018-02-05T03:51:30.000Z">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step1.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step2.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step3.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step4.png">
+<meta property="og:updated_time" content="2018-02-05T03:54:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最长公共子序列(LCS)">
 <meta name="twitter:description" content="基本概念
@@ -314,12 +314,12 @@
 <p>图中白底格子所填的数字为c[i,j]的值，表示长度为i的S1和长度为j的S2的LCS的长度。<br>首先将表格初始化，当i==0 || j==0时，显然LCS的长度也为0。</p>
 <p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-init.jpg" alt=""></p>
 </li>
-<li><p>依次填值<br>当i=1，j=1~9时，S1(i)与S2(j)并不存在相等，c(i,j)的值等于左侧格子与上测格子中较大的一个的值。<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step1.jpg" alt=""></p>
-<p>当i=2，j=1时，S1(i)与S2(j)相等,c(i,j)的值等于左上方格子的值+1。<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step2.jpg" alt=""></p>
-<p>按照递归公式，依次将表格填完，最后下方的格子的值(c(8,9))即为S1、S2的最长公共子序列的长度。<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step3.jpg" alt=""></p>
+<li><p>依次填值<br>当i=1，j=1~9时，S1(i)与S2(j)并不存在相等，c(i,j)的值等于左侧格子与上测格子中较大的一个的值。<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step1.png" alt=""></p>
+<p>当i=2，j=1时，S1(i)与S2(j)相等,c(i,j)的值等于左上方格子的值+1。<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step2.png" alt=""></p>
+<p>按照递归公式，依次将表格填完，最后下方的格子的值(c(8,9))即为S1、S2的最长公共子序列的长度。<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step3.png" alt=""></p>
 </li>
 </ul>
-<h2 id="推导LCS"><a href="#推导LCS" class="headerlink" title="推导LCS"></a>推导LCS</h2><p>  如图所示:<br>  <img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step4.jpg" alt=""></p>
+<h2 id="推导LCS"><a href="#推导LCS" class="headerlink" title="推导LCS"></a>推导LCS</h2><p>  如图所示:<br>  <img src="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step4.png" alt=""></p>
 <ul>
 <li>从(8,9)位置开始反推，案例中S1(8) != S2(9)，即c(8,9)是由c(8,8)和c(7,9)两个格子中较大的值即c(8,8)决定的。</li>
 <li>S1(8) == S2(8)，将 S1(8)的值记录下来，c(8,8)的值来源于c(7,7)。</li>
