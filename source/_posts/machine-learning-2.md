@@ -10,7 +10,7 @@ categories: [machine learning学习笔记]
 |---|---|---|
 | [链接](http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2017/Lecture/Regression.pdf)|[链接](https://www.youtube.com/watch?v=fegAeph9UaA)|[链接](https://www.bilibili.com/video/av10590361/?from=search&seid=11735940949684226997#page=3)|
 
-## 例子:预测宝可梦进化后的物力值(cp)
+## 例子:预测宝可梦进化后的武力值(cp)
 
 ### 输入
 - 用`X`来表示一只宝可梦
@@ -80,5 +80,5 @@ categories: [machine learning学习笔记]
 
 ## tips
 - 是否是现行模型取决于`w`和`b`，`y = b+w1*xcp + w2*xcp^2` 依然是一个linear model
-- 在`linear regression`的长竞争不用担心`wt`会出现在`saddle point`的位置
+- 在`linear regression`的场景中不用担心`wt`会出现在`saddle point`的位置
 
