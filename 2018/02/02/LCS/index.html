@@ -41,7 +41,7 @@
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step2.png">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step3.png">
 <meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/LCS-step4.png">
-<meta property="og:updated_time" content="2018-02-05T03:54:10.000Z">
+<meta property="og:updated_time" content="2018-02-05T05:36:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最长公共子序列(LCS)">
 <meta name="twitter:description" content="基本概念
@@ -290,7 +290,7 @@
             <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><blockquote>
 <p>（Longest Common Subsequence LCS）是从给定的两个序列X和Y中取出尽可能多的一部分字符，按照它们在原序列排列的先后次序排列得到。LCS问题的算法用途广泛，如在软件不同版本的管理中，用LCS算法找到新旧版本的异同处;在软件测试中，用LCS算法对录制和回放的序列进行比较，在基因工程领域，用LCS算法检查患者DNA连与键康DNA链的异同;在防抄袭系统中，用LCS算法检查论文的抄袭率。LCS算法也可以用于程序代码相似度度量，人体运行的序列检索，视频段匹配等方面，所以对LCS算法进行研究具有很高的应用价值。</p>
 </blockquote>
-<h3 id="子序列-subsequence"><a href="#子序列-subsequence" class="headerlink" title="子序列(subsequence)"></a>子序列(subsequence)</h3><p>一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列<a,b,c,b,d,a,b>的子序列有：<a,b>、<b,c,a>、<a,b,c,d,a>等。</a,b,c,d,a></b,c,a></a,b></a,b,c,b,d,a,b></p>
+<h3 id="子序列-subsequence"><a href="#子序列-subsequence" class="headerlink" title="子序列(subsequence)"></a>子序列(subsequence)</h3><p>一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列<code>&lt;A,B,C,B,D,A,B&gt;</code>的子序列有：<code>&lt;A,B&gt;</code>、<code>&lt;B,C,A&gt;</code>、<code>&lt;A,B,C,D,A&gt;</code>等。</p>
 <h3 id="公共子序列-common-subsequence"><a href="#公共子序列-common-subsequence" class="headerlink" title="公共子序列(common subsequence)"></a>公共子序列(common subsequence)</h3><p>给定序列X和Y，序列Z是X的子序列，也是Y的子序列，则Z是X和Y的公共子序列。例如X=[A,B,C,B,D,A,B]，Y=[B,D,C,A,B,A[，那么序列Z=[B,C,A]为X和Y的公共子序列，其长度为3。但Z不是X和Y的最长公共子序列，而序列[B,C,B,A]和[B,D,A,B]也均为X和Y的最长公共子序列，长度为4，而X和Y不存在长度大于等于5的公共子序列。对于序列[A,B,C]和序列[E,F,G]的公共子序列只有空序列[]。</p>
 <h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><p>给定序列X和Y，从它们的所有公共子序列中选出长度最长的那一个或几个。</p>
 <h3 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h3><p>将一个序列从最前或最后或同时删掉零个或几个字符构成的新系列。区别与子序列，子序列是可以从中间抠掉字符的。cnblogs这个字符串中子序列有多少个呢？很显然有27个，比如其中的cb,cgs等等都是其子序列</p>
