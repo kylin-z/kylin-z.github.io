@@ -230,6 +230,81 @@
     
 
 <div class="container article-container">
+    <article id="post-node-child-process" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/03/30/node-child-process/">node子进程与调度任务</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.03.30</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/node/">node</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候我们会需要在服务端去执行一些命令或者脚本，这时候可以使用<code>node</code>的<code>child_process</code>模块来新建子进程。</p>
+<h2 id="新建子进程"><a href="#新建子进程" class="headerlink" title="新建子进程"></a>新建子进程</h2><p><code>child_process</code>存在几种创建子进程的方法。<a href="http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options">参考</a></p>
+<ul>
+<li>创建异步进程<ul>
+<li><code>child_process.exec(command[, options][, callback])</code> 衍生一个 shell 并在 shell 上运行一个命令，当完成时会传入 stdout 和 stderr 到一个回调。</li>
+<li><code>child_process.execFile(file[, args][, options][, callback])</code>和 <code>child_process.exec()</code> 类似，但它直接衍生命令，且不用先衍生一个 shell。</li>
+<li><code>child_process.fork(modulePath[, args][, options])</code>衍生一个新的 Node.js 进程，并通过建立一个允许父进程和子进程之间相互发送信息的 IPC 通讯通道来调用一个指定的模块。</li>
+<li><code>child_process.spawn(command[, args][, options])</code>方法会异步地衍生子进程，且不会阻塞 Node.js 的事件循环。<ul>
+<li><code>options.detached</code></li>
+<li><code>options.stdio</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>创建同步进程<ul>
+<li><code>child_process.execFileSync(file[, args][, options])</code>函数则以同步的方式提供了与<code>child_process.execFile()</code>相同的功能，但会阻塞事件循环，直到衍生的子进程退出或终止。</li>
+<li><code>child_process.execSync(command[, options])</code>函数则以同步的方式提供了与<code>child_process.exec()</code>相同的功能，但会阻塞事件循环，直到衍生的子进程退出或终止。</li>
+<li><code>child_process.spawnSync(command[, args][, options])</code>函数则以同步的方式提供了与<code>child_process.spawn()</code>相同的功能，但会阻塞事件循环，直到衍生的子进程退出或终止。</li>
+</ul>
+</li>
+</ul>
+<p>这里以<code>spawn</code>方法为例。</p>
+<p class="tip"><code>exec</code>与<code>spawn</code>放法都可以满足我异步执行命令的需求，但除此之外我还需要实时获取子进程的输出，而<code>exec</code>只能在执行完之后一次获取输出，所以最终选择了<code>spawn</code>。</p>
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/03/30/node-child-process/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-mongodb2" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -730,65 +805,6 @@
             
             <p class="article-more-link">
                 <a class="btn btn-primary more-btn" href="/2017/01/04/async/#more">阅读全文</a>
-            </p>
-            
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-getterAndSetter" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2016/12/29/getterAndSetter/">js对象属性的getter与setter</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.12.29</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h2><p>我们知道对象是由名字、值和一组特性（attribute）构成的。在ECMAScript5.1中，属性值可以用一个或两个方法替代，这两个方法就是<code>getter</code>和<code>setter</code>。由<code>getter</code>和<code>setter</code>定义的属性称作“存取器属性”（accessor property），它不同于“数据属性”（data property），数据属性只有一个简单的值。</p>
-<ul>
-<li>当程序查询存取器属性的值时，调用<code>getter</code>方法(无参)</li>
-<li>当程序设置一个存取器属性的值时，调用<code>setter</code>方法，赋值表达式右侧的值作为参数传入<code>setter</code></li>
-</ul>
-<p>存取器属性不具有可写性。如果属性同时拥有<code>getter</code>与<code>setter</code>，那么它是一个读/写属性。如果只有<code>getter</code>（或者<code>setter</code>），那么他就是一个只读（写）属性。读取只写属性总是返回    <code>undefined</code></p>
-<h2 id="定义setter和getter的几种方式"><a href="#定义setter和getter的几种方式" class="headerlink" title="定义setter和getter的几种方式"></a>定义setter和getter的几种方式</h2><h2 id="在新对象初始化时定义（ES5-1）"><a href="#在新对象初始化时定义（ES5-1）" class="headerlink" title="在新对象初始化时定义（ES5.1）"></a>在新对象初始化时定义（ES5.1）</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  value:<span class="number">1</span>,</div><div class="line">  get access_prop()&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">this</span>.value</div><div class="line">  &#125;,</div><div class="line">  set access_prop(value)&#123;</div><div class="line">     <span class="keyword">this</span>.value = value</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(obj.access_prop)<span class="comment">//1</span></div><div class="line">obj.access_prop = <span class="number">2</span></div><div class="line"><span class="built_in">console</span>.log(obj.access_prop,obj.value)<span class="comment">//2 2</span></div></pre></td></tr></table></figure>
-            
-            <p class="article-more-link">
-                <a class="btn btn-primary more-btn" href="/2016/12/29/getterAndSetter/#more">阅读全文</a>
             </p>
             
             

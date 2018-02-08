@@ -19,28 +19,37 @@
   <!--安卓 去状态栏-->
 
   
-  <title>数组合并并去重 | Kylin</title>
+  <title>vue插件的打包与发布 | Kylin</title>
 
   
-    <meta name="keywords" content="前端,javascript,原生,codewar," />
+    <meta name="keywords" content="vue,webpack," />
   
 
-  <meta name="description" content="数组合并并去重Demo
-Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.
-In other words, all values present from all arrays sho">
+  <meta name="description" content="初始化项目以我刚发布的vue-calendar组件为例
+开发插件用webpack-simple 模板比较合适
+123vue init webpack-simple vue-calendarcd vue-calendarnpm install
+在跟目录下新建test文件夹用于开发测试我这里讲原本位于src文件夹下的main.js以及App.vue文件转移到了test文件夹下
+将插件源码放在src文件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组合并并去重">
-<meta property="og:url" content="http://kylin.himmas.cc/2016/05/08/array-concat/index.html">
+<meta property="og:title" content="vue插件的打包与发布">
+<meta property="og:url" content="http://kylin.himmas.cc/2018/02/08/vue-plugins/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="数组合并并去重Demo
-Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.
-In other words, all values present from all arrays sho">
-<meta property="og:updated_time" content="2017-07-04T07:17:20.000Z">
+<meta property="og:description" content="初始化项目以我刚发布的vue-calendar组件为例
+开发插件用webpack-simple 模板比较合适
+123vue init webpack-simple vue-calendarcd vue-calendarnpm install
+在跟目录下新建test文件夹用于开发测试我这里讲原本位于src文件夹下的main.js以及App.vue文件转移到了test文件夹下
+将插件源码放在src文件">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-1.png">
+<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-2.png">
+<meta property="og:updated_time" content="2018-02-08T07:37:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数组合并并去重">
-<meta name="twitter:description" content="数组合并并去重Demo
-Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.
-In other words, all values present from all arrays sho">
+<meta name="twitter:title" content="vue插件的打包与发布">
+<meta name="twitter:description" content="初始化项目以我刚发布的vue-calendar组件为例
+开发插件用webpack-simple 模板比较合适
+123vue init webpack-simple vue-calendarcd vue-calendarnpm install
+在跟目录下新建test文件夹用于开发测试我这里讲原本位于src文件夹下的main.js以及App.vue文件转移到了test文件夹下
+将插件源码放在src文件">
+<meta name="twitter:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-1.png">
 
   
 
@@ -241,22 +250,22 @@ In other words, all values present from all arrays sho">
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组合并并去重"><span class="toc-text">数组合并并去重</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化项目"><span class="toc-text">初始化项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在跟目录下新建test文件夹用于开发测试"><span class="toc-text">在跟目录下新建test文件夹用于开发测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将插件源码放在src文件夹下，插件入口为src-calendar-main-js"><span class="toc-text">将插件源码放在src文件夹下，插件入口为src/calendar/main.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改-webpack-config-js-文件"><span class="toc-text">修改 webpack.config.js 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改package-json"><span class="toc-text">修改package.json</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到npm"><span class="toc-text">发布到npm</span></a></li></ol>
   </div>
 
 -->
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-    <article id="post-array-concat" class="article article-type-post"
+    <article id="post-vue-plugins" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
-            <h1 class="post-title"><a href="/2016/05/08/array-concat/">数组合并并去重</a></h1>
+            <h1 class="post-title"><a href="/2018/02/08/vue-plugins/">vue插件的打包与发布</a></h1>
 
             <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2016.05.08</span>
+        <span>2018.02.08</span>
       </span>
 
                 
@@ -269,7 +278,7 @@ In other words, all values present from all arrays sho">
                 
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/前端/">前端</a>
+    <a class="article-category-link" href="/categories/vue/">vue</a>
   </span>
 
 
@@ -281,49 +290,32 @@ In other words, all values present from all arrays sho">
 
         <div class="article-content">
             
-            <h2 id="数组合并并去重"><a href="#数组合并并去重" class="headerlink" title="数组合并并去重"></a>数组合并并去重</h2><p><a href="http://himmas.github.io/Himmas_demo/array-concat/" target="_blank" rel="external">Demo</a></p>
-<p>Write a function that takes one or more arrays and returns a new array of unique values in the order of the original provided arrays.</p>
-<p>In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.</p>
-<p>The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.</p>
-<p>讲两个数组合并并去掉重复的部分</p>
-<p>如:</p>
-<p><code>[1, 2], [3, 4] =&gt; [1,2,3,4]</code></p>
-<p><code>[1, 3, 2], [5, 2, 1, 4], [2, 1] =&gt; [1, 3, 2, 5, 4]</code></p>
-<p><code>[4, &quot;a&quot;, 2], [] =&gt; [4, &quot;a&quot;, 2]</code></p>
+            <h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>以我刚发布的<a href="https://github.com/kylin-z/vue-calendar" target="_blank" rel="external"><code>vue-calendar</code></a>组件为例</p>
+<p>开发插件用<code>webpack-simple</code> 模板比较合适</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vue init webpack-simple vue-calendar</div><div class="line"><span class="built_in">cd</span> vue-calendar</div><div class="line">npm install</div></pre></td></tr></table></figure>
+<h2 id="在跟目录下新建test文件夹用于开发测试"><a href="#在跟目录下新建test文件夹用于开发测试" class="headerlink" title="在跟目录下新建test文件夹用于开发测试"></a>在跟目录下新建<code>test</code>文件夹用于开发测试</h2><p>我这里讲原本位于<code>src</code>文件夹下的<code>main.js</code>以及<code>App.vue</code>文件转移到了<code>test</code>文件夹下<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-1.png" alt=""></p>
+<h2 id="将插件源码放在src文件夹下，插件入口为src-calendar-main-js"><a href="#将插件源码放在src文件夹下，插件入口为src-calendar-main-js" class="headerlink" title="将插件源码放在src文件夹下，插件入口为src/calendar/main.js"></a>将插件源码放在<code>src</code>文件夹下，插件入口为<code>src/calendar/main.js</code></h2><p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-2.png" alt=""></p>
+<h2 id="修改-webpack-config-js-文件"><a href="#修改-webpack-config-js-文件" class="headerlink" title="修改 webpack.config.js 文件"></a>修改 <code>webpack.config.js</code> 文件</h2><p>根据不同的命令(环境变量)设置不同的入口与输出文件，保证<code>npm run dev</code>与<code>npm run build</code>两个命令都为可用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"></div><div class="line"><span class="comment">//...根据环境变量(package.json script中设置)...</span></div><div class="line"><span class="keyword">var</span> entry = <span class="string">'./test/main.js'</span></div><div class="line"><span class="keyword">var</span> outputFileName = <span class="string">'build.js'</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</div><div class="line">  entry = <span class="string">'./src/calendar/main.js'</span></div><div class="line">  outputFileName = <span class="string">'vue-calendar.js'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//......</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">//entry改为变量</span></div><div class="line">  entry: entry,</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line">    publicPath: <span class="string">'/dist/'</span>,</div><div class="line">    <span class="comment">//filename</span></div><div class="line">    filename: outputFileName,</div><div class="line">    <span class="comment">//library与libraryTarget一定要添加，否则import进来的对象为空</span></div><div class="line">    library: <span class="string">'vue-calendar'</span>,</div><div class="line">    libraryTarget: <span class="string">'umd'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p class="tip">这里要注意非常重要的一点，webpack默认你构建的内容是一个应用而非library，如果不设置<code>library</code>将会导致你在使用该插件的时候<code>import</code>进来的对象为空。</p>
+
 <blockquote>
-<p>普通版本</p>
+<p>A webpack bundle does not expose your exports by default, as it assumes that you’re building an app and not a library (which is the far more common use of webpack). You can create a library by configuring output.library and output.libraryTarget <a href="https://stackoverflow.com/questions/44541561/webpack-output-is-empty-object" target="_blank" rel="external">参考一</a> <a href="https://webpack.js.org/configuration/output/#output-library" target="_blank" rel="external">参考二</a></p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//your code here</span></div><div class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">  <span class="keyword">var</span> res = [];</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> <span class="built_in">arguments</span>)&#123;</div><div class="line">      <span class="built_in">arguments</span>[i].forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">          <span class="keyword">if</span>(!obj[e])&#123;</div><div class="line">             res.push(e);</div><div class="line">             obj[e] = <span class="literal">true</span>;<span class="comment">//讲当前值作为键,值为true</span></div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>arguments是一个隐藏参数，能够获取到所有传递进来的参数，是一个对象</p>
-<a id="more"></a>
-<blockquote>
-<p>酷炫版本</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniteUnique</span>(<span class="params">...lsts</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> args = [].concat(...lsts);</div><div class="line">    <span class="keyword">return</span> args.filter((arg, i) =&gt; args.indexOf(arg) == i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>...lsts</code> es6引入了rest参数,用于获取函数的多余参数,这样就可以不使用arguments对象了,与arguments不同的是，它是一个数组</p>
-<p><code>array.concat()</code>可以合并多个数组</p>
-<p><code>array.fliter()</code> filter() 方法使用指定的函数测试所有元素，并创建一个包含所有通过测试的元素的新数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arr.filter(callback[, thisArg])</div></pre></td></tr></table></figure>
-<p>参数</p>
+<h2 id="修改package-json"><a href="#修改package-json" class="headerlink" title="修改package.json"></a>修改package.json</h2><p>使用<code>npm run build</code>或其他方式打包。</p>
 <ul>
-<li>callback<br>用来测试数组的每个元素的函数。调用时使用参数 (element, index, array)。<br>返回true表示保留该元素（通过测试），false则不保留。</li>
-<li>thisArg<br>可选。执行 callback 时的用于 this 的值。</li>
+<li>将<code>private</code>设置为<code>false</code></li>
+<li>将<code>main</code>设置为打包产出的文件路径</li>
 </ul>
-<p>  filter 为数组中的每个元素调用一次 callback 函数，并利用所有使得 callback 返回 true 或 等价于 true 的值 的元素创建一个新数组。callback 只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用。那些没有通过 callback 测试的元素会被跳过，不会被包含在新数组中。</p>
-<p>  callback 被调用时传入三个参数：</p>
-<ul>
-<li>元素的值</li>
-<li>元素的索引</li>
-<li><p>被遍历的数组</p>
-<p>如果为 filter 提供一个 thisArg 参数，则它会被作为 callback 被调用时的 this 值。否则，callback 的 this 值在非严格模式下将是全局对象，严格模式下为 undefined。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"himmas-vue-calendar"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"A calendar component for Vue.js"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.1.2"</span>,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">"kylin-z &lt;kailinzhou@yeah.net&gt;"</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"MIT"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"dev"</span>: <span class="string">"cross-env NODE_ENV=development webpack-dev-server --open --hot"</span>,</div><div class="line">    <span class="attr">"build"</span>: <span class="string">"cross-env NODE_ENV=production webpack --progress --hide-modules"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"private"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"dist/vue-calendar.js"</span>,</div><div class="line">  <span class="attr">"repository"</span>: &#123;</div><div class="line">    <span class="attr">"type"</span>: <span class="string">"git"</span>,</div><div class="line">    <span class="attr">"url"</span>: <span class="string">"https://github.com/kylin-z/vue-calendar.git"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"browserslist"</span>: [</div><div class="line">    <span class="string">"&gt; 1%"</span>,</div><div class="line">    <span class="string">"last 2 versions"</span>,</div><div class="line">    <span class="string">"not ie &lt;= 8"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"keywords"</span>: [</div><div class="line">    <span class="string">"calendar"</span>,</div><div class="line">    <span class="string">"custom"</span>,</div><div class="line">    <span class="string">"vue"</span></div><div class="line">  ]</div><div class="line">  //...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="发布到npm"><a href="#发布到npm" class="headerlink" title="发布到npm"></a>发布到npm</h2><ul>
+<li><p>在控制台登录<code>npm</code>账号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm login</div></pre></td></tr></table></figure>
+</li>
+<li><p>发布(每次发布需要更新version)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm publish</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(arg, i) =&gt; args.indexOf(arg) == i<span class="comment">//箭头函数</span></div></pre></td></tr></table></figure>
-<p>es6引入了箭头函数，允许用<code>=&gt;</code>定义函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = v =&gt; v;</div></pre></td></tr></table></figure>
-<p>等同于</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> v;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>若箭头函数的代码块部分多余一条语句，就要使用大括号讲他们括起来，并使用return返回</p>
 
             
         </div>
@@ -331,14 +323,11 @@ In other words, all values present from all arrays sho">
     
     <div class="page-bar">
         
-        <a href="/2016/05/26/canvas-flower/" class="prev-btn">
-            <i class="iconfont icon-prev"></i>
-            <span class="title">canvas-flower</span>
-        </a>
+        <a class="prev-btn"></a>
         
         
-        <a href="/2016/05/02/colours-bar/" class="next-btn">
-            <span class="title">如何用js画一条彩带</span>
+        <a href="/2018/02/02/LCS/" class="next-btn">
+            <span class="title">最长公共子序列(LCS)</span>
             <i class="iconfont icon-next"></i></a>
         
     </div>
@@ -350,7 +339,7 @@ In other words, all values present from all arrays sho">
 <div class="container article-container">
     
         <!--&lt;!&ndash;高速版&ndash;&gt;-->
-<div id="SOHUCS" sid="2016/05/08/array-concat/"></div>
+<div id="SOHUCS" sid="2018/02/08/vue-plugins/"></div>
 <script type="text/javascript">
     (function () {
         var appid = 'cytljyUmF';

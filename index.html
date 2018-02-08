@@ -230,6 +230,80 @@
     
 
 <div class="container article-container">
+    <article id="post-vue-plugins" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2018/02/08/vue-plugins/">vue插件的打包与发布</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.02.08</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>以我刚发布的<a href="https://github.com/kylin-z/vue-calendar" target="_blank" rel="external"><code>vue-calendar</code></a>组件为例</p>
+<p>开发插件用<code>webpack-simple</code> 模板比较合适</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vue init webpack-simple vue-calendar</div><div class="line"><span class="built_in">cd</span> vue-calendar</div><div class="line">npm install</div></pre></td></tr></table></figure>
+<h2 id="在跟目录下新建test文件夹用于开发测试"><a href="#在跟目录下新建test文件夹用于开发测试" class="headerlink" title="在跟目录下新建test文件夹用于开发测试"></a>在跟目录下新建<code>test</code>文件夹用于开发测试</h2><p>我这里讲原本位于<code>src</code>文件夹下的<code>main.js</code>以及<code>App.vue</code>文件转移到了<code>test</code>文件夹下<br><img src="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-1.png" alt=""></p>
+<h2 id="将插件源码放在src文件夹下，插件入口为src-calendar-main-js"><a href="#将插件源码放在src文件夹下，插件入口为src-calendar-main-js" class="headerlink" title="将插件源码放在src文件夹下，插件入口为src/calendar/main.js"></a>将插件源码放在<code>src</code>文件夹下，插件入口为<code>src/calendar/main.js</code></h2><p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-2.png" alt=""></p>
+<h2 id="修改-webpack-config-js-文件"><a href="#修改-webpack-config-js-文件" class="headerlink" title="修改 webpack.config.js 文件"></a>修改 <code>webpack.config.js</code> 文件</h2><p>根据不同的命令(环境变量)设置不同的入口与输出文件，保证<code>npm run dev</code>与<code>npm run build</code>两个命令都为可用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"></div><div class="line"><span class="comment">//...根据环境变量(package.json script中设置)...</span></div><div class="line"><span class="keyword">var</span> entry = <span class="string">'./test/main.js'</span></div><div class="line"><span class="keyword">var</span> outputFileName = <span class="string">'build.js'</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</div><div class="line">  entry = <span class="string">'./src/calendar/main.js'</span></div><div class="line">  outputFileName = <span class="string">'vue-calendar.js'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//......</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">//entry改为变量</span></div><div class="line">  entry: entry,</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line">    publicPath: <span class="string">'/dist/'</span>,</div><div class="line">    <span class="comment">//filename</span></div><div class="line">    filename: outputFileName,</div><div class="line">    <span class="comment">//library与libraryTarget一定要添加，否则import进来的对象为空</span></div><div class="line">    library: <span class="string">'vue-calendar'</span>,</div><div class="line">    libraryTarget: <span class="string">'umd'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p class="tip">这里要注意非常重要的一点，webpack默认你构建的内容是一个应用而非library，如果不设置<code>library</code>将会导致你在使用该插件的时候<code>import</code>进来的对象为空。</p>
+
+<blockquote>
+<p>A webpack bundle does not expose your exports by default, as it assumes that you’re building an app and not a library (which is the far more common use of webpack). You can create a library by configuring output.library and output.libraryTarget <a href="https://stackoverflow.com/questions/44541561/webpack-output-is-empty-object" target="_blank" rel="external">参考一</a> <a href="https://webpack.js.org/configuration/output/#output-library" target="_blank" rel="external">参考二</a></p>
+</blockquote>
+<h2 id="修改package-json"><a href="#修改package-json" class="headerlink" title="修改package.json"></a>修改package.json</h2><p>使用<code>npm run build</code>或其他方式打包。</p>
+<ul>
+<li>将<code>private</code>设置为<code>false</code></li>
+<li>将<code>main</code>设置为打包产出的文件路径</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"himmas-vue-calendar"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"A calendar component for Vue.js"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.1.2"</span>,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">"kylin-z &lt;kailinzhou@yeah.net&gt;"</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"MIT"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"dev"</span>: <span class="string">"cross-env NODE_ENV=development webpack-dev-server --open --hot"</span>,</div><div class="line">    <span class="attr">"build"</span>: <span class="string">"cross-env NODE_ENV=production webpack --progress --hide-modules"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"private"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"dist/vue-calendar.js"</span>,</div><div class="line">  <span class="attr">"repository"</span>: &#123;</div><div class="line">    <span class="attr">"type"</span>: <span class="string">"git"</span>,</div><div class="line">    <span class="attr">"url"</span>: <span class="string">"https://github.com/kylin-z/vue-calendar.git"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"browserslist"</span>: [</div><div class="line">    <span class="string">"&gt; 1%"</span>,</div><div class="line">    <span class="string">"last 2 versions"</span>,</div><div class="line">    <span class="string">"not ie &lt;= 8"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"keywords"</span>: [</div><div class="line">    <span class="string">"calendar"</span>,</div><div class="line">    <span class="string">"custom"</span>,</div><div class="line">    <span class="string">"vue"</span></div><div class="line">  ]</div><div class="line">  //...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="发布到npm"><a href="#发布到npm" class="headerlink" title="发布到npm"></a>发布到npm</h2><ul>
+<li><p>在控制台登录<code>npm</code>账号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm login</div></pre></td></tr></table></figure>
+</li>
+<li><p>发布(每次发布需要更新version)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm publish</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-LCS" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -783,81 +857,6 @@
 <li>手动重置<code>lastIndex</code></li>
 </ul>
 
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-node-child-process" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2017/03/30/node-child-process/">node子进程与调度任务</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.03.30</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/node/">node</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候我们会需要在服务端去执行一些命令或者脚本，这时候可以使用<code>node</code>的<code>child_process</code>模块来新建子进程。</p>
-<h2 id="新建子进程"><a href="#新建子进程" class="headerlink" title="新建子进程"></a>新建子进程</h2><p><code>child_process</code>存在几种创建子进程的方法。<a href="http://nodejs.cn/api/child_process.html#child_process_child_process_spawn_command_args_options">参考</a></p>
-<ul>
-<li>创建异步进程<ul>
-<li><code>child_process.exec(command[, options][, callback])</code> 衍生一个 shell 并在 shell 上运行一个命令，当完成时会传入 stdout 和 stderr 到一个回调。</li>
-<li><code>child_process.execFile(file[, args][, options][, callback])</code>和 <code>child_process.exec()</code> 类似，但它直接衍生命令，且不用先衍生一个 shell。</li>
-<li><code>child_process.fork(modulePath[, args][, options])</code>衍生一个新的 Node.js 进程，并通过建立一个允许父进程和子进程之间相互发送信息的 IPC 通讯通道来调用一个指定的模块。</li>
-<li><code>child_process.spawn(command[, args][, options])</code>方法会异步地衍生子进程，且不会阻塞 Node.js 的事件循环。<ul>
-<li><code>options.detached</code></li>
-<li><code>options.stdio</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>创建同步进程<ul>
-<li><code>child_process.execFileSync(file[, args][, options])</code>函数则以同步的方式提供了与<code>child_process.execFile()</code>相同的功能，但会阻塞事件循环，直到衍生的子进程退出或终止。</li>
-<li><code>child_process.execSync(command[, options])</code>函数则以同步的方式提供了与<code>child_process.exec()</code>相同的功能，但会阻塞事件循环，直到衍生的子进程退出或终止。</li>
-<li><code>child_process.spawnSync(command[, args][, options])</code>函数则以同步的方式提供了与<code>child_process.spawn()</code>相同的功能，但会阻塞事件循环，直到衍生的子进程退出或终止。</li>
-</ul>
-</li>
-</ul>
-<p>这里以<code>spawn</code>方法为例。</p>
-<p class="tip"><code>exec</code>与<code>spawn</code>放法都可以满足我异步执行命令的需求，但除此之外我还需要实时获取子进程的输出，而<code>exec</code>只能在执行完之后一次获取输出，所以最终选择了<code>spawn</code>。</p>
-            
-            <p class="article-more-link">
-                <a class="btn btn-primary more-btn" href="/2017/03/30/node-child-process/#more">阅读全文</a>
-            </p>
-            
             
         </div>
     </article>
