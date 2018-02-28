@@ -27,20 +27,26 @@
 
   <meta name="description" content="方法
 新建一个formData将数据append进去
-修改header中的Content-Type案例12345678910111213141516var file = $file.files[0]let param = new FormData()param.append(&apos;host&apos;,data.host)param.append(&apos;policy&apos;,data.policy)param.appen">
+修改header中的Content-Type
+
+案例12345678910111213141516var file = $file.files[0]let param = new FormData()param.append(&apos;host&apos;,data.host)param.append(&apos;policy&apos;,data.policy)param.app">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用ajax的姿势伪装一次表单提交">
 <meta property="og:url" content="http://kylin.himmas.cc/2018/02/28/FormData/index.html">
 <meta property="og:site_name" content="Kylin">
 <meta property="og:description" content="方法
 新建一个formData将数据append进去
-修改header中的Content-Type案例12345678910111213141516var file = $file.files[0]let param = new FormData()param.append(&apos;host&apos;,data.host)param.append(&apos;policy&apos;,data.policy)param.appen">
-<meta property="og:updated_time" content="2018-02-28T08:28:30.000Z">
+修改header中的Content-Type
+
+案例12345678910111213141516var file = $file.files[0]let param = new FormData()param.append(&apos;host&apos;,data.host)param.append(&apos;policy&apos;,data.policy)param.app">
+<meta property="og:updated_time" content="2018-02-28T08:29:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用ajax的姿势伪装一次表单提交">
 <meta name="twitter:description" content="方法
 新建一个formData将数据append进去
-修改header中的Content-Type案例12345678910111213141516var file = $file.files[0]let param = new FormData()param.append(&apos;host&apos;,data.host)param.append(&apos;policy&apos;,data.policy)param.appen">
+修改header中的Content-Type
+
+案例12345678910111213141516var file = $file.files[0]let param = new FormData()param.append(&apos;host&apos;,data.host)param.append(&apos;policy&apos;,data.policy)param.app">
 
   
 
@@ -283,9 +289,9 @@
             
             <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
 <li>新建一个<code>formData</code>将数据<code>append</code>进去</li>
-<li>修改<code>header</code>中的<code>Content-Type</code><h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = $file.files[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> param = <span class="keyword">new</span> FormData()</div><div class="line"></div><div class="line">param.append(<span class="string">'host'</span>,data.host)</div><div class="line">param.append(<span class="string">'policy'</span>,data.policy)</div><div class="line">param.append(<span class="string">'signature'</span>,data.signature)</div><div class="line">param.append(<span class="string">'key'</span>,<span class="string">`<span class="subst">$&#123;data.dir&#125;</span>\$&#123;filename&#125;`</span>)</div><div class="line">param.append(<span class="string">'OSSAccessKeyId'</span>,data.accessId)</div><div class="line">param.append(<span class="string">'file'</span>,file,file.name)</div><div class="line"></div><div class="line">axios.post(<span class="string">'http://nbicc-lele.oss-cn-hangzhou.aliyuncs.com'</span>,param,&#123;</div><div class="line">  <span class="comment">// multipart/form-data 带文件的表单</span></div><div class="line">  <span class="comment">// application/x-www-form-urlencoded 普通表单</span></div><div class="line">  headers:&#123;<span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span>&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-</li>
+<li>修改<code>header</code>中的<code>Content-Type</code></li>
 </ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = $file.files[<span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="keyword">let</span> param = <span class="keyword">new</span> FormData()</div><div class="line"></div><div class="line">param.append(<span class="string">'host'</span>,data.host)</div><div class="line">param.append(<span class="string">'policy'</span>,data.policy)</div><div class="line">param.append(<span class="string">'signature'</span>,data.signature)</div><div class="line">param.append(<span class="string">'key'</span>,<span class="string">`<span class="subst">$&#123;data.dir&#125;</span>\$&#123;filename&#125;`</span>)</div><div class="line">param.append(<span class="string">'OSSAccessKeyId'</span>,data.accessId)</div><div class="line">param.append(<span class="string">'file'</span>,file,file.name)</div><div class="line"></div><div class="line">axios.post(<span class="string">'http://nbicc-lele.oss-cn-hangzhou.aliyuncs.com'</span>,param,&#123;</div><div class="line">  <span class="comment">// multipart/form-data 带文件的表单</span></div><div class="line">  <span class="comment">// application/x-www-form-urlencoded 普通表单</span></div><div class="line">  headers:&#123;<span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span>&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 
             
         </div>
