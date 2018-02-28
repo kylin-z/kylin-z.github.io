@@ -230,6 +230,50 @@
     
 
 <div class="container article-container">
+    <article id="post-cache" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2018/02/28/cache/">IE中Cache-Control不起作用问题解决方案</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.02.28</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <p>有时候我们会遇到这样的问题，IE对于设置了<code>Cache-Control:no-cache</code>的资源依然采取相同url就cache from dist的策略<br>此时可以在每个请求的请求头中加入’If-Modified-Since’:0就能解决问题。</p>
+
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-FormData" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -780,59 +824,6 @@
                 <a class="btn btn-primary more-btn" href="/2017/11/18/machine-learning-1/#more">阅读全文</a>
             </p>
             
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-fixed" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2017/08/02/fixed/">positon:fixed的怪异行为记录</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.08.02</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/css/">css</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/position-fixed-example.png" alt=""></p>
-<p></p><p class="tip">若定位为fixed的父级元素被设置了transform属性,那么该元素(position:relative/absolute/fixed)就会根据父元素定位</p><p></p>
-<blockquote>
-<p>参考: <a href="http://meyerweb.com/eric/thoughts/2011/09/12/un-fixing-fixed-elements-with-css-transforms/" target="_blank" rel="external">Un-fixing Fixed Elements with CSS Transforms</a></p>
-</blockquote>
-
             
         </div>
     </article>

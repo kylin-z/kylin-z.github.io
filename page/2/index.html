@@ -230,6 +230,59 @@
     
 
 <div class="container article-container">
+    <article id="post-fixed" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/08/02/fixed/">positon:fixed的怪异行为记录</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.08.02</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/position-fixed-example.png" alt=""></p>
+<p></p><p class="tip">若定位为fixed的父级元素被设置了transform属性,那么该元素(position:relative/absolute/fixed)就会根据父元素定位</p><p></p>
+<blockquote>
+<p>参考: <a href="http://meyerweb.com/eric/thoughts/2011/09/12/un-fixing-fixed-elements-with-css-transforms/" target="_blank" rel="external">Un-fixing Fixed Elements with CSS Transforms</a></p>
+</blockquote>
+
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-spread" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -761,65 +814,6 @@
             
             <p class="article-more-link">
                 <a class="btn btn-primary more-btn" href="/2017/02/17/python/#more">阅读全文</a>
-            </p>
-            
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-testWithTravis" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2017/01/23/testWithTravis/">TravisCI自动化构建与Karma测试实践记录</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.01.23</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/自动化/">自动化</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="Karma"><a href="#Karma" class="headerlink" title="Karma"></a>Karma</h2><h3 id="安装的依赖"><a href="#安装的依赖" class="headerlink" title="安装的依赖"></a>安装的依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ npm install karma --save-dev</div><div class="line">$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev</div></pre></td></tr></table></figure>
-<p>装完依赖后可以用以下命令运行测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Run Karma:</div><div class="line">$ ./node_modules/karma/bin/karma start</div></pre></td></tr></table></figure>
-<p>若觉得<code>./node_modules/karma/bin/karma</code>的写法太长，则可以全局安装<code>karma-cli</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g karma-cli</div></pre></td></tr></table></figure>
-<h3 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a>初始化配置</h3><p>最简单的方法是使用命令<code>karma init</code>来创建配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ karma init</div><div class="line"></div><div class="line">Which testing framework <span class="keyword">do</span> you want to use ?</div><div class="line"></div><div class="line">Press tab to list possible options. Enter to move to the next question.</div><div class="line">&gt; jasmine</div><div class="line"></div><div class="line"></div><div class="line">Do you want to use Require.js ?</div><div class="line">This will add Require.js plugin.</div><div class="line">Press tab to list possible options. Enter to move to the next question.</div><div class="line">&gt; no</div><div class="line"></div><div class="line">Do you want to capture any browsers automatically ?</div><div class="line">Press tab to list possible options. Enter empty string to move to the next question.</div><div class="line">&gt; Chrome</div><div class="line">&gt;</div><div class="line"></div><div class="line">What is the location of your <span class="built_in">source</span> and <span class="built_in">test</span> files ?</div><div class="line">You can use glob patterns, eg. <span class="string">"js/*.js"</span> or <span class="string">"test/**/*Spec.js"</span>.</div><div class="line">Enter empty string to move to the next question.</div><div class="line">&gt;</div><div class="line"></div><div class="line">Should any of the files included by the previous patterns be excluded ?</div><div class="line">You can use glob patterns, eg. <span class="string">"**/*.swp"</span>.</div><div class="line">Enter empty string to move to the next question.</div><div class="line">&gt;</div><div class="line"></div><div class="line">Do you want Karma to watch all the files and run the tests on change ?</div><div class="line">Press tab to list possible options.</div><div class="line">&gt; yes</div><div class="line"></div><div class="line">Config file generated at <span class="string">"/Users/xx/Documents/Himmas/melody/karma.conf.js"</span>.</div></pre></td></tr></table></figure>
-            
-            <p class="article-more-link">
-                <a class="btn btn-primary more-btn" href="/2017/01/23/testWithTravis/#more">阅读全文</a>
             </p>
             
             
