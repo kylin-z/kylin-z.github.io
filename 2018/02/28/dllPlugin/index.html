@@ -19,40 +19,22 @@
   <!--安卓 去状态栏-->
 
   
-  <title>vue插件的打包与发布 | Kylin</title>
+  <title>webpack打包慢的解决方案 | Kylin</title>
 
   
-    <meta name="keywords" content="webpack,vue," />
+    <meta name="keywords" content="webpack," />
   
 
-  <meta name="description" content="初始化项目以我刚发布的vue-calendar组件为例
-开发插件用webpack-simple 模板比较合适
-123vue init webpack-simple vue-calendarcd vue-calendarnpm install
-在跟目录下新建test文件夹用于开发测试我这里将原本位于src文件夹下的main.js以及App.vue文件转移到了test文件夹下
-
-将插件源码放在src文">
+  <meta name="description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多大数万行。期初我以为是Uglify的过程占用了太多时间">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue插件的打包与发布">
-<meta property="og:url" content="http://kylin.himmas.cc/2018/02/08/vue-plugins/index.html">
+<meta property="og:title" content="webpack打包慢的解决方案">
+<meta property="og:url" content="http://kylin.himmas.cc/2018/02/28/dllPlugin/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="初始化项目以我刚发布的vue-calendar组件为例
-开发插件用webpack-simple 模板比较合适
-123vue init webpack-simple vue-calendarcd vue-calendarnpm install
-在跟目录下新建test文件夹用于开发测试我这里将原本位于src文件夹下的main.js以及App.vue文件转移到了test文件夹下
-
-将插件源码放在src文">
-<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-1.png">
-<meta property="og:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-2.png">
-<meta property="og:updated_time" content="2018-02-08T07:41:55.000Z">
+<meta property="og:description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多大数万行。期初我以为是Uglify的过程占用了太多时间">
+<meta property="og:updated_time" content="2018-02-28T07:43:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue插件的打包与发布">
-<meta name="twitter:description" content="初始化项目以我刚发布的vue-calendar组件为例
-开发插件用webpack-simple 模板比较合适
-123vue init webpack-simple vue-calendarcd vue-calendarnpm install
-在跟目录下新建test文件夹用于开发测试我这里将原本位于src文件夹下的main.js以及App.vue文件转移到了test文件夹下
-
-将插件源码放在src文">
-<meta name="twitter:image" content="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-1.png">
+<meta name="twitter:title" content="webpack打包慢的解决方案">
+<meta name="twitter:description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多大数万行。期初我以为是Uglify的过程占用了太多时间">
 
   
 
@@ -253,22 +235,22 @@
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化项目"><span class="toc-text">初始化项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在跟目录下新建test文件夹用于开发测试"><span class="toc-text">在跟目录下新建test文件夹用于开发测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将插件源码放在src文件夹下，插件入口为src-calendar-main-js"><span class="toc-text">将插件源码放在src文件夹下，插件入口为src/calendar/main.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改-webpack-config-js-文件"><span class="toc-text">修改 webpack.config.js 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改package-json"><span class="toc-text">修改package.json</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到npm"><span class="toc-text">发布到npm</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对gojs修改后的版本进行混淆压缩"><span class="toc-text">对gojs修改后的版本进行混淆压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改gojs模块指向"><span class="toc-text">修改gojs模块指向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件"><span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改index-ejs"><span class="toc-text">修改index.ejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改打包命令"><span class="toc-text">修改打包命令</span></a></li></ol></li></ol>
   </div>
 
 -->
 
 <div class="content content-post CENTER">
    <div class="container article-container">
-    <article id="post-vue-plugins" class="article article-type-post"
+    <article id="post-dllPlugin" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
-            <h1 class="post-title"><a href="/2018/02/08/vue-plugins/">vue插件的打包与发布</a></h1>
+            <h1 class="post-title"><a href="/2018/02/28/dllPlugin/">webpack打包慢的解决方案</a></h1>
 
             <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2018.02.08</span>
+        <span>2018.02.28</span>
       </span>
 
                 
@@ -281,7 +263,7 @@
                 
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/vue/">vue</a>
+    <a class="article-category-link" href="/categories/webpack/">webpack</a>
   </span>
 
 
@@ -293,34 +275,23 @@
 
         <div class="article-content">
             
-            <h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>以我刚发布的<a href="https://github.com/kylin-z/vue-calendar" target="_blank" rel="external"><code>vue-calendar</code></a>组件为例</p>
-<p>开发插件用<code>webpack-simple</code> 模板比较合适</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vue init webpack-simple vue-calendar</div><div class="line"><span class="built_in">cd</span> vue-calendar</div><div class="line">npm install</div></pre></td></tr></table></figure>
-<h2 id="在跟目录下新建test文件夹用于开发测试"><a href="#在跟目录下新建test文件夹用于开发测试" class="headerlink" title="在跟目录下新建test文件夹用于开发测试"></a>在跟目录下新建<code>test</code>文件夹用于开发测试</h2><p>我这里将原本位于<code>src</code>文件夹下的<code>main.js</code>以及<code>App.vue</code>文件转移到了<code>test</code>文件夹下</p>
-<p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-1.png" alt=""></p>
-<h2 id="将插件源码放在src文件夹下，插件入口为src-calendar-main-js"><a href="#将插件源码放在src文件夹下，插件入口为src-calendar-main-js" class="headerlink" title="将插件源码放在src文件夹下，插件入口为src/calendar/main.js"></a>将插件源码放在<code>src</code>文件夹下，插件入口为<code>src/calendar/main.js</code></h2><p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/vue-plugin-2.png" alt=""></p>
-<h2 id="修改-webpack-config-js-文件"><a href="#修改-webpack-config-js-文件" class="headerlink" title="修改 webpack.config.js 文件"></a>修改 <code>webpack.config.js</code> 文件</h2><p>根据不同的命令(环境变量)设置不同的入口与输出文件，保证<code>npm run dev</code>与<code>npm run build</code>两个命令都为可用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"></div><div class="line"><span class="comment">//...根据环境变量(package.json script中设置)...</span></div><div class="line"><span class="keyword">var</span> entry = <span class="string">'./test/main.js'</span></div><div class="line"><span class="keyword">var</span> outputFileName = <span class="string">'build.js'</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</div><div class="line">  entry = <span class="string">'./src/calendar/main.js'</span></div><div class="line">  outputFileName = <span class="string">'vue-calendar.js'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//......</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">//entry改为变量</span></div><div class="line">  entry: entry,</div><div class="line">  output: &#123;</div><div class="line">    path: path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line">    publicPath: <span class="string">'/dist/'</span>,</div><div class="line">    <span class="comment">//filename</span></div><div class="line">    filename: outputFileName,</div><div class="line">    <span class="comment">//library与libraryTarget一定要添加，否则import进来的对象为空</span></div><div class="line">    library: <span class="string">'vue-calendar'</span>,</div><div class="line">    libraryTarget: <span class="string">'umd'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自<code>gojs</code>这个模块。由于我对<code>gojs</code>的源代码进行过修改，在<code>.vue</code>组件中引入的是未压缩的<code>gojs/release/go-nw.js</code>,该文件巨大无比多大数万行。期初我以为是<code>Uglify</code>的过程占用了太多时间，然而发现，假如不使用压缩混淆，当只有一个文件引入该模块时，打包时间减少到了两分钟，但若有5、6个文件都引用了该模块，打包速度并没有明显的提升，此时我想到了将该文件直接在<code>index</code>页面中引入的方式来避免将该文件打包，由于种种原因，在这个项目中并不能将变量<code>go</code>作为属性赋值给<code>window</code>，这里我放弃了使用最常见的<code>externals</code>方法，而是采用了另一种方式。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p><code>DLLPlugin</code>方法能把第三方代码完全分离开，即每次只打包项目自身的代码。</p>
+<h3 id="对gojs修改后的版本进行混淆压缩"><a href="#对gojs修改后的版本进行混淆压缩" class="headerlink" title="对gojs修改后的版本进行混淆压缩"></a>对<code>gojs</code>修改后的版本进行混淆压缩</h3><p>这里可以使用任何能达到效果的方式，我使用的是全局模块<a href="https://www.npmjs.com/package/uglify-js" target="_blank" rel="external"><code>uglyfy-js</code></a></p>
+<h3 id="修改gojs模块指向"><a href="#修改gojs模块指向" class="headerlink" title="修改gojs模块指向"></a>修改<code>gojs</code>模块指向</h3><p>先将<code>gojs</code>模块的<code>package.json</code>中的<code>main</code>字段指向想要引入的文件<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">// ...</div><div class="line">"main": "release/go-nw.min.js",</div><div class="line">// ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p class="tip">这里要注意非常重要的一点，webpack默认你构建的内容是一个应用而非library，如果不设置<code>library</code>将会导致你在使用该插件的时候<code>import</code>进来的对象为空。</p>
-
-<blockquote>
-<p>A webpack bundle does not expose your exports by default, as it assumes that you’re building an app and not a library (which is the far more common use of webpack). You can create a library by configuring output.library and output.libraryTarget <a href="https://stackoverflow.com/questions/44541561/webpack-output-is-empty-object" target="_blank" rel="external">参考一</a> <a href="https://webpack.js.org/configuration/output/#output-library" target="_blank" rel="external">参考二</a></p>
-</blockquote>
-<h2 id="修改package-json"><a href="#修改package-json" class="headerlink" title="修改package.json"></a>修改package.json</h2><p>使用<code>npm run build</code>或其他方式打包。</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><ul>
+<li>准备一个新的配置文件 <code>dll.config.js</code> 用来打包<code>gojs</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> vendors = [</div><div class="line">  <span class="string">'gojs'</span></div><div class="line">  <span class="comment">//如果有别的第三方文件也可以加在这里，如vue、vue-router等</span></div><div class="line">];</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  output: &#123;</div><div class="line">    filename: <span class="string">'[name].js'</span>,</div><div class="line">    path: path.join(__dirname, <span class="string">'../static/lib'</span>),</div><div class="line">    library: <span class="string">'[name]'</span></div><div class="line">  &#125;,</div><div class="line">  entry: &#123;</div><div class="line">    <span class="string">"lib"</span>: vendors,</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> webpack.DllPlugin(&#123;</div><div class="line">      <span class="comment">//path决定了生成的mainfest.json文件的路径</span></div><div class="line">      path: path.join(__dirname, <span class="string">'../.electron-vue/manifest.json'</span>),</div><div class="line">      name: <span class="string">'[name]'</span>,</div><div class="line">      context: __dirname,</div><div class="line">    &#125;)</div><div class="line">  ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>运行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack --config .electron-vue/dll.config.js</div></pre></td></tr></table></figure></p>
+<p>命令生成两个文件——位于<code>/static/lib</code>的<code>lib.js</code>和位于<code>.electron-vue</code>的<code>manifest.json</code></p>
 <ul>
-<li>将<code>private</code>设置为<code>false</code></li>
-<li>将<code>main</code>设置为打包产出的文件路径</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"himmas-vue-calendar"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"A calendar component for Vue.js"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.1.2"</span>,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">"kylin-z &lt;kailinzhou@yeah.net&gt;"</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"MIT"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"dev"</span>: <span class="string">"cross-env NODE_ENV=development webpack-dev-server --open --hot"</span>,</div><div class="line">    <span class="attr">"build"</span>: <span class="string">"cross-env NODE_ENV=production webpack --progress --hide-modules"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"private"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"dist/vue-calendar.js"</span>,</div><div class="line">  <span class="attr">"repository"</span>: &#123;</div><div class="line">    <span class="attr">"type"</span>: <span class="string">"git"</span>,</div><div class="line">    <span class="attr">"url"</span>: <span class="string">"https://github.com/kylin-z/vue-calendar.git"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"browserslist"</span>: [</div><div class="line">    <span class="string">"&gt; 1%"</span>,</div><div class="line">    <span class="string">"last 2 versions"</span>,</div><div class="line">    <span class="string">"not ie &lt;= 8"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"keywords"</span>: [</div><div class="line">    <span class="string">"calendar"</span>,</div><div class="line">    <span class="string">"custom"</span>,</div><div class="line">    <span class="string">"vue"</span></div><div class="line">  ]</div><div class="line">  //...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="发布到npm"><a href="#发布到npm" class="headerlink" title="发布到npm"></a>发布到npm</h2><ul>
-<li><p>在控制台登录<code>npm</code>账号</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm login</div></pre></td></tr></table></figure>
-</li>
-<li><p>发布(每次发布需要更新<code>version</code>)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm publish</div></pre></td></tr></table></figure>
+<li>修改原来的打包配置文件webpack.prod.config.js<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//...</span></div><div class="line">plugins:[</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  <span class="comment">//添加plugin</span></div><div class="line">  <span class="keyword">new</span> webpack.DllReferencePlugin(&#123;</div><div class="line">      context: __dirname,</div><div class="line">      <span class="comment">//路径要注意</span></div><div class="line">      manifest: <span class="built_in">require</span>(<span class="string">'./manifest.json'</span>),</div><div class="line">    &#125;)</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">      filename: <span class="string">'index.html'</span>,</div><div class="line">      template: path.resolve(__dirname, <span class="string">'../src/index.ejs'</span>),</div><div class="line">      minify: &#123;</div><div class="line">        collapseWhitespace: <span class="literal">true</span>,</div><div class="line">        removeAttributeQuotes: <span class="literal">true</span>,</div><div class="line">        removeComments: <span class="literal">true</span></div><div class="line">      &#125;,</div><div class="line">      <span class="comment">//...HtmlWebpackPlugin.options中添加字段dll，值为之前生成的lib文件的路径，主要不能使用/User/xxx/...这样的绝对路径</span></div><div class="line">      <span class="comment">//如果有多个文件则可以使用数组</span></div><div class="line">      dll: <span class="string">'static/lib/lib.js'</span></div><div class="line">    &#125;)</div><div class="line">]</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<h3 id="修改index-ejs"><a href="#修改index-ejs" class="headerlink" title="修改index.ejs"></a>修改index.ejs</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!-- ... --&gt;</div><div class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">  &lt;title&gt;cx-metadata&lt;/title&gt;</div><div class="line"></div><div class="line">  &lt;% if (htmlWebpackPlugin.options.dll) &#123; %&gt;</div><div class="line">    &lt;!-- 如果有多个可以使用for循环插入script --&gt;</div><div class="line">    &lt;script src=&quot;&lt;%= htmlWebpackPlugin.options.dll %&gt;&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;% &#125; %&gt;</div><div class="line">&lt;!-- ... --&gt;</div></pre></td></tr></table></figure>
+<h3 id="修改打包命令"><a href="#修改打包命令" class="headerlink" title="修改打包命令"></a>修改打包命令</h3><p>修改<code>package.json</code>文件中的打包命令<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// ...</div><div class="line">"scripts": &#123;</div><div class="line">    "build": "npm run pack:dll &amp;&amp; node .electron-vue/build.js &amp;&amp; electron-builder",</div><div class="line">    // ...</div><div class="line">    "pack:dll":"webpack --config .electron-vue/dll.config.js",</div><div class="line">    // ...</div><div class="line">  &#125;,</div><div class="line">// ...</div></pre></td></tr></table></figure></p>
 
             
         </div>
@@ -328,14 +299,11 @@
     
     <div class="page-bar">
         
-        <a href="/2018/02/28/dllPlugin/" class="prev-btn">
-            <i class="iconfont icon-prev"></i>
-            <span class="title">webpack打包慢的解决方案</span>
-        </a>
+        <a class="prev-btn"></a>
         
         
-        <a href="/2018/02/02/LCS/" class="next-btn">
-            <span class="title">最长公共子序列(LCS)</span>
+        <a href="/2018/02/08/vue-plugins/" class="next-btn">
+            <span class="title">vue插件的打包与发布</span>
             <i class="iconfont icon-next"></i></a>
         
     </div>
@@ -347,7 +315,7 @@
 <div class="container article-container">
     
         <!--&lt;!&ndash;高速版&ndash;&gt;-->
-<div id="SOHUCS" sid="2018/02/08/vue-plugins/"></div>
+<div id="SOHUCS" sid="2018/02/28/dllPlugin/"></div>
 <script type="text/javascript">
     (function () {
         var appid = 'cytljyUmF';
