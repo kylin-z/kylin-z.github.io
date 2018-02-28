@@ -230,6 +230,55 @@
     
 
 <div class="container article-container">
+    <article id="post-word-break" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/01/11/word-break/">英文单词换行连接符问题</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.01.11</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.xx</span>&#123;</div><div class="line">	<span class="attribute">hyphens</span>: auto;</div><div class="line">	<span class="comment">/*加链接横*/</span></div><div class="line">	<span class="attribute">word-wrap</span>: break-word;</div><div class="line">	<span class="attribute">overflow-wrap</span>: break-word;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-async" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -867,59 +916,6 @@
             
             <p class="article-more-link">
                 <a class="btn btn-primary more-btn" href="/2016/05/02/colours-bar/#more">阅读全文</a>
-            </p>
-            
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-default-event" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2016/03/23/default-event/">如何在内层div滚动到底部时禁止外部div滚动</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2016.03.23</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <p>做过微信端(特别是IOS)web开发的小伙伴一定遇到过这样一个问题:<br>微信内嵌浏览器的顶部是可以下拉的(ios下底部还能上拉),会显示网页有XXXX提供，QQ浏览器X5内核提供技术支持<br>平时看到这个可能觉得还好，但若是下面我们自己的网页中有一个需要滚动的div(overflow-y:scroll)时，这个就极其恶心了，拉倒底部时再往下拉，会导致微信浏览器顶部下拉(ios拉倒顶部时上拉则会导致整个页面上拉，下方露出一大片黑色)<br>这是因为内部div滚动到头之后会带动webview滚动<br>我们可以通过禁止默认事件来解决，当滚动到底部时，判断touchmove是否是向下滚动，若是，则event.preventDefault()，反之亦然<br>具体代码如下<br>
-            
-            <p class="article-more-link">
-                <a class="btn btn-primary more-btn" href="/2016/03/23/default-event/#more">阅读全文</a>
             </p>
             
             

@@ -230,6 +230,61 @@
     
 
 <div class="container article-container">
+    <article id="post-spread" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/07/04/spread/">扩展运算符小贴士</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.07.04</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h2><p>es2015引入了扩展运算符(spread operator)<a href="http://es6.ruanyifeng.com/#docs/array"><code>...</code></a>，可以用来进行一些数组和对象操作。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>下面是codewar上的一道题，判断字符串/数字/数组是否对称</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Give you an obj, it can be 3 types: string, number and number array, Check that they are symmetrical or not, <span class="built_in">return</span> a boolean value.  </div><div class="line"></div><div class="line">obj=<span class="string">""</span>    <span class="built_in">return</span> <span class="literal">true</span>   (Empty string should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=<span class="string">"1"</span>   <span class="built_in">return</span> <span class="literal">true</span>   (one char should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=<span class="string">"11"</span>  <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=<span class="string">"12"</span>  <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=<span class="string">"121"</span> <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=1     <span class="built_in">return</span> <span class="literal">true</span>   (number&lt;10  should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=-1    <span class="built_in">return</span> <span class="literal">false</span>  (negative number should <span class="built_in">return</span> <span class="literal">false</span>)</div><div class="line">obj=10    <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=11    <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=12    <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=121   <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=[]    <span class="built_in">return</span> <span class="literal">true</span>  (Empty array should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=[1]   <span class="built_in">return</span> <span class="literal">true</span>  (an array with one element should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=[1,2,3,4,5]      <span class="built_in">return</span> <span class="literal">false</span>  </div><div class="line">obj=[1,2,3,2,1]      <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=[11,12,13,12,11] <span class="built_in">return</span> <span class="literal">true</span>   (left element = right element)</div><div class="line">obj=[11,12,21,11]    <span class="built_in">return</span> <span class="literal">false</span>  (not verify them as a string)</div></pre></td></tr></table></figure>
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/07/04/spread/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
     <article id="post-regExp" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -767,55 +822,6 @@
                 <a class="btn btn-primary more-btn" href="/2017/01/23/testWithTravis/#more">阅读全文</a>
             </p>
             
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
-    <article id="post-word-break" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2017/01/11/word-break/">英文单词换行连接符问题</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.01.11</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/css/">css</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.xx</span>&#123;</div><div class="line">	<span class="attribute">hyphens</span>: auto;</div><div class="line">	<span class="comment">/*加链接横*/</span></div><div class="line">	<span class="attribute">word-wrap</span>: break-word;</div><div class="line">	<span class="attribute">overflow-wrap</span>: break-word;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
             
         </div>
     </article>
