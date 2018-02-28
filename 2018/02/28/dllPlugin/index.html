@@ -25,16 +25,16 @@
     <meta name="keywords" content="webpack," />
   
 
-  <meta name="description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多大数万行。期初我以为是Uglify的过程占用了太多时间">
+  <meta name="description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多达数万行。起初我以为是Uglify的过程占用了太多时间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack打包慢的解决方案">
 <meta property="og:url" content="http://kylin.himmas.cc/2018/02/28/dllPlugin/index.html">
 <meta property="og:site_name" content="Kylin">
-<meta property="og:description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多大数万行。期初我以为是Uglify的过程占用了太多时间">
-<meta property="og:updated_time" content="2018-02-28T07:45:58.000Z">
+<meta property="og:description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多达数万行。起初我以为是Uglify的过程占用了太多时间">
+<meta property="og:updated_time" content="2018-02-28T07:50:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack打包慢的解决方案">
-<meta name="twitter:description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多大数万行。期初我以为是Uglify的过程占用了太多时间">
+<meta name="twitter:description" content="前言在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自gojs这个模块。由于我对gojs的源代码进行过修改，在.vue组件中引入的是未压缩的gojs/release/go-nw.js,该文件巨大无比多达数万行。起初我以为是Uglify的过程占用了太多时间">
 
   
 
@@ -235,7 +235,7 @@
 <!--
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对gojs修改后的版本进行混淆压缩"><span class="toc-text">对gojs修改后的版本进行混淆压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改gojs模块指向"><span class="toc-text">修改gojs模块指向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件"><span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改index-ejs"><span class="toc-text">修改index.ejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改打包命令"><span class="toc-text">修改打包命令</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对gojs修改后的版本进行混淆压缩"><span class="toc-text">对gojs修改后的版本进行混淆压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改gojs模块指向"><span class="toc-text">修改gojs模块指向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置文件"><span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改index-ejs"><span class="toc-text">修改index.ejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改打包命令"><span class="toc-text">修改打包命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li></ol>
   </div>
 
 -->
@@ -275,7 +275,7 @@
 
         <div class="article-content">
             
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自<code>gojs</code>这个模块。由于我对<code>gojs</code>的源代码进行过修改，在<code>.vue</code>组件中引入的是未压缩的<code>gojs/release/go-nw.js</code>,该文件巨大无比多大数万行。期初我以为是<code>Uglify</code>的过程占用了太多时间，然而发现，假如不使用压缩混淆，当只有一个文件引入该模块时，打包时间减少到了两分钟，但若有5、6个文件都引用了该模块，打包速度并没有明显的提升，此时我想到了将该文件直接在<code>index</code>页面中引入的方式来避免将该文件打包，由于种种原因，在这个项目中并不能将变量<code>go</code>作为属性赋值给<code>window</code>，这里我放弃了使用最常见的<code>externals</code>方法，而是采用了另一种方式。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发某基于electron、vue等技术栈的桌面程序的过程中发现，模块越多，webpack打包的速度越慢，居然慢到了令人发指的50min！之后我对整个项目进程了排查，最后发现打包慢的罪魁祸首来自<code>gojs</code>这个模块。由于我对<code>gojs</code>的源代码进行过修改，在<code>.vue</code>组件中引入的是未压缩的<code>gojs/release/go-nw.js</code>,该文件巨大无比多达数万行。起初我以为是<code>Uglify</code>的过程占用了太多时间，然而发现，假如不使用压缩混淆，当只有一个文件引入该模块时，打包时间减少到了两分钟，但若有5、6个文件都引用了该模块，打包速度并没有明显的提升，此时我想到了将该文件直接在<code>index</code>页面中引入的方式来避免将该文件打包，由于种种原因，在这个项目中并不能将变量<code>go</code>作为属性赋值给<code>window</code>，这里我放弃了使用最常见的<code>externals</code>方法，而是采用了另一种方式。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p><code>DLLPlugin</code>方法能把第三方代码完全分离开，即每次只打包项目自身的代码。</p>
 <h3 id="对gojs修改后的版本进行混淆压缩"><a href="#对gojs修改后的版本进行混淆压缩" class="headerlink" title="对gojs修改后的版本进行混淆压缩"></a>对<code>gojs</code>修改后的版本进行混淆压缩</h3><p>这里可以使用任何能达到效果的方式，我使用的是全局模块<a href="https://www.npmjs.com/package/uglify-js" target="_blank" rel="external"><code>uglyfy-js</code></a></p>
 <h3 id="修改gojs模块指向"><a href="#修改gojs模块指向" class="headerlink" title="修改gojs模块指向"></a>修改<code>gojs</code>模块指向</h3><p>先将<code>gojs</code>模块的<code>package.json</code>中的<code>main</code>字段指向想要引入的文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="comment">// ...</span></div><div class="line"><span class="string">"main"</span>: <span class="string">"release/go-nw.min.js"</span>,</div><div class="line"><span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -292,6 +292,7 @@
 </ul>
 <h3 id="修改index-ejs"><a href="#修改index-ejs" class="headerlink" title="修改index.ejs"></a>修改index.ejs</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- ... --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>cx-metadata<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">htmlWebpackPlugin.options.dll</span>) &#123; %&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 如果有多个可以使用for循环插入script --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&lt;%= htmlWebpackPlugin.options.dll %&gt;"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div><div class="line"><span class="comment">&lt;!-- ... --&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="修改打包命令"><a href="#修改打包命令" class="headerlink" title="修改打包命令"></a>修改打包命令</h3><p>修改<code>package.json</code>文件中的打包命令<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">// ...</div><div class="line">"scripts": &#123;</div><div class="line">    "build": "npm run pack:dll &amp;&amp; node .electron-vue/build.js &amp;&amp; electron-builder",</div><div class="line">    // ...</div><div class="line">    "pack:dll":"webpack --config .electron-vue/dll.config.js",</div><div class="line">    // ...</div><div class="line">  &#125;,</div><div class="line">// ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>最后将该项目的打包时间控制在了40s以内，若是还嫌弃慢，可以将<code>vue</code>、<code>vue-router</code>等库文件做同样的处理，还可减少几十秒的时间。</p>
 
             
         </div>
