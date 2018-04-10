@@ -230,55 +230,6 @@
     
 
 <div class="container article-container">
-    <article id="post-cache" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2018/02/28/cache/">IE中Cache-Control不起作用问题解决方案</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2018.02.28</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <p>有时候我们会遇到这样的问题，IE对于设置了<code>Cache-Control:no-cache</code>的资源依然采取相同url就cache from dist的策略，此时可以在每个请求的请求头中加入’If-Modified-Since’:0就能解决问题。</p>
-
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
     <article id="post-FormData" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -575,66 +526,6 @@
 <div class="br"></div>
 
 <div class="container article-container">
-    <article id="post-js-note" class="article article-type-post"
-             itemprop="blogPost">
-        <header class="article-header">
-            <h1 class="post-title"><a href="/2017/12/14/js-note/">js随笔</a></h1>
-
-            <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.12.14</span>
-      </span>
-
-                
-                <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Kylin</span>
-        </span>
-                
-
-                
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/笔记/">笔记</a>
-  </span>
-
-
-
-                
-
-            </div>
-        </header>
-
-        <div class="article-content">
-            
-            <h2 id="函数声明和函数表达式"><a href="#函数声明和函数表达式" class="headerlink" title="函数声明和函数表达式"></a>函数声明和函数表达式</h2><p>函数表达式的name不能在函数外部被使用<br>iife是一个函数表达式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;&#125;)</div><div class="line">foo()</div><div class="line"><span class="comment">//会报错</span></div></pre></td></tr></table></figure></p>
-<p><a href="https://www.zhihu.com/question/60063924">参考</a><br><a href="http://www.cnblogs.com/TomXu/archive/2012/01/30/2326372.html">参考</a></p>
-<h2 id="变量对象-VO"><a href="#变量对象-VO" class="headerlink" title="变量对象(VO)"></a>变量对象(VO)</h2><p>旦进入执行上下文（在执行代码之前），VO就会被一些属性填充：</p>
-<ul>
-<li>函数的形参（当进入函数执行上下文时）<br>变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为undefined</li>
-<li>函数声明（FunctionDeclaration, FD） —— 变量对象的一个属性，其属性名和值都是函数对象创建出来的；如果变量对象已经包含了相同名字的属性，则替换它的值</li>
-<li>变量声明（var，VariableDeclaration） —— 变量对象的一个属性，其属性名即为变量名，其值为undefined;如果变量名和已经声明的函数名或者函数的参数名相同，则不会影响已经存在的属性。</li>
-</ul>
-            
-            <p class="article-more-link">
-                <a class="btn btn-primary more-btn" href="/2017/12/14/js-note/#more">阅读全文</a>
-            </p>
-            
-            
-        </div>
-    </article>
-    
-</div>
-
-<!--评论区-->
-
-
-
-
-<div class="br"></div>
-
-<div class="container article-container">
     <article id="post-machine-learning-2" class="article article-type-post"
              itemprop="blogPost">
         <header class="article-header">
@@ -827,6 +718,114 @@
             
             <p class="article-more-link">
                 <a class="btn btn-primary more-btn" href="/2017/11/18/machine-learning-1/#more">阅读全文</a>
+            </p>
+            
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
+    <article id="post-fixed" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/08/02/fixed/">positon:fixed的怪异行为记录</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.08.02</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p><img src="http://7xrqm7.com1.z0.glb.clouddn.com/position-fixed-example.png" alt=""></p>
+<p></p><p class="tip">若定位为fixed的父级元素被设置了transform属性,那么该元素(position:relative/absolute/fixed)就会根据父元素定位</p><p></p>
+<blockquote>
+<p>参考: <a href="http://meyerweb.com/eric/thoughts/2011/09/12/un-fixing-fixed-elements-with-css-transforms/" target="_blank" rel="external">Un-fixing Fixed Elements with CSS Transforms</a></p>
+</blockquote>
+
+            
+        </div>
+    </article>
+    
+</div>
+
+<!--评论区-->
+
+
+
+
+<div class="br"></div>
+
+<div class="container article-container">
+    <article id="post-spread" class="article article-type-post"
+             itemprop="blogPost">
+        <header class="article-header">
+            <h1 class="post-title"><a href="/2017/07/04/spread/">扩展运算符小贴士</a></h1>
+
+            <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.07.04</span>
+      </span>
+
+                
+                <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Kylin</span>
+        </span>
+                
+
+                
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/javascript/">javascript</a>
+  </span>
+
+
+
+                
+
+            </div>
+        </header>
+
+        <div class="article-content">
+            
+            <h2 id="前沿"><a href="#前沿" class="headerlink" title="前沿"></a>前沿</h2><p>es2015引入了扩展运算符(spread operator)<a href="http://es6.ruanyifeng.com/#docs/array"><code>...</code></a>，可以用来进行一些数组和对象操作。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>下面是codewar上的一道题，判断字符串/数字/数组是否对称</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Give you an obj, it can be 3 types: string, number and number array, Check that they are symmetrical or not, <span class="built_in">return</span> a boolean value.  </div><div class="line"></div><div class="line">obj=<span class="string">""</span>    <span class="built_in">return</span> <span class="literal">true</span>   (Empty string should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=<span class="string">"1"</span>   <span class="built_in">return</span> <span class="literal">true</span>   (one char should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=<span class="string">"11"</span>  <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=<span class="string">"12"</span>  <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=<span class="string">"121"</span> <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=1     <span class="built_in">return</span> <span class="literal">true</span>   (number&lt;10  should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=-1    <span class="built_in">return</span> <span class="literal">false</span>  (negative number should <span class="built_in">return</span> <span class="literal">false</span>)</div><div class="line">obj=10    <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=11    <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=12    <span class="built_in">return</span> <span class="literal">false</span></div><div class="line">obj=121   <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=[]    <span class="built_in">return</span> <span class="literal">true</span>  (Empty array should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=[1]   <span class="built_in">return</span> <span class="literal">true</span>  (an array with one element should <span class="built_in">return</span> <span class="literal">true</span>)</div><div class="line">obj=[1,2,3,4,5]      <span class="built_in">return</span> <span class="literal">false</span>  </div><div class="line">obj=[1,2,3,2,1]      <span class="built_in">return</span> <span class="literal">true</span></div><div class="line">obj=[11,12,13,12,11] <span class="built_in">return</span> <span class="literal">true</span>   (left element = right element)</div><div class="line">obj=[11,12,21,11]    <span class="built_in">return</span> <span class="literal">false</span>  (not verify them as a string)</div></pre></td></tr></table></figure>
+            
+            <p class="article-more-link">
+                <a class="btn btn-primary more-btn" href="/2017/07/04/spread/#more">阅读全文</a>
             </p>
             
             
